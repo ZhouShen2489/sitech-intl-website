@@ -7,7 +7,7 @@ export default async function MarketRedirectPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const href = isLocale(locale) ? withLocale(locale, "/marketplace") : "/en/marketplace";
+  const href = isLocale(locale) ? withLocale(locale, "/marketplace") : "/zh/marketplace";
 
   return (
     <StaticRedirect
