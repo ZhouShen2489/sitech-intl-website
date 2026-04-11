@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
 
+import { withBasePath } from "@/lib/site";
+
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -18,9 +20,9 @@ export const metadata: Metadata = {
   description:
     "A bilingual partnership-focused corporate website for telecom, customer service, operations, and digital delivery opportunities.",
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon.png",
+    icon: withBasePath("/icon.png"),
+    shortcut: withBasePath("/icon.png"),
+    apple: withBasePath("/icon.png"),
   },
 };
 

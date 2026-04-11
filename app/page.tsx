@@ -1,8 +1,8 @@
-import { ClientRedirect } from "@/components/client-redirect";
+import { StaticRedirect } from "@/components/static-redirect";
 
 export default function IndexPage() {
   return (
-    <ClientRedirect
+    <StaticRedirect
       href="/en"
       message="Redirecting to the English homepage..."
       linkLabel="Open homepage"

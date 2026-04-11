@@ -17,11 +17,13 @@ const nextConfig: NextConfig = {
           unoptimized: true,
         },
         env: {
+          NEXT_PUBLIC_BASE_PATH: basePath,
           NEXT_PUBLIC_IS_STATIC_EXPORT: "true",
         },
       }
     : {
         env: {
+          NEXT_PUBLIC_BASE_PATH: "",
           NEXT_PUBLIC_IS_STATIC_EXPORT: "false",
         },
       }),

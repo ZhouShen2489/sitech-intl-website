@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { PageHero, SectionHeading } from "@/components/page-sections";
 import { siteContent, copy, copyList } from "@/content/siteContent";
-import { isLocale, withLocale } from "@/lib/site";
+import { isLocale, withBasePath, withLocale } from "@/lib/site";
 
 export default async function TeamshubBusinessOsPage({
   params,
@@ -41,7 +41,7 @@ export default async function TeamshubBusinessOsPage({
                 }`}
               >
                 <div className="relative min-h-[280px] overflow-hidden rounded-[2rem] bg-ink">
-                  <Image src={section.image} alt={copy(locale, section.title)} fill className="object-cover" />
+                  <Image src={withBasePath(section.image)} alt={copy(locale, section.title)} fill className="object-cover" />
                 </div>
                 <div className="flex flex-col justify-center">
                   <h2 className="font-serif text-3xl leading-tight text-ink">{copy(locale, section.title)}</h2>
@@ -71,7 +71,7 @@ export default async function TeamshubBusinessOsPage({
           <SectionHeading title={copy(locale, detail.roadmapTitle)} text={copy(locale, detail.roadmapText)} />
           <div className="relative mt-12 overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white shadow-card">
             <Image
-              src={detail.roadmapImage}
+              src={withBasePath(detail.roadmapImage)}
               alt={copy(locale, detail.roadmapTitle)}
               width={2200}
               height={1378}

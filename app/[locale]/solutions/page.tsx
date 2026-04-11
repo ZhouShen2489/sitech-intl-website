@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { PageHero, SectionHeading } from "@/components/page-sections";
 import { siteContent, copy } from "@/content/siteContent";
-import { isLocale, withLocale } from "@/lib/site";
+import { isLocale, withBasePath, withLocale } from "@/lib/site";
 
 export default async function SolutionsPage({
   params,
@@ -41,7 +41,7 @@ export default async function SolutionsPage({
                 }`}
               >
                 <div className="relative min-h-[280px] overflow-hidden rounded-[2rem] bg-ink">
-                  <Image src={solution.image} alt={copy(locale, solution.title)} fill className="object-cover" />
+                  <Image src={withBasePath(solution.image)} alt={copy(locale, solution.title)} fill className="object-cover" />
                 </div>
                 <div className="flex flex-col justify-center">
                   <p className="text-sm uppercase tracking-[0.22em] text-tide">{copy(locale, solution.eyebrow)}</p>

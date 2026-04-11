@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { siteContent, copy, copyList } from "@/content/siteContent";
 import type { Locale } from "@/lib/site";
-import { withLocale } from "@/lib/site";
+import { withBasePath, withLocale } from "@/lib/site";
 
 type SiteFooterProps = {
   locale: Locale;
@@ -19,7 +19,7 @@ export function SiteFooter({ locale }: SiteFooterProps) {
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white p-1.5 shadow-card">
               <Image
-                src="/brand/logo-symbol.png"
+                src={withBasePath("/brand/logo-symbol.png")}
                 alt="Si-Tech logo"
                 width={32}
                 height={32}

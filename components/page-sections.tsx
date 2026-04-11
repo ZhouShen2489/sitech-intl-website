@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import { siteContent, copy, copyList } from "@/content/siteContent";
 import type { Locale } from "@/lib/site";
-import { withLocale } from "@/lib/site";
+import { withBasePath, withLocale } from "@/lib/site";
 
 export function PageHero({
   locale,
@@ -23,7 +23,7 @@ export function PageHero({
 }) {
   return (
     <section className="relative isolate overflow-hidden bg-ink text-white">
-      <Image src={image} alt="" fill priority className="object-cover object-center opacity-30" />
+      <Image src={withBasePath(image)} alt="" fill priority className="object-cover object-center opacity-30" />
       <div className="absolute inset-0 bg-[linear-gradient(125deg,rgba(8,19,31,0.94),rgba(8,19,31,0.72),rgba(8,19,31,0.5))]" />
       <div className="absolute inset-0 bg-grid bg-[size:48px_48px] opacity-15" />
       <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
@@ -254,7 +254,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             {siteContent.storiesPage.items.map((story) => (
               <article key={story.title.en} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-card transition hover:-translate-y-1">
                 <div className="relative h-56">
-                  <Image src={story.image} alt={copy(locale, story.title)} fill className="object-cover" />
+                  <Image src={withBasePath(story.image)} alt={copy(locale, story.title)} fill className="object-cover" />
                 </div>
                 <div className="p-7">
                   <p className="text-sm uppercase tracking-[0.18em] text-tide">{copy(locale, story.solution)}</p>

@@ -1,4 +1,4 @@
-import { ClientRedirect } from "@/components/client-redirect";
+import { StaticRedirect } from "@/components/static-redirect";
 import { isLocale, withLocale } from "@/lib/site";
 
 export default async function MarketRedirectPage({
@@ -10,7 +10,7 @@ export default async function MarketRedirectPage({
   const href = isLocale(locale) ? withLocale(locale, "/marketplace") : "/en/marketplace";
 
   return (
-    <ClientRedirect
+    <StaticRedirect
       href={href}
       message="Redirecting to marketplace..."
       linkLabel="Open marketplace"

@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import { siteContent, copy } from "@/content/siteContent";
 import type { Locale } from "@/lib/site";
-import { switchLocaleInPath, withLocale } from "@/lib/site";
+import { switchLocaleInPath, withBasePath, withLocale } from "@/lib/site";
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -35,7 +35,7 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
         <Link href={withLocale(locale)} className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white p-1.5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]">
             <Image
-              src="/brand/logo-symbol.png"
+              src={withBasePath("/brand/logo-symbol.png")}
               alt="Si-Tech logo"
               width={32}
               height={32}

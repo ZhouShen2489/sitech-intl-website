@@ -1,24 +1,19 @@
-"use client";
-
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
-type ClientRedirectProps = {
+import { withBasePath } from "@/lib/site";
+
+type StaticRedirectProps = {
   href: string;
   message: string;
   linkLabel: string;
 };
 
-export function ClientRedirect({ href, message, linkLabel }: ClientRedirectProps) {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.replace(href);
-  }, [href, router]);
+export function StaticRedirect({ href, message, linkLabel }: StaticRedirectProps) {
+  const targetHref = withBasePath(href);
 
   return (
     <main className="flex min-h-screen items-center justify-center px-6 py-24">
+      <meta httpEquiv="refresh" content={`0;url=${targetHref}`} />
       <div className="max-w-md rounded-[2rem] border border-slate-200 bg-white p-8 text-center shadow-card">
         <p className="text-base leading-7 text-slate-700">{message}</p>
         <Link

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { siteContent, copy, copyList } from "@/content/siteContent";
 import type { Locale } from "@/lib/site";
-import { withLocale } from "@/lib/site";
+import { withBasePath, withLocale } from "@/lib/site";
 
 export function StoryAccordion({ locale }: { locale: Locale }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -53,7 +53,7 @@ export function StoryAccordion({ locale }: { locale: Locale }) {
             {isActive ? (
               <div className="grid gap-8 border-t border-slate-200 p-6 lg:grid-cols-[0.95fr_1.05fr]">
                 <div className="relative min-h-[280px] overflow-hidden rounded-[1.75rem] bg-ink">
-                  <Image src={story.image} alt={copy(locale, story.title)} fill className="object-cover" />
+                  <Image src={withBasePath(story.image)} alt={copy(locale, story.title)} fill className="object-cover" />
                 </div>
                 <div className="grid gap-4">
                   {story.sections.map((section) => (
