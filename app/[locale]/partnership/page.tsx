@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageHero, SectionHeading } from "@/components/page-sections";
-import { siteContent, copy } from "@/content/siteContent";
+import { siteContent, copy, visibleItems } from "@/content/siteContent";
 import { isLocale, withLocale } from "@/lib/site";
 
 export default async function PartnershipPage({
@@ -15,6 +15,10 @@ export default async function PartnershipPage({
   if (!isLocale(locale)) {
     notFound();
   }
+
+  const groups = visibleItems(siteContent.partnershipPage.groups);
+  const models = visibleItems(siteContent.partnershipPage.models);
+  const opportunities = visibleItems(siteContent.partnershipPage.opportunities);
 
   return (
     <>
@@ -30,7 +34,7 @@ export default async function PartnershipPage({
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title={copy(locale, siteContent.partnershipPage.groupsTitle)} />
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {siteContent.partnershipPage.groups.map((item) => (
+            {groups.map((item) => (
               <article key={item.title.en} className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-card">
                 <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
@@ -44,11 +48,28 @@ export default async function PartnershipPage({
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title={copy(locale, siteContent.partnershipPage.modelsTitle)} />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {siteContent.partnershipPage.models.map((model, index) => (
+            {models.map((model, index) => (
               <article key={model.title.en} className="rounded-[2rem] bg-white p-7 shadow-card">
                 <p className="text-sm uppercase tracking-[0.2em] text-tide">0{index + 1}</p>
                 <h2 className="mt-6 font-serif text-2xl text-ink">{copy(locale, model.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, model.text)}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            title={copy(locale, siteContent.partnershipPage.opportunityTitle)}
+            text={copy(locale, siteContent.partnershipPage.opportunityText)}
+          />
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {opportunities.map((item) => (
+              <article key={item.title.en} className="rounded-[2rem] border border-slate-200 bg-[#f7f9fb] p-7 shadow-card">
+                <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </article>
             ))}
           </div>

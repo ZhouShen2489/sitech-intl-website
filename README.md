@@ -9,7 +9,7 @@ The site is designed to do four jobs clearly:
 1. Explain what Si-Tech Intl helps with in practical business language.
 2. Build trust with U.S. clients and partners.
 3. Turn website traffic into qualified leads through a structured inquiry form.
-4. Leave room to expand into more solution pages, product pages, stories, and CRM-connected growth workflows.
+4. Leave room to expand into more solution pages, partnership opportunities, stories, and product entries.
 
 ## Core positioning
 
@@ -19,28 +19,60 @@ It should present Si-Tech Intl as:
 
 - a U.S.-facing collaboration and business development interface
 - backed by broader Si-Tech engineering and delivery capability
-- strong in telecom-grade systems, service operations, Teamshub collaboration flows, AI-enabled customer service, and custom business platforms
+- strong in telecom-grade systems, service operations, digital platforms, AI-enabled service, and practical business systems
 - practical, execution-oriented, and able to start with scoped pilots instead of forcing large all-at-once projects
 
-## Messaging goals
+## Current branch
 
-The site should help a visitor understand, within a short scan:
-
-- who we are
-- what kinds of operational problems we solve
-- what solution tracks are currently the clearest fit
-- why we are credible
-- how to contact us and submit an inquiry
+- Active implementation branch: `codex/preBuild`
 
 ## Technical stack
 
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
-- Localized content in `content/siteContent.ts`
+- Localized content in `content/siteContent.ts` and `content/productsContent.ts`
 - Lead form submission through `POST /api/contact`
 - HubSpot CRM routing through server-side integration
 - Gmail delivery through server-side OAuth2 mail sending
+
+## Content structure
+
+- `content/siteContent.ts`: primary bilingual site copy
+- `content/productsContent.ts`: product and marketplace copy
+- `content/pdf-ocr/sitech-manual-ocr.md`: raw OCR extraction from the Si-Tech PDF manual
+- `content/pdf-ocr/sitech-manual-structured.md`: structured content draft for website reuse
+
+## Visibility and extensibility
+
+The site is being prepared for frequent content adjustments. The intended operating model is:
+
+- sections can be shown or hidden without deleting code
+- list items such as stories, product cards, and partnership entries can be shown or hidden
+- ordering should be controlled from content configuration where possible
+- future expansion should prioritize `Partnership`, not a separate `Industries` page
+
+This means future content changes should aim to modify structured content and flags first, rather than hard-coding more layout logic.
+
+## PDF OCR workflow
+
+This repo includes a local OCR pipeline for the scanned company manual:
+
+- Script: `scripts/ocr-sitech-manual.swift`
+- Source PDF: `/Users/zhoushen/Nutstore Files/Nutstore/Sitech/A-国内思特奇材料/思特奇手册/思特奇手册电子版_compressed.pdf`
+- Raw output: `content/pdf-ocr/sitech-manual-ocr.md`
+- Structured output: `content/pdf-ocr/sitech-manual-structured.md`
+
+The OCR pipeline uses:
+
+- `PDFKit` to render each PDF page
+- macOS `Vision` to recognize Chinese and English text
+
+Run it with:
+
+```bash
+npm run ocr:sitech-manual
+```
 
 ## Lead flow
 
@@ -52,7 +84,6 @@ Current intended flow:
 4. Server sends the internal notification to `info@sitech-intl.com` as a backup alert.
 5. Server sends an automatic confirmation email back to the user in the same language as the page they submitted from.
 6. User is redirected to the thank-you page.
-7. HubSpot can then push the new lead notification into Slack through its native Slack integration.
 
 ## Required environment variables
 
@@ -64,14 +95,6 @@ Current intended flow:
 - `GOOGLE_REFRESH_TOKEN`
 - `CONTACT_RECIPIENT`
 
-Where to get them:
-
-- `GMAIL_SENDER`: the mailbox identity you want to send from, usually your business mailbox or an approved sender identity
-- `GOOGLE_CLIENT_ID`: Google Cloud Console -> APIs & Services -> Credentials
-- `GOOGLE_CLIENT_SECRET`: Google Cloud Console -> APIs & Services -> Credentials
-- `GOOGLE_REFRESH_TOKEN`: generated for the Gmail account used by the site backend
-- `CONTACT_RECIPIENT`: usually `info@sitech-intl.com`
-
 ### HubSpot
 
 - `HUBSPOT_ACCESS_TOKEN`
@@ -81,57 +104,6 @@ Where to get them:
 - `HUBSPOT_FIELD_MESSAGE`
 - `HUBSPOT_FIELD_SOURCE`
 - `HUBSPOT_FIELD_LOCALE`
-
-Where to get them:
-
-- `HUBSPOT_ACCESS_TOKEN`: HubSpot -> Settings -> Integrations -> Private Apps
-- `HUBSPOT_FORM_PORTAL_ID`: the portal/account ID of your HubSpot form
-- `HUBSPOT_FORM_ID`: the target HubSpot form ID
-- `HUBSPOT_FIELD_INTERESTED_IN`: internal name of the HubSpot field/property for inquiry category
-- `HUBSPOT_FIELD_MESSAGE`: internal name of the HubSpot field/property for inquiry details
-- `HUBSPOT_FIELD_SOURCE`: internal name of the HubSpot field/property used to mark the lead source, recommended value `website`
-- `HUBSPOT_FIELD_LOCALE`: internal name of the HubSpot field/property used to preserve whether the inquiry came from the Chinese or English site
-
-Notes:
-
-- If HubSpot form IDs are configured, the server submits via HubSpot Forms.
-- If form submission is unavailable, the server falls back to HubSpot contact creation.
-- For best results, create HubSpot form fields or contact properties matching the internal names used in env vars.
-- Recommended custom HubSpot properties for this website flow:
-  - `website_interested_in`
-  - `website_inquiry_details`
-  - `website_lead_source`
-  - `website_inquiry_locale`
-- Recommended fixed value for the source field: `website`
-
-## Slack follow-up setup
-
-The website does not send Slack notifications directly in the first-stage setup.
-
-Recommended operating model:
-
-1. Keep the website as the public form entrypoint.
-2. Keep HubSpot as the CRM system of record.
-3. Use HubSpot's native Slack integration to notify a Slack channel when a new website lead appears.
-
-Recommended Slack notification content:
-
-- full name
-- company
-- email
-- interested in
-- short inquiry summary
-- link to the HubSpot record
-
-This keeps Slack as the team notification layer instead of turning the website into a second notification system.
-- A ready-to-copy example file is included as `.env.example`.
-
-## Content structure
-
-- `README.md`: project overview and implementation notes
-- `PRD.md`: product requirements and source direction
-- `TASKS.md`: current build status and next actions
-- `STYLEGUIDE.md`: voice, brand, layout, and visual rules
 
 ## Run locally
 
@@ -154,3 +126,26 @@ This repository includes a dedicated GitHub Pages workflow in `.github/workflows
 - The Pages deployment uses `npm run build:pages`, which enables a static export only for the GitHub Actions build.
 - During the Pages build, the server-only contact API route is temporarily disabled because GitHub Pages cannot run backend code.
 - The deployed Pages site keeps the contact form UI, but submission falls back to opening the visitor's email client instead of calling `/api/contact`.
+
+## Hosting guidance
+
+Current operating assumptions:
+
+- short-term rollout will use `Vercel Hobby`
+- `Vercel Hobby` is being treated as a trial-stage hosting choice, not the long-term default for the company site
+- if traffic, collaboration needs, or commercial-risk concerns increase, the next upgrade path is `Vercel Pro`
+- `Hostinger VPS` remains a low-cost fallback option worth evaluating because it can host this Next.js site with the current form backend
+- existing AWS hosting should remain in place until the Vercel version is fully verified
+
+Important note for non-technical stakeholders:
+
+- the domain `www.sitech-intl.com` and the hosting platform are not the same thing
+- in many cases, switching hosting only requires updating DNS records
+- you do not always need to transfer the domain registration itself
+
+## Docs
+
+- `PRD.md`: product direction and content requirements
+- `TASKS.md`: active implementation checklist
+- `STYLEGUIDE.md`: voice and structure rules
+- `BEGINNER_GUIDE.md`: the one beginner-facing guide to read first

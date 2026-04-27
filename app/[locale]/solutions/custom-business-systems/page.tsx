@@ -74,8 +74,8 @@ export default async function CustomBusinessSystemsPage({
           </div>
           <div className="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-[#fbfcfd] p-6 text-sm leading-7 text-slate-600">
             {locale === "en"
-              ? "Placeholder area for portal wireframes, module diagrams, or workflow structure visuals."
-              : "这里预留门户线框图、模块图或流程结构图占位。"}
+              ? "Representative portal wireframes, module views, and workflow structure materials can be shared during solution discussions."
+              : "如需进一步评估，我们可以在沟通阶段提供门户线框、模块视图和流程结构资料。"}
           </div>
           <div className="mt-10">
             <Link
