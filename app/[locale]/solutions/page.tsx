@@ -41,7 +41,14 @@ export default async function SolutionsPage({
                 }`}
               >
                 <div className="relative min-h-[280px] overflow-hidden rounded-[2rem] bg-ink">
-                  <Image src={withBasePath(solution.image)} alt={copy(locale, solution.title)} fill className="object-cover" />
+                  <Image
+                    src={withBasePath(solution.image)}
+                    alt={copy(locale, solution.title)}
+                    fill
+                    quality={74}
+                    sizes="(min-width: 1024px) 42vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="flex flex-col justify-center">
                   <p className="text-sm uppercase tracking-[0.22em] text-tide">{copy(locale, solution.eyebrow)}</p>

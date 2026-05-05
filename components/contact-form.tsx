@@ -30,6 +30,7 @@ export function ContactForm({ locale }: ContactFormProps) {
       workEmail: String(formData.get("workEmail") ?? ""),
       companyName: String(formData.get("companyName") ?? ""),
       jobTitle: String(formData.get("jobTitle") ?? ""),
+      companySize: String(formData.get("companySize") ?? ""),
       phone: String(formData.get("phone") ?? ""),
       industry: String(formData.get("industry") ?? ""),
       interestedIn: String(formData.get("interestedIn") ?? ""),
@@ -54,6 +55,7 @@ export function ContactForm({ locale }: ContactFormProps) {
         `Work Email: ${payload.workEmail}`,
         `Company: ${payload.companyName}`,
         `Job Title: ${payload.jobTitle}`,
+        `Company Size: ${payload.companySize}`,
         `Phone: ${payload.phone}`,
         `Industry: ${payload.industry}`,
         `Interested In: ${payload.interestedIn}`,
@@ -131,14 +133,41 @@ export function ContactForm({ locale }: ContactFormProps) {
         </label>
         <label className="space-y-2">
           <span className="text-sm font-medium text-ink">{copy(locale, form.jobTitle)}</span>
-          <input
+          <select
             name="jobTitle"
+            defaultValue=""
             className="w-full rounded-2xl border border-slate-200 bg-mist px-4 py-3 text-sm text-ink outline-none transition focus:border-tide focus:bg-white"
-          />
+          >
+            <option value="" disabled>
+              {copy(locale, form.jobTitle)}
+            </option>
+            {copyList(locale, form.roleOptions).map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </label>
       </div>
 
       <div className="grid gap-5 md:grid-cols-2">
+        <label className="space-y-2">
+          <span className="text-sm font-medium text-ink">{copy(locale, form.companySize)}</span>
+          <select
+            name="companySize"
+            defaultValue=""
+            className="w-full rounded-2xl border border-slate-200 bg-mist px-4 py-3 text-sm text-ink outline-none transition focus:border-tide focus:bg-white"
+          >
+            <option value="" disabled>
+              {copy(locale, form.companySize)}
+            </option>
+            {copyList(locale, form.companySizeOptions).map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
         <label className="space-y-2">
           <span className="text-sm font-medium text-ink">{copy(locale, form.phone)}</span>
           <input
@@ -146,6 +175,9 @@ export function ContactForm({ locale }: ContactFormProps) {
             className="w-full rounded-2xl border border-slate-200 bg-mist px-4 py-3 text-sm text-ink outline-none transition focus:border-tide focus:bg-white"
           />
         </label>
+      </div>
+
+      <div className="grid gap-5 md:grid-cols-2">
         <label className="space-y-2">
           <span className="text-sm font-medium text-ink">{copy(locale, form.industry)}</span>
           <input

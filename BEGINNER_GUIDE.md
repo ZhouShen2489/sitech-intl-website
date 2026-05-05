@@ -10,8 +10,7 @@
 - `Home`：首页，先讲我们是谁、最强能力是什么
 - `Products / Marketplace`：产品和合作产品
 - `Solutions`：5 个重点解决方案
-- `Partnership`：合作方式和未来更多合作机会入口
-- `Stories`：案例
+- `Partnership / Stories`：合作故事 + 合作方式，现在导航里统一叫“合作”
 - `About`：公司背书
 - `Contact`：联系入口
 
@@ -63,6 +62,36 @@
   `content/pdf-ocr/sitech-manual-structured.md`
 
 你后面如果要补首页、About、Solutions、Partnership，可以优先从这两个文件里找内容。
+
+## 4.1 以后图片在哪里替换
+
+网站图片主要放在这几个地方：
+
+- `public/images/hero/`：首页、产品页、解决方案页的大图
+- `public/images/stories/`：案例和故事卡片图片
+- `public/images/about/`：关于我们相关图片
+- `public/images/solutions/`：解决方案结构图、流程图
+- `public/brand/logo-symbol.png`：网站左上角 logo
+- `app/icon.png`：浏览器标签页图标
+
+替换图片时，最稳的方式是：
+
+1. 新图片放进对应文件夹
+2. 在 `content/siteContent.ts` 或 `content/productsContent.ts` 里把图片路径改成新文件名
+3. 本地跑 `npm run dev` 看页面
+
+现在 `npm run dev` 会先自动跑一次图片尺寸检查。
+这个检查只在本地开发时运行，正式发布 `npm run build` 不会跑它。
+
+如果只想单独检查图片尺寸，可以跑：
+
+```bash
+npm run check:images
+```
+
+更完整的图片位置和尺寸说明，看：
+
+- `IMAGE_GUIDE.md`
 
 ## 5. 网站怎么发布
 
@@ -197,6 +226,7 @@
 ## 9. 你后面只需要记住的几个文件
 
 - `BEGINNER_GUIDE.md`
+- `IMAGE_GUIDE.md`
 - `PRD.md`
 - `TASKS.md`
 - `content/pdf-ocr/sitech-manual-structured.md`

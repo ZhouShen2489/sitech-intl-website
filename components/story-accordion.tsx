@@ -54,7 +54,14 @@ export function StoryAccordion({ locale }: { locale: Locale }) {
             {isActive ? (
               <div className="grid gap-8 border-t border-slate-200 p-6 lg:grid-cols-[0.95fr_1.05fr]">
                 <div className="relative min-h-[280px] overflow-hidden rounded-[1.75rem] bg-ink">
-                  <Image src={withBasePath(story.image)} alt={copy(locale, story.title)} fill className="object-cover" />
+                  <Image
+                    src={withBasePath(story.image)}
+                    alt={copy(locale, story.title)}
+                    fill
+                    quality={74}
+                    sizes="(min-width: 1024px) 38vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="grid gap-4">
                   {story.sections.map((section) => (

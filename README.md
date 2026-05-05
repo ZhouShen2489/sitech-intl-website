@@ -43,6 +43,29 @@ It should present Si-Tech Intl as:
 - `content/pdf-ocr/sitech-manual-ocr.md`: raw OCR extraction from the Si-Tech PDF manual
 - `content/pdf-ocr/sitech-manual-structured.md`: structured content draft for website reuse
 
+## Image replacement
+
+Most page images are referenced from structured content files rather than hard-coded in components.
+
+- Hero images: `public/images/hero/`
+- Story images: `public/images/stories/`
+- About images: `public/images/about/`
+- Solution visuals: `public/images/solutions/`
+- Logo: `public/brand/logo-symbol.png`
+- Browser icon: `app/icon.png`
+
+To replace an image, add the new file in the matching folder and update the image path in `content/siteContent.ts` or `content/productsContent.ts`.
+
+Local development runs a lightweight image size check before starting the dev server:
+
+```bash
+npm run check:images
+```
+
+This check is wired into `npm run dev` only. Production builds do not depend on it.
+
+For the full image placement and size guide, see `IMAGE_GUIDE.md`.
+
 ## Visibility and extensibility
 
 The site is being prepared for frequent content adjustments. The intended operating model is:
@@ -149,3 +172,4 @@ Important note for non-technical stakeholders:
 - `TASKS.md`: active implementation checklist
 - `STYLEGUIDE.md`: voice and structure rules
 - `BEGINNER_GUIDE.md`: the one beginner-facing guide to read first
+- `IMAGE_GUIDE.md`: where to replace images and what size to use

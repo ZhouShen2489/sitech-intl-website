@@ -10,23 +10,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0D1B2A",
-        slate: "#1B263B",
-        tide: "#24415E",
-        mist: "#EFF3F7",
+        ink: "#071A33",
+        slate: "#0B2F6F",
+        tide: "#1455B3",
+        mist: "#EFF6FF",
         sand: "#F7F4ED",
-        accent: "#9FB7D1",
+        accent: "#DCEBFF",
         signal: "#F2B96D",
       },
       boxShadow: {
-        card: "0 20px 60px rgba(13, 27, 42, 0.08)",
+        card: "0 24px 70px rgba(11, 47, 111, 0.10)",
       },
       fontFamily: {
         sans: ["var(--font-manrope)", "sans-serif"],
         serif: ["var(--font-fraunces)", "serif"],
       },
       backgroundImage: {
-        grid: "linear-gradient(rgba(159, 183, 209, 0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(159, 183, 209, 0.16) 1px, transparent 1px)",
+        grid: "linear-gradient(rgba(220, 235, 255, 0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 235, 255, 0.18) 1px, transparent 1px)",
       },
     },
   },

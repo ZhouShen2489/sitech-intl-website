@@ -27,6 +27,7 @@ export async function submitLeadToHubSpot(lead: LeadSubmission): Promise<Deliver
   const messageField = withDefaultValue(env("HUBSPOT_FIELD_MESSAGE"), "website_inquiry_details");
   const sourceField = withDefaultValue(env("HUBSPOT_FIELD_SOURCE"), "website_lead_source");
   const localeField = withDefaultValue(env("HUBSPOT_FIELD_LOCALE"), "website_inquiry_locale");
+  const companySizeField = env("HUBSPOT_FIELD_COMPANY_SIZE");
 
   if (!accessToken) {
     return {
@@ -54,13 +55,14 @@ export async function submitLeadToHubSpot(lead: LeadSubmission): Promise<Deliver
             { name: "email", value: lead.workEmail },
             { name: "company", value: lead.companyName },
             { name: "jobtitle", value: lead.jobTitle },
+            { name: companySizeField, value: lead.companySize },
             { name: "phone", value: lead.phone },
             { name: "industry", value: lead.industry },
             { name: interestedField, value: lead.interestedIn },
             { name: messageField, value: lead.message },
             { name: sourceField, value: lead.source },
             { name: localeField, value: lead.locale },
-          ].filter((field) => field.value),
+          ].filter((field) => field.name && field.value),
           context: {
             pageUri: lead.pageUrl || undefined,
             pageName: "Si-Tech Intl Website Lead Form",
@@ -99,6 +101,7 @@ export async function submitLeadToHubSpot(lead: LeadSubmission): Promise<Deliver
         jobtitle: lead.jobTitle,
         phone: lead.phone,
         industry: lead.industry,
+        ...(companySizeField ? { [companySizeField]: lead.companySize } : {}),
         [interestedField]: lead.interestedIn,
         [messageField]: lead.message,
         [sourceField]: lead.source,
