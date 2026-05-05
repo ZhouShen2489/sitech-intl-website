@@ -74,8 +74,8 @@ export default async function AiCustomerServicePage({
           </div>
           <div className="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-[#fbfcfd] p-6 text-sm leading-7 text-slate-600">
             {locale === "en"
-              ? "Placeholder area for AI workflow diagrams, service journey visuals, or smart-agent architecture."
-              : "这里预留 AI 工作流、服务旅程或智能体架构图占位。"}
+              ? "Representative AI workflow, service-journey, and agent-architecture materials can be shared during solution discussions."
+              : "如需进一步评估，我们可以在沟通阶段提供 AI 工作流、服务旅程和智能体架构资料。"}
           </div>
           <div className="mt-10">
             <Link

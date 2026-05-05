@@ -74,8 +74,8 @@ export default async function DigitalIndustryPlatformsPage({
           </div>
           <div className="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-[#fbfcfd] p-6 text-sm leading-7 text-slate-600">
             {locale === "en"
-              ? "Placeholder area for platform architecture diagrams or industry workflow visuals."
-              : "这里预留产业平台架构图或业务流程结构图占位。"}
+              ? "Representative platform-architecture and industry-workflow materials can be shared during solution discussions."
+              : "如需进一步评估，我们可以在沟通阶段提供平台架构和业务流程资料。"}
           </div>
           <div className="mt-10">
             <Link

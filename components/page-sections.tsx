@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { siteContent, copy, copyList } from "@/content/siteContent";
+import { productsContent } from "@/content/productsContent";
+import { siteContent, copy, copyList, isVisible, visibleItems } from "@/content/siteContent";
 import type { Locale } from "@/lib/site";
 import { withBasePath, withLocale } from "@/lib/site";
 
@@ -83,8 +84,10 @@ export function MarqueeBand({ locale }: { locale: Locale }) {
 }
 
 export function HomePage({ locale }: { locale: Locale }) {
-  const { hero, companyIntro, problemAreas, solutionSelector, storiesPreview, aboutPreview, cta } = siteContent.home;
+  const { hero, companyIntro, problemAreas, solutionSelector, storiesPreview, aboutPreview, cta, sections } =
+    siteContent.home;
   const [featuredSolution, ...secondarySolutions] = siteContent.solutionsCatalog;
+  const previewStories = visibleItems(siteContent.storiesPage.items).slice(0, 3);
 
   return (
     <>
@@ -103,7 +106,7 @@ export function HomePage({ locale }: { locale: Locale }) {
               {copy(locale, hero.primaryCta)}
             </Link>
             <Link
-              href={withLocale(locale, "/solutions")}
+              href={withLocale(locale, "/products")}
               className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
             >
               {copy(locale, hero.secondaryCta)}
@@ -112,9 +115,10 @@ export function HomePage({ locale }: { locale: Locale }) {
         }
       />
 
-      <MarqueeBand locale={locale} />
+      {isVisible(sections.marquee) ? <MarqueeBand locale={locale} /> : null}
 
-      <section className="bg-white py-20 lg:py-24">
+      {isVisible(sections.companyIntro) ? (
+        <section className="bg-white py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
             <div>
@@ -143,9 +147,75 @@ export function HomePage({ locale }: { locale: Locale }) {
             ))}
           </div>
         </div>
-      </section>
+        </section>
+      ) : null}
 
-      <section className="bg-sand py-20 lg:py-24">
+      {isVisible(sections.productSpotlight) ? (
+        <section className="bg-[#f4f7fb] py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-8 overflow-hidden rounded-[2.75rem] border border-slate-200 bg-white p-8 shadow-card lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
+            <div>
+              <p className="text-sm uppercase tracking-[0.22em] text-tide">
+                {copy(locale, productsContent.homeSpotlight.eyebrow)}
+              </p>
+              <h2 className="mt-4 max-w-3xl font-serif text-3xl leading-tight text-ink md:text-4xl">
+                {copy(locale, productsContent.homeSpotlight.title)}
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600">
+                {copy(locale, productsContent.homeSpotlight.text)}
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {copyList(locale, productsContent.homeSpotlight.tags).map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-slate-200 bg-[#f8fbfd] px-3 py-1.5 text-xs uppercase tracking-[0.14em] text-slate-600"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <ul className="mt-8 space-y-3">
+                {productsContent.homeSpotlight.bullets[locale].map((bullet) => (
+                  <li key={bullet} className="flex gap-3 text-sm leading-7 text-slate-700">
+                    <span className="mt-2 h-2.5 w-2.5 rounded-full bg-signal" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href={withLocale(locale, productsContent.homeSpotlight.detailHref)}
+                  className="inline-flex rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate"
+                >
+                  {copy(locale, productsContent.homeSpotlight.primaryCta)}
+                </Link>
+                <Link
+                  href={withLocale(locale, productsContent.homeSpotlight.contactHref)}
+                  className="inline-flex rounded-full border border-ink px-5 py-3 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white"
+                >
+                  {copy(locale, productsContent.homeSpotlight.secondaryCta)}
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              {productsContent.homeSpotlight.highlights.map((item) => (
+                <article key={item.title.en} className="rounded-[2rem] border border-slate-200 bg-[#f7f9fb] p-6">
+                  <h3 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+        </section>
+      ) : null}
+
+      {isVisible(sections.featuredSolutions) ? (
+        <section className="bg-sand py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title={copy(locale, problemAreas.title)} text={copy(locale, problemAreas.text)} />
           <div className="mt-12 grid gap-6">
@@ -217,9 +287,11 @@ export function HomePage({ locale }: { locale: Locale }) {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      ) : null}
 
-      <section className="bg-white py-20 lg:py-24">
+      {isVisible(sections.solutionSelector) ? (
+        <section className="bg-white py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title={copy(locale, solutionSelector.title)} text={copy(locale, solutionSelector.text)} />
           <div className="mt-12 grid gap-8 lg:grid-cols-3">
@@ -245,13 +317,15 @@ export function HomePage({ locale }: { locale: Locale }) {
             ))}
           </div>
         </div>
-      </section>
+        </section>
+      ) : null}
 
-      <section className="bg-[#f5f8fb] py-20 lg:py-24">
+      {isVisible(sections.storiesPreview) ? (
+        <section className="bg-[#f5f8fb] py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title={copy(locale, storiesPreview.title)} text={copy(locale, storiesPreview.text)} />
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {siteContent.storiesPage.items.map((story) => (
+            {previewStories.map((story) => (
               <article key={story.title.en} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-card transition hover:-translate-y-1">
                 <div className="relative h-56">
                   <Image src={withBasePath(story.image)} alt={copy(locale, story.title)} fill className="object-cover" />
@@ -273,9 +347,11 @@ export function HomePage({ locale }: { locale: Locale }) {
             </Link>
           </div>
         </div>
-      </section>
+        </section>
+      ) : null}
 
-      <section className="bg-white py-20 lg:py-24">
+      {isVisible(sections.aboutPreview) ? (
+        <section className="bg-white py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-10 rounded-[2.5rem] border border-slate-200 bg-[#f7f9fb] p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
             <div>
@@ -298,9 +374,11 @@ export function HomePage({ locale }: { locale: Locale }) {
             </Link>
           </div>
         </div>
-      </section>
+        </section>
+      ) : null}
 
-      <section className="bg-ink py-20 text-white">
+      {isVisible(sections.cta) ? (
+        <section className="bg-ink py-20 text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(140deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03))] p-8 lg:p-10">
             <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
@@ -326,7 +404,8 @@ export function HomePage({ locale }: { locale: Locale }) {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      ) : null}
     </>
   );
 }

@@ -4,16 +4,17 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 
-import { siteContent, copy, copyList } from "@/content/siteContent";
+import { siteContent, copy, copyList, visibleItems } from "@/content/siteContent";
 import type { Locale } from "@/lib/site";
 import { withBasePath, withLocale } from "@/lib/site";
 
 export function StoryAccordion({ locale }: { locale: Locale }) {
+  const stories = visibleItems(siteContent.storiesPage.items);
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <div className="grid gap-4">
-      {siteContent.storiesPage.items.map((story, index) => {
+      {stories.map((story, index) => {
         const isActive = index === activeIndex;
 
         return (

@@ -74,8 +74,8 @@ export default async function TelecomOperationsPage({
           </div>
           <div className="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-[#fbfcfd] p-6 text-sm leading-7 text-slate-600">
             {locale === "en"
-              ? "Placeholder area for operator support architecture, process diagrams, or product-structure visuals."
-              : "这里预留运营商支撑架构图、流程图或产品结构图占位。"}
+              ? "Representative telecom-support architecture, workflow, and product-structure materials can be shared during solution discussions."
+              : "如需进一步评估，我们可以在沟通阶段提供运营商支撑架构、流程和产品结构资料。"}
           </div>
           <div className="mt-10 rounded-[2rem] border border-slate-200 bg-[#f7f9fb] p-6">
             <h3 className="font-serif text-2xl text-ink">{copy(locale, detail.storyTitle)}</h3>
