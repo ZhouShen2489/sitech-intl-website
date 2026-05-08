@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run check:images && next dev",
     "build": "next build",
     "build:pages": "node scripts/build-pages.mjs",
+    "check:images": "node scripts/check-images-dev.mjs",
     "ocr:sitech-manual": "swift scripts/ocr-sitech-manual.swift",
     "start": "next start"
   },

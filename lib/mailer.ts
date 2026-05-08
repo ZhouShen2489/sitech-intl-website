@@ -63,6 +63,7 @@ function internalHtml(lead: LeadSubmission, submittedAt: string) {
     <p><strong>Work email:</strong> ${lead.workEmail}</p>
     <p><strong>Company:</strong> ${lead.companyName || "-"}</p>
     <p><strong>Job title:</strong> ${lead.jobTitle || "-"}</p>
+    <p><strong>Company size:</strong> ${lead.companySize || "-"}</p>
     <p><strong>Phone:</strong> ${lead.phone || "-"}</p>
     <p><strong>Industry:</strong> ${lead.industry || "-"}</p>
     <p><strong>Interested in:</strong> ${lead.interestedIn}</p>
@@ -81,6 +82,7 @@ function internalText(lead: LeadSubmission, submittedAt: string) {
     `Work email: ${lead.workEmail}`,
     `Company: ${lead.companyName || "-"}`,
     `Job title: ${lead.jobTitle || "-"}`,
+    `Company size: ${lead.companySize || "-"}`,
     `Phone: ${lead.phone || "-"}`,
     `Industry: ${lead.industry || "-"}`,
     `Interested in: ${lead.interestedIn}`,

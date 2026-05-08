@@ -71,7 +71,15 @@ export function SiteFooter({ locale }: SiteFooterProps) {
           <div className="text-sm text-slate-700">{siteContent.contact.email}</div>
           <div className="text-sm text-slate-700">{siteContent.contact.phone}</div>
           <div className="text-sm leading-6 text-slate-700">{siteContent.contact.address}</div>
-          <div className="text-sm text-slate-700">{siteContent.contact.linkedin}</div>
+          <Link
+            href={siteContent.contact.linkedinUrl}
+            aria-label="LinkedIn"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-700 transition hover:border-ink hover:bg-ink hover:text-white"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+              <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.28 8.02h4.43V23H.28V8.02Zm7.34 0h4.25v2.05h.06c.59-1.12 2.03-2.3 4.18-2.3 4.47 0 5.3 2.94 5.3 6.77V23h-4.43v-7.5c0-1.79-.03-4.09-2.49-4.09-2.49 0-2.87 1.95-2.87 3.96V23H7.62V8.02Z" />
+            </svg>
+          </Link>
         </div>
       </div>
       <div className="border-t border-slate-200">

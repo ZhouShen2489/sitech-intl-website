@@ -22,7 +22,7 @@ export default async function PrivacyPage({
         badge={copy(locale, siteContent.brand.eyebrow)}
         title={copy(locale, siteContent.privacyPage.title)}
         subtitle={copy(locale, siteContent.privacyPage.intro)}
-        image="/images/about/sitech-building.png"
+        image="/images/curated/business-dashboard-laptop.jpg"
       />
 
       <section className="bg-white py-20 lg:py-24">

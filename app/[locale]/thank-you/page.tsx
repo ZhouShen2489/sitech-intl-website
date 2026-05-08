@@ -23,7 +23,7 @@ export default async function ThankYouPage({
         badge={copy(locale, siteContent.brand.eyebrow)}
         title={copy(locale, siteContent.thankYouPage.title)}
         subtitle={copy(locale, siteContent.thankYouPage.text)}
-        image="/images/hero/ai-operations.webp"
+        image="/images/curated/smiling-partnership-handshake.jpg"
       />
       <section className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">

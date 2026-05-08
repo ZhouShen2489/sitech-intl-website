@@ -41,7 +41,14 @@ export default async function TeamshubBusinessOsPage({
                 }`}
               >
                 <div className="relative min-h-[280px] overflow-hidden rounded-[2rem] bg-ink">
-                  <Image src={withBasePath(section.image)} alt={copy(locale, section.title)} fill className="object-cover" />
+                  <Image
+                    src={withBasePath(section.image)}
+                    alt={copy(locale, section.title)}
+                    fill
+                    quality={74}
+                    sizes="(min-width: 1024px) 42vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="flex flex-col justify-center">
                   <h2 className="font-serif text-3xl leading-tight text-ink">{copy(locale, section.title)}</h2>
@@ -75,6 +82,8 @@ export default async function TeamshubBusinessOsPage({
               alt={copy(locale, detail.roadmapTitle)}
               width={2200}
               height={1378}
+              quality={76}
+              sizes="(min-width: 1280px) 1184px, 100vw"
               className="h-auto w-full"
             />
           </div>

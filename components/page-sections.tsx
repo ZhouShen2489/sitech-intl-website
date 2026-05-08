@@ -23,14 +23,14 @@ export function PageHero({
   actions?: ReactNode;
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-ink text-white">
-      <Image src={withBasePath(image)} alt="" fill priority className="object-cover object-center opacity-30" />
-      <div className="absolute inset-0 bg-[linear-gradient(125deg,rgba(8,19,31,0.94),rgba(8,19,31,0.72),rgba(8,19,31,0.5))]" />
-      <div className="absolute inset-0 bg-grid bg-[size:48px_48px] opacity-15" />
-      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-        <div className="max-w-3xl">
+    <section className="brand-orbit relative isolate overflow-hidden text-white">
+      <div className="absolute inset-0 bg-grid bg-[size:52px_52px] opacity-20" />
+      <div className="absolute -left-28 top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+      <div className="absolute -right-32 bottom-12 h-96 w-96 rounded-full bg-signal/20 blur-3xl" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.98fr_1.02fr] lg:items-center lg:px-8 lg:py-28">
+        <div className="reveal-up max-w-3xl">
           {badge ? (
-            <p className="inline-flex rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.24em] text-accent">
+            <p className="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.24em] text-accent">
               {badge}
             </p>
           ) : null}
@@ -39,6 +39,23 @@ export function PageHero({
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-white/78 md:text-lg">{subtitle}</p>
           {actions ? <div className="mt-10 flex flex-wrap gap-4">{actions}</div> : null}
+        </div>
+
+        <div className="reveal-up-delay">
+          <div className="glass-panel group relative overflow-hidden rounded-[2.5rem] p-3">
+            <div className="relative h-[24rem] overflow-hidden rounded-[2rem] bg-white/10 sm:h-[28rem] lg:h-[32rem]">
+              <Image
+                src={withBasePath(image)}
+                alt=""
+                fill
+                priority
+                quality={82}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="image-lift object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,26,51,0.02),rgba(7,26,51,0.62))]" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -56,6 +73,7 @@ export function SectionHeading({
 }) {
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+      <div className={align === "center" ? "mx-auto mb-5 h-1 w-14 rounded-full bg-tide" : "mb-5 h-1 w-14 rounded-full bg-tide"} />
       <h2 className="font-serif text-3xl leading-tight text-ink md:text-4xl">{title}</h2>
       {text ? <p className="mt-4 text-base leading-8 text-slate-600">{text}</p> : null}
     </div>
@@ -66,17 +84,76 @@ export function MarqueeBand({ locale }: { locale: Locale }) {
   const items = [...siteContent.proofRibbon, ...siteContent.proofRibbon];
 
   return (
-    <section className="border-y border-slate-200 bg-white">
+    <section className="border-y border-blue-100 bg-white/90 backdrop-blur">
       <div className="marquee overflow-hidden py-4">
         <div className="marquee-track flex min-w-max gap-4">
           {items.map((item, index) => (
             <div
               key={`${item.en}-${index}`}
-              className="rounded-full border border-slate-200 bg-mist px-4 py-2 text-sm font-medium text-slate-700"
+              className="rounded-full border border-blue-100 bg-mist px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
             >
               {copy(locale, item)}
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function HelportSpotlight({ locale }: { locale: Locale }) {
+  const spotlight = productsContent.homeSpotlight;
+
+  return (
+    <section className="brand-mesh py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="surface-card grid gap-8 overflow-hidden rounded-[2.75rem] p-8 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
+          <div>
+            <p className="text-sm uppercase tracking-[0.22em] text-tide">
+              {copy(locale, spotlight.eyebrow)}
+            </p>
+            <h2 className="mt-4 max-w-3xl font-serif text-3xl leading-tight text-ink md:text-4xl">
+              {copy(locale, spotlight.title)}
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600">
+              {copy(locale, spotlight.text)}
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {copyList(locale, spotlight.tags).map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-slate-200 bg-[#f8fbfd] px-3 py-1.5 text-xs uppercase tracking-[0.14em] text-slate-600"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href={withLocale(locale, spotlight.detailHref)}
+                className="button-glow inline-flex rounded-full bg-tide px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate"
+              >
+                {copy(locale, spotlight.primaryCta)}
+              </Link>
+              <Link
+                href={withLocale(locale, spotlight.contactHref)}
+                className="inline-flex rounded-full border border-tide/30 bg-white px-5 py-3 text-sm font-semibold text-tide transition hover:bg-tide hover:text-white"
+              >
+                {copy(locale, spotlight.secondaryCta)}
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            {spotlight.highlights.map((item) => (
+              <article key={item.title.en} className="interactive-card rounded-[2rem] border border-blue-100 bg-[#f7fbff] p-6">
+                <h3 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h3>
+                <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -130,7 +207,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             </div>
             <div className="grid gap-5 md:grid-cols-2">
               {companyIntro.stats.map((item) => (
-                <div key={item.value} className="rounded-[2rem] border border-slate-200 bg-[#f7f9fb] p-6">
+                <div key={item.value} className="interactive-card rounded-[2rem] border border-blue-100 bg-[#f7fbff] p-6">
                   <p className="font-serif text-4xl text-ink">{item.value}</p>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, item.label)}</p>
                 </div>
@@ -140,7 +217,7 @@ export function HomePage({ locale }: { locale: Locale }) {
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {companyIntro.pillars.map((item) => (
-              <article key={item.title.en} className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-card">
+              <article key={item.title.en} className="interactive-card surface-card rounded-[2rem] p-7">
                 <h3 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h3>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </article>
@@ -151,75 +228,15 @@ export function HomePage({ locale }: { locale: Locale }) {
       ) : null}
 
       {isVisible(sections.productSpotlight) ? (
-        <section className="bg-[#f4f7fb] py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-8 overflow-hidden rounded-[2.75rem] border border-slate-200 bg-white p-8 shadow-card lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
-            <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-tide">
-                {copy(locale, productsContent.homeSpotlight.eyebrow)}
-              </p>
-              <h2 className="mt-4 max-w-3xl font-serif text-3xl leading-tight text-ink md:text-4xl">
-                {copy(locale, productsContent.homeSpotlight.title)}
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600">
-                {copy(locale, productsContent.homeSpotlight.text)}
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                {copyList(locale, productsContent.homeSpotlight.tags).map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-slate-200 bg-[#f8fbfd] px-3 py-1.5 text-xs uppercase tracking-[0.14em] text-slate-600"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <ul className="mt-8 space-y-3">
-                {productsContent.homeSpotlight.bullets[locale].map((bullet) => (
-                  <li key={bullet} className="flex gap-3 text-sm leading-7 text-slate-700">
-                    <span className="mt-2 h-2.5 w-2.5 rounded-full bg-signal" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href={withLocale(locale, productsContent.homeSpotlight.detailHref)}
-                  className="inline-flex rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate"
-                >
-                  {copy(locale, productsContent.homeSpotlight.primaryCta)}
-                </Link>
-                <Link
-                  href={withLocale(locale, productsContent.homeSpotlight.contactHref)}
-                  className="inline-flex rounded-full border border-ink px-5 py-3 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white"
-                >
-                  {copy(locale, productsContent.homeSpotlight.secondaryCta)}
-                </Link>
-              </div>
-            </div>
-
-            <div className="grid gap-4">
-              {productsContent.homeSpotlight.highlights.map((item) => (
-                <article key={item.title.en} className="rounded-[2rem] border border-slate-200 bg-[#f7f9fb] p-6">
-                  <h3 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h3>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-        </section>
+        <HelportSpotlight locale={locale} />
       ) : null}
 
       {isVisible(sections.featuredSolutions) ? (
-        <section className="bg-sand py-20 lg:py-24">
+        <section className="brand-mesh py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title={copy(locale, problemAreas.title)} text={copy(locale, problemAreas.text)} />
           <div className="mt-12 grid gap-6">
-            <article className="grid gap-8 overflow-hidden rounded-[2.5rem] bg-ink p-8 text-white shadow-card lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
+            <article className="brand-orbit grid gap-8 overflow-hidden rounded-[2.5rem] p-8 text-white shadow-card lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
               <div>
                 <p className="text-sm uppercase tracking-[0.22em] text-accent">{copy(locale, featuredSolution.eyebrow)}</p>
                 <h3 className="mt-4 max-w-3xl font-serif text-3xl leading-tight lg:text-4xl">
@@ -236,14 +253,24 @@ export function HomePage({ locale }: { locale: Locale }) {
                 </ul>
               </div>
               <div className="rounded-[2rem] border border-white/10 bg-white/6 p-6 lg:p-7">
+                <div className="relative mb-6 h-48 overflow-hidden rounded-[1.5rem] bg-white/10">
+                  <Image
+                    src={withBasePath(featuredSolution.image)}
+                    alt={copy(locale, featuredSolution.title)}
+                    fill
+                    quality={74}
+                    sizes="(min-width: 1024px) 34vw, 100vw"
+                    className="image-lift object-cover opacity-95"
+                  />
+                </div>
                 <p className="text-sm uppercase tracking-[0.18em] text-accent">
                   {locale === "en" ? "Why It Leads" : "为什么放在第一位"}
                 </p>
                 <div className="mt-4 space-y-4 text-sm leading-7 text-white/74">
                   <p>
                     {locale === "en"
-                      ? "This is the strongest commercial story on the site and the clearest proof of enterprise-scale delivery depth."
-                      : "这是官网最强的商业主线，也是最容易建立企业级交付可信度的方向。"}
+                      ? "This is the clearest proof that we understand enterprise-scale service complexity and long-running operating systems."
+                      : "这条方向最能证明我们理解企业级服务复杂度和长期运行的业务支撑系统。"}
                   </p>
                   <p>
                     {locale === "en"
@@ -270,7 +297,17 @@ export function HomePage({ locale }: { locale: Locale }) {
 
             <div className="grid gap-6 lg:grid-cols-2">
               {secondarySolutions.map((solution) => (
-                <article key={solution.key} className="rounded-[2rem] bg-white p-7 shadow-card">
+                <article key={solution.key} className="interactive-card surface-card group rounded-[2rem] p-7">
+                  <div className="relative mb-6 h-44 overflow-hidden rounded-[1.5rem] bg-mist">
+                    <Image
+                      src={withBasePath(solution.image)}
+                      alt={copy(locale, solution.title)}
+                      fill
+                      quality={74}
+                      sizes="(min-width: 1024px) 45vw, 100vw"
+                      className="image-lift object-cover"
+                    />
+                  </div>
                   <p className="text-sm uppercase tracking-[0.22em] text-tide">{copy(locale, solution.eyebrow)}</p>
                   <h3 className="mt-4 font-serif text-2xl leading-tight text-ink">{copy(locale, solution.title)}</h3>
                   <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, solution.text)}</p>
@@ -321,14 +358,21 @@ export function HomePage({ locale }: { locale: Locale }) {
       ) : null}
 
       {isVisible(sections.storiesPreview) ? (
-        <section className="bg-[#f5f8fb] py-20 lg:py-24">
+        <section className="bg-[#f5f9ff] py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title={copy(locale, storiesPreview.title)} text={copy(locale, storiesPreview.text)} />
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {previewStories.map((story) => (
-              <article key={story.title.en} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-card transition hover:-translate-y-1">
+              <article key={story.title.en} className="interactive-card group overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-card">
                 <div className="relative h-56">
-                  <Image src={withBasePath(story.image)} alt={copy(locale, story.title)} fill className="object-cover" />
+                  <Image
+                    src={withBasePath(story.image)}
+                    alt={copy(locale, story.title)}
+                    fill
+                    quality={74}
+                    sizes="(min-width: 1024px) 30vw, 100vw"
+                    className="image-lift object-cover"
+                  />
                 </div>
                 <div className="p-7">
                   <p className="text-sm uppercase tracking-[0.18em] text-tide">{copy(locale, story.solution)}</p>
@@ -378,9 +422,9 @@ export function HomePage({ locale }: { locale: Locale }) {
       ) : null}
 
       {isVisible(sections.cta) ? (
-        <section className="bg-ink py-20 text-white">
+        <section className="brand-orbit py-20 text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(140deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03))] p-8 lg:p-10">
+          <div className="glass-panel overflow-hidden rounded-[2.5rem] p-8 lg:p-10">
             <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
               <div>
                 <h2 className="font-serif text-3xl leading-tight lg:text-4xl">{copy(locale, cta.title)}</h2>
