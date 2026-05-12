@@ -6,6 +6,7 @@ const basePath = isGitHubPages ? `/${repoName}` : "";
 const imageConfig: NonNullable<NextConfig["images"]> = {
   formats: ["image/avif", "image/webp"],
   minimumCacheTTL: 60 * 60 * 24 * 365,
+  qualities: [74, 76, 82],
 };
 
 const nextConfig: NextConfig = {

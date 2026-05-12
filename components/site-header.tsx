@@ -19,49 +19,194 @@ type HeaderDropdownItem = {
     zh: string;
     en: string;
   };
-  text: {
+};
+
+type HeaderDropdownGroup = {
+  title: {
     zh: string;
     en: string;
   };
+  items: HeaderDropdownItem[];
 };
+
+type HeaderDropdownConfig = {
+  overview: HeaderDropdownItem;
+  groups: HeaderDropdownGroup[];
+  featured?: HeaderDropdownItem & {
+    eyebrow: {
+      zh: string;
+      en: string;
+    };
+  };
+};
+
+function getCompactDropdownGroups(config: HeaderDropdownConfig) {
+  return config.groups
+    .map((group) => ({
+      ...group,
+      items: group.items.filter((item) => item.href !== config.featured?.href),
+    }))
+    .filter((group) => group.items.length > 0);
+}
+
+function getMobileDropdownItems(config: HeaderDropdownConfig) {
+  const items = [
+    config.overview,
+    ...getCompactDropdownGroups(config).flatMap((group) => group.items),
+    config.featured,
+  ].filter((item): item is HeaderDropdownItem => Boolean(item));
+
+  return Array.from(new Map(items.map((item) => [item.href, item])).values());
+}
+
+function HeaderDropdownPanel({
+  config,
+  locale,
+}: {
+  config: HeaderDropdownConfig;
+  locale: Locale;
+}) {
+  const compactGroups = getCompactDropdownGroups(config);
+
+  return (
+    <div className="overflow-hidden rounded-[1.35rem] border border-[#d9e7fb] bg-white shadow-[0_24px_70px_rgba(11,47,111,0.2)]">
+      <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="p-4">
+          <Link
+            href={withLocale(locale, config.overview.href)}
+            className="flex items-center justify-between rounded-2xl border border-blue-100 bg-[#eef6ff] px-4 py-3 text-[15px] font-bold text-[#0b2f6f] transition hover:border-tide/30 hover:bg-[#e6f1ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide/25"
+          >
+            <span>{copy(locale, config.overview.title)}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+
+          <div className="mt-4 grid gap-4">
+            {compactGroups.map((group) => (
+              <div key={group.title.en}>
+                <p className="px-1 text-[12px] font-bold uppercase tracking-[0.18em] text-[#52637a]">
+                  {copy(locale, group.title)}
+                </p>
+                <div className="mt-2 grid gap-1">
+                  {group.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={withLocale(locale, item.href)}
+                      className="flex items-center justify-between rounded-xl px-3 py-2.5 text-[15px] font-semibold text-[#12213a] transition hover:bg-[#f2f7ff] hover:text-tide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide/20"
+                    >
+                      <span>{copy(locale, item.title)}</span>
+                      <span aria-hidden="true" className="text-tide">
+                        →
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {config.featured ? (
+          <Link
+            href={withLocale(locale, config.featured.href)}
+            className="m-3 flex min-h-44 flex-col justify-between rounded-[1.15rem] border border-[#b8d5ff] bg-gradient-to-br from-[#eaf4ff] via-white to-[#fff4df] p-5 text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] transition hover:border-tide/40 hover:shadow-[0_16px_36px_rgba(20,85,179,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide/25"
+          >
+            <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-tide">
+              {copy(locale, config.featured.eyebrow)}
+            </span>
+            <span className="mt-8 block text-3xl font-bold leading-tight tracking-[-0.03em] text-[#102039]">
+              {copy(locale, config.featured.title)}
+            </span>
+            <span className="mt-6 inline-flex w-fit rounded-full bg-tide px-4 py-2 text-xs font-bold text-white">
+              {locale === "en" ? "Open" : "进入"}
+            </span>
+          </Link>
+        ) : null}
+      </div>
+    </div>
+  );
+}
 
 export function SiteHeader({ locale }: SiteHeaderProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDesktopDropdown, setActiveDesktopDropdown] = useState<string | null>(null);
   const nextLocale: Locale = locale === "en" ? "zh" : "en";
   const localeLabel = locale === "en" ? "中文" : "EN";
-  const productDropdownItems: HeaderDropdownItem[] = [
-    {
+  const ownProductItems = visibleItems(siteContent.marketplacePage.ownItems);
+  const partnerProductItems = visibleItems(siteContent.marketplacePage.partnerItems);
+  const helportItem = partnerProductItems.find((item) => item.title.en === "Helport");
+  const telecomSolution = siteContent.solutionsCatalog.find(
+    (solution) => solution.key === "telecom",
+  );
+  const productTitleMap: Record<string, HeaderDropdownItem["title"]> = {
+    "/solutions/teamshub-business-os": { zh: "Teamshub", en: "Teamshub" },
+    "/solutions/ai-customer-service": { zh: "智能客服", en: "AI Service" },
+    "/products/helport": { zh: "Helport", en: "Helport" },
+  };
+  const solutionTitleMap: Record<string, HeaderDropdownItem["title"]> = {
+    "/solutions/telecom-operations": { zh: "运营商支撑", en: "Telecom" },
+    "/solutions/digital-industry-platforms": { zh: "产业平台", en: "Industry" },
+    "/solutions/ai-customer-service": { zh: "AI 客服", en: "AI Service" },
+    "/solutions/teamshub-business-os": { zh: "Teamshub", en: "Teamshub" },
+    "/solutions/custom-business-systems": { zh: "定制系统", en: "Custom Systems" },
+  };
+  const productDropdownConfig: HeaderDropdownConfig = {
+    overview: {
       href: "/products",
-      title: { zh: "产品总览", en: "Products overview" },
-      text: {
-        zh: "从产品、伙伴产品和项目场景快速判断适合的切入口。",
-        en: "Compare products, partner products, and practical project-fit entry points.",
-      },
+      title: { zh: "产品总览", en: "All Products" },
     },
-    ...visibleItems([...siteContent.marketplacePage.ownItems, ...siteContent.marketplacePage.partnerItems]).map(
-      (item) => ({
-        href: item.href,
-        title: item.title,
-        text: item.subtitle,
-      }),
-    ),
-  ];
-  const solutionDropdownItems: HeaderDropdownItem[] = [
-    {
+    groups: [
+      {
+        title: { zh: "我们的产品", en: "Our products" },
+        items: ownProductItems.map((item) => ({
+          href: item.href,
+          title: productTitleMap[item.href] ?? item.title,
+        })),
+      },
+      ...(partnerProductItems.some((item) => item.title.en !== "Helport")
+        ? [
+            {
+              title: { zh: "伙伴产品", en: "Partner products" },
+              items: partnerProductItems
+                .filter((item) => item.title.en !== "Helport")
+                .map((item) => ({
+                  href: item.href,
+                  title: productTitleMap[item.href] ?? item.title,
+                })),
+            },
+          ]
+        : []),
+    ],
+    featured: helportItem
+      ? {
+          href: helportItem.href,
+          title: productTitleMap[helportItem.href] ?? helportItem.title,
+          eyebrow: { zh: "突出产品", en: "Featured" },
+        }
+      : undefined,
+  };
+  const solutionDropdownConfig: HeaderDropdownConfig = {
+    overview: {
       href: "/solutions",
-      title: { zh: "解决方案总览", en: "Solutions overview" },
-      text: {
-        zh: "按运营商、产业平台、AI 服务、协同和定制系统理解我们能解决的问题。",
-        en: "Explore how we solve problems across telecom, platforms, AI service, collaboration, and custom systems.",
-      },
+      title: { zh: "方案总览", en: "All Solutions" },
     },
-    ...siteContent.solutionsCatalog.map((solution) => ({
-      href: solution.href,
-      title: solution.title,
-      text: solution.text,
+    groups: siteContent.solutionCategories.map((category) => ({
+      title: category.title,
+      items: siteContent.solutionsCatalog
+        .filter((solution) => solution.category === category.key)
+        .map((solution) => ({
+          href: solution.href,
+          title: solutionTitleMap[solution.href] ?? solution.title,
+        })),
     })),
-  ];
+    featured: telecomSolution
+      ? {
+          href: telecomSolution.href,
+          title: solutionTitleMap[telecomSolution.href] ?? telecomSolution.title,
+          eyebrow: { zh: "重点方案", en: "Featured" },
+        }
+      : undefined,
+  };
 
   function isActive(href: string) {
     const localizedHref = withLocale(locale, href);
@@ -73,20 +218,20 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
     return pathname === localizedHref || pathname.startsWith(`${localizedHref}/`);
   }
 
-  function getDropdownItems(href: string) {
+  function getDropdownConfig(href: string) {
     if (href === "/products") {
-      return productDropdownItems;
+      return productDropdownConfig;
     }
 
     if (href === "/solutions") {
-      return solutionDropdownItems;
+      return solutionDropdownConfig;
     }
 
     return null;
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-blue-100/70 bg-white/86 text-ink shadow-[0_10px_30px_rgba(11,47,111,0.08)] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-blue-100 bg-white text-ink shadow-[0_10px_30px_rgba(11,47,111,0.1)]">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8">
         <Link href={withLocale(locale)} className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-100 bg-white p-1.5 shadow-[0_12px_28px_rgba(20,85,179,0.16)]">
@@ -99,23 +244,28 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
             />
           </div>
           <div className="min-w-0">
-            <p className="font-serif text-xl text-ink">{siteContent.brand.name}</p>
-            <p className="text-[11px] uppercase tracking-[0.24em] text-tide">
+            <p className="font-serif text-[22px] leading-tight text-ink">{siteContent.brand.name}</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-tide">
               {copy(locale, siteContent.brand.headerTagline)}
             </p>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-2 lg:flex">
+        <nav
+          className="hidden items-center gap-2 lg:flex"
+          onMouseLeave={() => setActiveDesktopDropdown(null)}
+        >
           {siteContent.navigation.map((item) => {
-            const dropdownItems = getDropdownItems(item.href);
-            const linkClassName = `rounded-full px-3 py-2 text-sm transition ${
-              isActive(item.href)
+            const dropdownConfig = getDropdownConfig(item.href);
+            const isDropdownOpen = activeDesktopDropdown === item.href;
+            const isCurrent = isActive(item.href) || isDropdownOpen;
+            const linkClassName = `rounded-full px-3.5 py-2 text-[15px] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide/25 ${
+              isCurrent
                 ? "bg-tide text-white shadow-[0_10px_24px_rgba(20,85,179,0.18)]"
-                : "text-slate-600 hover:bg-mist hover:text-tide"
+                : "text-[#17233c] hover:bg-mist hover:text-tide"
             }`;
 
-            if (!dropdownItems) {
+            if (!dropdownConfig) {
               return (
                 <Link
                   key={item.href}
@@ -128,39 +278,42 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
             }
 
             return (
-              <div key={item.href} className="group relative">
-                <Link
-                  href={withLocale(locale, item.href)}
+              <div
+                key={item.href}
+                className="group relative"
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                    setActiveDesktopDropdown(null);
+                  }
+                }}
+                onMouseEnter={() => setActiveDesktopDropdown(item.href)}
+              >
+                <button
+                  type="button"
                   className={`${linkClassName} inline-flex items-center gap-1.5`}
+                  aria-haspopup="true"
+                  aria-expanded={isDropdownOpen}
+                  onClick={() =>
+                    setActiveDesktopDropdown((value) =>
+                      value === item.href ? null : item.href,
+                    )
+                  }
+                  onFocus={() => setActiveDesktopDropdown(item.href)}
                 >
                   <span>{copy(locale, item.label)}</span>
-                  <span className="text-xs opacity-70">v</span>
-                </Link>
+                  <span aria-hidden="true" className="text-xs opacity-70">
+                    ⌄
+                  </span>
+                </button>
 
-                <div className="invisible absolute left-1/2 top-full z-50 w-[min(36rem,calc(100vw-3rem))] -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="overflow-hidden rounded-[1.75rem] border border-blue-100 bg-white/96 p-3 shadow-[0_28px_90px_rgba(11,47,111,0.18)] backdrop-blur-xl">
-                    <div className="grid gap-2">
-                      {dropdownItems.map((dropdownItem, index) => (
-                        <Link
-                          key={dropdownItem.href}
-                          href={withLocale(locale, dropdownItem.href)}
-                          className={`rounded-[1.25rem] p-4 transition hover:bg-mist ${
-                            index === 0 ? "border border-blue-100 bg-[#f7fbff]" : ""
-                          }`}
-                        >
-                          <span className="flex items-center justify-between gap-4">
-                            <span className="font-serif text-lg leading-tight text-ink">
-                              {copy(locale, dropdownItem.title)}
-                            </span>
-                            <span className="text-sm text-tide">-&gt;</span>
-                          </span>
-                          <span className="mt-2 line-clamp-2 block text-sm leading-6 text-slate-600">
-                            {copy(locale, dropdownItem.text)}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+                <div
+                  className={`invisible absolute left-1/2 top-full z-50 w-[min(40rem,calc(100vw-3rem))] -translate-x-1/2 translate-y-1 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
+                    isDropdownOpen
+                      ? "visible translate-y-0 opacity-100"
+                      : ""
+                  }`}
+                >
+                  <HeaderDropdownPanel config={dropdownConfig} locale={locale} />
                 </div>
               </div>
             );
@@ -195,10 +348,10 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
       </div>
 
       {isOpen ? (
-        <div className="border-t border-blue-100 bg-white/95 px-6 py-5 shadow-card backdrop-blur-xl lg:hidden">
+        <div className="border-t border-blue-100 bg-white px-6 py-5 shadow-card lg:hidden">
           <div className="flex flex-col gap-4">
             {siteContent.navigation.map((item) => {
-              const dropdownItems = getDropdownItems(item.href);
+              const dropdownConfig = getDropdownConfig(item.href);
 
               return (
                 <div key={item.href}>
@@ -212,9 +365,9 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
                     {copy(locale, item.label)}
                   </Link>
 
-                  {dropdownItems ? (
+                  {dropdownConfig ? (
                     <div className="mt-2 grid gap-2 pl-4">
-                      {dropdownItems.slice(1).map((dropdownItem) => (
+                      {getMobileDropdownItems(dropdownConfig).map((dropdownItem) => (
                         <Link
                           key={dropdownItem.href}
                           href={withLocale(locale, dropdownItem.href)}

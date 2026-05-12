@@ -76,7 +76,7 @@ export const siteContent = {
   solutionCategories: [
     {
       key: "telecom",
-      title: { zh: "Telecom", en: "Telecom" },
+      title: { zh: "运营商", en: "Telecom" },
       text: {
         zh: "面向运营商、MVNO 与复杂服务环境的核心能力。",
         en: "Core capabilities for operators, MVNOs, and complex service environments.",
@@ -84,7 +84,7 @@ export const siteContent = {
     },
     {
       key: "enterprise",
-      title: { zh: "Enterprise & Platforms", en: "Enterprise & Platforms" },
+      title: { zh: "企业与平台", en: "Enterprise & Platforms" },
       text: {
         zh: "面向产业平台、协同体系与定制化业务系统的可落地方向。",
         en: "Practical tracks across industrial platforms, coordination systems, and custom business tools.",
@@ -92,7 +92,7 @@ export const siteContent = {
     },
     {
       key: "ai",
-      title: { zh: "AI & Service", en: "AI & Service" },
+      title: { zh: "AI 与服务", en: "AI & Service" },
       text: {
         zh: "把 AI 真正放进客服、服务和运营流程的方向。",
         en: "Putting AI into customer service, support, and operational workflows in a usable way.",
@@ -110,23 +110,23 @@ export const siteContent = {
         en: "01 Telecom IT support and service domain",
       },
       title: {
-        zh: "运营商、MVNO 与复杂服务环境所需的业务支撑",
-        en: "Business support, service coordination, and platform capability for operators, MVNOs, and complex service environments",
+        zh: "让运营商业务真正跑顺",
+        en: "Make telecom operations run smoothly",
       },
       text: {
-        zh: "围绕运营商 BOSS、客户生命周期管理、MVNO 支撑、宽带支撑、智能客服与统一门户等能力，帮助复杂服务环境真正跑顺。",
-        en: "Built around operator BOSS, customer lifecycle support, MVNO enablement, broadband support, smart customer service, and unified portals for complex service environments.",
+        zh: "围绕 BSS/OSS、客户生命周期、计费结算、资源接入和 MVNO 多角色运营，帮助通信业务更快上线、更稳运营。",
+        en: "Built around BSS/OSS, customer lifecycle, billing, resource access, and MVNO multi-role operations so communication services can launch faster and operate more reliably.",
       },
       bullets: {
         zh: [
-          "BOSS / 业务支撑与客户生命周期管理",
-          "MVNO 国际化业务支撑与多角色运营",
-          "宽带、客服、门户、结算与服务协同",
+          "BSS/OSS 端到端业务支撑",
+          "MVNO 国际化与多级分销",
+          "订单、开通、计费、结算闭环",
         ],
         en: [
-          "BOSS support and customer lifecycle operations",
-          "International MVNO support and multi-role operating models",
-          "Broadband, service, portal, settlement, and coordination workflows",
+          "End-to-end BSS/OSS support",
+          "International MVNO and multi-level distribution",
+          "Closed-loop ordering, activation, billing, and settlement",
         ],
       },
       linkLabel: { zh: "查看详情", en: "View detail" },
@@ -478,102 +478,280 @@ export const siteContent = {
   solutionDetails: {
     telecom: {
       image: "/images/curated/telecom-network-switch.jpg",
+      badge: {
+        zh: "重点解决方案 / 运营商 BSS/OSS 与 MVNO 支撑",
+        en: "Featured solution / Telecom BSS, OSS, and MVNO enablement",
+      },
       title: {
-        zh: "运营商 IT 支撑与服务域",
-        en: "Telecom IT support and service domain",
+        zh: "让运营商业务真正跑顺",
+        en: "Make telecom operations run smoothly",
       },
       subtitle: {
-        zh: "以运营商 BOSS、MVNO、宽带支撑、智能客服和统一门户为代表的业务支撑与服务能力。",
-        en: "A solution domain centered on operator BOSS, MVNO enablement, broadband support, smart customer service, and unified portals.",
+        zh: "面向运营商、MVNO、代理商和数字服务团队，把 BSS/OSS、客户生命周期、计费结算、资源接入和多角色运营接成一套可交付的业务支撑体系。",
+        en: "For operators, MVNOs, agents, and digital-service teams, this solution connects BSS/OSS, customer lifecycle, billing, resource access, and multi-role operations into a deliverable support system.",
       },
       intro: {
-        zh: "这条方向聚焦运营商业务支撑、服务流程、客户管理和多角色协同，适合需要稳定运营、清晰交付边界和分阶段推进能力的团队。",
-        en: "This track focuses on telecom support, service workflows, customer management, and multi-role coordination for buyers who need stable operations, clear delivery scope, and staged execution.",
+        zh: "从客户开户、订单开通、计费账务到伙伴结算，运营商业务需要一条稳定、可追踪、可扩展的运营链路。",
+        en: "From onboarding and activation to billing and partner settlement, telecom services need a stable, traceable operating loop.",
       },
+      proofBar: [
+        {
+          value: "BSS/OSS",
+          label: { zh: "核心支撑", en: "Core support" },
+          text: {
+            zh: "覆盖 CRM、订单、开通、计费、结算和服务运营等关键流程",
+            en: "Covers CRM, ordering, activation, billing, settlement, and service operations",
+          },
+        },
+        {
+          value: "MVNO",
+          label: { zh: "全球化场景", en: "Global scenarios" },
+          text: {
+            zh: "支持个人业务、批发、转售、多租户和多级分销模式",
+            en: "Supports retail, wholesale, resale, multi-tenant, and multi-level distribution models",
+          },
+        },
+        {
+          value: "4G/5G",
+          label: { zh: "融合业务", en: "Converged services" },
+          text: {
+            zh: "适配移动、固话、宽带、流量、云、专线等组合业务",
+            en: "Fits mobile, fixed-line, broadband, data, cloud, private-line, and bundled services",
+          },
+        },
+        {
+          value: "分阶段",
+          label: { zh: "可落地", en: "Staged delivery" },
+          text: {
+            zh: "可从 MVNO 快速上线、订单闭环、计费结算或门户试点切入",
+            en: "Can start from MVNO launch, order flow, billing, settlement, or portal pilots",
+          },
+        },
+      ],
+      problemTitle: {
+        zh: "把通信业务从上线到运营跑成闭环",
+        en: "Run communication services from launch to operations",
+      },
+      problemItems: [
+        {
+          title: { zh: "业务上线慢，机会窗口变短", en: "Slow launch misses the market window" },
+          text: {
+            zh: "新地区、新套餐和转售模式可以从资源接入、开户、订购和计费开始快速落地。",
+            en: "Launch new regions, offers, and resale models with resource, onboarding, order, and billing support.",
+          },
+        },
+        {
+          title: { zh: "订单能受理，但流程跑不闭环", en: "Orders are accepted but not closed" },
+          text: {
+            zh: "把受理、缴费、开通、计费和异常处理放在同一条可追踪流程里。",
+            en: "Track intake, payment, activation, billing, and exceptions in one operating flow.",
+          },
+        },
+        {
+          title: { zh: "计费结算不准，合作方信任受损", en: "Inaccurate billing damages partner trust" },
+          text: {
+            zh: "支持账单、佣金、分成、对账和伙伴结算，让合作关系更清楚。",
+            en: "Support bills, commissions, revenue share, reconciliation, and partner settlement.",
+          },
+        },
+        {
+          title: { zh: "全球资源接入复杂，运营模型难复制", en: "Global resources are hard to operate consistently" },
+          text: {
+            zh: "统一管理不同地区资源、运营商号卡、代理角色和本地化规则。",
+            en: "Manage regional resources, operator SIMs, agent roles, and local rules consistently.",
+          },
+        },
+      ],
+      tracksTitle: {
+        zh: "两条清晰产品主线",
+        en: "Two clear solution tracks",
+      },
+      tracksText: {
+        zh: "面向现有运营商的 BSS/OSS 闭环支撑，也面向 MVNO、代理商和国际通信业务的快速开展。",
+        en: "Support full BSS/OSS operations for operators and fast MVNO launch for international communication businesses.",
+      },
+      tracks: [
+        {
+          title: { zh: "BSS/OSS：把生产、运营和管理接成闭环", en: "BSS/OSS: connect production, operations, and management" },
+          label: { zh: "适合基础运营商、区域运营商和复杂通信服务团队", en: "For operators, regional carriers, and complex communication-service teams" },
+          text: {
+            zh: "支撑客户、产品、订单、网络服务、伙伴、计费账务和运营管理，覆盖移动、宽带、云、专线和融合业务。",
+            en: "Support customers, offers, orders, network services, partners, billing, and operations across mobile, broadband, cloud, private-line, and bundled services.",
+          },
+          bullets: {
+            zh: [
+              "全业务办理：从产品受理到订单流转，减少跨系统断点",
+              "客户生命周期：入网、发展、稳定、离网全过程管理",
+              "计费结算：客户账单、代理商佣金、分成规则和对账闭环",
+              "运营管控：从办理、缴费、开通到计费的一站式视图",
+            ],
+            en: [
+              "Full-service handling from offer intake to order flow",
+              "Customer lifecycle management across acquisition, growth, retention, and churn",
+              "Billing and settlement across customer bills, agent commissions, revenue-share rules, and reconciliation",
+              "Operational visibility from intake, payment, activation, to billing",
+            ],
+          },
+        },
+        {
+          title: { zh: "MVNO：让个人、批发和转售业务轻装上阵", en: "MVNO: launch retail, wholesale, and resale businesses faster" },
+          label: { zh: "适合虚拟运营商、代理商、国际通信业务和本地市场合作", en: "For MVNOs, agents, international communication services, and local-market partners" },
+          text: {
+            zh: "支持自有资源与第三方资源接入，帮助 MVNO 和代理商开展个人通信、批发、转售和多级分销。",
+            en: "Connect owned and third-party resources so MVNOs and agents can run retail, wholesale, resale, and distribution models.",
+          },
+          bullets: {
+            zh: [
+              "资源接入：对接不同国家和地区运营商号卡资源",
+              "多业务模式：支持 ToC、B2B2C、B2B2b2c 和批发转售",
+              "多租户运营：支持虚商、代理商和公众客户的角色分层",
+              "灵活结算：适配不同地区、合作方和分销规则",
+            ],
+            en: [
+              "Resource access across operators and SIM resources in different regions",
+              "Business models across retail, B2B2C, B2B2b2c, wholesale, and resale",
+              "Multi-tenant operations across MVNOs, agents, and public customers",
+              "Flexible settlement for regions, partners, and distribution rules",
+            ],
+          },
+        },
+      ],
       capabilityBlocks: [
         {
-          title: { zh: "BOSS 与业务支撑", en: "BOSS and business support" },
+          title: { zh: "客户与产品运营", en: "Customer and product operations" },
           bullets: {
             zh: [
-              "全业务办理与订单流转",
-              "客户全生命周期管理",
-              "精细化计费结算与分成支撑",
+              "客户入网、发展、稳定与离网管理",
+              "产品套餐、营销活动和推荐策略配置",
+              "个客、家客、政企和新业务支撑",
             ],
             en: [
-              "Full-service handling and order flow support",
-              "Customer lifecycle management",
-              "Settlement, billing, and commission support",
+              "Customer acquisition, growth, retention, and churn management",
+              "Offer packages, campaign configuration, and recommendation strategy",
+              "Support for consumer, home, enterprise, and new-service segments",
             ],
           },
         },
         {
           title: {
-            zh: "服务与运营协同",
-            en: "Service and operating coordination",
+            zh: "订单、网络与服务交互",
+            en: "Order, network, and service interaction",
           },
           bullets: {
             zh: [
-              "宽带资源统一纳管与开通激活",
-              "工单、装维、售后与履约闭环",
-              "客服、运营与服务团队联动",
+              "业务受理、订单流转和开通协同",
+              "网络资源、服务资源和工单联动",
+              "办理、缴费、开通、计费端到端可视",
             ],
             en: [
-              "Broadband resource management and activation support",
-              "Tickets, field service, after-sales, and fulfillment workflows",
-              "Coordination across support, operations, and service teams",
+              "Service intake, order flow, and activation coordination",
+              "Network resources, service resources, and ticket workflows",
+              "End-to-end visibility across intake, payment, activation, and billing",
             ],
           },
         },
         {
           title: {
-            zh: "国际化与 MVNO",
-            en: "International and MVNO scenarios",
+            zh: "合作伙伴与计费结算",
+            en: "Partner, billing, and settlement",
           },
           bullets: {
             zh: [
-              "多业务模式与多角色运营支撑",
-              "统一营销服务门户与全球资源接入",
-              "面向国际市场的轻量化敏捷支撑",
+              "代理商、虚商、批发与转售角色管理",
+              "账单、佣金、分成与结算规则支撑",
+              "多租户、多级分销和跨地区合作模式",
             ],
             en: [
-              "Multi-model support across retail and distribution scenarios",
-              "Unified marketing portals and global resource access",
-              "Agile support for international market expansion",
+              "Agent, MVNO, wholesale, and resale role management",
+              "Bills, commissions, revenue share, and settlement rules",
+              "Multi-tenant, multi-level distribution, and cross-region partner models",
             ],
           },
         },
       ],
       proofTitle: {
-        zh: "为什么这条方向可信",
-        en: "Why this track is credible",
+        zh: "客户可以先验证这些结果",
+        en: "Outcomes buyers can validate first",
       },
       proofItems: [
         {
-          zh: "来源于长期运营商 IT 支撑与服务域实践，而不是只做界面层产品。",
-          en: "The capability base comes from long-term telecom support work, not just surface-level interface products.",
+          zh: "新业务上线：验证资源接入、客户开户、套餐销售和开通流程。",
+          en: "Service launch: validate resources, onboarding, offer sales, and activation.",
         },
         {
-          zh: "公开材料里已经覆盖 BOSS、MVNO、宽带支撑、客服与统一门户等多个运营商关键场景。",
-          en: "Public materials already show coverage across BOSS, MVNO, broadband support, customer service, and unified portal scenarios.",
+          zh: "订单闭环：验证受理、缴费、开通、计费和异常处理。",
+          en: "Order closure: validate intake, payment, activation, billing, and exceptions.",
         },
         {
-          zh: "适合需要明确交付边界、可分阶段推进的客户。",
-          en: "This track works well for buyers who need clear scope and staged delivery.",
+          zh: "伙伴运营：验证代理商、转售、佣金、分成和对账规则。",
+          en: "Partner operations: validate agents, resale, commissions, revenue share, and reconciliation.",
         },
       ],
-      startTitle: { zh: "常见切入口", en: "Common starting scopes" },
+      visualTitle: { zh: "后续可替换的方案素材位", en: "Solution visual slots to replace later" },
+      visualText: {
+        zh: "页面先保留关键视觉位置，后续可放系统截图、业务流程图、架构图和运营看板。",
+        en: "Reserved space for future system screenshots, workflow diagrams, architecture visuals, and dashboards.",
+      },
+      visualSlots: [
+        {
+          title: { zh: "BSS/OSS 工作台截图", en: "BSS/OSS workspace screenshot" },
+          label: { zh: "替换为系统截图", en: "Replace with product screenshot" },
+          image: "/images/curated/telecom-network-switch.jpg",
+          text: {
+            zh: "展示客户、订单、开通、计费和工单的统一视图。",
+            en: "Show customers, orders, activation, billing, and tickets in one view.",
+          },
+        },
+        {
+          title: { zh: "订单到结算流程图", en: "Order-to-settlement flow" },
+          label: { zh: "替换为流程图", en: "Replace with flow diagram" },
+          image: "/images/curated/broadband-network-cables.jpg",
+          text: {
+            zh: "展示从受理、缴费、开通、计费到账务结算的闭环。",
+            en: "Show intake, payment, activation, billing, and settlement.",
+          },
+        },
+        {
+          title: { zh: "MVNO 运营看板", en: "MVNO operations dashboard" },
+          label: { zh: "替换为运营看板", en: "Replace with dashboard" },
+          image: "/images/curated/business-dashboard-laptop.jpg",
+          text: {
+            zh: "展示用户增长、套餐销售、渠道分销和结算状态。",
+            en: "Show growth, package sales, channel performance, and settlement status.",
+          },
+        },
+      ],
+      startTitle: { zh: "建议从这些试点切入", en: "Recommended starting points" },
       startItems: {
         zh: [
-          "一个 MVNO 业务快速搭建或能力验证项目",
-          "宽带受理、开通与服务协同的流程整合",
-          "一个客服、工单、运营协同闭环的升级范围",
-          "一个统一营销服务门户或渠道运营平台的起步版本",
+          "MVNO 快速上线：先验证资源接入、客户开户、套餐销售和计费结算",
+          "订单闭环优化：把受理、缴费、开通、计费和异常处理串起来",
+          "合作伙伴分销：验证代理商、批发、转售和佣金结算规则",
+          "统一门户试点：从一个服务门户或营销门户开始承接客户触达和转化",
         ],
         en: [
-          "A focused MVNO launch or capability validation scope",
-          "Integration of broadband intake, activation, and support workflows",
-          "An upgrade scope across service, ticketing, and operational coordination",
-          "An initial version of a unified marketing and service portal",
+          "MVNO fast launch: validate resource access, customer onboarding, package sales, billing, and settlement",
+          "Order-flow closure: connect intake, payment, activation, billing, and exception handling",
+          "Partner distribution: validate agents, wholesale, resale, and commission rules",
+          "Unified portal pilot: start with one service or marketing portal for customer engagement and conversion",
+        ],
+      },
+      principleTitle: {
+        zh: "适合先讨论的客户场景",
+        en: "Best-fit starting scenarios",
+      },
+      principleItems: {
+        zh: [
+          "新 MVNO 或代理商业务需要快速上线",
+          "现有订单、开通、计费和结算流程断点多",
+          "多级渠道、佣金和对账规则需要统一管理",
+          "需要统一门户承接客户、伙伴和内部运营",
+        ],
+        en: [
+          "New MVNO or agent business needs a faster launch",
+          "Orders, activation, billing, and settlement have too many handoffs",
+          "Channel commissions and reconciliation need unified control",
+          "A unified portal is needed for customers, partners, and operations",
         ],
       },
       storyTitle: { zh: "相关合作故事", en: "Related stories" },
@@ -797,77 +975,259 @@ export const siteContent = {
     teamshub: {
       image: "/images/curated/project-team-laptop.jpg",
       title: {
-        zh: "Teamshub 协同与项目推进",
-        en: "Teamshub coordination and project execution",
+        zh: "Teamshub 项目级知识沉淀",
+        en: "Teamshub project knowledge workspace",
       },
       subtitle: {
-        zh: "Teamshub 不是公司总定位，而是一套适合长链路项目推进、跨团队协作和知识连续性的具体产品与工作方式。",
-        en: "Teamshub is not the company’s top-line positioning. It is a concrete product and operating model for long-cycle project work, cross-team execution, and knowledge continuity.",
+        zh: "把聊天、会议、文件、帖子和任务沉淀到项目空间里，让每一次沟通都能被追溯、复用，并推动下一步行动。",
+        en: "Turn chats, meetings, files, posts, and tasks into a project workspace where context is traceable, reusable, and action-ready.",
       },
       intro: {
-        zh: "Teamshub 的价值在于把项目、帖子、知识节点、待办和交接放到同一套工作系统里，让团队不再只靠聊天记录和文件夹推进复杂工作。",
-        en: "The value of Teamshub is the ability to keep projects, posts, knowledge nodes, next actions, and handoffs inside one working system so teams are not relying on chat history and shared folders alone.",
+        zh: "Teamshub 面向长周期客户项目、专业服务交付、跨团队协作和出海业务推进。它把沟通和知识放回同一个项目上下文，让团队少翻聊天记录，少重复交接。",
+        en: "Teamshub is built for long-cycle client work, professional services delivery, cross-team coordination, and international business development.",
       },
-      sections: [
+      proofBar: [
         {
-          title: {
-            zh: "项目作为核心对象",
-            en: "Use the project as the core object",
-          },
+          value: "Project",
+          label: { zh: "项目空间", en: "Workspace" },
           text: {
-            zh: "重要机会和项目进入统一主档后，参与者、资料、纪要、问题清单和待办都能围绕同一上下文积累。",
-            en: "Once a project becomes the core record, participants, documents, notes, issue lists, and actions all accumulate around the same context.",
+            zh: "围绕一个客户、机会、交付或内部事项沉淀上下文",
+            en: "Keep context around a client, opportunity, delivery, or internal initiative",
           },
+        },
+        {
+          value: "Circle",
+          label: { zh: "协作边界", en: "Boundary" },
+          text: {
+            zh: "按客户、内部、交付、资料或外部伙伴划分权限",
+            en: "Separate access by client, internal team, delivery, evidence, or partners",
+          },
+        },
+        {
+          value: "Post",
+          label: { zh: "知识单元", en: "Knowledge unit" },
+          text: {
+            zh: "把会议纪要、客户需求、决策和复盘沉淀成目录",
+            en: "Capture notes, requirements, decisions, and reviews as a catalog",
+          },
+        },
+        {
+          value: "AI",
+          label: { zh: "项目助手", en: "Assistant" },
+          text: {
+            zh: "基于权限总结进展、查历史、提任务、生成跟进",
+            en: "Summarize, search history, extract tasks, and draft follow-up with permissions",
+          },
+        },
+      ],
+      problemTitle: {
+        zh: "让项目上下文不再散落",
+        en: "Keep project context from scattering",
+      },
+      problemItems: [
+        {
+          title: { zh: "聊天里有信息，但没有目录", en: "Chats have information, not structure" },
+          text: {
+            zh: "关键需求、决策和风险很容易被新的消息冲走。Teamshub 把重要内容沉淀成帖子目录。",
+            en: "Important needs, decisions, and risks get buried. Teamshub turns them into a post catalog.",
+          },
+        },
+        {
+          title: { zh: "任务有状态，但缺少来龙去脉", en: "Tasks need context" },
+          text: {
+            zh: "任务可以绑定来源帖子、客户原话、相关文件和责任人，减少重复解释。",
+            en: "Tasks stay linked to source posts, customer context, files, and owners.",
+          },
+        },
+        {
+          title: { zh: "新人加入项目太慢", en: "New members ramp slowly" },
+          text: {
+            zh: "Project View 汇总阶段、圈子、帖子、任务和 AI 摘要，让新人快速读懂历史。",
+            en: "Project View shows stages, circles, posts, tasks, and AI summaries for faster ramp-up.",
+          },
+        },
+        {
+          title: { zh: "外部协作需要边界", en: "External work needs boundaries" },
+          text: {
+            zh: "圈子级权限让客户、伙伴和内部团队在同一项目下协作，但信息边界清楚。",
+            en: "Circle-level access lets clients, partners, and internal teams collaborate with clear boundaries.",
+          },
+        },
+      ],
+      mechanismTitle: {
+        zh: "从项目空间到 AI 可用的知识资产",
+        en: "From project workspace to AI-ready knowledge",
+      },
+      mechanismText: {
+        zh: "Teamshub 用 Project → Circle → Post → Task → AI 的结构，把日常协作转成可追溯、可复用、可执行的项目知识。",
+        en: "Teamshub uses Project -> Circle -> Post -> Task -> AI to make collaboration traceable, reusable, and actionable.",
+      },
+      mechanismItems: [
+        {
+          title: { zh: "Project", en: "Project" },
+          text: {
+            zh: "承载客户、机会、交付、合作或内部事项。",
+            en: "A workspace for a client, opportunity, delivery, partnership, or internal initiative.",
+          },
+        },
+        {
+          title: { zh: "Circle", en: "Circle" },
+          text: {
+            zh: "划分主题、成员、客户协作和权限范围。",
+            en: "A collaboration boundary for topics, members, clients, and permissions.",
+          },
+        },
+        {
+          title: { zh: "Post", en: "Post" },
+          text: {
+            zh: "沉淀会议纪要、需求、决策、风险和阶段复盘。",
+            en: "A structured knowledge unit for notes, needs, decisions, risks, and reviews.",
+          },
+        },
+        {
+          title: { zh: "Task", en: "Task" },
+          text: {
+            zh: "把帖子里的行动项变成负责人、截止时间和状态。",
+            en: "Turns action items into owners, due dates, and status.",
+          },
+        },
+        {
+          title: { zh: "AI", en: "AI" },
+          text: {
+            zh: "基于项目上下文和权限总结、检索和生成。",
+            en: "Summarizes, searches, and drafts from permitted project context.",
+          },
+        },
+      ],
+      loopTitle: {
+        zh: "项目级知识沉淀闭环",
+        en: "Project knowledge loop",
+      },
+      loopText: {
+        zh: "对话不止停留在消息流里。它会变成帖子、任务、阶段总结和未来项目可复用的经验。",
+        en: "Conversation becomes posts, tasks, reviews, and reusable experience for future projects.",
+      },
+      loopSteps: {
+        zh: ["对话发生", "生成帖子", "形成目录", "提取任务", "推进执行", "复盘复用"],
+        en: ["Discuss", "Create post", "Catalog", "Extract tasks", "Execute", "Reuse"],
+      },
+      productScreensTitle: {
+        zh: "产品页面和素材位",
+        en: "Product screens and visual slots",
+      },
+      productScreensText: {
+        zh: "先把 SaaS 产品页需要的图位放好。后续可以替换为真实 Project View、Circle、Post、AI 和流程图截图。",
+        en: "Reserved visual slots for real Project View, Circle, Post, AI, and workflow screenshots.",
+      },
+      productScreens: [
+        {
+          title: { zh: "Project View 项目总览", en: "Project View" },
+          label: { zh: "替换为产品截图", en: "Replace with product screenshot" },
           image: "/images/curated/project-team-laptop.jpg",
+          text: {
+            zh: "展示阶段、成员、圈子、帖子目录、任务和 AI 摘要。",
+            en: "Show stages, members, circles, post catalog, tasks, and AI summary.",
+          },
         },
         {
-          title: {
-            zh: "帖子、圈子与知识节点",
-            en: "Posts, circles, and knowledge nodes",
-          },
+          title: { zh: "Circle 协作空间", en: "Circle workspace" },
+          label: { zh: "替换为协作界面", en: "Replace with workspace UI" },
+          image: "/images/curated/team-laptop-strategy-session.jpg",
           text: {
-            zh: "适合承接会议结论、FAQ、项目阶段总结和跨团队协作边界，让复杂工作有更清楚的结构。",
-            en: "These structures work well for meeting outcomes, FAQs, project-stage summaries, and cross-team collaboration boundaries.",
+            zh: "展示聊天、置顶帖子、文件、任务和成员权限。",
+            en: "Show chat, pinned posts, files, tasks, and member access.",
           },
+        },
+        {
+          title: { zh: "Post / AI / Task 闭环", en: "Post / AI / Task loop" },
+          label: { zh: "替换为流程图", en: "Replace with flow diagram" },
           image: "/images/curated/business-dashboard-laptop.jpg",
-        },
-        {
-          title: {
-            zh: "Agent 参与摘要与交接",
-            en: "Use agents for summaries and handoffs",
-          },
           text: {
-            zh: "Agent 更适合在长链路协作里持续生成状态、风险和下一步，而不是只做一次性问答。",
-            en: "Agents are most useful when they keep generating current state, risks, and next actions inside a long-running workflow.",
+            zh: "展示从聊天生成帖子、从帖子提任务、AI 总结复盘。",
+            en: "Show chat-to-post, post-to-task, and AI review workflows.",
           },
-          image: "/images/curated/software-developers-office.jpg",
         },
       ],
       useCasesTitle: {
-        zh: "适合的业务场景",
-        en: "Where this fits especially well",
+        zh: "适合售卖的客户场景",
+        en: "Best-fit customer scenarios",
       },
-      useCases: {
-        zh: [
-          "出海获客与重点客户推进",
-          "跨团队项目执行与资料沉淀",
-          "FAQ、案例与知识底座建设",
-          "售后支持与问题复用",
-        ],
-        en: [
-          "International lead handling and key-account progression",
-          "Cross-team execution and documentation continuity",
-          "FAQ, case, and knowledge-base organization",
-          "After-sales support and issue reuse",
-        ],
+      useCases: [
+        {
+          title: { zh: "美国 SMB 专业服务", en: "SMB professional services" },
+          text: {
+            zh: "合规顾问、税务会计、法律、咨询、设计等团队，用项目空间沉淀客户背景、材料、会议和任务。",
+            en: "For compliance, tax, legal, consulting, and design teams managing client context, evidence, meetings, and tasks.",
+          },
+        },
+        {
+          title: { zh: "出海客户与渠道推进", en: "International sales and partner work" },
+          text: {
+            zh: "跨时区、跨语言、跨团队推进客户机会，把客户沟通、资料和下一步统一管理。",
+            en: "Coordinate cross-time-zone client and partner work with shared context and next actions.",
+          },
+        },
+        {
+          title: { zh: "长周期交付项目", en: "Long-cycle delivery projects" },
+          text: {
+            zh: "把阶段总结、问题风险、交付结果和复盘内容留在项目里，减少交接损耗。",
+            en: "Keep stage reviews, risks, deliverables, and learnings inside the project.",
+          },
+        },
+      ],
+      mvpTitle: {
+        zh: "从可演示闭环开始",
+        en: "Start with a demo-ready loop",
       },
-      roadmapTitle: {
-        zh: "第一步通常不是做全，而是先做一个最小可运行闭环",
-        en: "The practical first step is not full rollout but one minimum working loop",
+      mvpText: {
+        zh: "先让客户看到一条完整链路：项目协作、帖子沉淀、AI 检索、任务推进。后续再扩展外部成员、模板、集成和企业级权限。",
+        en: "Show one full loop first: project collaboration, post capture, AI search, and task execution.",
       },
-      roadmapText: {
-        zh: "可以先围绕获客、项目圈子、知识沉淀或交接闭环做一个可演示版本，再逐步补本地化、生态集成和更完整产品能力。",
-        en: "A good start is one usable loop around lead handling, project circles, knowledge continuity, or handoffs, then broader localization and integration later.",
+      mvpStages: [
+        {
+          title: { zh: "Pre-MVP", en: "Pre-MVP" },
+          text: {
+            zh: "Project、Circle、Post、任务表、AI 总结 Demo。",
+            en: "Project, Circle, Post, task table, and AI summary demo.",
+          },
+        },
+        {
+          title: { zh: "MVP-1", en: "MVP-1" },
+          text: {
+            zh: "项目总览、消息流、从消息生成帖子、从帖子生成任务。",
+            en: "Project overview, message flow, message-to-post, and post-to-task.",
+          },
+        },
+        {
+          title: { zh: "MVP-2", en: "MVP-2" },
+          text: {
+            zh: "外部客户圈、圈子权限、客户内容沉淀、AI 权限回答。",
+            en: "Client circles, permissions, customer content capture, and permission-aware AI.",
+          },
+        },
+        {
+          title: { zh: "1.0", en: "1.0" },
+          text: {
+            zh: "多项目、跨项目搜索、模板、审计、CRM / 邮件 / 日历集成。",
+            en: "Multi-project search, templates, audit logs, and CRM/email/calendar integrations.",
+          },
+        },
+      ],
+      demoTitle: {
+        zh: "示例：客户交付项目",
+        en: "Example: client delivery project",
+      },
+      demoText: {
+        zh: "一家合规顾问公司创建客户项目，按内部讨论、客户沟通、证据材料划分圈子。AI 把沟通整理成需求帖子，项目经理从帖子生成任务，并在每周复盘中沉淀模板。",
+        en: "A compliance advisory firm creates a client project, separates internal, client, and evidence circles, turns conversations into requirement posts, creates tasks, and reuses the weekly review as a template.",
+      },
+      cta: {
+        title: {
+          zh: "把一个真实客户项目放进 Teamshub，看它如何沉淀知识和推进任务。",
+          en: "Put one real client project into Teamshub and see how knowledge and tasks move together.",
+        },
+        primary: { zh: "讨论 Teamshub 试点", en: "Discuss a Teamshub pilot" },
+        secondary: { zh: "查看项目闭环", en: "See project loop" },
       },
       roadmapImage: "/images/solutions/teamshub-roadmap.png",
     },
@@ -1270,35 +1630,35 @@ export const siteContent = {
         order: 1,
         title: { zh: "Helport", en: "Helport" },
         image: "/images/curated/call-center-diverse-team.jpg",
-        category: { zh: "伙伴产品", en: "Partner product" },
-        status: { zh: "可合作推进", en: "Available for joint pursuit" },
+        category: { zh: "合作伙伴渠道产品", en: "Partner channel product" },
+        status: { zh: "主推", en: "Featured" },
         subtitle: {
-          zh: "当团队无法稳定复制优秀客服、销售或专家的经验时，服务质量、转化率和培训效率都会受影响。Helport 用智能软件和解决方案强化客户沟通。",
-          en: "When teams cannot consistently replicate the experience of strong agents, sales reps, or experts, service quality, conversion, and training efficiency suffer. Helport strengthens customer communication with intelligent software and solutions.",
+          zh: "Helport 帮助客服、销售和支持团队把优秀员工经验放进实时通话、线索触达和 24/7 在线咨询里，让响应、转化和质检更可控。",
+          en: "Helport helps service, sales, and support teams place expert performance into live calls, lead outreach, and 24/7 online engagement so response, conversion, and QA are easier to control.",
         },
         tags: {
-          zh: ["AI Assist", "AI Assist + BPO", "HyprX"],
-          en: ["AI Assist", "AI Assist + BPO", "HyprX"],
+          zh: ["AI 客服", "销售辅助", "数字员工"],
+          en: ["AI service", "Sales assist", "Digital workers"],
         },
         bullets: {
           zh: [
-            "AI Assist：实时转写、通话指导、知识调用、总结和质检",
-            "AI Assist + BPO：把 AI 质检、脚本控制和人工外呼执行组合起来",
-            "HyprX：把专家知识复制成可 24/7 服务的数字员工",
-            "适合客服、销售外呼、远程支持和知识密集型服务团队",
+            "新人培训慢时，用实时指导和知识支持降低质量波动",
+            "线索跟进不足时，用标准化执行承接外呼、筛选和转接",
+            "专家时间有限时，把专业知识沉淀成 24/7 数字员工",
+            "适合客服、销售外呼、远程支持和知识密集型团队",
           ],
           en: [
-            "What it is: a partner product we can help bring into market conversations",
-            "What it solves: customer support, call-center, remote-service, and AI copilot needs",
-            "Who it fits: service teams, support teams, and businesses exploring AI assistance",
-            "How Si-Tech Intl fits: we can support introduction, deal motion, channel collaboration, and resale support",
+            "When onboarding is slow, live guidance and knowledge support reduce quality variance",
+            "When follow-up capacity is limited, standardized execution can support outreach, qualification, and transfer",
+            "When expert time is limited, expert knowledge can become a 24/7 digital worker",
+            "Fits service, outbound sales, remote support, and knowledge-heavy teams",
           ],
         },
         note: {
-          zh: "如需进一步评估，我们可以提供产品介绍、适用场景和合作模式资料。",
-          en: "If you need a deeper review, we can provide product, use-case, and collaboration-model materials.",
+          zh: "建议从一个具体场景开始评估，例如客服重复咨询、销售外呼、官网 AI Concierge 或专家知识复制。",
+          en: "Start from one concrete scenario: repeat support inquiries, outbound sales, website AI concierge, or expert knowledge replication.",
         },
-        cta: { zh: "查看详细介绍", en: "View detailed introduction" },
+        cta: { zh: "查看 Helport 详情", en: "View Helport details" },
         href: "/products/helport",
       },
       {

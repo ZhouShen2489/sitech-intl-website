@@ -20,8 +20,11 @@ export const metadata: Metadata = {
   description:
     "A bilingual partnership-focused corporate website for telecom, customer service, operations, and digital delivery opportunities.",
   icons: {
-    icon: withBasePath("/icon.png"),
-    shortcut: withBasePath("/icon.png"),
+    icon: [
+      { url: withBasePath("/favicon.ico"), sizes: "any" },
+      { url: withBasePath("/icon.png"), type: "image/png", sizes: "300x300" },
+    ],
+    shortcut: withBasePath("/favicon.ico"),
     apple: withBasePath("/icon.png"),
   },
 };
