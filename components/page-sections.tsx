@@ -34,7 +34,7 @@ export function PageHero({
               {badge}
             </p>
           ) : null}
-          <h1 className="mt-6 max-w-3xl font-serif text-4xl leading-tight md:text-5xl lg:text-6xl">
+          <h1 className="mt-6 max-w-3xl font-display text-4xl leading-tight md:text-5xl lg:text-6xl">
             {title}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-white/78 md:text-lg">{subtitle}</p>
@@ -74,7 +74,7 @@ export function SectionHeading({
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <div className={align === "center" ? "mx-auto mb-5 h-1 w-14 rounded-full bg-tide" : "mb-5 h-1 w-14 rounded-full bg-tide"} />
-      <h2 className="font-serif text-3xl leading-tight text-ink md:text-4xl">{title}</h2>
+      <h2 className="font-display text-3xl leading-tight text-ink md:text-4xl">{title}</h2>
       {text ? <p className="mt-4 text-base leading-8 text-slate-600">{text}</p> : null}
     </div>
   );
@@ -112,7 +112,7 @@ export function HelportSpotlight({ locale }: { locale: Locale }) {
             <p className="text-sm uppercase tracking-[0.22em] text-tide">
               {copy(locale, spotlight.eyebrow)}
             </p>
-            <h2 className="mt-4 max-w-3xl font-serif text-3xl leading-tight text-ink md:text-4xl">
+            <h2 className="mt-4 max-w-3xl font-display text-3xl leading-tight text-ink md:text-4xl">
               {copy(locale, spotlight.title)}
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600">
@@ -149,7 +149,7 @@ export function HelportSpotlight({ locale }: { locale: Locale }) {
           <div className="grid gap-4">
             {spotlight.highlights.map((item) => (
               <article key={item.title.en} className="interactive-card rounded-[2rem] border border-blue-100 bg-[#f7fbff] p-6">
-                <h3 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h3>
+                <h3 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h3>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </article>
             ))}
@@ -200,7 +200,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-tide">{copy(locale, companyIntro.eyebrow)}</p>
-              <h2 className="mt-4 font-serif text-3xl leading-tight text-ink md:text-4xl">
+              <h2 className="mt-4 font-display text-3xl leading-tight text-ink md:text-4xl">
                 {copy(locale, companyIntro.title)}
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-600">{copy(locale, companyIntro.text)}</p>
@@ -208,7 +208,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             <div className="grid gap-5 md:grid-cols-2">
               {companyIntro.stats.map((item) => (
                 <div key={item.value} className="interactive-card rounded-[2rem] border border-blue-100 bg-[#f7fbff] p-6">
-                  <p className="font-serif text-4xl text-ink">{item.value}</p>
+                  <p className="font-display text-4xl text-ink">{item.value}</p>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, item.label)}</p>
                 </div>
               ))}
@@ -218,7 +218,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {companyIntro.pillars.map((item) => (
               <article key={item.title.en} className="interactive-card surface-card rounded-[2rem] p-7">
-                <h3 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h3>
+                <h3 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h3>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </article>
             ))}
@@ -239,7 +239,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             <article className="brand-orbit grid gap-8 overflow-hidden rounded-[2.5rem] p-8 text-white shadow-card lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
               <div>
                 <p className="text-sm uppercase tracking-[0.22em] text-accent">{copy(locale, featuredSolution.eyebrow)}</p>
-                <h3 className="mt-4 max-w-3xl font-serif text-3xl leading-tight lg:text-4xl">
+                <h3 className="mt-4 max-w-3xl font-display text-3xl leading-tight lg:text-4xl">
                   {copy(locale, featuredSolution.title)}
                 </h3>
                 <p className="mt-5 max-w-2xl text-base leading-8 text-white/76">{copy(locale, featuredSolution.text)}</p>
@@ -309,7 +309,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                     />
                   </div>
                   <p className="text-sm uppercase tracking-[0.22em] text-tide">{copy(locale, solution.eyebrow)}</p>
-                  <h3 className="mt-4 font-serif text-2xl leading-tight text-ink">{copy(locale, solution.title)}</h3>
+                  <h3 className="mt-4 font-display text-2xl leading-tight text-ink">{copy(locale, solution.title)}</h3>
                   <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, solution.text)}</p>
                   <div className="mt-6">
                     <Link
@@ -334,7 +334,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           <div className="mt-12 grid gap-8 lg:grid-cols-3">
             {siteContent.solutionCategories.map((category) => (
               <article key={category.key} className="rounded-[2.25rem] border border-slate-200 bg-[#f8fafc] p-7">
-                <h3 className="font-serif text-2xl text-ink">{copy(locale, category.title)}</h3>
+                <h3 className="font-display text-2xl text-ink">{copy(locale, category.title)}</h3>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, category.text)}</p>
                 <div className="mt-6 space-y-3">
                   {siteContent.solutionsCatalog
@@ -376,7 +376,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                 </div>
                 <div className="p-7">
                   <p className="text-sm uppercase tracking-[0.18em] text-tide">{copy(locale, story.solution)}</p>
-                  <h3 className="mt-4 font-serif text-2xl text-ink">{copy(locale, story.title)}</h3>
+                  <h3 className="mt-4 font-display text-2xl text-ink">{copy(locale, story.title)}</h3>
                   <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, story.summary)}</p>
                 </div>
               </article>
@@ -427,7 +427,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           <div className="glass-panel overflow-hidden rounded-[2.5rem] p-8 lg:p-10">
             <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
               <div>
-                <h2 className="font-serif text-3xl leading-tight lg:text-4xl">{copy(locale, cta.title)}</h2>
+                <h2 className="font-display text-3xl leading-tight lg:text-4xl">{copy(locale, cta.title)}</h2>
                 <p className="mt-5 max-w-2xl text-base leading-8 text-white/72">{copy(locale, cta.text)}</p>
                 <div className="mt-8">
                   <Link

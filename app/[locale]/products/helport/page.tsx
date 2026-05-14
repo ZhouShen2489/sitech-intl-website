@@ -36,6 +36,10 @@ function ActionLink({
   );
 }
 
+function metricValue(locale: "zh" | "en", value: string | { zh: string; en: string }) {
+  return typeof value === "string" ? value : value[locale];
+}
+
 export default async function HelportProductPage({
   params,
 }: {
@@ -55,7 +59,7 @@ export default async function HelportProductPage({
   const productPreview =
     locale === "en"
       ? {
-          label: "Live conversation copilot",
+          label: "Live conversation assistant",
           transcriptLabel: "Transcript",
           actionLabel: "AI next best action",
           transcript: "Customer asks about eligibility, pricing, and next steps.",
@@ -81,7 +85,7 @@ export default async function HelportProductPage({
             <p className="inline-flex rounded-full border border-blue-100 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-tide shadow-sm">
               {copy(locale, detail.hero.badge)}
             </p>
-            <h1 className="mt-6 text-4xl font-bold leading-tight tracking-[-0.04em] text-ink md:text-5xl lg:text-6xl">
+            <h1 className="mt-6 font-display text-4xl font-bold leading-tight text-ink md:text-5xl lg:text-6xl">
               {copy(locale, detail.hero.title)}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
@@ -157,9 +161,9 @@ export default async function HelportProductPage({
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {detail.proofBar.map((item) => (
-              <div key={`${item.value}-${item.label.en}`} className="rounded-lg border border-blue-100 bg-[#f8fbff] p-5">
+              <div key={`${metricValue("en", item.value)}-${item.label.en}`} className="rounded-lg border border-blue-100 bg-[#f8fbff] p-5">
                 <div className="flex items-end gap-2">
-                  <p className="font-serif text-4xl leading-none text-ink">{item.value}</p>
+                  <p className="font-display text-4xl leading-none text-ink">{metricValue(locale, item.value)}</p>
                   <p className="pb-1 text-xs font-semibold uppercase tracking-[0.16em] text-tide">
                     {copy(locale, item.label)}
                   </p>
@@ -192,7 +196,7 @@ export default async function HelportProductPage({
                   </div>
                 </div>
                 <div className="p-6">
-                  <h2 className="text-xl font-bold tracking-[-0.02em] text-ink">{copy(locale, slot.title)}</h2>
+                  <h2 className="font-display text-xl font-bold text-ink">{copy(locale, slot.title)}</h2>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, slot.text)}</p>
                 </div>
               </article>
@@ -208,7 +212,7 @@ export default async function HelportProductPage({
             <div className="grid gap-4 md:grid-cols-2">
               {detail.problemItems.map((item) => (
                 <article key={item.title.en} className="interactive-card rounded-lg border border-blue-100 bg-white p-6 shadow-card">
-                  <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                  <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                   <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
                 </article>
               ))}
@@ -226,7 +230,7 @@ export default async function HelportProductPage({
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-tide">
                   {copy(locale, item.label)}
                 </p>
-                <h2 className="mt-4 font-serif text-3xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="mt-4 font-display text-3xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.summary)}</p>
 
                 <div className="mt-6 space-y-3">
@@ -260,12 +264,12 @@ export default async function HelportProductPage({
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-tide">
                   {copy(locale, item.eyebrow)}
                 </p>
-                <h2 className="mt-4 font-serif text-2xl leading-tight text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="mt-4 font-display text-2xl leading-tight text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
                 <div className="mt-7 grid gap-3">
                   {item.metrics.map((metric) => (
-                    <div key={`${item.title.en}-${metric.value}`} className="flex items-center justify-between gap-4 border-t border-slate-200 pt-4">
-                      <p className="font-serif text-3xl text-ink">{metric.value}</p>
+                    <div key={`${item.title.en}-${metricValue("en", metric.value)}`} className="flex items-center justify-between gap-4 border-t border-slate-200 pt-4">
+                      <p className="font-display text-3xl text-ink">{metricValue(locale, metric.value)}</p>
                       <p className="max-w-[11rem] text-right text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
                         {copy(locale, metric.label)}
                       </p>
@@ -284,7 +288,7 @@ export default async function HelportProductPage({
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {detail.advantages.map((item) => (
               <article key={item.title.en} className="interactive-card surface-card rounded-lg p-7">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </article>
             ))}
@@ -298,7 +302,7 @@ export default async function HelportProductPage({
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {detail.fitItems.map((item) => (
               <article key={item.title.en} className="rounded-lg border border-slate-200 bg-[#f7f9fb] p-6 shadow-card">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </article>
             ))}
@@ -312,7 +316,7 @@ export default async function HelportProductPage({
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {detail.motionItems.map((item) => (
               <article key={item.title.en} className="interactive-card surface-card rounded-lg p-7">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </article>
             ))}
@@ -323,7 +327,7 @@ export default async function HelportProductPage({
       <section className="brand-orbit py-20 text-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div>
-            <p className="max-w-3xl font-serif text-3xl">{copy(locale, detail.cta.title)}</p>
+            <p className="max-w-3xl font-display text-3xl">{copy(locale, detail.cta.title)}</p>
           </div>
           <div className="flex flex-wrap gap-4">
             <Link

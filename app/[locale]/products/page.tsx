@@ -46,7 +46,7 @@ export default async function ProductsPage({
                 className="interactive-card surface-card rounded-[2rem] p-6"
               >
                 <p className="text-[11px] uppercase tracking-[0.26em] text-tide">
-                  {locale === "en" ? "Browse lens" : "浏览维度"}
+                  {locale === "en" ? "Find by need" : "按需求定位"}
                 </p>
                 <h2 className="mt-3 text-xl font-semibold text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
@@ -60,7 +60,7 @@ export default async function ProductsPage({
                 <p className="text-[11px] uppercase tracking-[0.28em] text-accent/80">
                   {copy(locale, spotlight.eyebrow)}
                 </p>
-                <h2 className="mt-4 font-serif text-4xl">{copy(locale, spotlight.title)}</h2>
+                <h2 className="mt-4 font-display text-4xl">{copy(locale, spotlight.title)}</h2>
                 <p className="mt-4 max-w-2xl text-base leading-8 text-white/76">{copy(locale, spotlight.text)}</p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   {copyList(locale, spotlight.tags).map((tag) => (
@@ -81,7 +81,7 @@ export default async function ProductsPage({
                 <div className="mt-4 space-y-4">
                   {spotlight.highlights.map((item) => (
                     <div key={item.title.en}>
-                      <h3 className="font-serif text-xl text-white">{copy(locale, item.title)}</h3>
+                      <h3 className="font-display text-xl text-white">{copy(locale, item.title)}</h3>
                       <p className="mt-1 text-sm leading-7 text-white/72">{copy(locale, item.text)}</p>
                     </div>
                   ))}
@@ -134,7 +134,7 @@ export default async function ProductsPage({
                   </div>
                 </div>
 
-                <h2 className="mt-6 font-serif text-3xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="mt-6 font-display text-3xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-base leading-8 text-slate-600">{copy(locale, item.subtitle)}</p>
 
                 <div className="mt-6 flex flex-wrap gap-2">
@@ -205,7 +205,7 @@ export default async function ProductsPage({
                   </div>
                 </div>
 
-                <h2 className="mt-6 font-serif text-3xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="mt-6 font-display text-3xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-base leading-8 text-slate-600">{copy(locale, item.subtitle)}</p>
 
                 <div className="mt-6 flex flex-wrap gap-2">
@@ -242,7 +242,7 @@ export default async function ProductsPage({
 
       <section className="brand-orbit py-20 text-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <p className="max-w-2xl font-serif text-3xl">{copy(locale, page.cta.title)}</p>
+          <p className="max-w-2xl font-display text-3xl">{copy(locale, page.cta.title)}</p>
           <Link
             href={withLocale(locale, "/contact")}
             className="button-glow inline-flex rounded-full bg-signal px-6 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"

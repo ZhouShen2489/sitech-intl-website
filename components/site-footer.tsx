@@ -23,10 +23,10 @@ export function SiteFooter({ locale }: SiteFooterProps) {
                 alt="Si-Tech logo"
                 width={32}
                 height={32}
-                className="h-8 w-8 object-contain"
+                className="object-contain"
               />
             </div>
-            <p className="font-serif text-2xl text-ink">{siteContent.brand.name}</p>
+            <p className="font-display text-2xl text-ink">{siteContent.brand.name}</p>
           </div>
           <p className="max-w-xl text-sm leading-7 text-slate-700">
             {copy(locale, siteContent.brand.summary)}

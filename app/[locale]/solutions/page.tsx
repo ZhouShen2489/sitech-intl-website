@@ -52,7 +52,7 @@ export default async function SolutionsPage({
                 </div>
                 <div className="flex flex-col justify-center">
                   <p className="text-sm uppercase tracking-[0.22em] text-tide">{copy(locale, solution.eyebrow)}</p>
-                  <h2 className="mt-4 font-serif text-3xl leading-tight text-ink">{copy(locale, solution.title)}</h2>
+                  <h2 className="mt-4 font-display text-3xl leading-tight text-ink">{copy(locale, solution.title)}</h2>
                   <p className="mt-4 text-base leading-8 text-slate-600">{copy(locale, solution.text)}</p>
                   <ul className="mt-6 space-y-3">
                     {solution.bullets[locale].map((bullet) => (
@@ -89,7 +89,7 @@ export default async function SolutionsPage({
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {siteContent.solutionCategories.map((category) => (
               <article key={category.key} className="rounded-[2rem] bg-white p-7 shadow-card">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, category.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, category.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, category.text)}</p>
                 <div className="mt-6 space-y-3">
                   {siteContent.solutionsCatalog
@@ -121,7 +121,7 @@ export default async function SolutionsPage({
 
       <section className="bg-ink py-20 text-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <p className="max-w-2xl font-serif text-3xl">{copy(locale, page.cta.title)}</p>
+          <p className="max-w-2xl font-display text-3xl">{copy(locale, page.cta.title)}</p>
           <Link
             href={withLocale(locale, "/contact")}
             className="inline-flex rounded-full bg-signal px-6 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"

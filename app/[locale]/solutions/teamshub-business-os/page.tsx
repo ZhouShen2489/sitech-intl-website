@@ -18,7 +18,7 @@ export default async function TeamshubBusinessOsPage({
   }
 
   const detail = siteContent.solutionDetails.teamshub;
-  const mockup =
+  const preview =
     locale === "en"
       ? {
           project: "ABC Client Compliance Review",
@@ -32,10 +32,10 @@ export default async function TeamshubBusinessOsPage({
       : {
           project: "ABC 客户合规审查项目",
           stage: "阶段：材料审查",
-          circles: ["内部讨论圈", "客户沟通圈", "证据材料圈"],
+          circles: ["团队讨论圈", "客户沟通圈", "证据材料圈"],
           posts: ["客户需求总结", "风险问题清单", "本周复盘"],
           aiTitle: "AI 项目摘要",
-          aiText: "客户要求更新检查清单。当前有 2 个材料任务未完成，周五需要跟进。",
+          aiText: "客户要求更新检查清单。仍有 2 个材料任务待完成，周五需要跟进。",
           task: "5 个待办",
         };
 
@@ -49,7 +49,7 @@ export default async function TeamshubBusinessOsPage({
             <p className="inline-flex rounded-full border border-blue-100 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-tide shadow-sm">
               {locale === "en" ? "Product / Project knowledge workspace" : "产品 / 项目级知识沉淀"}
             </p>
-            <h1 className="mt-6 text-4xl font-bold leading-tight tracking-[-0.04em] text-ink md:text-5xl lg:text-6xl">
+            <h1 className="mt-6 font-display text-4xl font-bold leading-tight text-ink md:text-5xl lg:text-6xl">
               {copy(locale, detail.title)}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
@@ -76,10 +76,10 @@ export default async function TeamshubBusinessOsPage({
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-tide">Project View</p>
-                  <h2 className="mt-2 text-xl font-bold tracking-[-0.02em] text-ink">{mockup.project}</h2>
+                  <h2 className="mt-2 font-display text-xl font-bold text-ink">{preview.project}</h2>
                 </div>
                 <span className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-tide shadow-sm">
-                  {mockup.stage}
+                  {preview.stage}
                 </span>
               </div>
 
@@ -87,7 +87,7 @@ export default async function TeamshubBusinessOsPage({
                 <div className="rounded-2xl bg-white p-4 shadow-sm">
                   <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Circles</p>
                   <div className="mt-3 space-y-2">
-                    {mockup.circles.map((item) => (
+                    {preview.circles.map((item) => (
                       <div key={item} className="rounded-xl bg-[#eef6ff] px-3 py-2 text-sm font-semibold text-ink">
                         {item}
                       </div>
@@ -98,7 +98,7 @@ export default async function TeamshubBusinessOsPage({
                 <div className="rounded-2xl bg-white p-4 shadow-sm">
                   <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Post Catalog</p>
                   <div className="mt-3 space-y-2">
-                    {mockup.posts.map((item) => (
+                    {preview.posts.map((item) => (
                       <div key={item} className="border-l-2 border-tide bg-[#f8fbff] px-3 py-2 text-sm text-slate-700">
                         {item}
                       </div>
@@ -107,9 +107,9 @@ export default async function TeamshubBusinessOsPage({
                 </div>
 
                 <div className="rounded-2xl bg-[#fff5e5] p-4 shadow-sm">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">{mockup.aiTitle}</p>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">{mockup.aiText}</p>
-                  <div className="mt-4 rounded-xl bg-white px-3 py-2 text-sm font-bold text-ink">{mockup.task}</div>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">{preview.aiTitle}</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">{preview.aiText}</p>
+                  <div className="mt-4 rounded-xl bg-white px-3 py-2 text-sm font-bold text-ink">{preview.task}</div>
                 </div>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default async function TeamshubBusinessOsPage({
             {detail.proofBar.map((item) => (
               <div key={item.value} className="rounded-lg border border-blue-100 bg-[#f8fbff] p-5">
                 <div className="flex items-end gap-2">
-                  <p className="font-serif text-3xl leading-none text-ink">{item.value}</p>
+                  <p className="font-display text-3xl leading-none text-ink">{item.value}</p>
                   <p className="pb-1 text-xs font-semibold uppercase tracking-[0.16em] text-tide">
                     {copy(locale, item.label)}
                   </p>
@@ -142,7 +142,7 @@ export default async function TeamshubBusinessOsPage({
             <div className="grid gap-4 md:grid-cols-2">
               {detail.problemItems.map((item) => (
                 <article key={item.title.en} className="interactive-card rounded-lg border border-blue-100 bg-[#f8fbff] p-6 shadow-card">
-                  <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                  <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                   <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
                 </article>
               ))}
@@ -157,7 +157,7 @@ export default async function TeamshubBusinessOsPage({
           <div className="mt-10 grid gap-4 md:grid-cols-5">
             {detail.mechanismItems.map((item) => (
               <article key={item.title.en} className="rounded-lg border border-blue-100 bg-white p-5 shadow-card">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </article>
             ))}
@@ -203,7 +203,7 @@ export default async function TeamshubBusinessOsPage({
                   </div>
                 </div>
                 <div className="p-6">
-                  <h2 className="text-xl font-bold tracking-[-0.02em] text-ink">{copy(locale, slot.title)}</h2>
+                  <h2 className="font-display text-xl font-bold text-ink">{copy(locale, slot.title)}</h2>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, slot.text)}</p>
                 </div>
               </article>
@@ -218,7 +218,7 @@ export default async function TeamshubBusinessOsPage({
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {detail.useCases.map((item) => (
               <article key={item.title.en} className="interactive-card rounded-lg border border-slate-200 bg-[#f7f9fb] p-6 shadow-card">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </article>
             ))}
@@ -232,7 +232,7 @@ export default async function TeamshubBusinessOsPage({
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {detail.mvpStages.map((stage) => (
               <article key={stage.title.en} className="rounded-lg border border-blue-100 bg-white p-6 shadow-card">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, stage.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, stage.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, stage.text)}</p>
               </article>
             ))}
@@ -243,7 +243,7 @@ export default async function TeamshubBusinessOsPage({
       <section className="bg-white py-20 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-8">
           <div>
-            <SectionHeading title={copy(locale, detail.demoTitle)} text={copy(locale, detail.demoText)} />
+            <SectionHeading title={copy(locale, detail.exampleTitle)} text={copy(locale, detail.exampleText)} />
             <div className="mt-8">
               <Link
                 href={withLocale(locale, "/contact")}
@@ -270,7 +270,7 @@ export default async function TeamshubBusinessOsPage({
 
       <section className="brand-orbit py-20 text-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <p className="max-w-3xl font-serif text-3xl">{copy(locale, detail.cta.title)}</p>
+          <p className="max-w-3xl font-display text-3xl">{copy(locale, detail.cta.title)}</p>
           <Link
             href={withLocale(locale, "/contact")}
             className="button-glow inline-flex rounded-full bg-signal px-6 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"
