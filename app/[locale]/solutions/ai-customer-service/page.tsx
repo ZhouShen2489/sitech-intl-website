@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageHero, SectionHeading } from "@/components/page-sections";
-import { siteContent, copy } from "@/content/siteContent";
+import { siteContent, copy } from "@/content/site-content";
 import { isLocale, withLocale } from "@/lib/site";
 
 export default async function AiCustomerServicePage({

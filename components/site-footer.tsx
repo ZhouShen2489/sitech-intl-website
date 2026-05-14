@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { siteContent, copy, copyList } from "@/content/siteContent";
+import { siteContent, copy, copyList } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 import { withBasePath, withLocale } from "@/lib/site";
 

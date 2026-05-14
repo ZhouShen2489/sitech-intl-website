@@ -1,7 +1,7 @@
 # 思特奇手册结构化内容稿
 
 > 用途：把扫描版 PDF 手册内容整理成官网可直接复用的素材。  
-> 来源：`content/pdf-ocr/sitech-manual-ocr.md`  
+> 来源：`docs/reference/pdf-ocr/sitech-manual-ocr.md`  
 > 说明：以下内容优先服务 `Home`、`Solutions`、`Partnership`、`Stories`、`About`、`Products / Marketplace`。  
 > 页码说明：括号中的页码来自 OCR 原始稿中的 PDF 页码。
 

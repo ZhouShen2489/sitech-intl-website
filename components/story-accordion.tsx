@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 
-import { siteContent, copy, copyList, visibleItems } from "@/content/siteContent";
+import { siteContent, copy, copyList, visibleItems } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 import { withBasePath, withLocale } from "@/lib/site";
 

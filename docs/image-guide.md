@@ -65,8 +65,8 @@ image: "/images/curated/customer-support-agents-office.jpg"
 
 改这里：
 
-- `content/siteContent.ts`
-- `content/productsContent.ts`
+- `content/site-content.ts`
+- `content/products-content.ts`
 
 字段通常叫：
 
@@ -89,7 +89,7 @@ image: "/images/hero/ai-operations.webp"
 
 改这里：
 
-- `content/siteContent.ts`
+- `content/site-content.ts`
 - `solutionsCatalog[].image`
 
 建议图片：
@@ -104,7 +104,7 @@ image: "/images/hero/ai-operations.webp"
 
 改这里：
 
-- `content/siteContent.ts`
+- `content/site-content.ts`
 - `marketplacePage.ownItems[].image`
 - `marketplacePage.partnerItems[].image`
 
@@ -119,7 +119,7 @@ image: "/images/hero/ai-operations.webp"
 
 改这里：
 
-- `content/siteContent.ts`
+- `content/site-content.ts`
 - `storiesPage.items[].image`
 
 建议每个案例都放一张真实相关图。没有真实图时，先用业务场景图，不要用过于抽象的纯背景。
@@ -128,7 +128,7 @@ image: "/images/hero/ai-operations.webp"
 
 改这里：
 
-- `content/siteContent.ts`
+- `content/site-content.ts`
 - `solutionDetails.teamshub.sections[].image`
 - `solutionDetails.teamshub.roadmapImage`
 

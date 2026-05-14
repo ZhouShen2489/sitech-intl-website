@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-import { siteContent, copy, visibleItems } from "@/content/siteContent";
+import { siteContent, copy, visibleItems } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 import { switchLocaleInPath, withBasePath, withLocale } from "@/lib/site";
 

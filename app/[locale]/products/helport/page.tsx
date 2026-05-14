@@ -3,8 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { SectionHeading } from "@/components/page-sections";
-import { productsContent } from "@/content/productsContent";
-import { copy } from "@/content/siteContent";
+import { productsContent } from "@/content/products-content";
+import { copy } from "@/content/site-content";
 import { isLocale, withBasePath, withLocale } from "@/lib/site";
 
 function ActionLink({

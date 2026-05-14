@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { productsContent } from "@/content/productsContent";
-import { siteContent, copy, copyList, isVisible, visibleItems } from "@/content/siteContent";
+import { productsContent } from "@/content/products-content";
+import { siteContent, copy, copyList, isVisible, visibleItems } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 import { withBasePath, withLocale } from "@/lib/site";
 

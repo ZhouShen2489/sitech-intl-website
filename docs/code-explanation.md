@@ -38,10 +38,10 @@
 - `lib/`
 - `public/`
 - `README.md`
-- `PRD.md`
-- `TASKS.md`
-- `STYLEGUIDE.md`
-- `CODE_EXPLANATION.md`
+- `docs/prd.md`
+- `docs/tasks.md`
+- `docs/styleguide.md`
+- `docs/code-explanation.md`
 
 可以先这样理解：
 
@@ -73,17 +73,17 @@
 
 对应的重要文件有：
 
-- [app/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/page.tsx)
-- [app/[locale]/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/page.tsx)
-- [app/[locale]/solutions/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/solutions/page.tsx)
-- [app/[locale]/solutions/telecom-operations/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/solutions/telecom-operations/page.tsx)
-- [app/[locale]/solutions/teamshub-business-os/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/solutions/teamshub-business-os/page.tsx)
-- [app/[locale]/partnership/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/partnership/page.tsx)
-- [app/[locale]/stories/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/stories/page.tsx)
-- [app/[locale]/about/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/about/page.tsx)
-- [app/[locale]/contact/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/contact/page.tsx)
-- [app/[locale]/privacy/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/privacy/page.tsx)
-- [app/[locale]/thank-you/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/thank-you/page.tsx)
+- [app/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/page.tsx)
+- [app/[locale]/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/page.tsx)
+- [app/[locale]/solutions/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/solutions/page.tsx)
+- [app/[locale]/solutions/telecom-operations/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/solutions/telecom-operations/page.tsx)
+- [app/[locale]/solutions/teamshub-business-os/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/solutions/teamshub-business-os/page.tsx)
+- [app/[locale]/partnership/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/partnership/page.tsx)
+- [app/[locale]/stories/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/stories/page.tsx)
+- [app/[locale]/about/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/about/page.tsx)
+- [app/[locale]/contact/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/contact/page.tsx)
+- [app/[locale]/privacy/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/privacy/page.tsx)
+- [app/[locale]/thank-you/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/thank-you/page.tsx)
 
 ### 2. `[locale]` 是中英文切换
 
@@ -101,8 +101,8 @@
 
 语言切换相关的基础逻辑在：
 
-- [app/[locale]/layout.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/layout.tsx)
-- [lib/site.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/lib/site.ts)
+- [app/[locale]/layout.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/layout.tsx)
+- [lib/site.ts](/Users/zhoushen/Documents/sitech-intl-website/lib/site.ts)
 
 你可以把它理解成：
 
@@ -126,11 +126,11 @@
 
 重要文件：
 
-- [components/site-header.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/site-header.tsx)
-- [components/site-footer.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/site-footer.tsx)
-- [components/page-sections.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/page-sections.tsx)
-- [components/contact-form.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/contact-form.tsx)
-- [components/story-accordion.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/story-accordion.tsx)
+- [components/site-header.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/site-header.tsx)
+- [components/site-footer.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/site-footer.tsx)
+- [components/page-sections.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/page-sections.tsx)
+- [components/contact-form.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/contact-form.tsx)
+- [components/story-accordion.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/story-accordion.tsx)
 
 ### 2. 各模块作用
 
@@ -205,13 +205,13 @@
 
 ## 四、文案都放在哪里
 
-### `content/siteContent.ts`
+### `content/site-content.ts`
 
 这是整个网站最重要的“内容总表”。
 
 文件位置：
 
-- [content/siteContent.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/content/siteContent.ts)
+- [content/site-content.ts](/Users/zhoushen/Documents/sitech-intl-website/content/site-content.ts)
 
 你可以把它理解成：
 
@@ -260,18 +260,18 @@
 
 你放进来的 logo 现在已经接入网站，文件在：
 
-- [public/brand/logo-symbol.png](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/public/brand/logo-symbol.png)
+- [public/brand/logo-symbol.png](/Users/zhoushen/Documents/sitech-intl-website/public/brand/logo-symbol.png)
 
 浏览器标签图标也同步成了：
 
-- [app/icon.png](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/icon.png)
+- [app/icon.png](/Users/zhoushen/Documents/sitech-intl-website/app/icon.png)
 
 ### 3. 如果以后想换图片
 
 最常见做法：
 
 1. 先把新图放进 `public/images/...`
-2. 再去 [content/siteContent.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/content/siteContent.ts) 或某个页面文件改图片路径
+2. 再去 [content/site-content.ts](/Users/zhoushen/Documents/sitech-intl-website/content/site-content.ts) 或某个页面文件改图片路径
 
 例如当前很多图片路径长这样：
 
@@ -300,7 +300,7 @@
 
 文件：
 
-- [components/contact-form.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/contact-form.tsx)
+- [components/contact-form.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/contact-form.tsx)
 
 这个文件负责：
 
@@ -312,7 +312,7 @@
 
 文件：
 
-- [app/api/contact/route.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/api/contact/route.ts)
+- [app/api/contact/route.ts](/Users/zhoushen/Documents/sitech-intl-website/app/api/contact/route.ts)
 
 这是整条线索逻辑的核心入口。
 
@@ -329,7 +329,7 @@
 
 文件：
 
-- [lib/hubspot.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/lib/hubspot.ts)
+- [lib/hubspot.ts](/Users/zhoushen/Documents/sitech-intl-website/lib/hubspot.ts)
 
 这个文件负责：
 
@@ -346,7 +346,7 @@
 
 文件：
 
-- [lib/mailer.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/lib/mailer.ts)
+- [lib/mailer.ts](/Users/zhoushen/Documents/sitech-intl-website/lib/mailer.ts)
 
 这个文件负责：
 
@@ -363,7 +363,7 @@
 
 文件：
 
-- [lib/validation.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/lib/validation.ts)
+- [lib/validation.ts](/Users/zhoushen/Documents/sitech-intl-website/lib/validation.ts)
 
 这个文件负责：
 
@@ -387,7 +387,7 @@
 
 具体说明已经写在：
 
-- [README.md](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/README.md#L56)
+- [README.md](/Users/zhoushen/Documents/sitech-intl-website/README.md#L56)
 
 目前主要分两类：
 
@@ -420,7 +420,7 @@
 
 文件：
 
-- [README.md](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/README.md)
+- [README.md](/Users/zhoushen/Documents/sitech-intl-website/README.md)
 
 它主要讲：
 
@@ -430,11 +430,11 @@
 - 表单线索怎么走
 - 环境变量需要哪些
 
-### `PRD.md`
+### `docs/prd.md`
 
 文件：
 
-- [PRD.md](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/PRD.md)
+- [docs/prd.md](/Users/zhoushen/Documents/sitech-intl-website/docs/prd.md)
 
 它主要讲：
 
@@ -443,11 +443,11 @@
 - 结构
 - 文案要求
 
-### `TASKS.md`
+### `docs/tasks.md`
 
 文件：
 
-- [TASKS.md](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/TASKS.md)
+- [docs/tasks.md](/Users/zhoushen/Documents/sitech-intl-website/docs/tasks.md)
 
 它主要讲：
 
@@ -455,11 +455,11 @@
 - 还在进行中什么
 - 下一步推荐做什么
 
-### `STYLEGUIDE.md`
+### `docs/styleguide.md`
 
 文件：
 
-- [STYLEGUIDE.md](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/STYLEGUIDE.md)
+- [docs/styleguide.md](/Users/zhoushen/Documents/sitech-intl-website/docs/styleguide.md)
 
 它主要讲：
 
@@ -467,7 +467,7 @@
 - 避免什么表达
 - 视觉应该遵循什么风格
 
-### `CODE_EXPLANATION.md`
+### `docs/code-explanation.md`
 
 也就是你现在看到的这个文件。
 
@@ -483,50 +483,50 @@
 
 先看：
 
-- [content/siteContent.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/content/siteContent.ts)
+- [content/site-content.ts](/Users/zhoushen/Documents/sitech-intl-website/content/site-content.ts)
 
 ### 2. 改 logo
 
 先看：
 
-- [public/brand/logo-symbol.png](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/public/brand/logo-symbol.png)
-- [app/icon.png](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/icon.png)
+- [public/brand/logo-symbol.png](/Users/zhoushen/Documents/sitech-intl-website/public/brand/logo-symbol.png)
+- [app/icon.png](/Users/zhoushen/Documents/sitech-intl-website/app/icon.png)
 
 ### 3. 改顶部导航
 
 先看：
 
-- [components/site-header.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/site-header.tsx)
+- [components/site-header.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/site-header.tsx)
 
 ### 4. 改页脚联系方式
 
 先看：
 
-- [content/siteContent.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/content/siteContent.ts)
-- [components/site-footer.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/site-footer.tsx)
+- [content/site-content.ts](/Users/zhoushen/Documents/sitech-intl-website/content/site-content.ts)
+- [components/site-footer.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/site-footer.tsx)
 
 ### 5. 改联系表单字段
 
 需要同时看：
 
-- [components/contact-form.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/contact-form.tsx)
-- [lib/validation.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/lib/validation.ts)
-- [app/api/contact/route.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/api/contact/route.ts)
+- [components/contact-form.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/contact-form.tsx)
+- [lib/validation.ts](/Users/zhoushen/Documents/sitech-intl-website/lib/validation.ts)
+- [app/api/contact/route.ts](/Users/zhoushen/Documents/sitech-intl-website/app/api/contact/route.ts)
 
 ### 6. 改 HubSpot 或 Gmail 接入
 
 先看：
 
-- [lib/hubspot.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/lib/hubspot.ts)
-- [lib/mailer.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/lib/mailer.ts)
+- [lib/hubspot.ts](/Users/zhoushen/Documents/sitech-intl-website/lib/hubspot.ts)
+- [lib/mailer.ts](/Users/zhoushen/Documents/sitech-intl-website/lib/mailer.ts)
 
 ### 7. 改某个页面布局
 
 看对应的 page 文件：
 
-- `Home` 看 [app/[locale]/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/page.tsx) 和 [components/page-sections.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/page-sections.tsx)
-- `Solutions` 看 [app/[locale]/solutions/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/solutions/page.tsx)
-- `Stories` 看 [app/[locale]/stories/page.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/[locale]/stories/page.tsx) 和 [components/story-accordion.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/story-accordion.tsx)
+- `Home` 看 [app/[locale]/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/page.tsx) 和 [components/page-sections.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/page-sections.tsx)
+- `Solutions` 看 [app/[locale]/solutions/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/solutions/page.tsx)
+- `Stories` 看 [app/[locale]/stories/page.tsx](/Users/zhoushen/Documents/sitech-intl-website/app/[locale]/stories/page.tsx) 和 [components/story-accordion.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/story-accordion.tsx)
 
 ---
 
@@ -534,7 +534,7 @@
 
 你可以这么理解：
 
-- `content/siteContent.ts`
+- `content/site-content.ts`
   角色：文案总控和品牌信息表
 
 - `components/`
@@ -579,13 +579,13 @@
 
 如果你不想记太多，只记这三个最重要的：
 
-1. [content/siteContent.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/content/siteContent.ts)
+1. [content/site-content.ts](/Users/zhoushen/Documents/sitech-intl-website/content/site-content.ts)
    这里改大多数文案和品牌内容
 
-2. [components/contact-form.tsx](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/components/contact-form.tsx)
+2. [components/contact-form.tsx](/Users/zhoushen/Documents/sitech-intl-website/components/contact-form.tsx)
    这里看表单长什么样
 
-3. [app/api/contact/route.ts](/Users/zhoushen/Documents/SI-TECH-Marketing/sitech-intl-website-v2/app/api/contact/route.ts)
+3. [app/api/contact/route.ts](/Users/zhoushen/Documents/sitech-intl-website/app/api/contact/route.ts)
    这里看线索提交后去了哪里
 
 ---

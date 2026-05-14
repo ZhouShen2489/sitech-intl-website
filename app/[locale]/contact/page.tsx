@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-sections";
-import { siteContent, copy } from "@/content/siteContent";
+import { siteContent, copy } from "@/content/site-content";
 import { isLocale } from "@/lib/site";
 
 export default async function ContactPage({

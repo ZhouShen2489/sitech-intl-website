@@ -6,7 +6,6 @@ const root = process.cwd();
 const imageRoots = [
   "public",
   "app/icon.png",
-  "SI-TECH LOGO.png",
 ];
 
 const imageExtensions = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"]);

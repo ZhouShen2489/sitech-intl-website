@@ -57,9 +57,9 @@
 相关文件：
 
 - 原始 OCR 中间稿：
-  `content/pdf-ocr/sitech-manual-ocr.md`
+  `docs/reference/pdf-ocr/sitech-manual-ocr.md`
 - 结构化内容稿：
-  `content/pdf-ocr/sitech-manual-structured.md`
+  `docs/reference/pdf-ocr/sitech-manual-structured.md`
 
 你后面如果要补首页、About、Solutions、Partnership，可以优先从这两个文件里找内容。
 
@@ -77,7 +77,7 @@
 替换图片时，最稳的方式是：
 
 1. 新图片放进对应文件夹
-2. 在 `content/siteContent.ts` 或 `content/productsContent.ts` 里把图片路径改成新文件名
+2. 在 `content/site-content.ts` 或 `content/products-content.ts` 里把图片路径改成新文件名
 3. 本地跑 `npm run dev` 看页面
 
 现在 `npm run dev` 会先自动跑一次图片尺寸检查。
@@ -91,7 +91,7 @@ npm run check:images
 
 更完整的图片位置和尺寸说明，看：
 
-- `IMAGE_GUIDE.md`
+- `docs/image-guide.md`
 
 ## 5. 网站怎么发布
 
@@ -105,10 +105,6 @@ npm run check:images
 
 3. Production  
    最后才更新正式站
-
-当前代码分支：
-
-- `codex/preBuild`
 
 后面更推荐的工作方式是：
 
@@ -225,12 +221,12 @@ npm run check:images
 
 ## 9. 你后面只需要记住的几个文件
 
-- `BEGINNER_GUIDE.md`
-- `IMAGE_GUIDE.md`
-- `PRD.md`
-- `TASKS.md`
-- `content/pdf-ocr/sitech-manual-structured.md`
+- `docs/beginner-guide.md`
+- `docs/image-guide.md`
+- `docs/prd.md`
+- `docs/tasks.md`
+- `docs/reference/pdf-ocr/sitech-manual-structured.md`
 
-如果你想看全局方向，看 `PRD.md`。  
-如果你想看当前在做什么，看 `TASKS.md`。  
-如果你想找 PDF 提炼出来的内容，看 `content/pdf-ocr/sitech-manual-structured.md`。
+如果你想看全局方向，看 `docs/prd.md`。  
+如果你想看当前在做什么，看 `docs/tasks.md`。  
+如果你想找 PDF 提炼出来的内容，看 `docs/reference/pdf-ocr/sitech-manual-structured.md`。

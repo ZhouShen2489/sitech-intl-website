@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageHero, SectionHeading } from "@/components/page-sections";
-import { siteContent, copy, visibleItems } from "@/content/siteContent";
+import { siteContent, copy, visibleItems } from "@/content/site-content";
 import { isLocale, withBasePath, withLocale } from "@/lib/site";
 
 const groupImages = [
