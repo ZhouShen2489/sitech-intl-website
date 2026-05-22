@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageHero, SectionHeading } from "@/components/page-sections";
-import { productsContent } from "@/content/products-content";
 import { copy, copyList, siteContent, visibleItems } from "@/content/site-content";
 import { isLocale, withBasePath, withLocale } from "@/lib/site";
 
@@ -19,10 +18,17 @@ export default async function ProductsPage({
   }
 
   const page = siteContent.marketplacePage;
-  const spotlight = productsContent.homeSpotlight;
   const ownItems = visibleItems(page.ownItems);
   const partnerItems = visibleItems(page.partnerItems);
-  const filterAnchors = ["#owned-products", "#partner-products", "#product-fit"];
+  const filterCards: { item: (typeof page.filters)[number]; href: string }[] = [
+    { item: page.filters[0], href: "#owned-products" },
+  ];
+
+  if (partnerItems.length > 0) {
+    filterCards.push({ item: page.filters[1], href: "#partner-products" });
+  }
+
+  filterCards.push({ item: page.filters[2], href: "#owned-products" });
 
   return (
     <>
@@ -39,10 +45,10 @@ export default async function ProductsPage({
           <SectionHeading title={copy(locale, page.introTitle)} text={copy(locale, page.introText)} />
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {page.filters.map((item, index) => (
+            {filterCards.map(({ item, href }) => (
               <Link
                 key={item.title.en}
-                href={filterAnchors[index] ?? "#product-fit"}
+                href={href}
                 className="interactive-card surface-card rounded-[2rem] p-6"
               >
                 <p className="text-[11px] uppercase tracking-[0.26em] text-tide">
@@ -52,48 +58,6 @@ export default async function ProductsPage({
                 <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </Link>
             ))}
-          </div>
-
-          <div id="product-fit" className="brand-orbit mt-16 rounded-[2.5rem] p-8 text-white shadow-card lg:p-10">
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-              <div className="max-w-3xl">
-                <p className="text-[11px] uppercase tracking-[0.28em] text-accent/80">
-                  {copy(locale, spotlight.eyebrow)}
-                </p>
-                <h2 className="mt-4 font-display text-4xl">{copy(locale, spotlight.title)}</h2>
-                <p className="mt-4 max-w-2xl text-base leading-8 text-white/76">{copy(locale, spotlight.text)}</p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  {copyList(locale, spotlight.tags).map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/15 bg-white/8 px-4 py-2 text-xs uppercase tracking-[0.18em] text-white/82"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="min-w-[220px] rounded-[2rem] border border-white/10 bg-white/6 p-5">
-                <p className="text-[11px] uppercase tracking-[0.24em] text-accent/80">
-                  {copy(locale, page.featuredTitle)}
-                </p>
-                <div className="mt-4 space-y-4">
-                  {spotlight.highlights.map((item) => (
-                    <div key={item.title.en}>
-                      <h3 className="font-display text-xl text-white">{copy(locale, item.title)}</h3>
-                      <p className="mt-1 text-sm leading-7 text-white/72">{copy(locale, item.text)}</p>
-                    </div>
-                  ))}
-                </div>
-                <Link
-                  href={withLocale(locale, spotlight.detailHref)}
-                  className="mt-6 inline-flex rounded-full bg-signal px-5 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"
-                >
-                  {copy(locale, spotlight.primaryCta)}
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -169,76 +133,78 @@ export default async function ProductsPage({
         </div>
       </section>
 
-      <section id="partner-products" className="bg-white py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading title={copy(locale, page.partnerTitle)} text={copy(locale, page.partnerText)} />
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {partnerItems.map((item) => (
-              <article
-                key={item.title.en}
-                className="interactive-card group flex h-full flex-col rounded-[2.25rem] border border-blue-100 bg-[#f7fbff] p-7 shadow-card"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="relative h-28 w-full overflow-hidden rounded-[1.5rem] bg-white md:h-36">
-                    <Image
-                      src={withBasePath(item.image)}
-                      alt={copy(locale, item.title)}
-                      fill
-                      quality={74}
-                      sizes="(min-width: 1024px) 42vw, 100vw"
-                      className="image-lift object-cover"
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-5 flex items-start justify-between gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-white text-sm font-semibold uppercase tracking-[0.16em] text-ink shadow-card">
-                    {item.title.en.slice(0, 2)}
-                  </div>
-                  <div className="flex flex-wrap justify-end gap-2">
-                    <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs uppercase tracking-[0.16em] text-slate-500">
-                      {copy(locale, item.category)}
-                    </span>
-                    <span className="rounded-full bg-white px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#315ea8]">
-                      {copy(locale, item.status)}
-                    </span>
-                  </div>
-                </div>
-
-                <h2 className="mt-6 font-display text-3xl text-ink">{copy(locale, item.title)}</h2>
-                <p className="mt-4 text-base leading-8 text-slate-600">{copy(locale, item.subtitle)}</p>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {copyList(locale, item.tags).map((tag) => (
-                    <span key={tag} className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-600">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-8 grid gap-3">
-                  {item.bullets[locale].slice(0, 3).map((bullet) => (
-                    <div key={bullet} className="rounded-[1.25rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-7 text-slate-700">
-                      {bullet}
+      {partnerItems.length > 0 ? (
+        <section id="partner-products" className="bg-white py-20 lg:py-24">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <SectionHeading title={copy(locale, page.partnerTitle)} text={copy(locale, page.partnerText)} />
+            <div className="mt-10 grid gap-6 lg:grid-cols-2">
+              {partnerItems.map((item) => (
+                <article
+                  key={item.title.en}
+                  className="interactive-card group flex h-full flex-col rounded-[2.25rem] border border-blue-100 bg-[#f7fbff] p-7 shadow-card"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="relative h-28 w-full overflow-hidden rounded-[1.5rem] bg-white md:h-36">
+                      <Image
+                        src={withBasePath(item.image)}
+                        alt={copy(locale, item.title)}
+                        fill
+                        quality={74}
+                        sizes="(min-width: 1024px) 42vw, 100vw"
+                        className="image-lift object-cover"
+                      />
                     </div>
-                  ))}
-                </div>
+                  </div>
 
-                <p className="mt-6 text-sm leading-7 text-slate-500">{copy(locale, item.note)}</p>
+                  <div className="mt-5 flex items-start justify-between gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-white text-sm font-semibold uppercase tracking-[0.16em] text-ink shadow-card">
+                      {item.title.en.slice(0, 2)}
+                    </div>
+                    <div className="flex flex-wrap justify-end gap-2">
+                      <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs uppercase tracking-[0.16em] text-slate-500">
+                        {copy(locale, item.category)}
+                      </span>
+                      <span className="rounded-full bg-white px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#315ea8]">
+                        {copy(locale, item.status)}
+                      </span>
+                    </div>
+                  </div>
 
-                <div className="mt-8 pt-2">
-                  <Link
-                    href={withLocale(locale, item.href)}
-                    className="inline-flex rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-ink transition hover:border-ink hover:bg-ink hover:text-white"
-                  >
-                    {copy(locale, item.cta)}
-                  </Link>
-                </div>
-              </article>
-            ))}
+                  <h2 className="mt-6 font-display text-3xl text-ink">{copy(locale, item.title)}</h2>
+                  <p className="mt-4 text-base leading-8 text-slate-600">{copy(locale, item.subtitle)}</p>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {copyList(locale, item.tags).map((tag) => (
+                      <span key={tag} className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-600">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 grid gap-3">
+                    {item.bullets[locale].slice(0, 3).map((bullet) => (
+                      <div key={bullet} className="rounded-[1.25rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-7 text-slate-700">
+                        {bullet}
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className="mt-6 text-sm leading-7 text-slate-500">{copy(locale, item.note)}</p>
+
+                  <div className="mt-8 pt-2">
+                    <Link
+                      href={withLocale(locale, item.href)}
+                      className="inline-flex rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-ink transition hover:border-ink hover:bg-ink hover:text-white"
+                    >
+                      {copy(locale, item.cta)}
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="brand-orbit py-20 text-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">

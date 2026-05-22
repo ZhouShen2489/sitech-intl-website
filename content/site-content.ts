@@ -265,7 +265,7 @@ export const siteContent = {
     sections: {
       marquee: { visible: true },
       companyIntro: { visible: true },
-      productSpotlight: { visible: true },
+      productSpotlight: { visible: false },
       featuredSolutions: { visible: true },
       solutionSelector: { visible: false },
       storiesPreview: { visible: true },
@@ -1511,8 +1511,8 @@ export const siteContent = {
       {
         title: { zh: "伙伴产品", en: "Partner products" },
         text: {
-          zh: "看 Helport 等适合联合推进的产品。",
-          en: "See Helport and products suited for joint pursuit.",
+          zh: "适合联合推进的产品会在准备好后展示。",
+          en: "Partner products will appear here when they are ready.",
         },
       },
       {
@@ -1528,8 +1528,8 @@ export const siteContent = {
       en: "Featured solution",
     },
       featuredText: {
-      zh: "客服、销售和支持团队如果无法复制优秀员工经验，培训、通话质量和客户体验都会波动。Helport 从这里切入。",
-      en: "When teams cannot replicate expert performance, training, call quality, and customer experience fluctuate. Helport starts there.",
+      zh: "先从真实业务问题出发，再判断产品是否值得试点。",
+      en: "Start from the real business problem, then decide which product is worth piloting.",
     },
     ownTitle: {
       zh: "我们的产品库",
@@ -1626,7 +1626,7 @@ export const siteContent = {
     },
     partnerItems: [
       {
-        visible: true,
+        visible: false,
         order: 1,
         title: { zh: "Helport", en: "Helport" },
         image: "/images/curated/call-center-diverse-team.jpg",
@@ -2001,7 +2001,7 @@ export const siteContent = {
       options: {
         zh: [
           "解决方案 / 业务系统",
-          "产品 / Helport / AI 服务",
+          "产品 / AI 服务",
           "Partnership / 渠道合作",
           "项目试点 / 需求评估",
           "技术与交付能力了解",
@@ -2009,7 +2009,7 @@ export const siteContent = {
         ],
         en: [
           "Solutions / business systems",
-          "Products / Helport / AI service",
+          "Products / AI service",
           "Partnership / channel collaboration",
           "Pilot / needs assessment",
           "Technical and delivery capability",
@@ -2069,12 +2069,10 @@ export const siteContent = {
     focusTitle: { zh: "重点方向", en: "Focus Areas" },
     focusItems: {
       zh: [
-        "Helport 合作产品与试用切入",
         "运营商 IT 支撑与服务域",
         "数据要素与数字产业平台",
       ],
       en: [
-        "Helport partner product and trial entry",
         "Telecom IT support and service domain",
         "Data and industrial digital platforms",
       ],
