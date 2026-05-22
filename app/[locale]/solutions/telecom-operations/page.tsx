@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { SectionHeading } from "@/components/page-sections";
-import { siteContent, copy } from "@/content/siteContent";
+import { siteContent, copy } from "@/content/site-content";
 import { isLocale, withBasePath, withLocale } from "@/lib/site";
 
 export default async function TelecomOperationsPage({
@@ -45,7 +45,7 @@ export default async function TelecomOperationsPage({
             <p className="inline-flex rounded-full border border-blue-100 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-tide shadow-sm">
               {copy(locale, detail.badge)}
             </p>
-            <h1 className="mt-6 text-4xl font-bold leading-tight tracking-[-0.04em] text-ink md:text-5xl">
+            <h1 className="mt-6 font-display text-4xl font-bold leading-tight text-ink md:text-5xl">
               {copy(locale, detail.title)}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
@@ -107,7 +107,7 @@ export default async function TelecomOperationsPage({
             {detail.proofBar.map((item) => (
               <div key={item.value} className="rounded-lg border border-blue-100 bg-[#f8fbff] p-5">
                 <div className="flex items-end gap-2">
-                  <p className="font-serif text-3xl leading-none text-ink">{item.value}</p>
+                  <p className="font-display text-3xl leading-none text-ink">{item.value}</p>
                   <p className="pb-1 text-xs font-semibold uppercase tracking-[0.16em] text-tide">
                     {copy(locale, item.label)}
                   </p>
@@ -140,7 +140,7 @@ export default async function TelecomOperationsPage({
                   </div>
                 </div>
                 <div className="p-6">
-                  <h2 className="text-xl font-bold tracking-[-0.02em] text-ink">{copy(locale, slot.title)}</h2>
+                  <h2 className="font-display text-xl font-bold text-ink">{copy(locale, slot.title)}</h2>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, slot.text)}</p>
                 </div>
               </article>
@@ -156,7 +156,7 @@ export default async function TelecomOperationsPage({
             <div className="grid gap-4 md:grid-cols-2">
               {detail.problemItems.map((item) => (
                 <article key={item.title.en} className="interactive-card rounded-lg border border-blue-100 bg-[#f8fbff] p-6 shadow-card">
-                  <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                  <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                   <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
                 </article>
               ))}
@@ -174,7 +174,7 @@ export default async function TelecomOperationsPage({
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-tide">
                   {copy(locale, track.label)}
                 </p>
-                <h2 className="mt-4 text-3xl font-bold leading-tight tracking-[-0.03em] text-ink">
+                <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink">
                   {copy(locale, track.title)}
                 </h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, track.text)}</p>
@@ -204,7 +204,7 @@ export default async function TelecomOperationsPage({
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {detail.capabilityBlocks.map((block) => (
               <article key={block.title.en} className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-card">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, block.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, block.title)}</h2>
                 <ul className="mt-5 space-y-3">
                   {block.bullets[locale].map((bullet) => (
                     <li key={bullet} className="flex gap-3 text-sm leading-7 text-slate-600">
@@ -243,7 +243,7 @@ export default async function TelecomOperationsPage({
             ))}
           </div>
           <div className="mt-10 rounded-[2rem] border border-slate-200 bg-[#f7f9fb] p-6">
-            <h3 className="font-serif text-2xl text-ink">{copy(locale, detail.storyTitle)}</h3>
+            <h3 className="font-display text-2xl text-ink">{copy(locale, detail.storyTitle)}</h3>
             <ul className="mt-5 space-y-3">
               {detail.storyItems[locale].map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-7 text-slate-700">
@@ -270,7 +270,7 @@ export default async function TelecomOperationsPage({
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">
               {locale === "en" ? "Best-fit scenarios" : "适合场景"}
             </p>
-            <h2 className="mt-4 font-serif text-3xl leading-tight">{copy(locale, detail.principleTitle)}</h2>
+            <h2 className="mt-4 font-display text-3xl leading-tight">{copy(locale, detail.principleTitle)}</h2>
           </div>
           <div className="grid gap-3">
             {detail.principleItems[locale].map((item) => (

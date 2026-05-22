@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { siteContent, copy, copyList } from "@/content/siteContent";
+import { siteContent, copy, copyList } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 
 type ContactFormProps = {

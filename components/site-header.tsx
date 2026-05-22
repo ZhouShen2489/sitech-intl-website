@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-import { siteContent, copy, visibleItems } from "@/content/siteContent";
+import { siteContent, copy, visibleItems } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 import { switchLocaleInPath, withBasePath, withLocale } from "@/lib/site";
 
@@ -113,7 +113,7 @@ function HeaderDropdownPanel({
             <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-tide">
               {copy(locale, config.featured.eyebrow)}
             </span>
-            <span className="mt-8 block text-3xl font-bold leading-tight tracking-[-0.03em] text-[#102039]">
+            <span className="mt-8 block font-display text-3xl font-bold leading-tight text-[#102039]">
               {copy(locale, config.featured.title)}
             </span>
             <span className="mt-6 inline-flex w-fit rounded-full bg-tide px-4 py-2 text-xs font-bold text-white">
@@ -240,11 +240,11 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
               alt="Si-Tech logo"
               width={32}
               height={32}
-              className="h-8 w-8 object-contain"
+              className="object-contain"
             />
           </div>
           <div className="min-w-0">
-            <p className="font-serif text-[22px] leading-tight text-ink">{siteContent.brand.name}</p>
+            <p className="font-display text-[22px] leading-tight text-ink">{siteContent.brand.name}</p>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-tide">
               {copy(locale, siteContent.brand.headerTagline)}
             </p>

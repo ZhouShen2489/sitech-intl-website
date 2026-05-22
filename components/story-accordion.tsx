@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 
-import { siteContent, copy, copyList, visibleItems } from "@/content/siteContent";
+import { siteContent, copy, copyList, visibleItems } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 import { withBasePath, withLocale } from "@/lib/site";
 
@@ -43,7 +43,7 @@ export function StoryAccordion({ locale }: { locale: Locale }) {
                   ))}
                 </div>
                 <p className="mt-4 text-sm uppercase tracking-[0.18em] text-tide">{copy(locale, story.solution)}</p>
-                <h3 className="mt-4 font-serif text-2xl text-ink lg:text-3xl">{copy(locale, story.title)}</h3>
+                <h3 className="mt-4 font-display text-2xl text-ink lg:text-3xl">{copy(locale, story.title)}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, story.summary)}</p>
               </div>
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 text-xl text-ink">

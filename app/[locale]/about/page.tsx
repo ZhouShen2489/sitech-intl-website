@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { PageHero, SectionHeading } from "@/components/page-sections";
-import { siteContent, copy } from "@/content/siteContent";
+import { siteContent, copy } from "@/content/site-content";
 import { isLocale } from "@/lib/site";
 
 export default async function AboutPage({
@@ -34,7 +34,7 @@ export default async function AboutPage({
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {page.stats.map((stat) => (
               <div key={stat.value} className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-card">
-                <p className="font-serif text-4xl text-ink">{stat.value}</p>
+                <p className="font-display text-4xl text-ink">{stat.value}</p>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, stat.label)}</p>
               </div>
             ))}
@@ -43,7 +43,7 @@ export default async function AboutPage({
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {page.pillars.map((item) => (
               <article key={item.title.en} className="rounded-[2rem] border border-slate-200 bg-[#f7f9fb] p-7">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
               </article>
             ))}

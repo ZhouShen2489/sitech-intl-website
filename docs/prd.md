@@ -41,10 +41,10 @@
 本轮文档与后续官网改写，应主要吸收以下材料：
 
 - `问题单.md`
-- `sitech-information-reference.md`
+- `docs/reference/sitech-information-reference.md`
 - `/Users/zhoushen/Nutstore Files/Nutstore/Sitech/A-国内思特奇材料/思特奇手册/思特奇手册电子版_compressed.pdf`
-- `content/pdf-ocr/sitech-manual-ocr.md`
-- `content/pdf-ocr/sitech-manual-structured.md`
+- `docs/reference/pdf-ocr/sitech-manual-ocr.md`
+- `docs/reference/pdf-ocr/sitech-manual-structured.md`
 
 素材使用原则：
 
@@ -265,8 +265,8 @@ Contact 继续作为唯一公开线索入口。
 
 文档要求：
 
-- 原有 `README.md`、`PRD.md`、`TASKS.md` 继续保留并更新
-- 只新增一个给 PM 看的新手文档：`BEGINNER_GUIDE.md`
+- 原有 `README.md`、`docs/prd.md`、`docs/tasks.md` 继续保留并更新
+- 只新增一个给 PM 看的新手文档：`docs/beginner-guide.md`
 
 ## 15. 成功标准
 

@@ -27,8 +27,8 @@ export const siteContent = {
       en: "Telecom · Platforms · AI",
     },
     summary: {
-      zh: "Si-Tech Intl 帮助海外客户推进运营商支撑、产业平台、AI 服务和企业系统建设。",
-      en: "Si-Tech Intl helps international clients move telecom support, industrial platforms, AI service, and business systems forward.",
+      zh: "Si-Tech Intl 帮助海外客户推进运营商支撑、产业平台、AI 服务和企业系统。",
+      en: "Si-Tech Intl helps international clients build telecom, platform, AI, and business systems.",
     },
   },
   contact: {
@@ -86,16 +86,16 @@ export const siteContent = {
       key: "enterprise",
       title: { zh: "企业与平台", en: "Enterprise & Platforms" },
       text: {
-        zh: "面向产业平台、协同体系与定制化业务系统的可落地方向。",
-        en: "Practical tracks across industrial platforms, coordination systems, and custom business tools.",
+        zh: "面向产业平台、协同体系与定制业务系统。",
+        en: "Practical tracks for platforms, coordination, and custom systems.",
       },
     },
     {
       key: "ai",
       title: { zh: "AI 与服务", en: "AI & Service" },
       text: {
-        zh: "把 AI 真正放进客服、服务和运营流程的方向。",
-        en: "Putting AI into customer service, support, and operational workflows in a usable way.",
+        zh: "把 AI 放进客服、服务和运营流程。",
+        en: "Putting AI into service and operations workflows.",
       },
     },
   ],
@@ -114,8 +114,8 @@ export const siteContent = {
         en: "Make telecom operations run smoothly",
       },
       text: {
-        zh: "围绕 BSS/OSS、客户生命周期、计费结算、资源接入和 MVNO 多角色运营，帮助通信业务更快上线、更稳运营。",
-        en: "Built around BSS/OSS, customer lifecycle, billing, resource access, and MVNO multi-role operations so communication services can launch faster and operate more reliably.",
+        zh: "围绕 BSS/OSS、客户生命周期、计费结算和 MVNO 运营，帮助通信业务更快上线、更稳运营。",
+        en: "BSS/OSS, lifecycle, billing, resource access, and MVNO operations for faster, steadier launches.",
       },
       bullets: {
         zh: [
@@ -129,7 +129,7 @@ export const siteContent = {
           "Closed-loop ordering, activation, billing, and settlement",
         ],
       },
-      linkLabel: { zh: "查看详情", en: "View detail" },
+      linkLabel: { zh: "了解方案", en: "View solution" },
       image: "/images/curated/telecom-network-switch.jpg",
     },
     {
@@ -146,8 +146,8 @@ export const siteContent = {
         en: "Make industrial platforms support trade, coordination, and operations",
       },
       text: {
-        zh: "当交易、支付、物流和运营数据割裂，平台容易变成展示屏。我们把关键业务动作接起来，让平台真正产生效率。",
-        en: "When trade, payment, logistics, and operations data are split apart, platforms become displays. We connect the key actions so the platform creates real efficiency.",
+        zh: "当交易、支付、物流和运营割裂，平台容易只剩展示。我们把关键动作接起来，形成真实效率。",
+        en: "When trade, payment, logistics, and operations split apart, platforms become displays. We connect the key actions.",
       },
       bullets: {
         zh: [
@@ -161,7 +161,7 @@ export const siteContent = {
           "Reference scenarios in agriculture, livestock, and power delivery",
         ],
       },
-      linkLabel: { zh: "查看详情", en: "View detail" },
+      linkLabel: { zh: "了解方案", en: "View solution" },
       image: "/images/curated/warehouse-logistics-team.jpg",
     },
     {
@@ -178,8 +178,8 @@ export const siteContent = {
         en: "Put AI into service, support, and operations",
       },
       text: {
-        zh: "AI 如果只停在演示，仍然解决不了回复慢、知识散、质检弱的问题。我们把 AI 放进真实流程，让服务更快、更稳。",
-        en: "AI that stays in demos does not fix slow replies, scattered knowledge, or weak QA. We put AI into real workflows so service becomes faster and steadier.",
+        zh: "AI 不能只停在演示。我们把 AI 放进真实流程，改善回复、知识和质检。",
+        en: "AI belongs in real workflows, where it can improve replies, knowledge, and QA.",
       },
       bullets: {
         zh: [
@@ -193,7 +193,7 @@ export const siteContent = {
           "From pilot usage to ongoing optimization",
         ],
       },
-      linkLabel: { zh: "查看详情", en: "View detail" },
+      linkLabel: { zh: "了解方案", en: "View solution" },
       image: "/images/curated/call-center-team-meeting.jpg",
     },
     {
@@ -210,8 +210,8 @@ export const siteContent = {
         en: "Move long-cycle projects beyond chats and spreadsheets",
       },
       text: {
-        zh: "群聊和文件夹很难承接复杂项目。Teamshub 沉淀客户、资料、待办和风险，减少交接损耗。",
-        en: "Chats and folders cannot carry complex projects well. Teamshub keeps client context, files, actions, and risks together.",
+        zh: "群聊和文件夹很难承接复杂项目。Teamshub 统一客户、资料、待办和风险。",
+        en: "Chats and folders cannot carry complex projects. Teamshub keeps context, files, tasks, and risks together.",
       },
       bullets: {
         zh: [
@@ -225,7 +225,7 @@ export const siteContent = {
           "Coordination from lead intake to delivery",
         ],
       },
-      linkLabel: { zh: "查看详情", en: "View detail" },
+      linkLabel: { zh: "了解方案", en: "View solution" },
       image: "/images/curated/project-team-laptop.jpg",
     },
     {
@@ -242,8 +242,8 @@ export const siteContent = {
         en: "Turn scattered systems into a business-fit work layer",
       },
       text: {
-        zh: "系统多但互不相通，会拖慢响应、增加人工搬运。我们从关键流程切入，把系统接成可运行的业务层。",
-        en: "Many disconnected systems slow response and add manual work. We start from key workflows and connect tools into a usable business layer.",
+        zh: "系统多但互不相通，会拖慢响应。我们从关键流程切入，把系统接成可运行的业务层。",
+        en: "Disconnected systems slow work. We start from key workflows and connect them into a usable business layer.",
       },
       bullets: {
         zh: [
@@ -257,7 +257,7 @@ export const siteContent = {
           "Can start from one clear workflow and a minimum usable scope",
         ],
       },
-      linkLabel: { zh: "查看详情", en: "View detail" },
+      linkLabel: { zh: "了解方案", en: "View solution" },
       image: "/images/curated/software-developers-office.jpg",
     },
   ],
@@ -265,7 +265,7 @@ export const siteContent = {
     sections: {
       marquee: { visible: true },
       companyIntro: { visible: true },
-      productSpotlight: { visible: true },
+      productSpotlight: { visible: false },
       featuredSolutions: { visible: true },
       solutionSelector: { visible: false },
       storiesPreview: { visible: true },
@@ -276,15 +276,15 @@ export const siteContent = {
       image: "/images/curated/diverse-laptop-collaboration.jpg",
       badge: {
         zh: "面向运营商、企业与合作伙伴",
-        en: "For operators, industry platforms, service teams, and partner-led projects",
+        en: "For operators, platforms, service teams, and partners",
       },
       title: {
         zh: "让复杂业务支撑真正跑起来",
         en: "Make complex business support actually work",
       },
       subtitle: {
-        zh: "我们帮助客户解决系统分散、流程割裂、AI 难落地和项目推进慢的问题，从一个清晰试点开始。",
-        en: "We help solve scattered systems, broken workflows, hard-to-adopt AI, and slow project execution, starting from a clear pilot.",
+        zh: "我们帮助客户解决系统分散、流程割裂、AI 难落地和项目推进慢的问题，从清晰试点开始。",
+        en: "We help fix scattered systems, broken workflows, hard-to-adopt AI, and slow project execution.",
       },
       primaryCta: { zh: "联系我们", en: "Talk to Us" },
       secondaryCta: { zh: "查看产品", en: "Explore Products" },
@@ -292,15 +292,15 @@ export const siteContent = {
     companyIntro: {
       eyebrow: {
         zh: "思特奇业务与能力背书",
-        en: "Core business and capability backing from the broader Si-Tech organization",
+        en: "Capability backing from the broader Si-Tech organization",
       },
       title: {
-        zh: "复杂项目，不能只看演示",
-        en: "Complex projects need more than demos",
+        zh: "复杂项目，关键在落地",
+        en: "Complex projects need delivery discipline",
       },
       text: {
-        zh: "当业务跨角色、跨系统、跨地区，单个工具很难解决问题。我们把多年复杂系统和交付经验带进具体项目。",
-        en: "When work spans roles, systems, and regions, one tool rarely solves the problem. We bring complex-system and delivery experience into real projects.",
+        zh: "当业务跨角色、跨系统、跨地区，单个工具很难解决问题。我们把复杂系统经验带进具体项目。",
+        en: "When work spans roles, systems, and regions, one tool rarely solves the problem. We bring delivery experience.",
       },
       stats: [
         { value: "1995", label: { zh: "公司成立时间", en: "Company founded" } },
@@ -327,14 +327,14 @@ export const siteContent = {
             en: "Complex operations need more than point tools",
           },
           text: {
-            zh: "订单、客户、工单和结算分散，体验和效率都会下降。我们擅长处理高复杂度、多角色协同。",
-            en: "Scattered orders, customers, tickets, and settlement hurt both experience and efficiency. We handle high-complexity, multi-role operations.",
+            zh: "订单、客户、工单和结算分散，会拉低体验和效率。我们擅长多角色协同。",
+            en: "Scattered orders, customers, tickets, and settlement hurt experience and efficiency.",
           },
         },
         {
           title: {
-            zh: "AI 不能停留在演示效果",
-            en: "AI must move beyond demos",
+            zh: "AI 要进入真实流程",
+            en: "AI must enter real workflows",
           },
           text: {
             zh: "真正难的是知识接入、流程嵌入和持续运营。我们关注 AI 如何进入业务闭环。",
@@ -347,8 +347,8 @@ export const siteContent = {
             en: "Large programs can start with focused proof",
           },
           text: {
-            zh: "全量替换风险高。我们从一个范围、一个试点、一个关键流程开始，先验证价值。",
-            en: "Full replacement is risky. We start with one scope, pilot, or workflow, prove value first, then expand.",
+            zh: "一次性重建风险高。我们从一个范围、一个试点或一个关键流程开始。",
+            en: "Large rebuilds are risky. Start with one scope, pilot, or workflow.",
           },
         },
       ],
@@ -379,8 +379,8 @@ export const siteContent = {
         en: "What buyers need to know is whether similar problems have been solved",
       },
       text: {
-        zh: "看客户场景、问题后果、方案切入和结果，判断我们是否理解你的复杂度。",
-        en: "See the context, cost, entry point, and outcome to judge whether we understand your complexity.",
+        zh: "看场景、问题、切入和结果，判断我们是否理解你的复杂度。",
+        en: "Review context, problem, entry point, and outcome.",
       },
     },
     aboutPreview: {
@@ -389,8 +389,8 @@ export const siteContent = {
         en: "Why the conversation is worth continuing",
       },
       text: {
-        zh: "复杂项目需要的不只是想法，而是能把范围、技术、交付和持续优化组织起来的能力。Si-Tech Intl 背后连接的是更完整的研发、平台和交付基础。",
-        en: "Complex projects need more than ideas. They need the ability to organize scope, technology, delivery, and ongoing improvement. Si-Tech Intl is backed by broader R&D, platform, and delivery depth.",
+        zh: "复杂项目需要能组织范围、技术、交付和持续优化的能力。Si-Tech Intl 背后连接完整研发与交付基础。",
+        en: "Complex projects need scope, technology, delivery, and iteration discipline. Si-Tech Intl is backed by broader R&D and delivery depth.",
       },
       bullets: {
         zh: [
@@ -434,13 +434,13 @@ export const siteContent = {
       image: "/images/curated/modern-office-tablet-discussion.jpg",
       title: { zh: "解决方案", en: "Solutions" },
       subtitle: {
-        zh: "如果你的问题已经影响客户体验、团队效率、数据质量或业务增长，可以从下面五个方向里找到最接近的切入口。",
-        en: "If your problem is already affecting customer experience, team efficiency, data quality, or growth, these five tracks help identify the closest starting point.",
+        zh: "如果问题已经影响体验、效率、数据或增长，可以从五个方向找到切入口。",
+        en: "If the problem affects experience, efficiency, data, or growth, start with these five tracks.",
       },
     },
     directionsTitle: {
-      zh: "当前最值得先谈的五个方向",
-      en: "Five directions most ready for discussion",
+      zh: "五个可落地的方向",
+      en: "Five practical starting points",
     },
     categoryTitle: {
       zh: "按类别理解这五个方向",
@@ -454,8 +454,8 @@ export const siteContent = {
           en: "Start with one workflow problem instead of trying to replace everything at once.",
         },
         {
-          zh: "先把一个可演示、可试用、可交付的小范围跑通。",
-          en: "Make one scoped, demonstrable, usable flow work first.",
+          zh: "先把一个可试用、可交付的小范围跑通。",
+          en: "Make one scoped, usable flow work first.",
         },
         {
           zh: "先看类似案例，再决定哪些方案值得进一步细聊。",
@@ -463,7 +463,7 @@ export const siteContent = {
         },
         {
           zh: "如果信息还不完整，也可以先从访谈、范围澄清和初步架构讨论开始。",
-          en: "If details are still incomplete, the work can still begin with discovery, scope clarification, and an initial architecture discussion.",
+          en: "If details are incomplete, start with discovery, scope, and initial architecture.",
         },
       ],
     },
@@ -487,8 +487,8 @@ export const siteContent = {
         en: "Make telecom operations run smoothly",
       },
       subtitle: {
-        zh: "面向运营商、MVNO、代理商和数字服务团队，把 BSS/OSS、客户生命周期、计费结算、资源接入和多角色运营接成一套可交付的业务支撑体系。",
-        en: "For operators, MVNOs, agents, and digital-service teams, this solution connects BSS/OSS, customer lifecycle, billing, resource access, and multi-role operations into a deliverable support system.",
+        zh: "面向运营商、MVNO、代理商和数字服务团队，把 BSS/OSS、客户生命周期、计费和资源接入接成可交付体系。",
+        en: "For operators, MVNOs, agents, and digital-service teams, this connects BSS/OSS, lifecycle, billing, and resources.",
       },
       intro: {
         zh: "从客户开户、订单开通、计费账务到伙伴结算，运营商业务需要一条稳定、可追踪、可扩展的运营链路。",
@@ -499,32 +499,32 @@ export const siteContent = {
           value: "BSS/OSS",
           label: { zh: "核心支撑", en: "Core support" },
           text: {
-            zh: "覆盖 CRM、订单、开通、计费、结算和服务运营等关键流程",
-            en: "Covers CRM, ordering, activation, billing, settlement, and service operations",
+            zh: "覆盖 CRM、订单、开通、计费、结算和服务运营",
+            en: "Covers CRM, ordering, activation, billing, settlement, and service",
           },
         },
         {
           value: "MVNO",
           label: { zh: "全球化场景", en: "Global scenarios" },
           text: {
-            zh: "支持个人业务、批发、转售、多租户和多级分销模式",
-            en: "Supports retail, wholesale, resale, multi-tenant, and multi-level distribution models",
+            zh: "支持个人业务、批发、转售、多租户和多级分销",
+            en: "Supports retail, wholesale, resale, multi-tenant, and distribution models",
           },
         },
         {
           value: "4G/5G",
           label: { zh: "融合业务", en: "Converged services" },
           text: {
-            zh: "适配移动、固话、宽带、流量、云、专线等组合业务",
-            en: "Fits mobile, fixed-line, broadband, data, cloud, private-line, and bundled services",
+            zh: "适配移动、固话、宽带、流量、云和专线业务",
+            en: "Fits mobile, fixed-line, broadband, data, cloud, and private-line services",
           },
         },
         {
           value: "分阶段",
           label: { zh: "可落地", en: "Staged delivery" },
           text: {
-            zh: "可从 MVNO 快速上线、订单闭环、计费结算或门户试点切入",
-            en: "Can start from MVNO launch, order flow, billing, settlement, or portal pilots",
+            zh: "可从 MVNO 上线、订单闭环、计费或门户试点切入",
+            en: "Start from MVNO launch, order flow, billing, or portal pilots",
           },
         },
       ],
@@ -536,8 +536,8 @@ export const siteContent = {
         {
           title: { zh: "业务上线慢，机会窗口变短", en: "Slow launch misses the market window" },
           text: {
-            zh: "新地区、新套餐和转售模式可以从资源接入、开户、订购和计费开始快速落地。",
-            en: "Launch new regions, offers, and resale models with resource, onboarding, order, and billing support.",
+            zh: "新地区、新套餐和转售模式，可从资源、开户、订购和计费快速落地。",
+            en: "Launch regions, offers, and resale models with resource, onboarding, order, and billing support.",
           },
         },
         {
@@ -557,8 +557,8 @@ export const siteContent = {
         {
           title: { zh: "全球资源接入复杂，运营模型难复制", en: "Global resources are hard to operate consistently" },
           text: {
-            zh: "统一管理不同地区资源、运营商号卡、代理角色和本地化规则。",
-            en: "Manage regional resources, operator SIMs, agent roles, and local rules consistently.",
+            zh: "统一管理地区资源、号卡、代理角色和本地规则。",
+            en: "Manage resources, SIMs, agent roles, and local rules consistently.",
           },
         },
       ],
@@ -575,8 +575,8 @@ export const siteContent = {
           title: { zh: "BSS/OSS：把生产、运营和管理接成闭环", en: "BSS/OSS: connect production, operations, and management" },
           label: { zh: "适合基础运营商、区域运营商和复杂通信服务团队", en: "For operators, regional carriers, and complex communication-service teams" },
           text: {
-            zh: "支撑客户、产品、订单、网络服务、伙伴、计费账务和运营管理，覆盖移动、宽带、云、专线和融合业务。",
-            en: "Support customers, offers, orders, network services, partners, billing, and operations across mobile, broadband, cloud, private-line, and bundled services.",
+            zh: "支撑客户、产品、订单、网络服务、伙伴、计费和运营，覆盖移动、宽带、云和专线。",
+            en: "Support customers, offers, orders, partners, billing, and operations across mobile, broadband, cloud, and private-line.",
           },
           bullets: {
             zh: [
@@ -597,8 +597,8 @@ export const siteContent = {
           title: { zh: "MVNO：让个人、批发和转售业务轻装上阵", en: "MVNO: launch retail, wholesale, and resale businesses faster" },
           label: { zh: "适合虚拟运营商、代理商、国际通信业务和本地市场合作", en: "For MVNOs, agents, international communication services, and local-market partners" },
           text: {
-            zh: "支持自有资源与第三方资源接入，帮助 MVNO 和代理商开展个人通信、批发、转售和多级分销。",
-            en: "Connect owned and third-party resources so MVNOs and agents can run retail, wholesale, resale, and distribution models.",
+            zh: "支持自有与第三方资源接入，帮助 MVNO 和代理商开展零售、批发、转售和分销。",
+            en: "Connect owned and third-party resources for retail, wholesale, resale, and distribution.",
           },
           bullets: {
             zh: [
@@ -687,15 +687,15 @@ export const siteContent = {
           en: "Partner operations: validate agents, resale, commissions, revenue share, and reconciliation.",
         },
       ],
-      visualTitle: { zh: "后续可替换的方案素材位", en: "Solution visual slots to replace later" },
+      visualTitle: { zh: "方案交付视图", en: "Solution delivery views" },
       visualText: {
-        zh: "页面先保留关键视觉位置，后续可放系统截图、业务流程图、架构图和运营看板。",
-        en: "Reserved space for future system screenshots, workflow diagrams, architecture visuals, and dashboards.",
+          zh: "用工作台、流程和运营看板三个视角，帮助客户理解方案如何进入真实业务。",
+        en: "Use workspace, workflow, and ops views to show how the solution works.",
       },
       visualSlots: [
         {
-          title: { zh: "BSS/OSS 工作台截图", en: "BSS/OSS workspace screenshot" },
-          label: { zh: "替换为系统截图", en: "Replace with product screenshot" },
+          title: { zh: "BSS/OSS 工作台视图", en: "BSS/OSS workspace view" },
+          label: { zh: "工作台视图", en: "Workspace view" },
           image: "/images/curated/telecom-network-switch.jpg",
           text: {
             zh: "展示客户、订单、开通、计费和工单的统一视图。",
@@ -704,7 +704,7 @@ export const siteContent = {
         },
         {
           title: { zh: "订单到结算流程图", en: "Order-to-settlement flow" },
-          label: { zh: "替换为流程图", en: "Replace with flow diagram" },
+          label: { zh: "流程闭环", en: "Workflow loop" },
           image: "/images/curated/broadband-network-cables.jpg",
           text: {
             zh: "展示从受理、缴费、开通、计费到账务结算的闭环。",
@@ -713,7 +713,7 @@ export const siteContent = {
         },
         {
           title: { zh: "MVNO 运营看板", en: "MVNO operations dashboard" },
-          label: { zh: "替换为运营看板", en: "Replace with dashboard" },
+          label: { zh: "运营数据", en: "Ops data" },
           image: "/images/curated/business-dashboard-laptop.jpg",
           text: {
             zh: "展示用户增长、套餐销售、渠道分销和结算状态。",
@@ -724,16 +724,16 @@ export const siteContent = {
       startTitle: { zh: "建议从这些试点切入", en: "Recommended starting points" },
       startItems: {
         zh: [
-          "MVNO 快速上线：先验证资源接入、客户开户、套餐销售和计费结算",
+          "MVNO 快速上线：验证资源接入、开户、套餐销售和计费",
           "订单闭环优化：把受理、缴费、开通、计费和异常处理串起来",
           "合作伙伴分销：验证代理商、批发、转售和佣金结算规则",
-          "统一门户试点：从一个服务门户或营销门户开始承接客户触达和转化",
+          "统一门户试点：从一个服务或营销门户开始",
         ],
         en: [
-          "MVNO fast launch: validate resource access, customer onboarding, package sales, billing, and settlement",
+          "MVNO launch: validate resources, onboarding, offers, and billing",
           "Order-flow closure: connect intake, payment, activation, billing, and exception handling",
           "Partner distribution: validate agents, wholesale, resale, and commission rules",
-          "Unified portal pilot: start with one service or marketing portal for customer engagement and conversion",
+          "Unified portal pilot: start with one service or marketing portal",
         ],
       },
       principleTitle: {
@@ -745,7 +745,7 @@ export const siteContent = {
           "新 MVNO 或代理商业务需要快速上线",
           "现有订单、开通、计费和结算流程断点多",
           "多级渠道、佣金和对账规则需要统一管理",
-          "需要统一门户承接客户、伙伴和内部运营",
+          "需要统一门户承接客户、伙伴和企业运营",
         ],
         en: [
           "New MVNO or agent business needs a faster launch",
@@ -770,12 +770,12 @@ export const siteContent = {
         en: "Data and industrial digital platforms",
       },
       subtitle: {
-        zh: "围绕产业中台、数据要素流通、交易协同和产业智慧运营搭建更贴业务的平台能力。",
-        en: "Platform capability built around industrial middle-platforms, data flows, transaction coordination, and industry operations.",
+        zh: "围绕产业中台、数据流通、交易协同和产业运营，搭建更贴业务的平台能力。",
+        en: "Platform capability for industry middle-platforms, data flows, transactions, and operations.",
       },
       intro: {
-        zh: "数字产业域的重点不是抽象平台概念，而是把数据、交易、支付、物流、企业协同和产业运营真正打通，并服务于具体产业场景。",
-        en: "The value here is not an abstract platform concept. It is the ability to connect data, transactions, payment, logistics, enterprise coordination, and industrial operations in real sector scenarios.",
+        zh: "数字产业的重点不是平台概念，而是打通数据、交易、支付、物流和产业运营。",
+        en: "The value is not the platform concept. It is connecting data, transactions, payment, logistics, and operations.",
       },
       capabilityBlocks: [
         {
@@ -789,10 +789,10 @@ export const siteContent = {
               "产业智慧运营框架",
               "政府、协会、企业协同的产业平台基础",
             ],
-            en: [
-              "Industrial digital architecture and ecosystem design",
+          en: [
+              "Industrial digital architecture",
               "Industry operations frameworks",
-              "Platform foundations across public and enterprise stakeholders",
+              "Platform foundation for public and enterprise stakeholders",
             ],
           },
         },
@@ -808,9 +808,9 @@ export const siteContent = {
               "可作为区域产业基础设施的中台能力",
             ],
             en: [
-              "Integration of information, trade, payment, invoice, and logistics flows",
-              "Coordination across transactions, payment, rules, and operations tools",
-              "Middle-platform capability that acts like industrial infrastructure",
+              "Information, trade, payment, invoice, and logistics flows",
+              "Transaction, payment, rules, and operations tools",
+              "Middle-platform capability for industrial infrastructure",
             ],
           },
         },
@@ -841,11 +841,11 @@ export const siteContent = {
         },
         {
           zh: "希望把数据真正服务于交易、运营和业务协同，而不是停在展示层的客户。",
-          en: "Teams that need data to serve transactions, operations, and execution rather than stop at reporting.",
+          en: "Teams that need data to support transactions and operations, not just reports.",
         },
         {
           zh: "适合先从业务范围、角色边界和最小可运行流程开始推进的项目。",
-          en: "Fits projects that can begin with business scope, role boundaries, and one minimum working flow.",
+          en: "Fits projects that can start with scope, roles, and one working flow.",
         },
       ],
       startTitle: { zh: "常见切入口", en: "Common starting scopes" },
@@ -858,8 +858,8 @@ export const siteContent = {
         ],
         en: [
           "A minimum architecture scope for an industry middle-platform",
-          "A first version of a transaction, payment, and logistics coordination flow",
-          "An initial data and operations layer for a sector or regional platform",
+          "A first transaction, payment, and logistics flow",
+          "A data and operations layer for one sector or region",
           "A workflow and solution-validation scope for one sector case",
         ],
       },
@@ -883,8 +883,8 @@ export const siteContent = {
         en: "AI applications, development, and operations brought together to put smart service and digital workers into real workflows.",
       },
       intro: {
-        zh: "这里的重点不是单次演示，而是 AI 如何持续帮助服务团队更快处理、更好交接、更清楚分析，并随着运营逐步优化。",
-        en: "The focus here is not a one-time demo. It is how AI helps support teams work faster, hand work off better, analyze operations more clearly, and improve over time.",
+        zh: "重点不是单次演示，而是 AI 如何持续提升处理、交接、分析和优化。",
+        en: "The focus is lasting improvement in handling, handoff, analytics, and operations.",
       },
       capabilityBlocks: [
         {
@@ -912,7 +912,7 @@ export const siteContent = {
             ],
             en: [
               "AI toolchains, data processing, and development support",
-              "End-to-end capability from requirements to testing",
+              "Capability from requirements to testing",
               "Lower startup friction and repeated infrastructure cost",
             ],
           },
@@ -927,7 +927,7 @@ export const siteContent = {
             ],
             en: [
               "Value operations, model quality, and knowledge recall optimization",
-              "Multi-dimensional metrics and ongoing improvement",
+              "Metrics and ongoing improvement",
               "Making AI useful over time, not just impressive at launch",
             ],
           },
@@ -948,7 +948,7 @@ export const siteContent = {
         },
         {
           zh: "希望先试用、再扩展，而不是一次性建设完整 AI 平台的客户。",
-          en: "Buyers who want to start with a pilot rather than commit to a full AI platform at once.",
+          en: "Buyers who want a pilot before a full AI platform.",
         },
       ],
       startTitle: { zh: "常见切入口", en: "Common starting scopes" },
@@ -979,28 +979,28 @@ export const siteContent = {
         en: "Teamshub project knowledge workspace",
       },
       subtitle: {
-        zh: "把聊天、会议、文件、帖子和任务沉淀到项目空间里，让每一次沟通都能被追溯、复用，并推动下一步行动。",
-        en: "Turn chats, meetings, files, posts, and tasks into a project workspace where context is traceable, reusable, and action-ready.",
+        zh: "把聊天、会议、文件、帖子和任务沉淀到项目空间，让沟通可追溯、可复用、可执行。",
+        en: "Turn chats, meetings, files, posts, and tasks into traceable project context.",
       },
       intro: {
-        zh: "Teamshub 面向长周期客户项目、专业服务交付、跨团队协作和出海业务推进。它把沟通和知识放回同一个项目上下文，让团队少翻聊天记录，少重复交接。",
-        en: "Teamshub is built for long-cycle client work, professional services delivery, cross-team coordination, and international business development.",
+        zh: "Teamshub 面向长周期客户项目、专业服务交付、跨团队协作和出海业务推进。",
+        en: "Teamshub fits long-cycle client work, services delivery, cross-team coordination, and international growth.",
       },
       proofBar: [
         {
           value: "Project",
           label: { zh: "项目空间", en: "Workspace" },
           text: {
-            zh: "围绕一个客户、机会、交付或内部事项沉淀上下文",
-            en: "Keep context around a client, opportunity, delivery, or internal initiative",
+            zh: "围绕客户、机会、交付或团队事项沉淀上下文",
+            en: "Keep context around a client, opportunity, delivery, or team initiative",
           },
         },
         {
           value: "Circle",
           label: { zh: "协作边界", en: "Boundary" },
           text: {
-            zh: "按客户、内部、交付、资料或外部伙伴划分权限",
-            en: "Separate access by client, internal team, delivery, evidence, or partners",
+            zh: "按客户、项目团队、交付资料或外部伙伴划分权限",
+            en: "Separate access by client, team, materials, or partners",
           },
         },
         {
@@ -1043,14 +1043,14 @@ export const siteContent = {
           title: { zh: "新人加入项目太慢", en: "New members ramp slowly" },
           text: {
             zh: "Project View 汇总阶段、圈子、帖子、任务和 AI 摘要，让新人快速读懂历史。",
-            en: "Project View shows stages, circles, posts, tasks, and AI summaries for faster ramp-up.",
+            en: "Project View shows stages, circles, posts, tasks, and AI summaries.",
           },
         },
         {
           title: { zh: "外部协作需要边界", en: "External work needs boundaries" },
           text: {
-            zh: "圈子级权限让客户、伙伴和内部团队在同一项目下协作，但信息边界清楚。",
-            en: "Circle-level access lets clients, partners, and internal teams collaborate with clear boundaries.",
+            zh: "圈子级权限让客户、伙伴和项目团队在同一项目下协作，但信息边界清楚。",
+            en: "Circle-level access lets clients, partners, and teams collaborate with clear boundaries.",
           },
         },
       ],
@@ -1059,15 +1059,15 @@ export const siteContent = {
         en: "From project workspace to AI-ready knowledge",
       },
       mechanismText: {
-        zh: "Teamshub 用 Project → Circle → Post → Task → AI 的结构，把日常协作转成可追溯、可复用、可执行的项目知识。",
-        en: "Teamshub uses Project -> Circle -> Post -> Task -> AI to make collaboration traceable, reusable, and actionable.",
+        zh: "Teamshub 用 Project → Circle → Post → Task → AI，把协作转成可追溯的项目知识。",
+        en: "Project -> Circle -> Post -> Task -> AI turns collaboration into reusable project knowledge.",
       },
       mechanismItems: [
         {
           title: { zh: "Project", en: "Project" },
           text: {
-            zh: "承载客户、机会、交付、合作或内部事项。",
-            en: "A workspace for a client, opportunity, delivery, partnership, or internal initiative.",
+            zh: "承载客户、机会、交付、合作或团队事项。",
+            en: "A workspace for a client, opportunity, delivery, partnership, or team initiative.",
           },
         },
         {
@@ -1104,25 +1104,25 @@ export const siteContent = {
         en: "Project knowledge loop",
       },
       loopText: {
-        zh: "对话不止停留在消息流里。它会变成帖子、任务、阶段总结和未来项目可复用的经验。",
-        en: "Conversation becomes posts, tasks, reviews, and reusable experience for future projects.",
+        zh: "对话不止停留在消息流里。它会变成帖子、任务、阶段总结和可复用的项目经验。",
+        en: "Conversation becomes posts, tasks, reviews, and reusable project experience.",
       },
       loopSteps: {
         zh: ["对话发生", "生成帖子", "形成目录", "提取任务", "推进执行", "复盘复用"],
         en: ["Discuss", "Create post", "Catalog", "Extract tasks", "Execute", "Reuse"],
       },
       productScreensTitle: {
-        zh: "产品页面和素材位",
-        en: "Product screens and visual slots",
+        zh: "Teamshub 产品视图",
+        en: "Teamshub product views",
       },
       productScreensText: {
-        zh: "先把 SaaS 产品页需要的图位放好。后续可以替换为真实 Project View、Circle、Post、AI 和流程图截图。",
-        en: "Reserved visual slots for real Project View, Circle, Post, AI, and workflow screenshots.",
+        zh: "用项目总览、协作空间和 AI 任务闭环说明 Teamshub 如何支撑长链路项目。",
+        en: "Project overview, workspace, and AI task loop show how Teamshub supports long-cycle work.",
       },
       productScreens: [
         {
           title: { zh: "Project View 项目总览", en: "Project View" },
-          label: { zh: "替换为产品截图", en: "Replace with product screenshot" },
+          label: { zh: "项目总览", en: "Project overview" },
           image: "/images/curated/project-team-laptop.jpg",
           text: {
             zh: "展示阶段、成员、圈子、帖子目录、任务和 AI 摘要。",
@@ -1131,7 +1131,7 @@ export const siteContent = {
         },
         {
           title: { zh: "Circle 协作空间", en: "Circle workspace" },
-          label: { zh: "替换为协作界面", en: "Replace with workspace UI" },
+          label: { zh: "协作空间", en: "Workspace" },
           image: "/images/curated/team-laptop-strategy-session.jpg",
           text: {
             zh: "展示聊天、置顶帖子、文件、任务和成员权限。",
@@ -1140,7 +1140,7 @@ export const siteContent = {
         },
         {
           title: { zh: "Post / AI / Task 闭环", en: "Post / AI / Task loop" },
-          label: { zh: "替换为流程图", en: "Replace with flow diagram" },
+          label: { zh: "AI 任务闭环", en: "AI task loop" },
           image: "/images/curated/business-dashboard-laptop.jpg",
           text: {
             zh: "展示从聊天生成帖子、从帖子提任务、AI 总结复盘。",
@@ -1176,50 +1176,50 @@ export const siteContent = {
         },
       ],
       mvpTitle: {
-        zh: "从可演示闭环开始",
-        en: "Start with a demo-ready loop",
+        zh: "从一条完整项目链路开始",
+        en: "Start with one project loop",
       },
       mvpText: {
-        zh: "先让客户看到一条完整链路：项目协作、帖子沉淀、AI 检索、任务推进。后续再扩展外部成员、模板、集成和企业级权限。",
-        en: "Show one full loop first: project collaboration, post capture, AI search, and task execution.",
+        zh: "先跑通项目协作、帖子沉淀、AI 检索和任务推进，再扩展成员、模板、集成和权限。",
+        en: "Run one loop first: collaboration, posts, AI search, and tasks. Then add members, templates, integrations, and permissions.",
       },
       mvpStages: [
         {
-          title: { zh: "Pre-MVP", en: "Pre-MVP" },
+          title: { zh: "起步版", en: "Starter" },
           text: {
-            zh: "Project、Circle、Post、任务表、AI 总结 Demo。",
-            en: "Project, Circle, Post, task table, and AI summary demo.",
+            zh: "Project、Circle、Post、任务表和 AI 总结。",
+            en: "Project, Circle, Post, task table, and AI summary.",
           },
         },
         {
-          title: { zh: "MVP-1", en: "MVP-1" },
+          title: { zh: "项目闭环", en: "Project loop" },
           text: {
             zh: "项目总览、消息流、从消息生成帖子、从帖子生成任务。",
             en: "Project overview, message flow, message-to-post, and post-to-task.",
           },
         },
         {
-          title: { zh: "MVP-2", en: "MVP-2" },
+          title: { zh: "客户协作", en: "Client collaboration" },
           text: {
             zh: "外部客户圈、圈子权限、客户内容沉淀、AI 权限回答。",
             en: "Client circles, permissions, customer content capture, and permission-aware AI.",
           },
         },
         {
-          title: { zh: "1.0", en: "1.0" },
+          title: { zh: "规模化版本", en: "Scale version" },
           text: {
             zh: "多项目、跨项目搜索、模板、审计、CRM / 邮件 / 日历集成。",
             en: "Multi-project search, templates, audit logs, and CRM/email/calendar integrations.",
           },
         },
       ],
-      demoTitle: {
-        zh: "示例：客户交付项目",
-        en: "Example: client delivery project",
+      exampleTitle: {
+        zh: "客户项目示例",
+        en: "Client project example",
       },
-      demoText: {
-        zh: "一家合规顾问公司创建客户项目，按内部讨论、客户沟通、证据材料划分圈子。AI 把沟通整理成需求帖子，项目经理从帖子生成任务，并在每周复盘中沉淀模板。",
-        en: "A compliance advisory firm creates a client project, separates internal, client, and evidence circles, turns conversations into requirement posts, creates tasks, and reuses the weekly review as a template.",
+      exampleText: {
+        zh: "一家合规顾问公司按团队讨论、客户沟通和证据材料划分圈子。AI 整理需求帖子，项目经理生成任务并复用复盘模板。",
+        en: "A compliance firm separates team, client, and evidence circles. AI creates requirement posts; managers create tasks and reuse review templates.",
       },
       cta: {
         title: {
@@ -1238,12 +1238,12 @@ export const siteContent = {
         en: "Custom business systems and enterprise portals",
       },
       subtitle: {
-        zh: "当现有系统太分散、流程太依赖人工时，需要的是更贴业务的定制化平台层。",
-        en: "When existing systems are too fragmented and too dependent on manual coordination, the business often needs a more custom-fit platform layer.",
+        zh: "当系统太分散、流程太依赖人工时，需要更贴业务的平台层。",
+        en: "When systems are fragmented and manual, the business needs a more custom-fit platform layer.",
       },
       intro: {
-        zh: "这条方向适合需要优化门户、流程、后台、集成或运营可视化，但更希望先从明确范围逐步推进的团队。",
-        en: "This track fits teams that need better portals, workflow, back-office systems, integrations, or operations visibility and prefer to move forward in a clear, staged scope.",
+        zh: "适合需要优化门户、流程、后台、集成或运营可视化，并希望分阶段推进的团队。",
+        en: "For teams improving portals, workflows, back-office, integrations, or operations visibility in stages.",
       },
       capabilityBlocks: [
         {
@@ -1278,7 +1278,7 @@ export const siteContent = {
             en: [
               "CRM, workflow, ticketing, and operations back-office systems",
               "Coordination across processes, data, and roles",
-              "Can start from one minimum working flow and expand later",
+              "Start with one working flow, then add modules",
             ],
           },
         },
@@ -1293,7 +1293,7 @@ export const siteContent = {
             en: [
               "System integrations, middle-layer connections, and data views",
               "Operational dashboards and state tracking",
-              "Can be shaped progressively from module boundaries, integrations, and operating visibility",
+              "Shape from module boundaries, integrations, and visibility",
             ],
           },
         },
@@ -1302,15 +1302,15 @@ export const siteContent = {
       proofItems: [
         {
           zh: "现有系统很多，但没有一个真正贴合业务流程的统一层。",
-          en: "The organization has many systems but no unified layer that matches the business flow.",
+          en: "Many systems, but no unified layer for the business flow.",
         },
         {
-          zh: "需要更好的门户、流程、后台或集成，但还不准备做彻底替换。",
-          en: "The team needs better portals, workflow, back-office systems, or integrations without a full replacement project yet.",
+          zh: "需要更好的门户、流程、后台或集成，但还不准备做大规模重建。",
+          en: "Needs portals, workflow, back-office, or integrations without a large rebuild.",
         },
         {
           zh: "适合先明确模块边界、交付范围和关键流程，再逐步扩展。",
-          en: "A good fit for starting with module boundaries, delivery scope, and key workflows, then expanding from there.",
+          en: "Start with module boundaries, scope, and key workflows, then expand.",
         },
       ],
       startTitle: { zh: "常见切入口", en: "Common starting scopes" },
@@ -1340,8 +1340,8 @@ export const siteContent = {
       image: "/images/curated/smiling-partnership-handshake.jpg",
       title: { zh: "合作方式", en: "Partnership" },
       subtitle: {
-        zh: "我们与客户、渠道伙伴和本地执行团队一起定义范围、推进试点，并把项目带到真正可交付的下一步。",
-        en: "We work with clients, channel partners, and local execution teams to define scope, move pilots forward, and take projects into a practical delivery phase.",
+        zh: "我们与客户、渠道伙伴和本地执行团队一起定义范围、推进试点，并进入可交付阶段。",
+        en: "We work with clients, channels, and local teams to define scope, run pilots, and move into delivery.",
       },
     },
     groupsTitle: {
@@ -1355,7 +1355,7 @@ export const siteContent = {
         title: { zh: "本地解决方案伙伴", en: "Local solution partners" },
         text: {
           zh: "如果你已经有本地客户关系，但缺少足够的平台、工程或交付支撑，复杂项目很容易停在方案阶段。我们可以补上技术与交付后盾。",
-          en: "If you already have local client relationships but need stronger platform, engineering, or delivery support, complex opportunities can stall at the proposal stage. We add the technical and delivery backing.",
+          en: "If you have local client relationships but need platform, engineering, or delivery support, we can help.",
         },
       },
       {
@@ -1367,7 +1367,7 @@ export const siteContent = {
         },
         text: {
           zh: "如果服务流程、客户支撑、结算或运营协同已经影响效率，需要一起把问题边界、试点范围和落地路径定义清楚。",
-          en: "If service workflows, customer support, settlement, or operating coordination are already hurting efficiency, we can define the problem boundary, pilot scope, and delivery path together.",
+          en: "If service, support, settlement, or operations are hurting efficiency, we can define scope and path together.",
         },
       },
       {
@@ -1378,8 +1378,8 @@ export const siteContent = {
           en: "Industry and platform project owners",
         },
         text: {
-          zh: "如果平台只做展示，不能真正承接交易、数据、协同和运营，后续很难形成持续价值。我们可以一起把平台做成可运行的业务基础设施。",
-          en: "If a platform only displays information but cannot support transactions, data, coordination, and operations, it is hard to create lasting value. We help turn it into usable business infrastructure.",
+          zh: "如果平台只做展示，不能真正承接交易、数据、协同和运营，就很难形成持续价值。我们可以一起把平台做成可运行的业务基础设施。",
+          en: "If a platform only displays information, it is hard to create value. We help turn it into business infrastructure.",
         },
       },
       {
@@ -1391,7 +1391,7 @@ export const siteContent = {
         },
         text: {
           zh: "如果你能打开机会，但需要更完整的产品、方案和交付能力来承接客户需求，我们可以一起完成从机会判断到项目推进的链路。",
-          en: "If you can open opportunities but need stronger products, solution design, and delivery capacity to serve client demand, we can carry the motion from qualification to execution together.",
+          en: "If you open opportunities but need stronger product and delivery support, we can move from qualification to execution together.",
         },
       },
     ],
@@ -1403,7 +1403,7 @@ export const siteContent = {
       title: { zh: "联合评估机会", en: "Joint opportunity shaping" },
       text: {
           zh: "先判断客户的问题是否足够清晰、价值是否足够大、是否适合从试点进入，避免一开始就投入过重。",
-          en: "We first judge whether the client problem is clear, valuable, and suitable for a pilot so the team does not over-invest too early.",
+          en: "We first judge whether the problem is clear, valuable, and pilot-ready.",
         },
       },
       {
@@ -1424,7 +1424,7 @@ export const siteContent = {
         },
       text: {
           zh: "本地团队保持客户接口，我们提供平台、工程、交付与持续优化能力，让项目不止完成上线，也能继续迭代。",
-          en: "Local teams keep the client interface while we add platform, engineering, delivery, and ongoing optimization so the project can keep improving after launch.",
+          en: "Local teams keep the client interface; we add platform, engineering, delivery, and optimization.",
         },
       },
     ],
@@ -1432,9 +1432,9 @@ export const siteContent = {
       zh: "适合一起推进的合作机会",
       en: "Partnership opportunities we can move together",
     },
-    opportunityText: {
-      zh: "无论是产品落地、渠道协同还是本地执行支持，这里都可以作为合作切入口。",
-      en: "Whether the need is product entry, channel coordination, or local execution support, this page can act as the collaboration starting point.",
+      opportunityText: {
+      zh: "产品落地、渠道协同或本地执行支持，都可以从这里开始。",
+      en: "Product entry, channel coordination, or local execution can all start here.",
     },
     opportunities: [
       {
@@ -1446,7 +1446,7 @@ export const siteContent = {
         },
         text: {
           zh: "如果产品已经明确，但缺少当地渠道、试点客户、销售触达或实施伙伴，进入市场会变慢。我们可以一起设计本地切入方式。",
-          en: "If the product is clear but local channels, pilot customers, sales reach, or implementation partners are missing, market entry slows down. We can shape the local entry path together.",
+          en: "If the product is clear but local channels or pilots are missing, we can shape the entry path.",
         },
       },
       {
@@ -1455,7 +1455,7 @@ export const siteContent = {
         title: { zh: "联合方案推进", en: "Joint solution pursuit" },
         text: {
           zh: "如果客户问题跨越产品、流程和系统，单一供应商很难讲清完整价值。我们可以把本地关系、行业理解、平台能力和交付能力组合成联合方案。",
-          en: "If the client problem spans product, workflow, and systems, a single vendor story can be too narrow. We combine local relationships, industry knowledge, platform capability, and delivery capacity into a joint offer.",
+          en: "When a problem spans product, workflow, and systems, we combine local relationships, platform capability, and delivery.",
         },
       },
       {
@@ -1467,7 +1467,7 @@ export const siteContent = {
         },
         text: {
           zh: "如果项目需要线下走访、客户沟通、渠道触达、试点落地与持续服务，只有远程支持往往不够。我们欢迎与本地执行团队共同推进。",
-          en: "If a project needs local visits, client communication, channel reach, pilot execution, and ongoing service, remote support alone is often not enough. We welcome local execution partners.",
+          en: "When projects need visits, channel reach, pilot execution, and service, we welcome local execution partners.",
         },
       },
     ],
@@ -1484,17 +1484,17 @@ export const siteContent = {
       image: "/images/curated/diverse-business-meeting-room.jpg",
       title: { zh: "产品", en: "Products" },
       subtitle: {
-        zh: "这里展示可以帮助客户改善服务效率、项目协同、AI 落地和复杂业务支撑的产品。重点不是功能清单，而是这些产品能帮你减少哪些损耗、抓住哪些机会。",
-        en: "This page highlights products that can improve service efficiency, project coordination, AI adoption, and complex operating support. The point is not a feature list, but the waste they reduce and the opportunities they unlock.",
+        zh: "这里展示能改善服务效率、项目协同、AI 落地和复杂业务支撑的产品。重点是减少损耗、抓住机会。",
+        en: "Products for service efficiency, project coordination, AI adoption, and complex operations. Focus on waste reduced and opportunities unlocked.",
       },
     },
     introTitle: {
       zh: "从具体问题进入产品，而不是从功能表开始",
       en: "Start from the business problem, not the feature list",
     },
-    introText: {
-      zh: "这里集中展示我们的产品、产品化能力以及适合联合推进的伙伴产品，方便你快速判断哪一项更适合当前项目或合作方向。",
-      en: "This page brings together our products, productized capabilities, and partner products suited for joint pursuit so visitors can quickly decide which offer best fits the current project or partnership motion.",
+      introText: {
+      zh: "这里展示我们的产品、产品化能力和伙伴产品，帮助你快速判断项目匹配度。",
+      en: "Our products, productized capabilities, and partner products in one place for faster fit assessment.",
     },
     filtersTitle: {
       zh: "浏览方式",
@@ -1504,32 +1504,32 @@ export const siteContent = {
       {
         title: { zh: "我们的产品", en: "Our products" },
         text: {
-          zh: "适合需要改善项目推进、知识沉淀、服务运营或企业平台能力的客户。",
-          en: "For buyers who need better project execution, knowledge continuity, service operations, or enterprise platform capability.",
+          zh: "看 Teamshub、AI 服务等自有产品方向。",
+          en: "See Teamshub, AI service, and owned product directions.",
         },
       },
       {
         title: { zh: "伙伴产品", en: "Partner products" },
         text: {
-          zh: "适合希望快速验证新产品、新场景或本地市场机会的团队。",
-          en: "For teams that want to validate a new product, use case, or local market opportunity more quickly.",
+          zh: "适合联合推进的产品会在准备好后展示。",
+          en: "Partner products will appear here when they are ready.",
         },
       },
       {
         title: { zh: "项目场景", en: "Project fit" },
         text: {
-          zh: "如果问题涉及客服效率、外呼执行、跨团队协作、数据流转或复杂交付，可以从这里判断产品匹配度。",
-          en: "If the problem involves service efficiency, outbound execution, cross-team coordination, data flow, or complex delivery, start here to assess product fit.",
+          zh: "按客服、外呼、协同、数据流转判断匹配度。",
+          en: "Assess fit by support, outreach, coordination, and data-flow needs.",
         },
       },
     ],
     featuredTitle: {
       zh: "重点产品",
-      en: "Featured product",
+      en: "Featured solution",
     },
-    featuredText: {
-      zh: "客服、销售和支持团队如果无法稳定复制优秀员工经验，培训成本、通话质量和客户体验都会持续波动。Helport 正是从这个问题切入。",
-      en: "When support, sales, and service teams cannot consistently replicate expert performance, training cost, call quality, and customer experience keep fluctuating. Helport starts from this problem.",
+      featuredText: {
+      zh: "先从真实业务问题出发，再判断产品是否值得试点。",
+      en: "Start from the real business problem, then decide which product is worth piloting.",
     },
     ownTitle: {
       zh: "我们的产品库",
@@ -1549,7 +1549,7 @@ export const siteContent = {
         status: { zh: "主推", en: "Featured" },
         subtitle: {
           zh: "当重要客户、项目资料和下一步动作散落在聊天记录和个人文件夹里，团队很难持续推进。Teamshub 帮助把项目上下文、知识和待办放回同一个工作系统。",
-          en: "A business coordination product for lead handling, project execution, cross-team collaboration, and knowledge continuity.",
+          en: "A coordination product for lead handling, project execution, and knowledge continuity.",
         },
         tags: {
           zh: ["Collaboration", "Project execution", "Knowledge continuity"],
@@ -1563,15 +1563,15 @@ export const siteContent = {
             "可从一个关键客户或一个项目闭环开始验证",
           ],
           en: [
-            "What it is: our coordination and project execution product",
-            "What it solves: handoff gaps, fragmented knowledge, and weak cross-team execution",
-            "Who it fits: teams with long cycles, complex projects, and cross-time-zone collaboration",
-            "How it starts: through a minimum working loop, demo, or project-based rollout",
+            "Keeps project context, files, notes, tasks, and risks in one workspace",
+            "Reduces handoff gaps and repeated explanation",
+            "Fits long-cycle sales, complex delivery, and cross-time-zone collaboration",
+            "Can start from one key client or project loop",
           ],
         },
         note: {
-          zh: "如需进一步评估，我们可以提供产品结构、角色视图和典型使用场景资料。",
-          en: "If you need a deeper review, we can share product-structure, role-view, and use-case materials.",
+          zh: "可提供产品结构、角色视图和典型使用场景资料。",
+          en: "Product structure, role views, and use cases are available for review.",
         },
         cta: { zh: "查看 Teamshub 方案", en: "View Teamshub solution" },
         href: "/solutions/teamshub-business-os",
@@ -1588,7 +1588,7 @@ export const siteContent = {
         status: { zh: "重点方向", en: "Priority" },
         subtitle: {
           zh: "当客服知识分散、回复慢、质检覆盖不足时，客户体验会持续波动。该方向帮助服务团队把知识支持、辅助处理和运营分析接入真实流程。",
-          en: "A productized offering around smart customer service, agent assistance, support workflows, and operational optimization.",
+          en: "A productized offer for smart service, agent assist, workflows, and operations.",
         },
         tags: {
           zh: ["AI service", "Agent assist", "Service operations"],
@@ -1602,15 +1602,15 @@ export const siteContent = {
             "可从知识支持、摘要、辅助处理或质检场景先切入",
           ],
           en: [
-            "What it is: our AI-enabled customer service and service-operations offering",
-            "What it solves: slow replies, weak knowledge retrieval, poor handoffs, and uneven service quality",
-            "Who it fits: support teams, service teams, call centers, and operations groups",
-            "How it starts: through knowledge support, summarization, assistive handling, or QA use cases",
+            "Improves knowledge lookup, summaries, assistive handling, QA, and analytics",
+            "Reduces slow replies, weak handoffs, and uneven service quality",
+            "Fits support teams, call centers, and service operations",
+            "Can start from knowledge support, summaries, assist, or QA",
           ],
         },
         note: {
-          zh: "如需进一步评估，我们可以提供能力架构、场景拆解和演示资料。",
-          en: "If you need a deeper review, we can provide capability architecture, workflow breakdowns, and demo materials.",
+          zh: "可提供能力架构、场景拆解和流程资料。",
+          en: "Capability architecture, workflow breakdowns, and process materials are available.",
         },
         cta: { zh: "查看 AI 服务方案", en: "View AI service solution" },
         href: "/solutions/ai-customer-service",
@@ -1620,13 +1620,13 @@ export const siteContent = {
       zh: "伙伴产品库",
       en: "Partner product library",
     },
-    partnerText: {
-      zh: "这些合作产品适合用于新场景试点、联合方案和本地市场机会。我们更关注客户问题是否真实、是否值得验证、是否能形成下一步行动。",
-      en: "These partner products are suited for new use-case pilots, joint offers, and local market opportunities. We focus on whether the client problem is real, worth validating, and actionable.",
+      partnerText: {
+      zh: "这些合作产品适合新场景试点、联合方案和本地市场机会。重点看问题是否真实、是否值得验证。",
+      en: "Partner products for pilots, joint offers, and local market opportunities. We focus on real, testable problems.",
     },
     partnerItems: [
       {
-        visible: true,
+        visible: false,
         order: 1,
         title: { zh: "Helport", en: "Helport" },
         image: "/images/curated/call-center-diverse-team.jpg",
@@ -1634,7 +1634,7 @@ export const siteContent = {
         status: { zh: "主推", en: "Featured" },
         subtitle: {
           zh: "Helport 帮助客服、销售和支持团队把优秀员工经验放进实时通话、线索触达和 24/7 在线咨询里，让响应、转化和质检更可控。",
-          en: "Helport helps service, sales, and support teams place expert performance into live calls, lead outreach, and 24/7 online engagement so response, conversion, and QA are easier to control.",
+          en: "Helport puts expert performance into live calls, lead outreach, and 24/7 online engagement.",
         },
         tags: {
           zh: ["AI 客服", "销售辅助", "数字员工"],
@@ -1655,8 +1655,8 @@ export const siteContent = {
           ],
         },
         note: {
-          zh: "建议从一个具体场景开始评估，例如客服重复咨询、销售外呼、官网 AI Concierge 或专家知识复制。",
-          en: "Start from one concrete scenario: repeat support inquiries, outbound sales, website AI concierge, or expert knowledge replication.",
+          zh: "建议从一个具体场景开始评估，例如客服重复咨询、销售外呼、官网 AI 助手或专家知识复制。",
+          en: "Start from one concrete scenario: repeat support, outbound sales, website AI assistant, or expert knowledge.",
         },
         cta: { zh: "查看 Helport 详情", en: "View Helport details" },
         href: "/products/helport",
@@ -1664,47 +1664,47 @@ export const siteContent = {
       {
         visible: false,
         order: 2,
-        title: { zh: "更多合作产品", en: "Additional partner products" },
+        title: { zh: "联合推进产品", en: "Joint partner products" },
         image: "/images/curated/business-partner-handshake.jpg",
         category: { zh: "伙伴产品", en: "Partner product" },
-        status: { zh: "洽谈中", en: "In discussion" },
+        status: { zh: "储备方向", en: "Reserve direction" },
         subtitle: {
-          zh: "适合后续纳入联合方案、渠道合作或生态协同的更多伙伴产品。",
-          en: "Additional partner products that may be brought into joint offers, channel programs, or ecosystem collaboration later.",
+          zh: "适合进入联合方案、渠道合作或生态协同的伙伴产品。",
+          en: "Partner products suited for joint offers, channel programs, or ecosystem collaboration.",
         },
         tags: {
-          zh: ["Ecosystem", "Joint offer", "Partner motion"],
-          en: ["Ecosystem", "Joint offer", "Partner motion"],
+          zh: ["Ecosystem", "Joint offer", "Partner channel"],
+          en: ["Ecosystem", "Joint offer", "Partner channel"],
         },
         bullets: {
           zh: [
-            "正在筛选适合本地市场合作与联合推进的产品方向",
-            "后续会优先补充具备明确场景与合作路径的产品",
+            "面向本地市场合作与联合推进的产品方向",
+            "优先选择具备明确场景与合作路径的产品",
             "适合需要渠道协同、联合方案或本地支持的合作机会",
             "可通过 Si-Tech Intl 进入初步判断与合作沟通",
           ],
           en: [
-            "We are curating additional partner-product directions for local-market collaboration and joint pursuit",
-            "Future additions will prioritize offers with clear use cases and commercial paths",
+            "Product directions for local-market collaboration and joint pursuit",
+            "Prioritize offers with clear use cases and commercial paths",
             "These products fit opportunities that need channel coordination, joint packaging, or local support",
             "Si-Tech Intl can support early evaluation and partnership conversations",
           ],
         },
         note: {
-          zh: "如需了解正在洽谈的产品方向，可以直接联系我们讨论。",
-          en: "If you want to understand products currently under discussion, contact us directly.",
+          zh: "可联系了解合作方向。",
+          en: "Contact us to discuss partner directions.",
         },
         cta: {
           zh: "先联系讨论合作方向",
-          en: "Discuss a potential partner fit",
+          en: "Discuss partner fit",
         },
         href: "/contact",
       },
     ],
     cta: {
       title: {
-        zh: "如果你想了解某个产品是否适合你的项目，或者想把伙伴产品带进联合方案，我们可以直接沟通。",
-        en: "If you want to assess whether one of these products fits your project, or you want to bring a partner product into a joint solution, we can talk directly.",
+        zh: "如果你想判断产品是否适合项目，或把伙伴产品带进联合方案，可以直接沟通。",
+        en: "To assess product fit or bring a partner product into a joint solution, talk to us.",
       },
       button: { zh: "进入产品沟通", en: "Talk Products" },
     },
@@ -1714,8 +1714,8 @@ export const siteContent = {
       image: "/images/curated/business-partners-discussion.jpg",
       title: { zh: "合作故事", en: "Stories" },
       subtitle: {
-        zh: "通过真实项目名称和公开信息，快速了解不同场景下的问题、切入方式和可见成果。",
-        en: "Use real project names and public information to understand the problem, solution entry point, and visible outcome across different scenarios.",
+        zh: "通过真实项目名称和公开信息，快速了解问题、切入方式和可见成果。",
+        en: "Use public project names to understand the problem, entry point, and outcome.",
       },
     },
     introTitle: {
@@ -1731,8 +1731,8 @@ export const siteContent = {
           en: "China Unicom broadband support platform",
         },
         summary: {
-          zh: "公开材料显示该平台已在中国联通 5 个省落地，重点在于把宽带资源管理、开通激活、工单协同和运营分析接成一条完整链路。",
-          en: "Public materials show this platform deployed across five China Unicom provinces, connecting broadband resource management, activation, ticket coordination, and operational analysis into one working chain.",
+          zh: "公开材料显示该平台已在中国联通 5 个省落地，连接宽带资源、开通、工单和运营分析。",
+          en: "Public materials show deployment across five China Unicom provinces, connecting resources, activation, tickets, and analytics.",
         },
         image: "/images/curated/broadband-network-cables.jpg",
         labels: {
@@ -1747,22 +1747,22 @@ export const siteContent = {
           {
             label: { zh: "客户场景", en: "Client context" },
             text: {
-              zh: "宽带业务支撑不是单点系统问题，而是资源、开通、服务、履约和运维需要一起协同的持续运营场景。",
-              en: "Broadband support is not a single-system problem. It is an ongoing operating environment where resources, activation, service, fulfillment, and maintenance all need to work together.",
+              zh: "宽带业务支撑不是单点系统，而是资源、开通、服务和运维的协同。",
+              en: "Broadband support is not one system. Resources, activation, service, and maintenance must work together.",
             },
           },
           {
             label: { zh: "问题", en: "Problem" },
             text: {
-              zh: "如果宽带资源不准、开通激活不顺、工单与售后联动断裂，用户体验和运营效率都会一起下降。",
-              en: "When broadband resources are inaccurate, activation is slow, and ticketing or after-sales coordination breaks down, both user experience and operating efficiency decline together.",
+              zh: "资源不准、开通慢、工单断裂，会同时影响用户体验和运营效率。",
+              en: "Inaccurate resources, slow activation, and broken tickets hurt both experience and efficiency.",
             },
           },
           {
             label: { zh: "方案切入", en: "Solution entry point" },
             text: {
-              zh: "平台围绕宽带全生命周期展开，把资源管理、业务开通激活、工单联动和运营分析放进同一套数字化支撑体系。",
-              en: "The platform addresses the full broadband lifecycle by combining resource management, activation, ticket coordination, and operations analysis in one digital support system.",
+              zh: "平台把资源管理、开通激活、工单联动和运营分析放进同一套支撑体系。",
+              en: "The platform combines resource management, activation, ticket coordination, and analytics.",
             },
           },
           {
@@ -1782,8 +1782,8 @@ export const siteContent = {
           en: "QianNiuBang beef industry digital platform",
         },
         summary: {
-          zh: "这是真实公开的平台名称，重点在于围绕贵州肉牛产业链，把采购、交易、支付与物流协同做成可运行的平台能力。",
-          en: "This is a public platform name focused on the Guizhou beef supply chain, connecting procurement, trade, payment, and logistics into a usable digital platform.",
+          zh: "这是公开平台名称，围绕贵州肉牛产业链连接采购、交易、支付和物流。",
+          en: "A public platform for the Guizhou beef supply chain, connecting procurement, trade, payment, and logistics.",
         },
         image: "/images/curated/cattle-farm-platform.jpg",
         labels: {
@@ -1798,22 +1798,22 @@ export const siteContent = {
           {
             label: { zh: "客户场景", en: "Client context" },
             text: {
-              zh: "肉牛产业链涉及采购、交易、支付、物流等多个环节，平台如果不能把这些环节真正串起来，就很难形成持续效率。",
-              en: "A beef industry supply chain spans procurement, trade, payment, logistics, and more. Without a platform that connects these stages, efficiency remains fragmented.",
+              zh: "肉牛产业链涉及采购、交易、支付和物流，平台必须把这些环节串起来。",
+              en: "The beef supply chain spans procurement, trade, payment, and logistics. The platform must connect them.",
             },
           },
           {
             label: { zh: "问题", en: "Problem" },
             text: {
-              zh: "产业平台容易停留在展示和数据汇总层，真正难的是把产业链经营动作做成端到端可协同的流程。",
-              en: "Industry platforms often stop at dashboards and data aggregation. The harder task is making the business actions across the chain work end to end.",
+              zh: "产业平台容易停在展示层，真正难的是让经营动作端到端协同。",
+              en: "Industry platforms often stop at dashboards. The harder task is end-to-end business coordination.",
             },
           },
           {
             label: { zh: "方案切入", en: "Solution entry point" },
             text: {
-              zh: "黔牛帮平台围绕端到端数字化供应链展开，直接覆盖采购、交易、支付、物流等关键环节，并把数字化与智能化支持放进去。",
-              en: "QianNiuBang is positioned as an end-to-end digital supply-chain platform, directly covering procurement, trade, payment, logistics, and the digital support wrapped around them.",
+              zh: "黔牛帮覆盖采购、交易、支付、物流等关键环节，并加入数字化支持。",
+              en: "QianNiuBang covers procurement, trade, payment, logistics, and digital support.",
             },
           },
           {
@@ -1833,8 +1833,8 @@ export const siteContent = {
           en: "China Mobile intelligent customer service platform",
         },
         summary: {
-          zh: "公开材料显示该智能客服平台已在中国移动多个项目中落地，并以智能坐席、多模态交互、智能派单和质检分析为主要能力。",
-          en: "Public materials show the intelligent customer service platform deployed across multiple China Mobile projects with smart agent assistance, multimodal interaction, routing, and QA analytics.",
+          zh: "公开材料显示该智能客服平台已在中国移动多个项目落地，核心能力包括智能坐席、派单和质检分析。",
+          en: "Public materials show deployment across China Mobile projects, with agent assist, routing, and QA analytics.",
         },
         image: "/images/curated/call-center-diverse-team.jpg",
         labels: {
@@ -1849,29 +1849,29 @@ export const siteContent = {
           {
             label: { zh: "客户场景", en: "Client context" },
             text: {
-              zh: "大型客服与服务运营体系通常已经有人工团队，但随着业务量扩大，接入、辅助、质检和运营分析会同时成为压力点。",
-              en: "Large service organizations already have human teams in place, but as scale increases, intake, assistance, QA, and operating analysis all become pressure points at once.",
+              zh: "大型服务组织已有人工团队，但规模扩大后，接入、辅助、质检和分析都会承压。",
+              en: "Large service teams already have people, but intake, assist, QA, and analytics strain as volume grows.",
             },
           },
           {
             label: { zh: "问题", en: "Problem" },
             text: {
-              zh: "如果 AI 只停留在机器人演示层，就无法真正改善坐席效率、服务闭环和运营精细化程度。",
-              en: "If AI stays at the level of a bot demo, it does not materially improve agent efficiency, service closure, or operational precision.",
+              zh: "如果 AI 没有进入真实服务流程，就难以改善坐席效率、服务闭环和运营精细度。",
+              en: "AI improves service only when it enters real agent workflows, QA, and operations.",
             },
           },
           {
             label: { zh: "方案切入", en: "Solution entry point" },
             text: {
-              zh: "平台把智能多模态交互、人机共生坐席、智能派单、质检分析和运营闭环放进同一套智能客服体系中。",
-              en: "The platform brings multimodal interaction, human-in-the-loop agent assistance, intelligent routing, QA analysis, and service closure into one smart customer-service system.",
+              zh: "平台把多模态交互、坐席辅助、智能派单、质检分析和服务闭环放进同一体系。",
+              en: "The platform combines multimodal interaction, agent assist, routing, QA, and service closure.",
             },
           },
           {
             label: { zh: "结果", en: "Outcome" },
             text: {
-              zh: "公开材料给出的结果包括客服服务效率提升 20%，实现 100% 全量质检。这比单纯讲“AI 很先进”更有说服力。",
-              en: "Public materials cite a 20% service-efficiency improvement and 100% full-volume QA coverage, which is much stronger than simply saying the AI is advanced.",
+              zh: "公开材料显示客服效率提升 20%，并实现 100% 全量质检。",
+              en: "Public materials cite 20% higher service efficiency and 100% QA coverage.",
             },
           },
         ],
@@ -1883,17 +1883,17 @@ export const siteContent = {
       image: "/images/curated/diverse-executive-meeting.jpg",
       title: { zh: "关于我们", en: "About" },
       subtitle: {
-        zh: "Si-Tech Intl 是面向海外市场的合作接口，背后连接的是更完整的思特奇技术、平台、研发与交付能力。",
-        en: "Si-Tech Intl is the international-facing collaboration interface backed by the broader Si-Tech technical, platform, R&D, and delivery organization.",
+        zh: "Si-Tech Intl 是面向海外市场的合作接口，连接思特奇技术、平台、研发与交付能力。",
+        en: "Si-Tech Intl is the international interface for Si-Tech technology, platform, R&D, and delivery capability.",
       },
     },
     introTitle: {
       zh: "如何理解 Si-Tech Intl",
       en: "How to read Si-Tech Intl",
     },
-    introText: {
-      zh: "Si-Tech Intl 是一个面向海外合作与项目推进的入口，帮助客户快速了解我们最强的解决方案方向、可信的能力基础，以及适合从哪里开始。",
-      en: "Si-Tech Intl is an international entry point for partnership and project execution, designed to show our strongest solution tracks, credible capability base, and the most practical place to start.",
+      introText: {
+        zh: "Si-Tech Intl 帮助海外客户快速了解解决方案方向、能力基础和合适切入口。",
+        en: "Si-Tech Intl helps international clients understand our solution tracks, capability base, and starting points.",
     },
     stats: [
       { value: "1995", label: { zh: "思特奇成立时间", en: "Founded" } },
@@ -1909,7 +1909,7 @@ export const siteContent = {
         title: { zh: "长期项目经验", en: "Long-term project experience" },
         text: {
           zh: "复杂项目最怕只看演示、不看落地。思特奇长期服务运营商与大型客户，积累的是需求澄清、系统建设、上线推进和持续运营的完整经验。",
-          en: "Complex projects fail when teams judge only the demo and ignore delivery. Si-Tech's long-term work with operators and large clients has built experience across scoping, system delivery, rollout, and ongoing operations.",
+          en: "Complex projects need scope clarity, rollout discipline, and ongoing operations experience.",
         },
       },
       {
@@ -1919,7 +1919,7 @@ export const siteContent = {
         },
         text: {
           zh: "面向企业和运营商的系统不能只追求上线速度，还要考虑权限、数据、流程、异常处理和长期维护。我们更重视可持续运行的质量基础。",
-          en: "Enterprise and operator systems cannot optimize only for launch speed. Permissions, data, workflows, exceptions, and maintainability all matter. We put weight on quality that can keep running.",
+          en: "Enterprise and operator systems need permissions, data, workflows, exceptions, and maintainability, not just speed.",
         },
       },
       {
@@ -1929,7 +1929,7 @@ export const siteContent = {
         },
         text: {
           zh: "真正的项目通常涉及业务、技术、管理和本地执行多方协同。Si-Tech Intl 的价值在于把问题、范围、沟通和交付节奏组织起来。",
-          en: "Real projects usually involve business, engineering, management, and local execution. Si-Tech Intl helps organize the problem, scope, communication, and delivery rhythm.",
+          en: "Real projects involve business, engineering, management, and local execution. We organize scope and delivery rhythm.",
         },
       },
     ],
@@ -1961,8 +1961,8 @@ export const siteContent = {
       image: "/images/curated/business-partner-handshake.jpg",
       title: { zh: "联系", en: "Contact" },
       subtitle: {
-        zh: "告诉我们你现在最想推进的业务支撑、服务流程或平台需求，我们会尽快与您沟通下一步。",
-        en: "Tell us which support workflow, service process, or platform scope you want to move next, and our team will follow up shortly.",
+        zh: "告诉我们你想推进的业务支撑、服务流程或平台需求，我们会尽快沟通下一步。",
+        en: "Tell us the workflow, service process, or platform need. We will follow up shortly.",
       },
     },
     panelTitle: { zh: "直接联系", en: "Direct Contact" },
@@ -1971,8 +1971,8 @@ export const siteContent = {
       en: "After you submit the form, you will receive a confirmation email and our team will follow up by email as soon as possible.",
     },
     pagesNote: {
-      zh: "当前 GitHub Pages 版本不启用站内提交。点击提交后会调用你的邮箱客户端，并把已填写内容带入邮件草稿。",
-      en: "This GitHub Pages deployment does not run the built-in backend. Submitting the form will open your email client with the filled details drafted for sending.",
+      zh: "点击提交后会打开你的邮箱客户端，并自动带入已填写的咨询内容，方便你直接发送给我们。",
+      en: "Submitting the form opens your email client with the inquiry details already drafted so you can send them directly to us.",
     },
     form: {
       fullName: { zh: "姓名", en: "Full Name" },
@@ -1991,8 +1991,8 @@ export const siteContent = {
       submit: { zh: "提交需求", en: "Submit Inquiry" },
       loading: { zh: "提交中...", en: "Submitting..." },
       success: {
-        zh: "我们已收到你的需求，正在跳转确认页。",
-        en: "We received your inquiry and are taking you to the confirmation page.",
+        zh: "我们已收到你的需求，即将打开确认页。",
+        en: "We received your inquiry and will open the confirmation page.",
       },
       error: {
         zh: "提交失败，请稍后重试。",
@@ -2001,19 +2001,19 @@ export const siteContent = {
       options: {
         zh: [
           "解决方案 / 业务系统",
-          "产品 / Helport / AI 服务",
+          "产品 / AI 服务",
           "Partnership / 渠道合作",
-          "项目试点 / Demo / 需求评估",
+          "项目试点 / 需求评估",
           "技术与交付能力了解",
-          "暂时还不确定",
+          "需要先判断方向",
         ],
         en: [
           "Solutions / business systems",
-          "Products / Helport / AI service",
+          "Products / AI service",
           "Partnership / channel collaboration",
-          "Pilot / demo / needs assessment",
+          "Pilot / needs assessment",
           "Technical and delivery capability",
-          "Not sure yet",
+          "Need help choosing",
         ],
       },
       roleOptions: {
@@ -2021,7 +2021,7 @@ export const siteContent = {
         en: ["Founder / Executive", "Business Lead", "Product / Project Lead", "Technical Lead", "Sales / Channel Lead", "Advisor / Partner", "Other"],
       },
       companySizeOptions: {
-        zh: ["1-10 人", "11-50 人", "51-200 人", "201-1000 人", "1000 人以上", "暂时不方便透露"],
+        zh: ["1-10 人", "11-50 人", "51-200 人", "201-1000 人", "1000 人以上", "暂不透露"],
         en: ["1-10 employees", "11-50 employees", "51-200 employees", "201-1000 employees", "1000+ employees", "Prefer not to say"],
       },
     },
@@ -2030,7 +2030,7 @@ export const siteContent = {
     title: { zh: "我们已收到你的信息", en: "We received your inquiry" },
     text: {
       zh: "我们已经收到你的请求，团队会尽快通过邮件与你联系。若你有更多补充，也可以直接发邮件至 info@sitech-intl.com。",
-      en: "We have received your inquiry, and our team will contact you by email as soon as possible. If you want to add more context, you can also write directly to info@sitech-intl.com.",
+      en: "We received your inquiry and will follow up by email. You can also send more context to info@sitech-intl.com.",
     },
     button: { zh: "返回首页", en: "Back to Home" },
   },
@@ -2038,20 +2038,20 @@ export const siteContent = {
     title: { zh: "隐私说明", en: "Privacy" },
     intro: {
       zh: "我们只收集你主动提交的联系信息与咨询内容，用于响应需求、安排沟通并持续跟进项目机会。",
-      en: "We collect only the contact information and inquiry details you submit voluntarily so we can respond to your request, arrange follow-up, and manage the opportunity responsibly.",
+      en: "We collect only the contact and inquiry details you submit, so we can respond and manage follow-up.",
     },
     sections: [
       {
         title: { zh: "我们收集什么", en: "What we collect" },
         text: {
           zh: "姓名、工作邮箱、公司、职位、电话、行业、咨询内容，以及提交时的页面链接等基础信息。",
-          en: "Basic information such as name, work email, company, job title, phone, industry, inquiry details, and the page URL from which the form was submitted.",
+          en: "Name, work email, company, role, phone, industry, inquiry details, and submitted page URL.",
         },
       },
       {
         title: { zh: "我们如何使用", en: "How we use it" },
         text: {
-          zh: "用于与你联系、评估项目匹配度、安排后续沟通，并在我们的业务系统中保留必要记录。",
+          zh: "用于与你联系、评估项目匹配度、安排项目沟通，并在我们的业务系统中保留必要记录。",
           en: "We use it to contact you, assess fit, arrange follow-up, and keep the necessary record in our business systems.",
         },
       },
@@ -2069,12 +2069,10 @@ export const siteContent = {
     focusTitle: { zh: "重点方向", en: "Focus Areas" },
     focusItems: {
       zh: [
-        "Helport 合作产品与试用切入",
         "运营商 IT 支撑与服务域",
         "数据要素与数字产业平台",
       ],
       en: [
-        "Helport partner product and trial entry",
         "Telecom IT support and service domain",
         "Data and industrial digital platforms",
       ],

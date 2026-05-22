@@ -24,6 +24,14 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1;
+}
+
+.font-display {
+  font-optical-sizing: auto;
+  letter-spacing: 0;
 }
 
 a {

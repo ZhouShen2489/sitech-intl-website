@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageHero, SectionHeading } from "@/components/page-sections";
-import { siteContent, copy } from "@/content/siteContent";
+import { siteContent, copy } from "@/content/site-content";
 import { isLocale, withLocale } from "@/lib/site";
 
 export default async function AiCustomerServicePage({
@@ -34,7 +34,7 @@ export default async function AiCustomerServicePage({
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {detail.capabilityBlocks.map((block) => (
               <article key={block.title.en} className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-card">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, block.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, block.title)}</h2>
                 <ul className="mt-5 space-y-3">
                   {block.bullets[locale].map((bullet) => (
                     <li key={bullet} className="flex gap-3 text-sm leading-7 text-slate-600">
@@ -75,7 +75,7 @@ export default async function AiCustomerServicePage({
           <div className="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-[#fbfcfd] p-6 text-sm leading-7 text-slate-600">
             {locale === "en"
               ? "Representative AI workflow, service-journey, and agent-architecture materials can be shared during solution discussions."
-              : "如需进一步评估，我们可以在沟通阶段提供 AI 工作流、服务旅程和智能体架构资料。"}
+              : "沟通阶段可提供 AI 工作流、服务旅程和智能体架构资料。"}
           </div>
           <div className="mt-10">
             <Link

@@ -17,7 +17,7 @@ struct OCRConfig {
 
   static let `default` = OCRConfig(
     inputPDF: "/Users/zhoushen/Nutstore Files/Nutstore/Sitech/A-\u{56fd}\u{5185}\u{601d}\u{7279}\u{5947}\u{6750}\u{6599}/\u{601d}\u{7279}\u{5947}\u{624b}\u{518c}/\u{601d}\u{7279}\u{5947}\u{624b}\u{518c}\u{7535}\u{5b50}\u{7248}_compressed.pdf",
-    rawOutput: "content/pdf-ocr/sitech-manual-ocr.md",
+    rawOutput: "docs/reference/pdf-ocr/sitech-manual-ocr.md",
     scale: 2.2,
     languages: ["zh-Hans", "en-US"]
   )

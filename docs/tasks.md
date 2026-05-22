@@ -4,10 +4,10 @@
 
 ## Current Status
 
-- 双语 Next.js 官网已搭建，核心内容集中在 `content/siteContent.ts`、`content/productsContent.ts`。
+- 双语 Next.js 官网已搭建，核心内容集中在 `content/site-content.ts`、`content/products-content.ts`。
 - Home、Products、Helport、Solutions、Stories / Partnership、About、Contact、Privacy、Thank You 已有完整页面。
 - 联系表单、HubSpot、邮件通知和自动回复链路已接入。
-- PDF OCR 内容已落到 `content/pdf-ocr/`，可继续作为内容素材库。
+- PDF OCR 内容已落到 `docs/reference/pdf-ocr/`，可继续作为内容素材库。
 - 图片已集中放在 `public/images/curated/`，当前主要页面已直接接入真人商务风格照片。
 - UI 已向 SI-TECH logo 蓝色体系靠拢，并加入轻量动效、卡片 hover、真人 hero 图和更明显的 CTA。
 - 已完成一轮呈现优化：Hero SMB 浮层已移除，主要头图已去重，Helport 详情头图已换成更友好的客服场景图。
@@ -42,7 +42,7 @@
 
 - Partnership 支持未来新增太阳能摄像头、本地代理、渠道合作、行业实施伙伴等条目。
 - Products 支持新增更多合作产品，并通过 `visible` 控制是否展示。
-- 图片后续替换成真实公司/项目图片时，继续走 `IMAGE_GUIDE.md` 和 `npm run check:images`。
+- 图片后续替换成真实公司/项目图片时，继续走 `docs/image-guide.md` 和 `npm run check:images`。
 
 ## Page Audit
 

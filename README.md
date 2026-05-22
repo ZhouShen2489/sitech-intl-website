@@ -22,26 +22,22 @@ It should present Si-Tech Intl as:
 - strong in telecom-grade systems, service operations, digital platforms, AI-enabled service, and practical business systems
 - practical, execution-oriented, and able to start with scoped pilots instead of forcing large all-at-once projects
 
-## Current branch
-
-- Active implementation branch: `codex/preBuild`
-
 ## Technical stack
 
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
-- Localized content in `content/siteContent.ts` and `content/productsContent.ts`
+- Localized content in `content/site-content.ts` and `content/products-content.ts`
 - Lead form submission through `POST /api/contact`
 - HubSpot CRM routing through server-side integration
 - Gmail delivery through server-side OAuth2 mail sending
 
 ## Content structure
 
-- `content/siteContent.ts`: primary bilingual site copy
-- `content/productsContent.ts`: product and marketplace copy
-- `content/pdf-ocr/sitech-manual-ocr.md`: raw OCR extraction from the Si-Tech PDF manual
-- `content/pdf-ocr/sitech-manual-structured.md`: structured content draft for website reuse
+- `content/site-content.ts`: primary bilingual site copy
+- `content/products-content.ts`: product and marketplace copy
+- `docs/reference/pdf-ocr/sitech-manual-ocr.md`: raw OCR extraction from the Si-Tech PDF manual
+- `docs/reference/pdf-ocr/sitech-manual-structured.md`: structured content draft for website reuse
 
 ## Image replacement
 
@@ -54,7 +50,7 @@ Most page images are referenced from structured content files rather than hard-c
 - Logo: `public/brand/logo-symbol.png`
 - Browser icon: `app/icon.png`
 
-To replace an image, add the new file in the matching folder and update the image path in `content/siteContent.ts` or `content/productsContent.ts`.
+To replace an image, add the new file in the matching folder and update the image path in `content/site-content.ts` or `content/products-content.ts`.
 
 Local development runs a lightweight image size check before starting the dev server:
 
@@ -64,7 +60,7 @@ npm run check:images
 
 This check is wired into `npm run dev` only. Production builds do not depend on it.
 
-For the full image placement and size guide, see `IMAGE_GUIDE.md`.
+For the full image placement and size guide, see `docs/image-guide.md`.
 
 ## Visibility and extensibility
 
@@ -83,8 +79,8 @@ This repo includes a local OCR pipeline for the scanned company manual:
 
 - Script: `scripts/ocr-sitech-manual.swift`
 - Source PDF: `/Users/zhoushen/Nutstore Files/Nutstore/Sitech/A-国内思特奇材料/思特奇手册/思特奇手册电子版_compressed.pdf`
-- Raw output: `content/pdf-ocr/sitech-manual-ocr.md`
-- Structured output: `content/pdf-ocr/sitech-manual-structured.md`
+- Raw output: `docs/reference/pdf-ocr/sitech-manual-ocr.md`
+- Structured output: `docs/reference/pdf-ocr/sitech-manual-structured.md`
 
 The OCR pipeline uses:
 
@@ -168,8 +164,11 @@ Important note for non-technical stakeholders:
 
 ## Docs
 
-- `PRD.md`: product direction and content requirements
-- `TASKS.md`: active implementation checklist
-- `STYLEGUIDE.md`: voice and structure rules
-- `BEGINNER_GUIDE.md`: the one beginner-facing guide to read first
-- `IMAGE_GUIDE.md`: where to replace images and what size to use
+- `docs/prd.md`: product direction and content requirements
+- `docs/tasks.md`: active implementation checklist
+- `docs/styleguide.md`: voice and structure rules
+- `docs/beginner-guide.md`: the one beginner-facing guide to read first
+- `docs/image-guide.md`: where to replace images and what size to use
+- `docs/code-explanation.md`: PM-friendly explanation of how the code is organized
+- `docs/b2b-website-structure.md`: B2B website structure and lead-generation notes
+- `docs/reference/`: source material, OCR notes, and deck/reference extracts

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageHero, SectionHeading } from "@/components/page-sections";
-import { siteContent, copy, visibleItems } from "@/content/siteContent";
+import { siteContent, copy, visibleItems } from "@/content/site-content";
 import { isLocale, withBasePath, withLocale } from "@/lib/site";
 
 const groupImages = [
@@ -61,7 +61,7 @@ export default async function PartnershipPage({
                   />
                 </div>
                 <div className="p-7">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
                 </div>
               </article>
@@ -77,7 +77,7 @@ export default async function PartnershipPage({
             {models.map((model, index) => (
               <article key={model.title.en} className="interactive-card surface-card rounded-[2rem] p-7">
                 <p className="text-sm uppercase tracking-[0.2em] text-tide">0{index + 1}</p>
-                <h2 className="mt-6 font-serif text-2xl text-ink">{copy(locale, model.title)}</h2>
+                <h2 className="mt-6 font-display text-2xl text-ink">{copy(locale, model.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, model.text)}</p>
               </article>
             ))}
@@ -105,7 +105,7 @@ export default async function PartnershipPage({
                   />
                 </div>
                 <div className="p-7">
-                <h2 className="font-serif text-2xl text-ink">{copy(locale, item.title)}</h2>
+                <h2 className="font-display text-2xl text-ink">{copy(locale, item.title)}</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
                 </div>
               </article>
@@ -117,7 +117,7 @@ export default async function PartnershipPage({
       <section className="bg-[#f6f9fc] py-20 lg:py-24">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <div className="brand-orbit rounded-[2.5rem] px-8 py-12 text-white shadow-card">
-            <p className="font-serif text-3xl">{copy(locale, siteContent.partnershipPage.cta.title)}</p>
+            <p className="font-display text-3xl">{copy(locale, siteContent.partnershipPage.cta.title)}</p>
             <div className="mt-8">
               <Link
                 href={withLocale(locale, "/contact")}
