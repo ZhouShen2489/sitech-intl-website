@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { LocaleChrome } from "@/components/locale-chrome";
 import { isLocale, locales } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -23,10 +22,6 @@ export default async function LocaleLayout({
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <SiteHeader locale={locale} />
-      <main>{children}</main>
-      <SiteFooter locale={locale} />
-    </div>
+    <LocaleChrome locale={locale}>{children}</LocaleChrome>
   );
 }

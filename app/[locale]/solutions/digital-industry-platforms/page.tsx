@@ -74,15 +74,15 @@ export default async function DigitalIndustryPlatformsPage({
           </div>
           <div className="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-[#fbfcfd] p-6 text-sm leading-7 text-slate-600">
             {locale === "en"
-              ? "Representative platform-architecture and industry-workflow materials can be shared during solution discussions."
-              : "沟通阶段可提供平台架构和业务流程资料。"}
+              ? "We can walk through the platform architecture, transaction flow, and operating model in the next conversation."
+              : "我们可以直接看平台架构、交易链路和运营方式，聊这条方向怎么服务你的产业场景。"}
           </div>
           <div className="mt-10">
             <Link
               href={withLocale(locale, "/contact")}
               className="inline-flex rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate"
             >
-              {locale === "en" ? "Discuss This Scope" : "讨论这个方向"}
+              {locale === "en" ? "Explore this direction" : "沟通这个方向"}
             </Link>
           </div>
         </div>

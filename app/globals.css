@@ -29,6 +29,13 @@ body {
     "liga" 1;
 }
 
+body[data-opera-home="true"] {
+  background:
+    radial-gradient(circle at top left, rgba(23, 74, 152, 0.28), transparent 32rem),
+    linear-gradient(180deg, #06101c 0%, #081529 40%, #06101c 100%);
+  color: #f6f8fc;
+}
+
 .font-display {
   font-optical-sizing: auto;
   letter-spacing: 0;
@@ -121,6 +128,90 @@ main > section:not(:first-child) {
   box-shadow: 0 12px 34px rgba(242, 185, 109, 0.28);
 }
 
+.opera-noise {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.opera-stage-grid {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    80px 80px,
+    80px 80px;
+}
+
+.opera-hotspot {
+  animation: opera-pulse 4.4s ease-in-out infinite;
+}
+
+.opera-beam {
+  transform-origin: left center;
+  animation: opera-beam-drift 3.6s ease-in-out infinite;
+}
+
+@keyframes opera-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+@keyframes opera-beam-drift {
+  0%,
+  100% {
+    opacity: 0.78;
+    transform: scaleX(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleX(1.02);
+  }
+}
+
+.opera-speckle {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.08) 0.7px, transparent 0.7px),
+    radial-gradient(rgba(255, 255, 255, 0.03) 0.7px, transparent 0.7px);
+  background-position:
+    0 0,
+    12px 12px;
+  background-size:
+    24px 24px,
+    24px 24px;
+}
+
+.opera-ping-ring {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  animation: opera-ping 2.2s ease-out infinite;
+}
+
+.opera-drift {
+  animation: opera-drift 12s ease-in-out infinite;
+}
+
+.opera-slow-drift {
+  animation: opera-slow-drift 28s ease-in-out infinite alternate;
+}
+
+.scan-sweep {
+  animation: scan-sweep 12s linear infinite;
+}
+
+.resolve-ring {
+  animation: resolve-ring 3.4s ease-out infinite;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -140,6 +231,81 @@ main > section:not(:first-child) {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes opera-ping {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.72);
+  }
+
+  70% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.55);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.55);
+  }
+}
+
+@keyframes scan-sweep {
+  0% {
+    transform: translateX(-10%) skewX(-12deg);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.3;
+  }
+
+  48% {
+    opacity: 0.16;
+  }
+
+  100% {
+    transform: translateX(520%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes resolve-ring {
+  0% {
+    transform: scale(0.72);
+    opacity: 0.78;
+  }
+
+  72% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+}
+
+@keyframes opera-slow-drift {
+  0% {
+    transform: scale(1.015);
+  }
+
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes opera-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0);
   }
 }
 
