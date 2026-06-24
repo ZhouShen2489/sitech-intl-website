@@ -161,10 +161,16 @@ export function HelportSpotlight({ locale }: { locale: Locale }) {
 }
 
 export function HomePage({ locale }: { locale: Locale }) {
-  const { hero, companyIntro, problemAreas, solutionSelector, storiesPreview, aboutPreview, cta, sections } =
+  const { hero, companyIntro, problemAreas, storiesPreview, aboutPreview, cta, sections } =
     siteContent.home;
   const [featuredSolution, ...secondarySolutions] = siteContent.solutionsCatalog;
   const previewStories = visibleItems(siteContent.storiesPage.items).slice(0, 3);
+  const statAccents = [
+    "from-[#1357d3] via-[#20a7ff] to-[#48d6b5]",
+    "from-[#0b2f6f] via-[#5f7cff] to-[#f6b85a]",
+    "from-[#1267c7] via-[#27c4a4] to-[#8bd450]",
+    "from-[#14345f] via-[#18a1ff] to-[#f7ba67]",
+  ];
 
   return (
     <>
@@ -188,6 +194,12 @@ export function HomePage({ locale }: { locale: Locale }) {
             >
               {copy(locale, hero.secondaryCta)}
             </Link>
+            <Link
+              href={withLocale(locale, "/solutions")}
+              className="rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:border-signal/60 hover:bg-white/[0.16]"
+            >
+              {copy(locale, hero.solutionsCta)}
+            </Link>
           </>
         }
       />
@@ -206,9 +218,24 @@ export function HomePage({ locale }: { locale: Locale }) {
               <p className="mt-5 text-base leading-8 text-slate-600">{copy(locale, companyIntro.text)}</p>
             </div>
             <div className="grid gap-5 md:grid-cols-2">
-              {companyIntro.stats.map((item) => (
-                <div key={item.value} className="interactive-card rounded-[2rem] border border-blue-100 bg-[#f7fbff] p-6">
-                  <p className="font-display text-4xl text-ink">{item.value}</p>
+              {companyIntro.stats.map((item, index) => (
+                <div
+                  key={item.value}
+                  className="interactive-card group relative overflow-hidden rounded-[2rem] border border-blue-100 bg-white p-6 shadow-[0_18px_55px_rgba(11,47,111,0.08)]"
+                >
+                  <div
+                    aria-hidden="true"
+                    className={`absolute -right-10 -top-12 h-28 w-28 rounded-full bg-gradient-to-br ${statAccents[index % statAccents.length]} opacity-[0.18] blur-2xl transition duration-500 group-hover:scale-125 group-hover:opacity-[0.28]`}
+                  />
+                  <div
+                    aria-hidden="true"
+                    className={`absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r ${statAccents[index % statAccents.length]}`}
+                  />
+                  <p
+                    className={`relative bg-gradient-to-r ${statAccents[index % statAccents.length]} bg-clip-text font-display text-4xl text-transparent transition duration-300 group-hover:translate-x-1`}
+                  >
+                    {item.value}
+                  </p>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, item.label)}</p>
                 </div>
               ))}
@@ -264,18 +291,18 @@ export function HomePage({ locale }: { locale: Locale }) {
                   />
                 </div>
                 <p className="text-sm uppercase tracking-[0.18em] text-accent">
-                  {locale === "en" ? "Why It Leads" : "为什么放在第一位"}
+                  {locale === "en" ? "Operator-grade foundation" : "运营商级能力底座"}
                 </p>
                 <div className="mt-4 space-y-4 text-sm leading-7 text-white/74">
                   <p>
                     {locale === "en"
-                      ? "This is the clearest proof that we understand enterprise-scale service complexity and long-running operating systems."
-                      : "这条方向最能证明我们理解企业级服务复杂度和长期运行的业务支撑系统。"}
+                      ? "This is the kind of work where service, billing, partner, portal, and customer flows have to stay stable for years."
+                      : "这类业务不是只求上线，而是要求服务、计费、伙伴、门户和客户流程多年稳定协同。"}
                   </p>
                   <p>
                     {locale === "en"
-                      ? "It combines operator support, customer workflows, service coordination, portals, settlement, and international MVNO scenarios."
-                      : "它把运营支撑、客户流程、服务协同、门户、结算与国际化 MVNO 场景放进同一条可理解的能力主线。"}
+                      ? "That same foundation helps enterprise buyers move AI service, workflow integration, and cross-system operations with more confidence."
+                      : "同样的底座，也能支撑企业客户把 AI 服务、流程集成和跨系统运营真正推进下去。"}
                   </p>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-4">
@@ -289,7 +316,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                     href={withLocale(locale, featuredSolution.storyHref)}
                     className="inline-flex rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                   >
-                    {locale === "en" ? "Open Story" : "查看故事"}
+                    {locale === "en" ? "View Cases" : "看案例"}
                   </Link>
                 </div>
               </div>
@@ -322,36 +349,6 @@ export function HomePage({ locale }: { locale: Locale }) {
                 </article>
               ))}
             </div>
-          </div>
-        </div>
-        </section>
-      ) : null}
-
-      {isVisible(sections.solutionSelector) ? (
-        <section className="bg-white py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading title={copy(locale, solutionSelector.title)} text={copy(locale, solutionSelector.text)} />
-          <div className="mt-12 grid gap-8 lg:grid-cols-3">
-            {siteContent.solutionCategories.map((category) => (
-              <article key={category.key} className="rounded-[2.25rem] border border-slate-200 bg-[#f8fafc] p-7">
-                <h3 className="font-display text-2xl text-ink">{copy(locale, category.title)}</h3>
-                <p className="mt-4 text-sm leading-7 text-slate-600">{copy(locale, category.text)}</p>
-                <div className="mt-6 space-y-3">
-                  {siteContent.solutionsCatalog
-                    .filter((solution) => solution.category === category.key)
-                    .map((solution) => (
-                      <Link
-                        key={solution.key}
-                        href={withLocale(locale, solution.href)}
-                        className="block rounded-[1.5rem] border border-slate-200 bg-white px-4 py-4 text-sm leading-6 text-slate-700 transition hover:border-ink hover:text-ink"
-                      >
-                        <span className="font-semibold text-ink">{copy(locale, solution.title)}</span>
-                        <span className="mt-1 block text-slate-600">{copyList(locale, solution.bullets)[0]}</span>
-                      </Link>
-                    ))}
-                </div>
-              </article>
-            ))}
           </div>
         </div>
         </section>

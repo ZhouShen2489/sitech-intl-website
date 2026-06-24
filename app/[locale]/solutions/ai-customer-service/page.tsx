@@ -74,15 +74,15 @@ export default async function AiCustomerServicePage({
           </div>
           <div className="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-[#fbfcfd] p-6 text-sm leading-7 text-slate-600">
             {locale === "en"
-              ? "Representative AI workflow, service-journey, and agent-architecture materials can be shared during solution discussions."
-              : "沟通阶段可提供 AI 工作流、服务旅程和智能体架构资料。"}
+              ? "We can walk through the AI flow, service journey, and agent setup in the next conversation."
+              : "我们可以直接看 AI 工作流、服务旅程和智能体配置，聊这条方向怎么进入你的服务体系。"}
           </div>
           <div className="mt-10">
             <Link
               href={withLocale(locale, "/contact")}
               className="inline-flex rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate"
             >
-              {locale === "en" ? "Discuss This Scope" : "讨论这个方向"}
+              {locale === "en" ? "Explore this direction" : "沟通这个方向"}
             </Link>
           </div>
         </div>

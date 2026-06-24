@@ -12,8 +12,8 @@ export default async function PartnersRedirectPage({
   return (
     <StaticRedirect
       href={href}
-      message="Redirecting to products..."
-      linkLabel="Open products"
+      message={isLocale(locale) && locale === "zh" ? "正在跳转到产品页..." : "Redirecting to products..."}
+      linkLabel={isLocale(locale) && locale === "zh" ? "打开产品页" : "Open products"}
     />
   );
 }

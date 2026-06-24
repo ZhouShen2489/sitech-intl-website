@@ -75,7 +75,7 @@ export function StoryAccordion({ locale }: { locale: Locale }) {
                       href={withLocale(locale, "/solutions")}
                       className="inline-flex rounded-full border border-ink px-5 py-3 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white"
                     >
-                      {locale === "en" ? "Open Related Solutions" : "查看相关解决方案"}
+                      {locale === "en" ? "Open Related Solutions" : "查看对应解决方案"}
                     </Link>
                   </div>
                 </div>

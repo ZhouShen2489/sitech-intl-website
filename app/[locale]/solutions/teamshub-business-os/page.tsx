@@ -47,7 +47,7 @@ export default async function TeamshubBusinessOsPage({
         <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8 lg:py-24">
           <div className="max-w-3xl">
             <p className="inline-flex rounded-full border border-blue-100 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-tide shadow-sm">
-              {locale === "en" ? "Product / Project knowledge workspace" : "产品 / 项目级知识沉淀"}
+              {locale === "en" ? "Product / Project knowledge workspace" : "产品 / 项目协作与知识工作台"}
             </p>
             <h1 className="mt-6 font-display text-4xl font-bold leading-tight text-ink md:text-5xl lg:text-6xl">
               {copy(locale, detail.title)}
@@ -75,7 +75,9 @@ export default async function TeamshubBusinessOsPage({
             <div className="rounded-[1.5rem] border border-slate-200 bg-[#f8fbff] p-5">
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-tide">Project View</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-tide">
+                    {locale === "en" ? "Project View" : "项目总览"}
+                  </p>
                   <h2 className="mt-2 font-display text-xl font-bold text-ink">{preview.project}</h2>
                 </div>
                 <span className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-tide shadow-sm">
@@ -85,7 +87,9 @@ export default async function TeamshubBusinessOsPage({
 
               <div className="mt-5 grid gap-4 lg:grid-cols-[0.72fr_1fr_0.9fr]">
                 <div className="rounded-2xl bg-white p-4 shadow-sm">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Circles</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                    {locale === "en" ? "Circles" : "协作圈层"}
+                  </p>
                   <div className="mt-3 space-y-2">
                     {preview.circles.map((item) => (
                       <div key={item} className="rounded-xl bg-[#eef6ff] px-3 py-2 text-sm font-semibold text-ink">
@@ -96,7 +100,9 @@ export default async function TeamshubBusinessOsPage({
                 </div>
 
                 <div className="rounded-2xl bg-white p-4 shadow-sm">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Post Catalog</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                    {locale === "en" ? "Post Catalog" : "信息目录"}
+                  </p>
                   <div className="mt-3 space-y-2">
                     {preview.posts.map((item) => (
                       <div key={item} className="border-l-2 border-tide bg-[#f8fbff] px-3 py-2 text-sm text-slate-700">

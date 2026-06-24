@@ -74,15 +74,15 @@ export default async function CustomBusinessSystemsPage({
           </div>
           <div className="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-[#fbfcfd] p-6 text-sm leading-7 text-slate-600">
             {locale === "en"
-              ? "Representative portal wireframes, module views, and workflow structure materials can be shared during solution discussions."
-              : "沟通阶段可提供门户线框、模块视图和流程结构资料。"}
+              ? "We can walk through portal layouts, module structure, and workflow flow in the next conversation."
+              : "我们可以直接看门户布局、模块结构和业务流程，聊这条方向怎么进入你的业务。"}
           </div>
           <div className="mt-10">
             <Link
               href={withLocale(locale, "/contact")}
               className="inline-flex rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate"
             >
-              {locale === "en" ? "Discuss This Scope" : "讨论这个方向"}
+              {locale === "en" ? "Explore this direction" : "沟通这个方向"}
             </Link>
           </div>
         </div>

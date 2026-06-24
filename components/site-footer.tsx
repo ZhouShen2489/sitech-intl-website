@@ -41,7 +41,7 @@ export function SiteFooter({ locale }: SiteFooterProps) {
             {siteContent.navigation.map((item) => (
               <div key={item.href}>
                 <Link
-                  href={withLocale(locale, item.href)}
+                  href={withLocale(locale, item.href === "/" ? "/company" : item.href)}
                   className="text-sm text-slate-700 transition hover:text-ink"
                 >
                   {copy(locale, item.label)}

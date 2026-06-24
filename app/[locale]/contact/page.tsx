@@ -34,15 +34,21 @@ export default async function ContactPage({
             </p>
             <div className="mt-8 space-y-5">
               <div className="rounded-[1.5rem] border border-white/10 bg-white/8 p-5">
-                <p className="text-sm uppercase tracking-[0.18em] text-accent">Email</p>
+                <p className="text-sm uppercase tracking-[0.18em] text-accent">
+                  {locale === "en" ? "Email" : "邮箱"}
+                </p>
                 <p className="mt-3 text-base text-white/85">{siteContent.contact.email}</p>
               </div>
               <div className="rounded-[1.5rem] border border-white/10 bg-white/8 p-5">
-                <p className="text-sm uppercase tracking-[0.18em] text-accent">Phone</p>
+                <p className="text-sm uppercase tracking-[0.18em] text-accent">
+                  {locale === "en" ? "Phone" : "电话"}
+                </p>
                 <p className="mt-3 text-base text-white/85">{siteContent.contact.phone}</p>
               </div>
               <div className="rounded-[1.5rem] border border-white/10 bg-white/8 p-5">
-                <p className="text-sm uppercase tracking-[0.18em] text-accent">Location</p>
+                <p className="text-sm uppercase tracking-[0.18em] text-accent">
+                  {locale === "en" ? "Location" : "地址"}
+                </p>
                 <p className="mt-3 text-base text-white/85">{siteContent.contact.address}</p>
               </div>
             </div>

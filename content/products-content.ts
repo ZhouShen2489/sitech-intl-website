@@ -1,17 +1,17 @@
 export const productsContent = {
-  homeSpotlight: {
+    homeSpotlight: {
     eyebrow: {
       zh: "重点产品 / 合作伙伴渠道产品",
       en: "Featured product / Partner channel product",
     },
-    title: {
-      zh: "Helport：把专家经验放进每一次客户沟通",
-      en: "Helport: expert guidance in every customer conversation",
-    },
-    text: {
-      zh: "优秀坐席和销售经验很难复制。Helport 把专家经验放进实时通话、外呼执行和数字员工里。",
-      en: "Helport puts expert knowledge into calls, outbound work, and digital workers.",
-    },
+      title: {
+        zh: "Helport：把专家经验放进每一次客户沟通",
+        en: "Helport: expert guidance in every customer conversation",
+      },
+      text: {
+        zh: "优秀坐席和销售经验很难复制。Helport 把专家经验放进实时通话、外呼执行和数字员工里。",
+        en: "Helport copies expert know-how into calls, outreach, and digital workers.",
+      },
     tags: {
       zh: ["Helport", "AI 客服", "销售辅助", "数字员工"],
       en: ["Helport", "AI service", "Sales assist", "Digital workers"],
@@ -24,7 +24,7 @@ export const productsContent = {
         },
         text: {
           zh: "实时转写、知识调用、话术建议、总结和质检。",
-          en: "Live transcription, knowledge retrieval, guidance, summaries, and QA.",
+          en: "Live transcription, knowledge search, guidance, summaries, and QA.",
         },
       },
       {
@@ -34,7 +34,7 @@ export const productsContent = {
         },
         text: {
           zh: "AI 监督 + 脚本控制 + 人工外呼，快速启动销售或支持能力。",
-          en: "AI supervision, scripts, and human outbound execution for fast-start sales or support.",
+          en: "AI supervision, scripts, and human outbound work for a fast start.",
         },
       },
       {
@@ -55,24 +55,24 @@ export const productsContent = {
     officialHref: "https://www.helport.ai/",
     partnerReferralHref: "/contact",
   },
-  page: {
-    hero: {
-      image: "/images/curated/call-center-team-meeting.jpg",
-      title: { zh: "产品", en: "Products" },
-      subtitle: {
-        zh: "从真实问题出发，判断哪一项产品最值得先试。",
-        en: "Start from the real problem, then choose what to try first.",
+    page: {
+      hero: {
+        image: "/images/curated/call-center-team-meeting.jpg",
+        title: { zh: "产品", en: "Products" },
+        subtitle: {
+          zh: "从真实问题出发，判断哪一项产品最值得先试。",
+          en: "Start from the real problem, then choose what to try first.",
+        },
       },
-    },
-    introTitle: {
-      zh: "先看问题是否足够痛，再看产品是否值得试",
-      en: "Start with the pain, then test the product",
-    },
-    introText: {
-      zh: "如果响应慢、培训难、交接乱、知识散，这里帮你判断产品路径。",
-      en: "If response, training, handoffs, or knowledge are breaking down, this page helps pick a path.",
-    },
-    lenses: [
+      introTitle: {
+        zh: "先看问题是否足够痛，再看产品是否值得试",
+        en: "Start with the pain, then test the product",
+      },
+      introText: {
+        zh: "如果响应慢、培训难、交接乱、知识散，这里帮你判断产品路径。",
+        en: "If response, training, handoffs, or knowledge are breaking down, this page helps pick a path.",
+      },
+      lenses: [
       {
         title: { zh: "问题是否真实", en: "Is the problem real?" },
         text: {
@@ -84,7 +84,7 @@ export const productsContent = {
         title: { zh: "产品能否落地", en: "Can the product be used?" },
         text: {
           zh: "优先展示能演示、能试用、能进入业务判断的产品。",
-          en: "We prioritize products that can be shown, trialed, and evaluated.",
+          en: "We prioritize products that can be shown, tried, and evaluated.",
         },
       },
       {
@@ -99,13 +99,13 @@ export const productsContent = {
       zh: "推荐产品",
       en: "Recommended product",
     },
-    featured: {
-      category: { zh: "合作伙伴渠道产品", en: "Partner channel product" },
-      title: { zh: "Helport", en: "Helport" },
-      subtitle: {
-        zh: "面向客服、销售外呼和知识密集型团队，把优秀员工经验放进实时通话和在线咨询。",
-        en: "For support, outbound sales, and knowledge-heavy teams that need expert performance at scale.",
-      },
+      featured: {
+        category: { zh: "合作伙伴渠道产品", en: "Partner channel product" },
+        title: { zh: "Helport", en: "Helport" },
+        subtitle: {
+          zh: "面向客服、销售外呼和知识密集型团队，把优秀员工经验放进实时通话和在线咨询。",
+          en: "For support, outbound sales, and knowledge-heavy teams that need expert performance at scale.",
+        },
       tags: {
         zh: ["实时辅助", "AI + BPO", "数字员工", "Trial-ready"],
         en: [
@@ -115,7 +115,7 @@ export const productsContent = {
           "Trial-ready",
         ],
       },
-      bullets: {
+        bullets: {
           zh: [
           "新人培训慢时，在通话中提供实时指导和知识支持",
           "外呼或支持能力不足时，更快启动标准化执行",
@@ -136,7 +136,7 @@ export const productsContent = {
       zh: "Helport 产品家族",
       en: "The Helport product family",
     },
-      familyText: {
+    familyText: {
       zh: "Helport 按场景拆成清晰产品线，方便客户判断从哪里开始。",
       en: "Helport is organized by workflow so buyers can choose a starting point.",
     },
@@ -264,12 +264,12 @@ export const productsContent = {
         en: "Partner channel product / AI service and sales operations",
       },
       title: {
-        zh: "把专家经验放进每一次客户沟通",
-        en: "Put expert guidance into every customer conversation",
+        zh: "把顶尖沟通能力，复制到每一线团队",
+        en: "Replicate top-tier communication performance across every frontline team",
       },
       subtitle: {
-        zh: "Helport 帮助客服、销售和支持团队把优秀员工经验放进通话、线索触达和 24/7 在线咨询。",
-        en: "Helport puts expert performance into calls, lead outreach, and 24/7 online engagement.",
+        zh: "Helport 把优秀员工的判断、话术和知识，放进通话、线索触达和 24/7 在线咨询。",
+        en: "Helport brings proven judgment, talk tracks, and knowledge into calls, outreach, and 24/7 engagement.",
       },
     },
     heroActions: {
@@ -313,14 +313,14 @@ export const productsContent = {
       },
     ],
     overviewTitle: {
-      zh: "更快响应，更稳成交，更可控的服务质量",
-      en: "Faster response, steadier conversion, clearer service quality",
+      zh: "更快响应，更稳转化，更可控的服务质量",
+      en: "Faster response, steadier conversion, tighter service control",
     },
     overviewText: {
-      zh: "Helport 把实时话术、知识检索、质检提醒、外呼执行和数字员工放进同一条客户沟通链路。团队可以更快培训新人，更稳定跟进线索，并用数据管理服务质量。",
-      en: "Helport combines live guidance, knowledge retrieval, QA, outbound execution, and digital workers.",
+      zh: "Helport 把实时提示、知识检索、质检提醒、外呼执行和数字员工放进同一条沟通链路，让团队更快上手，也更稳拿结果。",
+      en: "Helport combines live guidance, knowledge retrieval, QA prompts, outbound execution, and digital workers in one communication loop.",
     },
-    problemTitle: { zh: "客户会在这些地方感到痛", en: "Where buyers feel the pain" },
+    problemTitle: { zh: "团队通常会先从这些压力点找来", en: "Where teams usually start the conversation" },
     problemItems: [
       {
         title: { zh: "响应慢，机会流失", en: "Slow response loses opportunities" },
@@ -352,12 +352,12 @@ export const productsContent = {
       },
     ],
     familyTitle: {
-      zh: "三条产品线，对应三个真实工作流",
-      en: "Three product lines, three real workflows",
+      zh: "Helport 按业务动作拆成三条主线",
+      en: "Helport is organized into three operating tracks",
     },
     familyText: {
-      zh: "从一个高价值场景开始：实时辅助、外呼执行，或 24/7 数字员工。",
-      en: "Start with one workflow: live guidance, outbound execution, or 24/7 digital workers.",
+      zh: "先判断你更想提升一线沟通、补足执行能力，还是把专家知识复制出去。",
+      en: "Start by choosing whether you need better frontline conversations, more execution capacity, or scalable expert knowledge.",
     },
     familyItems: [
       {
@@ -368,7 +368,7 @@ export const productsContent = {
         },
         summary: {
           zh: "给坐席、销售和顾问一个实时副驾：转写、理解上下文，并调用知识库给出建议、提醒和总结。",
-          en: "A live assistant for agents and sales reps, with prompts, knowledge, QA alerts, and summaries.",
+          en: "A live assistant for agents and sales reps with prompts, knowledge, QA alerts, and summaries.",
         },
         bullets: {
           zh: [
@@ -377,9 +377,9 @@ export const productsContent = {
             "特别适合销售、客服、金融、地产、呼叫中心等高通话量团队",
           ],
           en: [
-            "Useful where onboarding is slow, knowledge is complex, and compliance matters",
+            "Best where onboarding is slow, knowledge is complex, and compliance matters",
             "Script navigation, guidance, recommendations, summaries, scorecards, and coaching",
-            "Relevant for sales, support, financial services, real estate, and call centers",
+            "Fits sales, support, financial services, real estate, and call centers",
           ],
         },
         primaryLabel: {
@@ -395,7 +395,7 @@ export const productsContent = {
         label: { zh: "AI + 人工执行模型", en: "AI + human execution model" },
         summary: {
           zh: "把 AI 质检、脚本控制和人工外呼团队打包，让客户无需先自建团队，也能快速启动外呼或支持。",
-          en: "AI-guided BPO capacity for outbound, qualification, support, and warm transfers.",
+          en: "AI-guided BPO for outbound, qualification, support, and warm transfers.",
         },
         bullets: {
           zh: [
@@ -422,7 +422,7 @@ export const productsContent = {
         },
         summary: {
           zh: "把专家知识、表达方式和咨询逻辑沉淀成 24/7 数字员工，用于网站咨询、售前问答、客服和筛选。",
-          en: "A 24/7 digital worker for website guidance, support, screening, and expert advisory.",
+          en: "A 24/7 digital worker for website guidance, support, screening, and expert advice.",
         },
         bullets: {
           zh: [
@@ -431,13 +431,13 @@ export const productsContent = {
             "更适合强调 24/7 服务、一致知识输出和高价值咨询覆盖",
           ],
           en: [
-            "Relevant to consulting, finance, insurance, healthcare, e-commerce, and education",
+            "Works for consulting, finance, insurance, healthcare, e-commerce, and education",
             "Supports website guidance, pre-sales Q&A, expert assist, screening, and support",
             "Best framed around 24/7 service and consistent knowledge output",
           ],
         },
         primaryLabel: {
-          zh: "沟通 Helport 试点",
+          zh: "咨询 Helport 场景",
           en: "Discuss a Helport Pilot",
         },
         primaryHref: "/contact",
@@ -445,7 +445,7 @@ export const productsContent = {
         secondaryHref: "https://www.helport.ai/",
       },
     ],
-    proofTitle: { zh: "用数据说明价值", en: "Proof points from real use cases" },
+    proofTitle: { zh: "看结果，不只看概念", en: "Look at outcomes, not just the concept" },
     proofText: {
       zh: "用上手周期、通话质量、收入影响、AI 解决率和人工节省来评估效果。",
       en: "Measure ramp-up, call quality, revenue impact, AI resolution, and labor saved.",
@@ -456,7 +456,7 @@ export const productsContent = {
         title: { zh: "让新人更快进入有效销售沟通", en: "Move new reps into effective sales conversations faster" },
         text: {
           zh: "美国房贷销售团队用 AI Assist 作为实时销售副驾，解决上手慢、通话浅和合规风险。",
-          en: "A U.S. mortgage lender used AI Assist to improve ramp-up, call depth, supervision, and compliance.",
+          en: "A U.S. mortgage team used AI Assist to improve ramp-up, call depth, supervision, and compliance.",
         },
         metrics: [
           { value: { zh: "6个月 → 3个月", en: "6 mo → 3 mo" }, label: { zh: "上手周期", en: "month ramp-up" } },
@@ -491,10 +491,10 @@ export const productsContent = {
         ],
       },
     ],
-    advantageTitle: { zh: "和传统客服工具相比，Helport 的重点不同", en: "How Helport is different from traditional support tools" },
+    advantageTitle: { zh: "Helport 的重点，不只是回答问题", en: "Helport goes beyond answering questions" },
     advantageText: {
-      zh: "Helport 不只做在线问答，它把沟通、执行、质检和复盘连成一条可运营的链路。",
-      en: "Helport connects support, execution, QA, and improvement in one operating loop.",
+      zh: "它把沟通、执行、质检和复盘连成一条可运营的链路。",
+      en: "It connects communication, execution, QA, and improvement in one operating loop.",
     },
     advantages: [
       {
@@ -520,8 +520,8 @@ export const productsContent = {
       },
     ],
     fitTitle: {
-      zh: "建议先从这些场景切入",
-      en: "Best entry scenarios",
+      zh: "常见进入场景",
+      en: "Best-fit starting points",
     },
     fitItems: [
       {
@@ -554,8 +554,8 @@ export const productsContent = {
       },
     ],
     motionTitle: {
-      zh: "推荐的试点方式",
-      en: "Recommended pilot approach",
+      zh: "常见落地方式",
+      en: "Recommended pilot flow",
     },
     motionItems: [
       {
@@ -589,7 +589,7 @@ export const productsContent = {
     visualTitle: { zh: "Helport 能力展示", en: "Helport capability views" },
     visualText: {
       zh: "用三个客户最容易理解的视角说明 Helport：实时辅助界面、沟通流程和运营质检数据。",
-      en: "Explain Helport through live assist, workflow, and QA operations views.",
+      en: "Show Helport through live assist, workflow, and QA views.",
     },
     visualSlots: [
       {
@@ -622,15 +622,15 @@ export const productsContent = {
     ],
     cta: {
       title: {
-        zh: "从一个客服、销售或外呼场景开始试点 Helport。",
-        en: "Pilot Helport in one support, sales, or outreach workflow.",
+        zh: "从一个客服、销售或外呼场景开始，先把结果跑出来。",
+        en: "Start with one support, sales, or outreach workflow and prove the result.",
       },
-      primary: { zh: "联系 Si-Tech Intl 讨论试点", en: "Talk to Si-Tech Intl about a pilot" },
+      primary: { zh: "联系 Si-Tech Intl 了解 Helport", en: "Talk to Si-Tech Intl about a pilot" },
       secondary: { zh: "访问 Helport 官网", en: "Visit Helport Website" },
       primaryHref: "/contact",
       secondaryHref: "https://www.helport.ai/",
       partnerNote: {
-        zh: "Si-Tech Intl 可协助完成场景判断、演示沟通、试点范围定义和合作推进。",
+        zh: "Si-Tech Intl 可协助完成场景梳理、产品沟通、落地规划和合作推进。",
         en: "Si-Tech Intl can help with fit assessment, product walkthroughs, pilot scoping, and follow-through.",
       },
     },
