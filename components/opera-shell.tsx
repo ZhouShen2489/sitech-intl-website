@@ -9,6 +9,17 @@ import { siteContent } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 import { switchLocaleInPath, withLocale } from "@/lib/site";
 
+const companyOrigin = process.env.NEXT_PUBLIC_COMPANY_ORIGIN ?? "";
+
+function companyHref(locale: Locale, path = "") {
+  if (!companyOrigin) {
+    return withLocale(locale, path || "/company");
+  }
+
+  const companyPath = path === "/company" ? "" : path;
+  return `${companyOrigin}/${locale}${companyPath}`;
+}
+
 export function OperaHeader({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const nextLocale = locale === "en" ? "zh" : "en";
@@ -33,7 +44,7 @@ export function OperaHeader({ locale }: { locale: Locale }) {
             <div className="invisible absolute left-1/2 top-full w-56 -translate-x-1/2 pt-4 opacity-0 transition duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <div className="rounded-2xl border border-white/10 bg-[rgba(5,11,22,0.94)] p-2 shadow-[0_24px_70px_rgba(0,0,0,0.42)] backdrop-blur-xl">
                 <Link
-                  href={withLocale(locale, "/products/helport")}
+                  href={companyHref(locale, "/products/helport")}
                   className="block rounded-xl px-4 py-3 transition hover:bg-white/8"
                 >
                   <span className="block text-[10px] uppercase tracking-[0.22em] text-[#76aaff]">
@@ -44,7 +55,7 @@ export function OperaHeader({ locale }: { locale: Locale }) {
               </div>
             </div>
           </div>
-          <Link href={withLocale(locale, "/about")} className="text-xs text-white/64 transition hover:text-white">
+          <Link href={companyHref(locale, "/about")} className="text-xs text-white/64 transition hover:text-white">
             {locale === "en" ? "About Us" : "关于我们"}
           </Link>
           <Link href="#contact" className="text-xs text-white/64 transition hover:text-white">
@@ -84,7 +95,7 @@ export function OperaFooter({ locale }: { locale: Locale }) {
             {operaContent.footer.links.map((link) => (
               <Link
                 key={link.href}
-                href={link.href.startsWith("/") ? withLocale(locale, link.href) : link.href}
+                href={link.href.startsWith("/") ? companyHref(locale, link.href) : link.href}
                 className="rounded-full border border-white/10 px-4 py-3 text-sm text-white/72 transition hover:border-white/25 hover:bg-white/8 hover:text-white"
               >
                 {operaCopy(locale, link.label)}

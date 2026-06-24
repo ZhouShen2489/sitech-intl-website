@@ -40,8 +40,9 @@ export const siteContent = {
   },
   navigation: [
     { href: "/", label: { zh: "首页", en: "Home" } },
-    { href: "/products", label: { zh: "产品", en: "Products" } },
-    { href: "/solutions", label: { zh: "解决方案", en: "Solutions" } },
+    { href: "https://opera.sitech-intl.com", label: { zh: "Opera", en: "Opera" } },
+    { href: "https://telecom.sitech-intl.com", label: { zh: "运营商", en: "Telecom" } },
+    { href: "/products/helport", label: { zh: "合作伙伴 · Helport", en: "Partner · Helport" } },
     { href: "/stories", label: { zh: "案例", en: "Stories" } },
     { href: "/about", label: { zh: "关于我们", en: "About" } },
     { href: "/contact", label: { zh: "联系", en: "Contact" } },
@@ -288,8 +289,8 @@ export const siteContent = {
         en: "We turn complex support, platform coordination, and AI service into systems that launch, run, and scale.",
       },
       primaryCta: { zh: "联系我们", en: "Talk to Us" },
-      secondaryCta: { zh: "查看产品", en: "Explore Products" },
-      solutionsCta: { zh: "查看解决方案", en: "View Solutions" },
+      secondaryCta: { zh: "合作伙伴 · Helport", en: "Partner · Helport" },
+      solutionsCta: { zh: "运营商产品站", en: "Telecom Site" },
     },
     companyIntro: {
       eyebrow: {
@@ -1585,7 +1586,7 @@ export const siteContent = {
       },
     ownItems: [
       {
-        visible: true,
+        visible: false,
         order: 3,
         title: { zh: "Teamshub", en: "Teamshub" },
         image: "/images/curated/project-team-laptop.jpg",
@@ -1620,7 +1621,7 @@ export const siteContent = {
         href: "/products/teamshub-business-os",
       },
       {
-        visible: true,
+        visible: false,
         order: 1,
         title: {
           zh: "AI 创作者营销与内容运营",
@@ -1657,7 +1658,7 @@ export const siteContent = {
         href: "https://ai.teamshub.com/yixin-marketing.html",
       },
       {
-        visible: true,
+        visible: false,
         order: 2,
         title: {
           zh: "智能客服",

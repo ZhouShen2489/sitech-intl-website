@@ -2,13 +2,23 @@
   "name": "sitech-intl-website",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "company-site",
+    "opera-site",
+    "telecom-site",
+    "shared-assets"
+  ],
   "scripts": {
     "dev": "npm run check:images && next dev",
     "build": "next build",
     "build:pages": "node scripts/build-pages.mjs",
     "check:images": "node scripts/check-images-dev.mjs",
     "ocr:sitech-manual": "swift scripts/ocr-sitech-manual.swift",
-    "start": "next start"
+    "start": "next start",
+    "build:company": "npm --workspace @sitech/company-site run build",
+    "build:opera": "npm --workspace @sitech/opera-site run build",
+    "build:telecom": "npm --workspace @sitech/telecom-site run build",
+    "build:sites": "npm run build:company && npm run build:opera && npm run build:telecom"
   },
   "dependencies": {
     "google-auth-library": "9.15.1",

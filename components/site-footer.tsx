@@ -5,6 +5,8 @@ import { siteContent, copy, copyList } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 import { withBasePath, withLocale } from "@/lib/site";
 
+const siteHomePath = process.env.NEXT_PUBLIC_SITE_HOME_PATH ?? "/company";
+
 type SiteFooterProps = {
   locale: Locale;
 };
@@ -41,7 +43,13 @@ export function SiteFooter({ locale }: SiteFooterProps) {
             {siteContent.navigation.map((item) => (
               <div key={item.href}>
                 <Link
-                  href={withLocale(locale, item.href === "/" ? "/company" : item.href)}
+                  href={
+                    item.href.startsWith("http://") || item.href.startsWith("https://")
+                      ? item.href.endsWith("sitech-intl.com")
+                        ? `${item.href}/${locale}`
+                        : item.href
+                      : withLocale(locale, item.href === "/" ? siteHomePath : item.href)
+                  }
                   className="text-sm text-slate-700 transition hover:text-ink"
                 >
                   {copy(locale, item.label)}

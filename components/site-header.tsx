@@ -12,6 +12,7 @@ import { switchLocaleInPath, withBasePath, withLocale } from "@/lib/site";
 
 type SiteHeaderProps = {
   locale: Locale;
+  mode?: NavMode;
 };
 
 type CopyValue = {
@@ -49,6 +50,8 @@ type NavItem = {
   dropdownConfig?: HeaderDropdownConfig;
 };
 
+const siteHomePath = process.env.NEXT_PUBLIC_SITE_HOME_PATH ?? "/company";
+
 function stripHash(href: string) {
   return href.split("#")[0] ?? href;
 }
@@ -59,10 +62,10 @@ function isExternalHref(href: string) {
 
 function resolveHref(locale: Locale, href: string) {
   if (isExternalHref(href)) {
-    return href;
+    return href.endsWith("sitech-intl.com") ? `${href}/${locale}` : href;
   }
 
-  return withLocale(locale, href === "/" ? "/company" : href);
+  return withLocale(locale, href === "/" ? siteHomePath : href);
 }
 
 function getCompactDropdownGroups(config: HeaderDropdownConfig) {
@@ -210,13 +213,13 @@ function getHeaderMode(pathname: string): NavMode {
   return "global";
 }
 
-export function SiteHeader({ locale }: SiteHeaderProps) {
+export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [activeDesktopDropdown, setActiveDesktopDropdown] = useState<string | null>(null);
   const nextLocale: Locale = locale === "en" ? "zh" : "en";
   const localeLabel = locale === "en" ? "中文" : "EN";
-  const mode = getHeaderMode(pathname);
+  const mode = modeOverride ?? getHeaderMode(pathname);
 
   const ownProductItems = visibleItems(siteContent.marketplacePage.ownItems);
   const partnerProductItems = visibleItems(siteContent.marketplacePage.partnerItems);
@@ -452,12 +455,6 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
     products: [
       { href: "/products", label: { zh: "产品首页", en: "Products" }, exact: true },
       {
-        href: "/products#owned-products",
-        label: { zh: "我们的产品", en: "Our products" },
-        matchHrefs: ownProductItems.map((item) => item.href),
-        dropdownConfig: ownProductsDropdownConfig,
-      },
-      {
         href: "/products#partner-products",
         label: { zh: "合作伙伴的产品", en: "Partner products" },
         matchHrefs: partnerProductItems.map((item) => item.href),
@@ -465,24 +462,11 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
       },
     ],
     solutions: [
-      { href: "/solutions", label: { zh: "解决方案首页", en: "Solutions" }, exact: true },
       {
         href: "/solutions/telecom",
         label: { zh: "运营商", en: "Telecom" },
         matchHrefs: ["/solutions/telecom", ...telecomDirections.map((item) => `/solutions/telecom/${item.slug}`)],
         dropdownConfig: telecomDropdownConfig,
-      },
-      {
-        href: "/solutions/digital-industry-platforms",
-        label: { zh: "产业平台", en: "Industry" },
-        matchHrefs: ["/solutions/digital-industry-platforms", "/solutions/custom-business-systems"],
-        dropdownConfig: industryDropdownConfig,
-      },
-      {
-        href: "/solutions/ai-customer-service",
-        label: { zh: "AI 与算力", en: "AI and Compute" },
-        matchHrefs: ["/solutions/ai-customer-service", "/solutions/teamshub-business-os"],
-        dropdownConfig: aiDropdownConfig,
       },
     ],
   };
