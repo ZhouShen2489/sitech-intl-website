@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
 import { ContactForm } from "@/components/contact-form";
@@ -54,7 +55,11 @@ export default async function ContactPage({
             </div>
           </div>
 
-          <ContactForm locale={locale} />
+          <Suspense
+            fallback={<div className="min-h-[640px] rounded-[2rem] border border-slate-200 bg-white p-7 shadow-card lg:p-8" />}
+          >
+            <ContactForm locale={locale} />
+          </Suspense>
         </div>
       </section>
     </>

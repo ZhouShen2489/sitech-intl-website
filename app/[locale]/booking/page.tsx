@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
 import { BookingForm } from "@/components/booking-form";
@@ -47,7 +48,11 @@ export default async function BookingPage({ params }: { params: Promise<{ locale
           </div>
 
           <div className="mt-8">
-            <BookingForm locale={locale} />
+            <Suspense
+              fallback={<div className="min-h-[520px] rounded-[2rem] border border-blue-100 bg-white p-6 shadow-card lg:p-8" />}
+            >
+              <BookingForm locale={locale} />
+            </Suspense>
           </div>
         </div>
       </section>
