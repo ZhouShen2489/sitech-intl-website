@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { persistLead } from "@/lib/lead-store";
+import { sendLeadEmails } from "@/lib/mailer";
 
 const locales = ["en", "zh"] as const;
 
@@ -87,17 +88,29 @@ export async function POST(request: Request) {
 
   try {
     const persistResult = await persistLead(lead);
+    const emailResult = await sendLeadEmails(lead).catch((error) => ({
+      ok: false,
+      provider: "gmail" as const,
+      reason: error instanceof Error ? error.message : "gmail_send_failed",
+    }));
 
-    if (!persistResult.ok) {
-      throw new Error(persistResult.reason ?? "lead_persistence_failed");
+    if (!persistResult.ok && !emailResult.ok) {
+      throw new Error(persistResult.reason ?? emailResult.reason ?? "lead_delivery_failed");
     }
 
     return NextResponse.json({
       success: true,
       message: "Inquiry submitted successfully.",
       routed: {
-        localCsv: persistResult.provider === "local_csv",
+        localCsv: persistResult.ok && persistResult.provider === "local_csv",
+        gmail: emailResult.ok,
       },
+      warnings: [persistResult, emailResult]
+        .filter((result) => !result.ok)
+        .map((result) => ({
+          provider: result.provider,
+          reason: result.reason,
+        })),
     });
   } catch (error) {
     return NextResponse.json(
