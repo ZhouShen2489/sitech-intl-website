@@ -293,26 +293,35 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
         title: { zh: "独立方案站点", en: "Standalone solution sites" },
         items: [
           {
-            href: operaOrigin,
-            title: { zh: "Opera", en: "Opera" },
-            text: { zh: "企业协同与运营语义层产品站", en: "Enterprise coordination and operating semantic layer" },
-          },
-          {
             href: telecomOrigin,
             title: { zh: "Telecom", en: "Telecom" },
             text: { zh: "运营商与 MVNO 独立解决方案站", en: "Operator and MVNO standalone solution site" },
           },
+          {
+            href: operaOrigin,
+            title: { zh: "Opera", en: "Opera" },
+            text: { zh: "企业协同与运营语义层产品站", en: "Enterprise coordination and operating semantic layer" },
+          },
         ],
         text: { zh: "直接进入产品/解决方案站点", en: "Go directly to each standalone site" },
       },
+      {
+        title: { zh: "Opera 重点解决方案", en: "Opera priority routes" },
+        text: { zh: "重点信息在此重复展示，方便直接进入", en: "Repeated here intentionally for direct entry" },
+        items: [
+          {
+            href: operaOrigin,
+            title: { zh: "Living Enterprise Demo", en: "Living Enterprise Demo" },
+            text: { zh: "企业本体、数字孪生、协同行动", en: "Ontology, digital twin, coordinated action" },
+          },
+          {
+            href: `${operaOrigin}/${locale}#how-it-works`,
+            title: { zh: "How it works", en: "How it works" },
+            text: { zh: "事实数据 → 意义数据 → 决策行动", en: "Facts to meaning to action" },
+          },
+        ],
+      },
     ],
-    featured: helportItem
-      ? {
-          href: operaOrigin,
-          title: { zh: "Opera", en: "Opera" },
-          eyebrow: { zh: "企业运营产品站", en: "Enterprise product site" },
-        }
-      : undefined,
   };
 
   const telecomDropdownConfig: HeaderDropdownConfig = {

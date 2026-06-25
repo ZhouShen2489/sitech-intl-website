@@ -1,7 +1,5 @@
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
-import { BookingForm } from "@/components/booking-form";
 import { isLocale } from "@/lib/site";
 
 const googleCalendarBookingEmbed =
@@ -27,8 +25,8 @@ export default async function BookingPage({ params }: { params: Promise<{ locale
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-8 text-white/76">
               {locale === "en"
-                ? "Book a 30-minute AI Expert Customer Service demo directly in Google Calendar. If you need a larger rollout discussion, leave your details in the form below."
-                : "直接通过 Google Calendar 预约 30 分钟 AI 专家客服演示。如果你想先沟通更大的项目范围，也可以在下方表单里留下信息。"}
+                ? "Book a 30-minute AI Expert Customer Service demo directly in Google Calendar."
+                : "直接通过 Google Calendar 预约 30 分钟 AI 专家客服演示。"}
             </p>
           </div>
         </div>
@@ -45,24 +43,6 @@ export default async function BookingPage({ params }: { params: Promise<{ locale
               frameBorder="0"
               title={locale === "en" ? "AI Expert Customer Service booking" : "AI 专家客服预约"}
             />
-          </div>
-
-          <div className="mt-8">
-            <Suspense
-              fallback={<div className="min-h-[520px] rounded-[2rem] border border-blue-100 bg-white p-6 shadow-card lg:p-8" />}
-            >
-              <BookingForm locale={locale} />
-            </Suspense>
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-20">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <div className="rounded-[2rem] border border-blue-100 bg-[#f7fbff] p-6 text-sm leading-7 text-slate-600 shadow-card">
-            {locale === "en"
-              ? "The booking iframe is for 30-minute AI Expert Customer Service demos. The form below is still useful for broader inquiries, custom workflows, or enterprise rollout coordination."
-              : "上方预约组件适合 30 分钟 AI 专家客服演示；下方表单仍适合更大的咨询、定制流程讨论或企业级落地沟通。"}
           </div>
         </div>
       </section>

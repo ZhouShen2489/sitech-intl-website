@@ -67,6 +67,11 @@ export default async function TelecomDirectionPage({
                 {locale === "en" ? "Talk about this path" : "咨询这个方向"}
               </Link>
             </div>
+            <p className="mt-6 max-w-2xl text-sm leading-7 text-slate-500">
+              {locale === "en"
+                ? "This page stays intentionally concrete: buyer, business pressure, capability chain, reference proof, and suggested entry scope."
+                : "这个页面只保留最关键的信息：面向谁、卡点在哪里、能力链路是什么、有哪些证明、从哪里开始进入。"}
+            </p>
           </div>
 
           <div className="relative min-h-[30rem]">
@@ -95,6 +100,11 @@ export default async function TelecomDirectionPage({
                       </div>
                     ))}
                   </div>
+                  <p className="mt-4 text-sm leading-6 text-white/80">
+                    {locale === "en"
+                      ? "These three indicators summarize the path at a glance. The sections below unpack the operating challenge, modules, proof, and recommended entry points."
+                      : "上面三项指标先概括这条方案线的重点，下面再展开业务压力、模块能力、可参考经验和建议切入范围。"}
+                  </p>
                 </div>
               </div>
             </div>

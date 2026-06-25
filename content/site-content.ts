@@ -2046,8 +2046,8 @@ export const siteContent = {
     },
     panelTitle: { zh: "直接联系", en: "Direct Contact" },
     note: {
-      zh: "提交后你会收到确认邮件，我们也会尽快通过邮件与你联系。",
-      en: "After you submit the form, you will receive a confirmation email and our team will follow up by email as soon as possible.",
+      zh: "提交后信息会先进入内部线索表，我们会尽快通过邮件与你联系。",
+      en: "After you submit the form, the inquiry is stored in our internal lead log and our team will follow up by email as soon as possible.",
     },
     pagesNote: {
       zh: "点击提交后会打开你的邮箱客户端，并自动带入已填写的咨询内容，方便你直接发送给我们。",
@@ -2070,8 +2070,8 @@ export const siteContent = {
       submit: { zh: "提交需求", en: "Submit Inquiry" },
       loading: { zh: "提交中...", en: "Submitting..." },
       success: {
-        zh: "我们已收到你的需求，即将打开确认页。",
-        en: "We received your inquiry and will open the confirmation page.",
+        zh: "我们已收到你的需求，团队会尽快跟进。",
+        en: "We received your inquiry and our team will follow up soon.",
       },
       error: {
         zh: "提交失败，请稍后重试。",
@@ -2167,8 +2167,8 @@ export const siteContent = {
       {
         title: { zh: "信息处理方式", en: "How data is handled" },
         text: {
-          zh: "提交内容会通过受保护的后端接口发送，并同步到我们使用的邮件与业务跟进工具中。",
-          en: "Form submissions are sent through a protected backend endpoint and may be routed into our email and business follow-up tools.",
+          zh: "提交内容会通过受保护的后端接口写入内部线索记录，用于后续人工跟进与业务沟通。",
+          en: "Form submissions are sent through a protected backend endpoint and written into an internal lead record for manual follow-up.",
         },
       },
     ],

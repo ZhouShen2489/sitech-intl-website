@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@netlify/blobs": "^8.1.0",
     "google-auth-library": "9.15.1",
     "next": "15.5.15",
     "nodemailer": "8.0.5",

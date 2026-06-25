@@ -315,12 +315,6 @@ export function HomePage({ locale }: { locale: Locale }) {
                   >
                     {copy(locale, featuredSolution.linkLabel)}
                   </Link>
-                  <Link
-                    href={telecomSiteHref}
-                    className="inline-flex rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-                  >
-                    {locale === "en" ? "View Cases" : "看案例"}
-                  </Link>
                 </div>
               </div>
             </article>

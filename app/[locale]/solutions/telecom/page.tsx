@@ -22,15 +22,15 @@ export default async function TelecomSolutionsPage({
 
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-[#031329] text-white">
-        <div className="absolute inset-0 bg-grid bg-[size:54px_54px] opacity-16" />
-        <div className="absolute left-1/2 top-0 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full border border-white/10" />
+      <section className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#f4f8ff_0%,#eef5ff_100%)] text-ink">
+        <div className="absolute inset-0 bg-grid bg-[size:54px_54px] opacity-[0.08]" />
+        <div className="absolute left-1/2 top-0 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full border border-tide/10" />
         <div className="absolute left-1/2 top-20 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full border border-signal/20" />
-        <div className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_48%_26%,rgba(82,155,255,0.42),transparent_25rem)]" />
+        <div className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_48%_26%,rgba(82,155,255,0.16),transparent_25rem)]" />
 
         <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8 lg:py-24">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-accent">
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-tide">
               {locale === "en"
                 ? "Telecom growth and operations"
                 : "通信业务增长与运营支撑"}
@@ -38,19 +38,19 @@ export default async function TelecomSolutionsPage({
             <h1 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-tight md:text-6xl">
               {telecomCopy(locale, telecomBoard.title)}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/76">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
               {telecomCopy(locale, telecomBoard.subtitle)}
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
               <Link
                 href="#signal-map"
-                className="button-glow rounded-full bg-signal px-6 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"
+                className="button-glow rounded-full bg-tide px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate"
               >
                 {telecomCopy(locale, telecomBoard.secondaryCta)}
               </Link>
               <Link
                 href={withLocale(locale, "/contact")}
-                className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                className="rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-tide/30 hover:bg-[#f8fbff]"
               >
                 {telecomCopy(locale, telecomBoard.primaryCta)}
               </Link>
@@ -58,11 +58,11 @@ export default async function TelecomSolutionsPage({
           </div>
 
           <div className="relative min-h-[32rem]">
-            <div className="absolute inset-0 rounded-[2rem] border border-white/12 bg-white/6 shadow-[0_30px_90px_rgba(0,0,0,0.24)] backdrop-blur" />
-            <div className="absolute -right-5 -top-5 z-10 hidden rounded-2xl border border-white/15 bg-white/12 px-4 py-3 text-xs font-bold uppercase tracking-[0.18em] text-accent backdrop-blur md:block">
+            <div className="absolute inset-0 rounded-[2rem] border border-blue-100 bg-white/80 shadow-[0_30px_90px_rgba(11,47,111,0.14)] backdrop-blur" />
+            <div className="absolute -right-5 -top-5 z-10 hidden rounded-2xl border border-blue-100 bg-white px-4 py-3 text-xs font-bold uppercase tracking-[0.18em] text-tide shadow-sm md:block">
               {locale === "en" ? "Live capability map" : "能力地图"}
             </div>
-            <div className="absolute -left-5 bottom-12 z-10 hidden rounded-2xl border border-signal/30 bg-[#031329]/82 px-4 py-3 text-xs font-bold text-signal shadow-[0_18px_46px_rgba(0,0,0,0.24)] backdrop-blur md:block">
+            <div className="absolute -left-5 bottom-12 z-10 hidden rounded-2xl border border-blue-100 bg-white px-4 py-3 text-xs font-bold text-tide shadow-[0_18px_46px_rgba(11,47,111,0.14)] md:block">
               {locale === "en"
                 ? "BSS / MVNO / Broadband / AI / Portal"
                 : "BOSS / MVNO / 宽带 / AI / 门户"}
@@ -77,11 +77,11 @@ export default async function TelecomSolutionsPage({
                 sizes="(min-width: 1024px) 48vw, 100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,19,41,0.95),rgba(3,19,41,0.34)_52%,rgba(3,19,41,0.84))]" />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,26,51,0.78),rgba(7,26,51,0.18)_52%,rgba(7,26,51,0.74))]" />
             </div>
 
             <div className="relative p-8">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-accent">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-tide">
                 {telecomCopy(locale, telecomBoard.lifecycle.title)}
               </p>
               <div className="mt-8 space-y-4">
@@ -92,22 +92,22 @@ export default async function TelecomSolutionsPage({
                       locale,
                       `/solutions/telecom/${telecomDirections[index]?.slug ?? "boss"}`,
                     )}
-                    className="group grid grid-cols-[2.75rem_1fr_auto] items-center gap-4 rounded-full border border-white/12 bg-white/10 px-3 py-3 backdrop-blur transition hover:border-signal/70 hover:bg-white/16"
+                    className="group grid grid-cols-[2.75rem_1fr_auto] items-center gap-4 rounded-full border border-blue-100 bg-white/92 px-3 py-3 shadow-sm transition hover:border-tide/40 hover:bg-white"
                   >
                     <span className="flex h-11 w-11 items-center justify-center rounded-full bg-signal text-sm font-black text-ink">
                       0{index + 1}
                     </span>
-                    <span className="font-display text-xl font-bold">
+                    <span className="font-display text-xl font-bold text-ink">
                       {telecomCopy(locale, step)}
                     </span>
-                    <span className="pr-2 text-signal transition group-hover:translate-x-1">
+                    <span className="pr-2 text-tide transition group-hover:translate-x-1">
                       →
                     </span>
                   </Link>
                 ))}
               </div>
-              <div className="mt-8 rounded-[1.4rem] border border-white/12 bg-[#031329]/78 p-5">
-                <p className="text-sm leading-7 text-white/78">
+              <div className="mt-8 rounded-[1.4rem] border border-blue-100 bg-white/92 p-5 shadow-sm">
+                <p className="text-sm leading-7 text-slate-600">
                   {locale === "en"
                     ? "Enter from the pressure you feel most: production systems, global launch, broadband delivery, service experience, or marketing conversion."
                     : "无论你当前最急的是生产支撑、全球上线、宽带开通、服务体验还是营销转化，这里都能直接进入对应业务线。"}

@@ -242,7 +242,7 @@ export function ContactForm({ locale }: ContactFormProps) {
 
       {status === "success" ? (
         <p className="rounded-2xl bg-[#eef8f2] px-4 py-3 text-sm text-[#1e6a3d]">
-          {copy(locale, isStaticExport ? siteContent.contactPage.pagesNote : form.success)}
+          {copy(locale, form.success)}
         </p>
       ) : null}
       {status === "error" ? (

@@ -30,6 +30,7 @@ export function OperaHeader({ locale }: { locale: Locale }) {
   const nextLocale = locale === "en" ? "zh" : "en";
   const aboutHref = companyHref(locale, "/about");
   const helportHref = companyHref(locale, "/products/helport");
+  const contactHref = companyHref(locale, "/contact");
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
@@ -47,7 +48,7 @@ export function OperaHeader({ locale }: { locale: Locale }) {
         <nav className="hidden items-center gap-2 rounded-full border border-white/16 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl md:flex">
           <Link
             href={telecomHref(locale)}
-            className="rounded-full px-4 py-2 text-xs font-semibold text-white/96 transition hover:bg-white/12 hover:text-white"
+            className="rounded-full px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/12 hover:text-white"
           >
             {locale === "en" ? "Telecom / MVNO" : "运营商 / MVNO"}
           </Link>
@@ -64,13 +65,13 @@ export function OperaHeader({ locale }: { locale: Locale }) {
           </Link>
           <Link
             href={aboutHref}
-            className="rounded-full px-4 py-2 text-xs font-semibold text-white/96 transition hover:bg-white/12 hover:text-white"
+            className="rounded-full px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/12 hover:text-white"
           >
             {locale === "en" ? "About Us" : "关于我们"}
           </Link>
           <Link
-            href="#contact"
-            className="rounded-full px-4 py-2 text-xs font-semibold text-white/96 transition hover:bg-white/12 hover:text-white"
+            href={contactHref}
+            className="rounded-full px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/12 hover:text-white"
           >
             Contact
           </Link>
