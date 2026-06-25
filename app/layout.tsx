@@ -1,20 +1,8 @@
 import type { Metadata } from "next";
-import { Manrope, Sora } from "next/font/google";
 
 import { withBasePath } from "@/lib/site";
 
 import "./globals.css";
-
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  weight: ["500", "600", "700", "800"],
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-});
 
 export const metadata: Metadata = {
   title: "Si-Tech | Solution Partnership Website",
@@ -37,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sora.variable} ${manrope.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         {children}
       </body>
     </html>

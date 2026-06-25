@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { OperaContactForm } from "@/components/opera-contact-form";
 import { operaContent, operaCopy } from "@/content/opera-content";
 import type { Locale } from "@/lib/site";
 
@@ -583,26 +582,6 @@ export function OperaHomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section id="contact" className="relative bg-[#050c16] py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_84%_20%,rgba(96,143,255,0.14),transparent_22rem)]" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.34em] text-white/42">
-                {operaCopy(locale, operaContent.contact.eyebrow)}
-              </p>
-              <h2 className="mt-4 text-4xl font-semibold leading-[1.05] tracking-[-0.05em] text-white md:text-5xl">
-                {operaCopy(locale, operaContent.contact.title)}
-              </h2>
-              <p className="mt-5 max-w-xl text-base leading-8 text-white/58">
-                {operaCopy(locale, operaContent.contact.note)}
-              </p>
-            </div>
-
-            <OperaContactForm locale={locale} />
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

@@ -2,9 +2,7 @@ import crypto from "node:crypto";
 
 import { NextResponse } from "next/server";
 
-import { submitLeadToHubSpot } from "@/lib/hubspot";
-import { persistLeadToCsv } from "@/lib/lead-store";
-import { sendLeadEmails } from "@/lib/mailer";
+import { persistLead } from "@/lib/lead-store";
 import { leadSchema, normalizeLead } from "@/lib/validation";
 
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
@@ -63,21 +61,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true, message: "Inquiry submitted successfully." });
   }
 
-  const [hubspotResult, mailResult, csvResult] = await Promise.allSettled([
-    submitLeadToHubSpot(lead),
-    sendLeadEmails(lead),
-    persistLeadToCsv(lead),
-  ]);
+  const persistResult = await persistLead(lead);
 
-  const hubspotOk = hubspotResult.status === "fulfilled" && hubspotResult.value.ok;
-  const mailOk = mailResult.status === "fulfilled" && mailResult.value.ok;
-  const csvOk = csvResult.status === "fulfilled" && csvResult.value.ok;
-
-  if (!hubspotOk && !mailOk && !csvOk) {
+  if (!persistResult.ok) {
     return NextResponse.json(
       {
         success: false,
         message: "Unable to submit inquiry. Please try again later.",
+        reason: persistResult.reason ?? "lead_persistence_failed",
       },
       { status: 500 },
     );
@@ -87,9 +78,7 @@ export async function POST(request: Request) {
     success: true,
     message: "Inquiry submitted successfully.",
     routed: {
-      hubspot: hubspotOk,
-      gmail: mailOk,
-      localCsv: csvOk,
+      localCsv: persistResult.provider === "local_csv",
     },
   });
 }

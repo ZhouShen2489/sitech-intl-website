@@ -1,7 +1,30 @@
-import { access, appendFile, mkdir, writeFile } from "node:fs/promises";
+import { access, appendFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import crypto from "node:crypto";
 import path from "node:path";
 
 import type { LeadSubmission } from "@/lib/validation";
+
+export type LeadRecord = {
+  submissionId: string;
+  submittedAt: string;
+  site: string;
+  fullName: string;
+  workEmail: string;
+  companyName: string;
+  jobTitle: string;
+  companySize: string;
+  phone: string;
+  industry: string;
+  interestedIn: string;
+  message: string;
+  locale: string;
+  source: string;
+  pageUrl: string;
+  product_interest: string;
+  lead_source: string;
+  partner_related: boolean;
+  registration_required: boolean;
+};
 
 type DeliveryResult = {
   ok: boolean;
@@ -9,25 +32,96 @@ type DeliveryResult = {
   reason?: string;
 };
 
+const CSV_HEADERS = [
+  "submission_id",
+  "submitted_at",
+  "site",
+  "full_name",
+  "work_email",
+  "company_name",
+  "job_title",
+  "company_size",
+  "phone",
+  "industry",
+  "interested_in",
+  "message",
+  "locale",
+  "source",
+  "page_url",
+  "product_interest",
+  "lead_source",
+  "partner_related",
+  "registration_required",
+] as const;
+
+function currentSiteName() {
+  const base = path.basename(process.cwd());
+  return base.endsWith("-site") ? base : "company-site";
+}
+
 function resolveStorageDirectory() {
   if (process.env.LEAD_CSV_DIR?.trim()) {
     return process.env.LEAD_CSV_DIR.trim();
   }
 
-  const cwd = process.cwd();
-
-  if (path.basename(cwd) === "company-site") {
-    return path.join(cwd, "data");
-  }
-
-  return path.join(cwd, "company-site", "data");
+  return path.join(process.cwd(), "data");
 }
 
 function csvValue(value: string) {
   return `"${value.replace(/"/g, '""')}"`;
 }
 
-export async function persistLeadToCsv(lead: LeadSubmission): Promise<DeliveryResult> {
+function toRecord(lead: LeadSubmission, overrides?: Partial<LeadRecord>): LeadRecord {
+  return {
+    submissionId: overrides?.submissionId ?? crypto.randomUUID(),
+    submittedAt: overrides?.submittedAt ?? new Date().toISOString(),
+    site: overrides?.site ?? currentSiteName(),
+    fullName: lead.fullName,
+    workEmail: lead.workEmail,
+    companyName: lead.companyName,
+    jobTitle: lead.jobTitle,
+    companySize: lead.companySize,
+    phone: lead.phone,
+    industry: lead.industry,
+    interestedIn: lead.interestedIn,
+    message: lead.message,
+    locale: lead.locale,
+    source: lead.source,
+    pageUrl: lead.pageUrl,
+    product_interest: lead.product_interest,
+    lead_source: lead.lead_source,
+    partner_related: lead.partner_related,
+    registration_required: lead.registration_required,
+  };
+}
+
+function recordToCsvRow(record: LeadRecord) {
+  return [
+    record.submissionId,
+    record.submittedAt,
+    record.site,
+    record.fullName,
+    record.workEmail,
+    record.companyName,
+    record.jobTitle,
+    record.companySize,
+    record.phone,
+    record.industry,
+    record.interestedIn,
+    record.message,
+    record.locale,
+    record.source,
+    record.pageUrl,
+    record.product_interest,
+    record.lead_source,
+    record.partner_related ? "true" : "false",
+    record.registration_required ? "true" : "false",
+  ]
+    .map((value) => csvValue(String(value ?? "")))
+    .join(",");
+}
+
+async function persistLeadToLocalCsv(record: LeadRecord): Promise<DeliveryResult> {
   try {
     const dataDir = resolveStorageDirectory();
     const filePath = path.join(dataDir, "contact-submissions.csv");
@@ -37,51 +131,10 @@ export async function persistLeadToCsv(lead: LeadSubmission): Promise<DeliveryRe
     try {
       await access(filePath);
     } catch {
-      const header = [
-        "submitted_at",
-        "full_name",
-        "work_email",
-        "company_name",
-        "job_title",
-        "company_size",
-        "phone",
-        "industry",
-        "interested_in",
-        "message",
-        "locale",
-        "source",
-        "page_url",
-        "product_interest",
-        "lead_source",
-        "partner_related",
-        "registration_required",
-      ].join(",");
-      await writeFile(filePath, `${header}\n`, "utf8");
+      await writeFile(filePath, `${CSV_HEADERS.join(",")}\n`, "utf8");
     }
 
-    const row = [
-      new Date().toISOString(),
-      lead.fullName,
-      lead.workEmail,
-      lead.companyName,
-      lead.jobTitle,
-      lead.companySize,
-      lead.phone,
-      lead.industry,
-      lead.interestedIn,
-      lead.message,
-      lead.locale,
-      lead.source,
-      lead.pageUrl,
-      lead.product_interest,
-      lead.lead_source,
-      lead.partner_related ? "true" : "false",
-      lead.registration_required ? "true" : "false",
-    ]
-      .map((value) => csvValue(String(value ?? "")))
-      .join(",");
-
-    await appendFile(filePath, `${row}\n`, "utf8");
+    await appendFile(filePath, `${recordToCsvRow(record)}\n`, "utf8");
 
     return {
       ok: true,
@@ -94,4 +147,93 @@ export async function persistLeadToCsv(lead: LeadSubmission): Promise<DeliveryRe
       reason: error instanceof Error ? error.message : "unknown_error",
     };
   }
+}
+
+export async function persistLead(lead: LeadSubmission): Promise<DeliveryResult> {
+  const record = toRecord(lead);
+  return persistLeadToLocalCsv(record);
+}
+
+function parseCsvLine(line: string) {
+  const cells: string[] = [];
+  let current = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < line.length; i += 1) {
+    const char = line[i];
+    const next = line[i + 1];
+
+    if (char === '"' && inQuotes && next === '"') {
+      current += '"';
+      i += 1;
+      continue;
+    }
+
+    if (char === '"') {
+      inQuotes = !inQuotes;
+      continue;
+    }
+
+    if (char === "," && !inQuotes) {
+      cells.push(current);
+      current = "";
+      continue;
+    }
+
+    current += char;
+  }
+
+  cells.push(current);
+  return cells;
+}
+
+async function listLocalCsvRecords(): Promise<LeadRecord[]> {
+  const filePath = path.join(resolveStorageDirectory(), "contact-submissions.csv");
+  const csv = await readFile(filePath, "utf8");
+  const lines = csv.split("\n").filter(Boolean);
+
+  if (lines.length <= 1) {
+    return [];
+  }
+
+  const headers = parseCsvLine(lines[0]);
+
+  return lines.slice(1).map((line) => {
+    const cells = parseCsvLine(line);
+    const entry = Object.fromEntries(headers.map((header, index) => [header, cells[index] ?? ""]));
+
+    return {
+      submissionId: entry.submission_id || crypto.randomUUID(),
+      submittedAt: entry.submitted_at || "",
+      site: entry.site || currentSiteName(),
+      fullName: entry.full_name || "",
+      workEmail: entry.work_email || "",
+      companyName: entry.company_name || "",
+      jobTitle: entry.job_title || "",
+      companySize: entry.company_size || "",
+      phone: entry.phone || "",
+      industry: entry.industry || "",
+      interestedIn: entry.interested_in || "",
+      message: entry.message || "",
+      locale: entry.locale || "",
+      source: entry.source || "",
+      pageUrl: entry.page_url || "",
+      product_interest: entry.product_interest || "",
+      lead_source: entry.lead_source || "",
+      partner_related: entry.partner_related === "true",
+      registration_required: entry.registration_required === "true",
+    } satisfies LeadRecord;
+  });
+}
+
+export async function listLeadRecords(): Promise<LeadRecord[]> {
+  try {
+    return (await listLocalCsvRecords()).sort((a, b) => b.submittedAt.localeCompare(a.submittedAt));
+  } catch {
+    return [];
+  }
+}
+
+export function buildLeadCsv(records: LeadRecord[]) {
+  return [CSV_HEADERS.join(","), ...records.map((record) => recordToCsvRow(record))].join("\n");
 }

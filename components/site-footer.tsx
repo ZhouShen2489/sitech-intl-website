@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { siteContent, copy, copyList } from "@/content/site-content";
+import { siteContent, copy } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 import { withBasePath, withLocale } from "@/lib/site";
 
@@ -9,10 +9,43 @@ const siteHomePath = process.env.NEXT_PUBLIC_SITE_HOME_PATH || "/";
 
 type SiteFooterProps = {
   locale: Locale;
+  variant?: "company" | "telecom";
 };
 
-export function SiteFooter({ locale }: SiteFooterProps) {
+export function SiteFooter({ locale, variant = "company" }: SiteFooterProps) {
   const year = new Date().getFullYear();
+  const telecomOrigin = process.env.NEXT_PUBLIC_TELECOM_ORIGIN ?? "https://telecom.sitech-intl.com";
+  const operaOrigin = process.env.NEXT_PUBLIC_OPERA_ORIGIN ?? "https://opera.sitech-intl.com";
+  const focusLinks = [
+    {
+      label: locale === "en" ? "AI Expert Customer Service" : "AI 专家客服",
+      href: withLocale(locale, "/products/helport"),
+    },
+    {
+      label: "Telecom",
+      href: `${telecomOrigin}/${locale}`,
+    },
+    {
+      label: "Opera",
+      href: `${operaOrigin}/${locale}`,
+    },
+  ];
+  const pageLinks =
+    variant === "telecom"
+      ? [
+          { href: withLocale(locale, "/"), label: locale === "en" ? "Telecom Home" : "运营商首页" },
+          { href: withLocale(locale, "/solutions/telecom"), label: locale === "en" ? "Telecom Solutions" : "运营商解决方案" },
+          { href: withLocale(locale, "/contact"), label: locale === "en" ? "Contact" : "联系" },
+        ]
+      : siteContent.navigation.map((item) => ({
+          href:
+            item.href.startsWith("http://") || item.href.startsWith("https://")
+              ? item.href.endsWith("sitech-intl.com")
+                ? `${item.href}/${locale}`
+                : item.href
+              : withLocale(locale, item.href === "/" ? siteHomePath : item.href),
+          label: copy(locale, item.label),
+        }));
 
   return (
     <footer className="border-t border-slate-200 bg-[#f7f8fa]">
@@ -40,19 +73,10 @@ export function SiteFooter({ locale }: SiteFooterProps) {
             {copy(locale, siteContent.footer.navTitle)}
           </p>
           <div className="space-y-3">
-            {siteContent.navigation.map((item) => (
-              <div key={item.href}>
-                <Link
-                  href={
-                    item.href.startsWith("http://") || item.href.startsWith("https://")
-                      ? item.href.endsWith("sitech-intl.com")
-                        ? `${item.href}/${locale}`
-                        : item.href
-                      : withLocale(locale, item.href === "/" ? siteHomePath : item.href)
-                  }
-                  className="text-sm text-slate-700 transition hover:text-ink"
-                >
-                  {copy(locale, item.label)}
+            {pageLinks.map((item) => (
+              <div key={`${item.href}-${item.label}`}>
+                <Link href={item.href} className="text-sm text-slate-700 transition hover:text-ink">
+                  {item.label}
                 </Link>
               </div>
             ))}
@@ -64,9 +88,11 @@ export function SiteFooter({ locale }: SiteFooterProps) {
             {copy(locale, siteContent.footer.focusTitle)}
           </p>
           <div className="space-y-3">
-            {copyList(locale, siteContent.footer.focusItems).map((item) => (
-              <div key={item} className="text-sm leading-7 text-slate-700">
-                {item}
+            {focusLinks.map((item) => (
+              <div key={item.label}>
+                <Link href={item.href} className="text-sm leading-7 text-slate-700 transition hover:text-ink">
+                  {item.label}
+                </Link>
               </div>
             ))}
           </div>
