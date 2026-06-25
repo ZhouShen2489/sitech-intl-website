@@ -29,8 +29,8 @@ It should present Si-Tech Intl as:
 - Tailwind CSS
 - Localized content in `content/site-content.ts` and `content/products-content.ts`
 - Lead form submission through `POST /api/contact`
-- HubSpot CRM routing through server-side integration
-- Gmail delivery through server-side OAuth2 mail sending
+- Local CSV lead storage for local/dev and backup capture
+- Optional Gmail delivery through server-side OAuth2 mail sending
 
 ## Content structure
 
@@ -95,14 +95,21 @@ npm run ocr:sitech-manual
 
 ## Lead flow
 
-Current intended flow:
+Current implemented flow:
 
 1. User submits the lead form.
 2. Backend validates the payload and checks honeypot / basic rate limiting.
-3. Server submits the lead into HubSpot as the CRM source of truth.
-4. Server sends the internal notification to `info@sitech-intl.com` as a backup alert.
-5. Server sends an automatic confirmation email back to the user in the same language as the page they submitted from.
-6. User is redirected to the thank-you page.
+3. Server writes the submission to `contact-submissions.csv`.
+4. If Gmail OAuth environment variables are configured, server sends the internal notification to `CONTACT_RECIPIENT`.
+5. If Gmail delivery is configured, server sends an automatic confirmation email back to the visitor in the same language as the page they submitted from.
+6. The submission is considered successful when CSV storage or Gmail delivery succeeds. If one route fails, the API returns success with a warning so visitors do not see an error after a recoverable backend issue.
+7. User is redirected to the thank-you page.
+
+Recommended production setup:
+
+- Keep local CSV only as a development and backup path. Serverless filesystems are not a durable database.
+- For the first production-ready lead store, use Google Sheets or Supabase/Neon Postgres so the team can reliably review and export submissions.
+- Use Gmail API only for email delivery from the company mailbox. Configure `GMAIL_SENDER`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REFRESH_TOKEN`, and `CONTACT_RECIPIENT` in each deployed site.
 
 ## Required environment variables
 
@@ -114,15 +121,9 @@ Current intended flow:
 - `GOOGLE_REFRESH_TOKEN`
 - `CONTACT_RECIPIENT`
 
-### HubSpot
+### Lead storage
 
-- `HUBSPOT_ACCESS_TOKEN`
-- `HUBSPOT_FORM_PORTAL_ID`
-- `HUBSPOT_FORM_ID`
-- `HUBSPOT_FIELD_INTERESTED_IN`
-- `HUBSPOT_FIELD_MESSAGE`
-- `HUBSPOT_FIELD_SOURCE`
-- `HUBSPOT_FIELD_LOCALE`
+- `LEAD_CSV_DIR` optional local CSV directory override.
 
 ## Run locally
 
