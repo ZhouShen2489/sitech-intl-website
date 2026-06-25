@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -96,7 +97,6 @@ export async function POST(request: Request) {
       message: "Inquiry submitted successfully.",
       routed: {
         localCsv: persistResult.provider === "local_csv",
-        netlifyBlobs: persistResult.provider === "netlify_blobs",
       },
     });
   } catch (error) {

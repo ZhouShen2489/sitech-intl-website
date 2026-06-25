@@ -79,7 +79,6 @@ export async function POST(request: Request) {
     message: "Inquiry submitted successfully.",
     routed: {
       localCsv: persistResult.provider === "local_csv",
-      netlifyBlobs: persistResult.provider === "netlify_blobs",
     },
   });
 }

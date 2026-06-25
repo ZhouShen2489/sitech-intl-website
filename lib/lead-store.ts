@@ -28,7 +28,7 @@ export type LeadRecord = {
 
 type DeliveryResult = {
   ok: boolean;
-  provider: "local_csv" | "netlify_blobs";
+  provider: "local_csv";
   reason?: string;
 };
 
@@ -149,39 +149,8 @@ async function persistLeadToLocalCsv(record: LeadRecord): Promise<DeliveryResult
   }
 }
 
-async function persistLeadToNetlifyBlobs(record: LeadRecord): Promise<DeliveryResult> {
-  try {
-    const { getStore } = await import("@netlify/blobs");
-    const store = getStore({ name: "sitech-leads", consistency: "strong" });
-    await store.setJSON(`leads/${record.site}/${record.submissionId}.json`, record);
-
-    return {
-      ok: true,
-      provider: "netlify_blobs",
-    };
-  } catch (error) {
-    return {
-      ok: false,
-      provider: "netlify_blobs",
-      reason: error instanceof Error ? error.message : "unknown_error",
-    };
-  }
-}
-
-function shouldUseNetlifyBlobs() {
-  return process.env.NETLIFY === "true" || Boolean(process.env.BLOB_READ_WRITE_TOKEN);
-}
-
 export async function persistLead(lead: LeadSubmission): Promise<DeliveryResult> {
   const record = toRecord(lead);
-
-  if (shouldUseNetlifyBlobs()) {
-    const blobResult = await persistLeadToNetlifyBlobs(record);
-    if (blobResult.ok) {
-      return blobResult;
-    }
-  }
-
   return persistLeadToLocalCsv(record);
 }
 
@@ -257,27 +226,7 @@ async function listLocalCsvRecords(): Promise<LeadRecord[]> {
   });
 }
 
-async function listNetlifyBlobRecords(): Promise<LeadRecord[]> {
-  const { getStore } = await import("@netlify/blobs");
-  const store = getStore({ name: "sitech-leads", consistency: "strong" });
-  const site = currentSiteName();
-  const { blobs } = await store.list({ prefix: `leads/${site}/` });
-  const records = await Promise.all(
-    blobs.map(async (blob) => store.get(blob.key, { type: "json" }) as Promise<LeadRecord | null>),
-  );
-
-  return records.filter((item): item is LeadRecord => Boolean(item));
-}
-
 export async function listLeadRecords(): Promise<LeadRecord[]> {
-  if (shouldUseNetlifyBlobs()) {
-    try {
-      return (await listNetlifyBlobRecords()).sort((a, b) => b.submittedAt.localeCompare(a.submittedAt));
-    } catch {
-      // fall through to local csv
-    }
-  }
-
   try {
     return (await listLocalCsvRecords()).sort((a, b) => b.submittedAt.localeCompare(a.submittedAt));
   } catch {
