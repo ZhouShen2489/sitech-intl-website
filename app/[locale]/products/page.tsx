@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { PageHero, SectionHeading } from "@/components/page-sections";
 import { copy, copyList, siteContent, visibleItems } from "@/content/site-content";
-import { isLocale, withBasePath, withLocale } from "@/lib/site";
+import { isLocale, withBasePath, withLocale, withSiteLocale } from "@/lib/site";
 
 export default async function ProductsPage({
   params,
@@ -69,6 +69,29 @@ export default async function ProductsPage({
     filterCards.push({ item: page.filters[1], href: "#partner-products" });
   }
 
+  const newHighlights = [
+    {
+      key: "opera",
+      href: withSiteLocale("opera", safeLocale),
+      title: { zh: "Enterprise Opera OS", en: "Enterprise Opera OS" },
+      text: {
+        zh: "新版独立产品页已上线，玻璃导航会突出 Helport AI 和 Telecom。",
+        en: "New standalone product page with glass navigation highlighting Helport AI and Telecom.",
+      },
+      cta: { zh: "打开 Opera", en: "Open Opera" },
+    },
+    {
+      key: "helport",
+      href: withLocale(safeLocale, "/products/helport"),
+      title: { zh: "AI Expert Customer Service", en: "AI Expert Customer Service" },
+      text: {
+        zh: "战略合作产品重点展示，适合客服、销售外呼和知识密集型支持团队。",
+        en: "Featured partner product for support, sales outreach, and knowledge-heavy service teams.",
+      },
+      cta: { zh: "查看 AI Expert", en: "View AI Expert" },
+    },
+  ] as const;
+
   return (
     <>
       <PageHero
@@ -78,6 +101,29 @@ export default async function ProductsPage({
         subtitle={copy(locale, page.hero.subtitle)}
         image={page.hero.image}
       />
+
+      <section className="border-y border-blue-100 bg-white py-8">
+        <div className="mx-auto grid max-w-7xl gap-4 px-6 lg:grid-cols-[auto_1fr_1fr] lg:items-stretch lg:px-8">
+          <div className="flex items-center rounded-lg bg-ink px-5 py-4 text-white">
+            <span className="rounded-full bg-signal px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-ink">
+              {locale === "en" ? "New" : "新内容"}
+            </span>
+          </div>
+          {newHighlights.map((item) => (
+            <Link
+              key={item.key}
+              href={item.href}
+              className="group rounded-lg border border-blue-100 bg-[#f8fbff] p-5 transition hover:border-tide/40 hover:bg-white hover:shadow-card"
+            >
+              <h2 className="font-display text-xl font-bold text-ink">{copy(locale, item.title)}</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{copy(locale, item.text)}</p>
+              <p className="mt-4 text-sm font-bold text-tide transition group-hover:translate-x-1">
+                {copy(locale, item.cta)} →
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section className="brand-mesh py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -143,7 +189,7 @@ export default async function ProductsPage({
                     className="overflow-hidden rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.06))] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.18)]"
                   >
                     <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-                      <div className="relative h-52 overflow-hidden rounded-[1.5rem] bg-white/10">
+                      <div className="relative overflow-hidden rounded-[1.5rem] bg-white/10" style={{ height: "13rem" }}>
                         <Image
                           src={withBasePath(item.image)}
                           alt={copy(locale, item.title)}
@@ -155,6 +201,9 @@ export default async function ProductsPage({
                       </div>
                       <div>
                         <div className="flex flex-wrap gap-2">
+                          <span className="rounded-full bg-signal px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-ink">
+                            {locale === "en" ? "New" : "新内容"}
+                          </span>
                           <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.16em] text-white/76">
                             {copy(locale, item.category)}
                           </span>

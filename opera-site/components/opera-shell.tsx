@@ -7,22 +7,15 @@ import { usePathname } from "next/navigation";
 import { operaContent, operaCopy } from "@/content/opera-content";
 import { siteContent } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
-import { switchLocaleInPath, withLocale } from "@/lib/site";
-
-const companyOrigin = process.env.NEXT_PUBLIC_COMPANY_ORIGIN ?? "";
-const telecomOrigin = process.env.NEXT_PUBLIC_TELECOM_ORIGIN ?? "https://telecom.sitech-intl.com";
+import { switchLocaleInPath, withLocale, withSiteLocale } from "@/lib/site";
 
 function companyHref(locale: Locale, path = "") {
-  if (!companyOrigin) {
-    return withLocale(locale, path || "/company");
-  }
-
   const companyPath = path === "/company" ? "" : path;
-  return `${companyOrigin}/${locale}${companyPath}`;
+  return withSiteLocale("company", locale, companyPath);
 }
 
 function telecomHref(locale: Locale) {
-  return `${telecomOrigin}/${locale}`;
+  return withSiteLocale("telecom", locale);
 }
 
 export function OperaHeader({ locale }: { locale: Locale }) {
@@ -58,8 +51,8 @@ export function OperaHeader({ locale }: { locale: Locale }) {
           >
             <span className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.24),transparent_34%),linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent)] opacity-70 transition group-hover:translate-x-3" />
             <span className="relative inline-flex items-center gap-2">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-white/82">Live</span>
-              <span>Helport</span>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-white/82">New</span>
+              <span>Helport AI</span>
               <span className="h-1.5 w-1.5 rounded-full bg-[#7ce6ba] shadow-[0_0_12px_#7ce6ba]" />
             </span>
           </Link>
@@ -127,7 +120,7 @@ export function OperaFooter({ locale }: { locale: Locale }) {
 
         <div className="mt-5 flex flex-col gap-2 text-sm text-white/34 md:flex-row md:items-center md:justify-between">
           <p>{year} Si-Tech Intl. All rights reserved.</p>
-          <p>{locale === "en" ? "Concept demo website" : "概念验证官网"}</p>
+          <p>{locale === "en" ? "Standalone product site" : "独立产品页"}</p>
         </div>
       </div>
     </footer>

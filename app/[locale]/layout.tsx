@@ -21,7 +21,5 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  return (
-    <LocaleChrome locale={locale}>{children}</LocaleChrome>
-  );
+  return <LocaleChrome locale={locale}>{children}</LocaleChrome>;
 }

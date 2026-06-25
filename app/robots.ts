@@ -5,10 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: ["/en", "/zh", "/privacy"],
-        disallow: ["/en/products", "/zh/products", "/en/solutions", "/zh/solutions"],
+        allow: "/",
       },
     ],
-    sitemap: "https://opera.sitech-intl.com/sitemap.xml",
+    sitemap: "https://www.sitech-intl.com/sitemap.xml",
   };
 }

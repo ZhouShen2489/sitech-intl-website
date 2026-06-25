@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { siteContent, copy } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
-import { withBasePath, withLocale } from "@/lib/site";
+import { withBasePath, withLocale, withSiteLocale } from "@/lib/site";
 
 const siteHomePath = process.env.NEXT_PUBLIC_SITE_HOME_PATH || "/";
 
@@ -14,20 +14,22 @@ type SiteFooterProps = {
 
 export function SiteFooter({ locale, variant = "company" }: SiteFooterProps) {
   const year = new Date().getFullYear();
-  const telecomOrigin = process.env.NEXT_PUBLIC_TELECOM_ORIGIN ?? "https://telecom.sitech-intl.com";
-  const operaOrigin = process.env.NEXT_PUBLIC_OPERA_ORIGIN ?? "https://opera.sitech-intl.com";
+  const helportHref =
+    variant === "telecom"
+      ? withSiteLocale("company", locale, "/products/helport")
+      : withLocale(locale, "/products/helport");
   const focusLinks = [
     {
-      label: locale === "en" ? "AI Expert Customer Service" : "AI 专家客服",
-      href: withLocale(locale, "/products/helport"),
+      label: locale === "en" ? "Helport AI" : "Helport AI 专家客服",
+      href: helportHref,
     },
     {
       label: "Telecom",
-      href: `${telecomOrigin}/${locale}`,
+      href: withSiteLocale("telecom", locale),
     },
     {
       label: "Opera",
-      href: `${operaOrigin}/${locale}`,
+      href: withSiteLocale("opera", locale),
     },
   ];
   const pageLinks =

@@ -27,7 +27,7 @@ export function OperaContactForm({ locale }: { locale: Locale }) {
       companySize: "",
       phone: "",
       industry: "Export / trade operations",
-      interestedIn: "Enterprise Opera OS concept demo",
+      interestedIn: "Enterprise Opera OS product inquiry",
       message: String(formData.get("message") ?? ""),
       consent: formData.get("consent") === "on",
       website: String(formData.get("website") ?? ""),

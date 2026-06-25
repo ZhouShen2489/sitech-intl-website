@@ -8,7 +8,7 @@ import { useState } from "react";
 import { siteContent, copy, visibleItems } from "@/content/site-content";
 import { telecomDirections } from "@/content/telecom-solutions-content";
 import type { Locale } from "@/lib/site";
-import { switchLocaleInPath, withBasePath, withLocale } from "@/lib/site";
+import { switchLocaleInPath, withBasePath, withLocale, withSiteLocale } from "@/lib/site";
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -51,7 +51,6 @@ type NavItem = {
 };
 
 const siteHomePath = process.env.NEXT_PUBLIC_SITE_HOME_PATH || "/";
-const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://www.sitech-intl.com";
 
 function stripHash(href: string) {
   return href.split("#")[0] ?? href;
@@ -225,8 +224,8 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
   const ownProductItems = visibleItems(siteContent.marketplacePage.ownItems);
   const partnerProductItems = visibleItems(siteContent.marketplacePage.partnerItems);
   const helportItem = partnerProductItems.find((item) => item.href === "/products/helport");
-  const operaOrigin = process.env.NEXT_PUBLIC_OPERA_ORIGIN ?? "https://opera.sitech-intl.com";
-  const telecomOrigin = process.env.NEXT_PUBLIC_TELECOM_ORIGIN ?? "https://telecom.sitech-intl.com";
+  const operaSiteHref = withSiteLocale("opera", locale);
+  const telecomSiteHref = withSiteLocale("telecom", locale);
 
   const productTitleMap: Record<string, HeaderDropdownItem["title"]> = {
     "/solutions/teamshub-business-os": { zh: "Teamshub", en: "Teamshub" },
@@ -285,48 +284,32 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
 
   const solutionDropdownConfig: HeaderDropdownConfig = {
     overview: {
-      href: telecomOrigin,
-      title: { zh: "进入独立解决方案站点", en: "Open solution sites" },
+      href: "/solutions",
+      title: { zh: "解决方案入口总览", en: "Solutions entry board" },
     },
     groups: [
       {
-        title: { zh: "独立方案站点", en: "Standalone solution sites" },
+        title: { zh: "独立产品 / 方案页", en: "Standalone product and solution sites" },
         items: [
           {
-            href: telecomOrigin,
+            href: telecomSiteHref,
             title: { zh: "Telecom", en: "Telecom" },
             text: { zh: "运营商与 MVNO 独立解决方案站", en: "Operator and MVNO standalone solution site" },
           },
           {
-            href: operaOrigin,
+            href: operaSiteHref,
             title: { zh: "Opera", en: "Opera" },
             text: { zh: "企业协同与运营语义层产品站", en: "Enterprise coordination and operating semantic layer" },
           },
         ],
-        text: { zh: "直接进入产品/解决方案站点", en: "Go directly to each standalone site" },
-      },
-      {
-        title: { zh: "Opera 重点解决方案", en: "Opera priority routes" },
-        text: { zh: "重点信息在此重复展示，方便直接进入", en: "Repeated here intentionally for direct entry" },
-        items: [
-          {
-            href: operaOrigin,
-            title: { zh: "Living Enterprise Demo", en: "Living Enterprise Demo" },
-            text: { zh: "企业本体、数字孪生、协同行动", en: "Ontology, digital twin, coordinated action" },
-          },
-          {
-            href: `${operaOrigin}/${locale}#how-it-works`,
-            title: { zh: "How it works", en: "How it works" },
-            text: { zh: "事实数据 → 意义数据 → 决策行动", en: "Facts to meaning to action" },
-          },
-        ],
+        text: { zh: "直接进入独立产品和解决方案站点", en: "Go directly to each standalone site" },
       },
     ],
   };
 
   const telecomDropdownConfig: HeaderDropdownConfig = {
     overview: {
-      href: "/solutions/telecom",
+      href: withSiteLocale("telecom", locale, "/solutions/telecom"),
       title: { zh: "运营商解决方案首页", en: "Telecom board home" },
     },
     groups: [
@@ -334,7 +317,7 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
         title: { zh: "五条业务线", en: "Five telecom paths" },
         text: { zh: "按最接近的业务动作进入", en: "Enter from the closest operating move" },
         items: telecomDirections.slice(0, 5).map((direction) => ({
-          href: `/solutions/telecom/${direction.slug}`,
+          href: withSiteLocale("telecom", locale, `/solutions/telecom/${direction.slug}`),
           title: direction.shortTitle,
           text: direction.eyebrow,
         })),
@@ -601,7 +584,7 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
         >
           {mode !== "global" ? (
             <Link
-              href={`${siteOrigin}/${locale}`}
+              href={withSiteLocale("company", locale)}
               className="hidden items-center gap-2 rounded-full border border-blue-100 bg-white px-3 py-2 text-xs font-semibold text-[#17233c] transition hover:border-tide/30 hover:text-tide sm:inline-flex sm:px-4 sm:text-sm"
             >
               <BackIcon />

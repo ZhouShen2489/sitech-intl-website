@@ -32,8 +32,8 @@ export type DemoStage = {
 export const operaContent = {
   productName: "Enterprise Opera OS",
   eyebrow: {
-    zh: "Enterprise Opera OS · 概念演示",
-    en: "Enterprise Opera OS · Concept Demo",
+    zh: "Enterprise Opera OS · 独立产品页",
+    en: "Enterprise Opera OS · Product Site",
   },
   headline: {
     zh: "让分散的业务信号，变成协同行动。",
@@ -44,8 +44,8 @@ export const operaContent = {
     en: "Connect orders, customers, inventory, suppliers, and owners so teams can understand impact, approve action, and change the outcome.",
   },
   heroNote: {
-    zh: "AI 提出建议，由人审批执行。以下为固定 mock 数据的概念演示，不代表已正式发布功能。",
-    en: "AI recommends, people approve. This is a concept demo built on fixed mock data and does not represent released product functionality.",
+    zh: "AI 提出建议，由人审批执行。面向复杂业务系统的真实落地场景。",
+    en: "AI recommends, people approve. Built for practical rollout in complex operating environments.",
   },
   ctas: {
     primary: { zh: "开始演示", en: "Start the demo" },
@@ -321,8 +321,8 @@ export const operaContent = {
       en: "Start with an enterprise ontology that turns orders, inventory, logistics, and ownership into an understandable, actionable business world.",
     },
     note: {
-      zh: "联系表单继续走现有官网流程。当前页面为概念演示，不代表已正式发布产品。",
-      en: "This form still routes through the existing company contact workflow. This page is a concept demo, not a released product.",
+      zh: "联系表单继续走现有官网流程，我们会把 Opera 咨询转给合适团队处理。",
+      en: "This form still routes through the existing company contact workflow, and Opera inquiries are routed to the right team.",
     },
     submit: { zh: "提交咨询", en: "Send inquiry" },
     success: {
@@ -347,8 +347,8 @@ export const operaContent = {
   footer: {
     title: "Enterprise Opera OS by Si-Tech",
     summary: {
-      zh: "Si-Tech 面向复杂业务系统与跨团队运营场景提供产品构思、平台建设与交付支持。当前页面为概念验证官网，不代表正式发布产品，也不暗示与其他厂商存在合作关系。",
-      en: "Si-Tech supports complex business systems and cross-functional operating environments through product strategy, platform building, and delivery support. This page is a concept-validation website, not a released product, and does not imply partnership with any third-party vendor.",
+      zh: "Si-Tech 面向复杂业务系统与跨团队运营场景提供产品构思、平台建设与交付支持，让企业对象、流程、责任人与 AI 建议在同一张运行图中协同。",
+      en: "Si-Tech supports complex business systems and cross-functional operating environments through product strategy, platform building, and delivery support, connecting business objects, workflows, owners, and AI recommendations in one operating picture.",
     },
     links: [
       {
