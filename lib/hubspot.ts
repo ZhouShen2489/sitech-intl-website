@@ -28,6 +28,9 @@ export async function submitLeadToHubSpot(lead: LeadSubmission): Promise<Deliver
   const sourceField = withDefaultValue(env("HUBSPOT_FIELD_SOURCE"), "website_lead_source");
   const localeField = withDefaultValue(env("HUBSPOT_FIELD_LOCALE"), "website_inquiry_locale");
   const companySizeField = env("HUBSPOT_FIELD_COMPANY_SIZE");
+  const productInterestField = env("HUBSPOT_FIELD_PRODUCT_INTEREST");
+  const partnerRelatedField = env("HUBSPOT_FIELD_PARTNER_RELATED");
+  const registrationRequiredField = env("HUBSPOT_FIELD_REGISTRATION_REQUIRED");
 
   if (!accessToken) {
     return {
@@ -62,6 +65,9 @@ export async function submitLeadToHubSpot(lead: LeadSubmission): Promise<Deliver
             { name: messageField, value: lead.message },
             { name: sourceField, value: lead.source },
             { name: localeField, value: lead.locale },
+            { name: productInterestField, value: lead.product_interest },
+            { name: partnerRelatedField, value: lead.partner_related ? "true" : "" },
+            { name: registrationRequiredField, value: lead.registration_required ? "true" : "" },
           ].filter((field) => field.name && field.value),
           context: {
             pageUri: lead.pageUrl || undefined,
@@ -106,6 +112,11 @@ export async function submitLeadToHubSpot(lead: LeadSubmission): Promise<Deliver
         [messageField]: lead.message,
         [sourceField]: lead.source,
         [localeField]: lead.locale,
+        ...(productInterestField ? { [productInterestField]: lead.product_interest } : {}),
+        ...(partnerRelatedField ? { [partnerRelatedField]: lead.partner_related ? "true" : "false" } : {}),
+        ...(registrationRequiredField
+          ? { [registrationRequiredField]: lead.registration_required ? "true" : "false" }
+          : {}),
       },
     }),
   });

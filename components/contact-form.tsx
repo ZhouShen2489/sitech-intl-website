@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import { siteContent, copy, copyList } from "@/content/site-content";
@@ -15,15 +15,28 @@ type SubmitState = "idle" | "loading" | "success" | "error";
 export function ContactForm({ locale }: ContactFormProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const form = siteContent.contactPage.form;
   const isStaticExport = process.env.NEXT_PUBLIC_IS_STATIC_EXPORT === "true";
   const [status, setStatus] = useState<SubmitState>("idle");
+  const defaultInterest =
+    searchParams.get("product_interest") === "ai_expertcare"
+      ? locale === "en"
+        ? "AI Expert Customer Service"
+        : "AI 专家客服"
+      : locale === "en"
+        ? "Website inquiry"
+        : "网站咨询";
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("loading");
 
     const formData = new FormData(event.currentTarget);
+    const productInterest = String(searchParams.get("product_interest") ?? "");
+    const leadSource = String(searchParams.get("lead_source") ?? "website");
+    const partnerRelated = searchParams.get("partner_related") === "true";
+    const registrationRequired = searchParams.get("registration_required") === "true";
 
     const payload = {
       fullName: String(formData.get("fullName") ?? ""),
@@ -33,16 +46,20 @@ export function ContactForm({ locale }: ContactFormProps) {
       companySize: String(formData.get("companySize") ?? ""),
       phone: String(formData.get("phone") ?? ""),
       industry: String(formData.get("industry") ?? ""),
-      interestedIn: String(formData.get("interestedIn") ?? ""),
+      interestedIn: String(formData.get("interestedIn") ?? defaultInterest),
       message: String(formData.get("message") ?? ""),
       consent: formData.get("consent") === "on",
       website: String(formData.get("website") ?? ""),
       locale,
-      source: "website",
+      source: leadSource || "website",
       pageUrl:
         typeof window !== "undefined"
           ? new URL(pathname, window.location.origin).toString()
           : "",
+      product_interest: productInterest,
+      lead_source: leadSource,
+      partner_related: partnerRelated,
+      registration_required: registrationRequired,
     };
 
     if (isStaticExport) {
@@ -59,6 +76,10 @@ export function ContactForm({ locale }: ContactFormProps) {
         `Phone: ${payload.phone}`,
         `Industry: ${payload.industry}`,
         `Interested In: ${payload.interestedIn}`,
+        `Product Interest: ${payload.product_interest || "-"}`,
+        `Lead Source: ${payload.lead_source || "-"}`,
+        `Partner Related: ${payload.partner_related ? "true" : "false"}`,
+        `Registration Required: ${payload.registration_required ? "true" : "false"}`,
         "",
         "Message:",
         payload.message,
@@ -102,6 +123,7 @@ export function ContactForm({ locale }: ContactFormProps) {
         className="hidden"
         aria-hidden="true"
       />
+      <input type="hidden" name="interestedIn" value={defaultInterest} />
 
       <div className="grid gap-5 md:grid-cols-2">
         <label className="space-y-2">
@@ -186,25 +208,6 @@ export function ContactForm({ locale }: ContactFormProps) {
           />
         </label>
       </div>
-
-      <label className="space-y-2">
-        <span className="text-sm font-medium text-ink">{copy(locale, form.interestedIn)}</span>
-        <select
-          name="interestedIn"
-          required
-          defaultValue=""
-          className="w-full rounded-2xl border border-slate-200 bg-mist px-4 py-3 text-sm text-ink outline-none transition focus:border-tide focus:bg-white"
-        >
-          <option value="" disabled>
-            {copy(locale, form.interestedIn)}
-          </option>
-          {copyList(locale, form.options).map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </label>
 
       <label className="space-y-2">
         <span className="text-sm font-medium text-ink">{copy(locale, form.message)}</span>

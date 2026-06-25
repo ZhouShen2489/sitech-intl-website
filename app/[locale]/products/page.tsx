@@ -111,8 +111,8 @@ export default async function ProductsPage({
                 </p>
                 <h2 className="mt-4 font-display text-3xl leading-tight text-white md:text-4xl">
                   {locale === "en"
-                    ? "Helport turns great conversations into a repeatable system."
-                    : "Helport 把优秀沟通，做成可复制的系统。"}
+                    ? "AI Expert Customer Service turns great conversations into a repeatable system."
+                    : "AI 专家客服把优秀沟通，做成可复制的系统。"}
                 </h2>
                 <p className="mt-5 max-w-xl text-base leading-8 text-white/76">
                   {copy(locale, page.partnerText)}

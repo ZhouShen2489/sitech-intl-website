@@ -5,7 +5,7 @@ import { siteContent, copy, copyList } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
 import { withBasePath, withLocale } from "@/lib/site";
 
-const siteHomePath = process.env.NEXT_PUBLIC_SITE_HOME_PATH ?? "/company";
+const siteHomePath = process.env.NEXT_PUBLIC_SITE_HOME_PATH || "/";
 
 type SiteFooterProps = {
   locale: Locale;

@@ -12,3 +12,6 @@ tsconfig.tsbuildinfo
 company-site/public/
 opera-site/public/
 telecom-site/public/
+company-site/data/
+opera-site/data/
+telecom-site/data/

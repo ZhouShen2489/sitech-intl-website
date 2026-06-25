@@ -10,6 +10,10 @@
   ],
   "scripts": {
     "dev": "npm run check:images && next dev",
+    "dev:company": "pnpm --dir company-site run dev -- -p 3004",
+    "dev:opera": "pnpm --dir opera-site run dev -- -p 3003",
+    "dev:telecom": "pnpm --dir telecom-site run dev -- -p 3005",
+    "dev:sites": "pnpm run dev:company & pnpm run dev:opera & pnpm run dev:telecom",
     "build": "next build",
     "build:pages": "node scripts/build-pages.mjs",
     "check:images": "node scripts/check-images-dev.mjs",

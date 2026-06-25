@@ -19,6 +19,10 @@ export const leadSchema = z.object({
   website: z.string().trim().max(0).optional().default(""),
   locale: z.enum(locales).default("en"),
   source: z.string().trim().min(2).max(120).default("website"),
+  product_interest: z.string().trim().max(120).optional().default(""),
+  lead_source: z.string().trim().max(120).optional().default(""),
+  partner_related: z.boolean().optional().default(false),
+  registration_required: z.boolean().optional().default(false),
 });
 
 export type LeadSubmission = z.infer<typeof leadSchema>;
@@ -33,6 +37,8 @@ export function normalizeLead(input: LeadSubmission) {
     industry: input.industry.trim(),
     pageUrl: input.pageUrl.trim(),
     source: input.source.trim(),
+    product_interest: input.product_interest.trim(),
+    lead_source: input.lead_source.trim(),
   };
 }
 

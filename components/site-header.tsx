@@ -50,7 +50,8 @@ type NavItem = {
   dropdownConfig?: HeaderDropdownConfig;
 };
 
-const siteHomePath = process.env.NEXT_PUBLIC_SITE_HOME_PATH ?? "/company";
+const siteHomePath = process.env.NEXT_PUBLIC_SITE_HOME_PATH || "/";
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://www.sitech-intl.com";
 
 function stripHash(href: string) {
   return href.split("#")[0] ?? href;
@@ -223,15 +224,16 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
 
   const ownProductItems = visibleItems(siteContent.marketplacePage.ownItems);
   const partnerProductItems = visibleItems(siteContent.marketplacePage.partnerItems);
-  const helportItem = partnerProductItems.find((item) => item.title.en === "Helport");
-  const telecomSolution = siteContent.solutionsCatalog.find((solution) => solution.key === "telecom");
+  const helportItem = partnerProductItems.find((item) => item.href === "/products/helport");
+  const operaOrigin = process.env.NEXT_PUBLIC_OPERA_ORIGIN ?? "https://opera.sitech-intl.com";
+  const telecomOrigin = process.env.NEXT_PUBLIC_TELECOM_ORIGIN ?? "https://telecom.sitech-intl.com";
 
   const productTitleMap: Record<string, HeaderDropdownItem["title"]> = {
     "/solutions/teamshub-business-os": { zh: "Teamshub", en: "Teamshub" },
     "/solutions/ai-customer-service": { zh: "智能客服", en: "AI Service" },
     "/products/teamshub-business-os": { zh: "Teamshub", en: "Teamshub" },
     "/products/ai-customer-service": { zh: "智能客服", en: "Smart Customer Service" },
-    "/products/helport": { zh: "Helport", en: "Helport" },
+    "/products/helport": { zh: "AI 专家客服", en: "AI Expert Customer Service" },
   };
 
   const solutionTitleMap: Record<string, HeaderDropdownItem["title"]> = {
@@ -248,23 +250,26 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
       title: { zh: "产品总览", en: "All Products" },
     },
     groups: [
-      {
-        title: { zh: "我们的产品", en: "Our products" },
-        items: ownProductItems.map((item) => ({
-          href: item.href,
-          title: productTitleMap[item.href] ?? item.title,
-        })),
-      },
-      ...(partnerProductItems.some((item) => item.title.en !== "Helport")
+      ...(ownProductItems.length > 0
         ? [
             {
-              title: { zh: "伙伴产品", en: "Partner products" },
-              items: partnerProductItems
-                .filter((item) => item.title.en !== "Helport")
-                .map((item) => ({
-                  href: item.href,
-                  title: productTitleMap[item.href] ?? item.title,
-                })),
+              title: { zh: "我们的产品", en: "Our products" },
+              items: ownProductItems.map((item) => ({
+                href: item.href,
+                title: productTitleMap[item.href] ?? item.title,
+              })),
+            },
+          ]
+        : []),
+      ...(partnerProductItems.length > 0
+        ? [
+            {
+              title: { zh: "战略合作产品", en: "Strategic partner products" },
+              items: partnerProductItems.map((item) => ({
+                href: item.href,
+                title: productTitleMap[item.href] ?? item.title,
+                text: item.category,
+              })),
             },
           ]
         : []),
@@ -273,71 +278,39 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
       ? {
           href: helportItem.href,
           title: productTitleMap[helportItem.href] ?? helportItem.title,
-          eyebrow: { zh: "重点产品", en: "Featured" },
+          eyebrow: { zh: "战略合作伙伴产品", en: "Strategic partner product" },
         }
       : undefined,
   };
 
   const solutionDropdownConfig: HeaderDropdownConfig = {
     overview: {
-      href: "/solutions",
-      title: { zh: "方案总览", en: "All Solutions" },
+      href: telecomOrigin,
+      title: { zh: "进入独立解决方案站点", en: "Open solution sites" },
     },
     groups: [
       {
-        title: { zh: "运营商", en: "Telecom" },
+        title: { zh: "独立方案站点", en: "Standalone solution sites" },
         items: [
           {
-            href: "/solutions/telecom",
-            title: { zh: "运营商解决方案", en: "Telecom Solutions" },
-            text: { zh: "五条通信业务方案线", en: "Five telecom solution paths" },
-          },
-          ...telecomDirections.slice(0, 5).map((direction) => ({
-            href: `/solutions/telecom/${direction.slug}`,
-            title: direction.shortTitle,
-            text: direction.eyebrow,
-          })),
-        ],
-        text: { zh: "通信业务增长与运营", en: "Telecom growth and operations" },
-      },
-      {
-        title: { zh: "产业平台", en: "Industry platforms" },
-        items: [
-          {
-            href: "/solutions/digital-industry-platforms",
-            title: solutionTitleMap["/solutions/digital-industry-platforms"],
-            text: { zh: "产业中台与数据流通", en: "Middle-platform and data flows" },
+            href: operaOrigin,
+            title: { zh: "Opera", en: "Opera" },
+            text: { zh: "企业协同与运营语义层产品站", en: "Enterprise coordination and operating semantic layer" },
           },
           {
-            href: "/solutions/custom-business-systems",
-            title: solutionTitleMap["/solutions/custom-business-systems"],
-            text: { zh: "门户、工作流与运营后台", en: "Portals, workflows, ops backends" },
+            href: telecomOrigin,
+            title: { zh: "Telecom", en: "Telecom" },
+            text: { zh: "运营商与 MVNO 独立解决方案站", en: "Operator and MVNO standalone solution site" },
           },
         ],
-        text: { zh: "交易、协同、运营", en: "Trade, coordination, operations" },
-      },
-      {
-        title: { zh: "AI 与协同", en: "AI and collaboration" },
-        items: [
-          {
-            href: "/solutions/ai-customer-service",
-            title: solutionTitleMap["/solutions/ai-customer-service"],
-            text: { zh: "服务流程里的 AI", en: "AI inside service flows" },
-          },
-          {
-            href: "/solutions/teamshub-business-os",
-            title: solutionTitleMap["/solutions/teamshub-business-os"],
-            text: { zh: "项目知识与协作空间", en: "Project knowledge workspace" },
-          },
-        ],
-        text: { zh: "智能服务与项目推进", en: "AI service and delivery work" },
+        text: { zh: "直接进入产品/解决方案站点", en: "Go directly to each standalone site" },
       },
     ],
-    featured: telecomSolution
+    featured: helportItem
       ? {
-          href: "/solutions/telecom",
-          title: solutionTitleMap["/solutions/telecom"],
-          eyebrow: { zh: "重点方案", en: "Featured" },
+          href: operaOrigin,
+          title: { zh: "Opera", en: "Opera" },
+          eyebrow: { zh: "企业运营产品站", en: "Enterprise product site" },
         }
       : undefined,
   };
@@ -430,11 +403,11 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
   const partnerProductsDropdownConfig: HeaderDropdownConfig = {
     overview: {
       href: "/products#partner-products",
-      title: { zh: "合作伙伴产品总览", en: "Partner product board" },
+      title: { zh: "战略合作产品总览", en: "Strategic partner product board" },
     },
     groups: [
       {
-        title: { zh: "合作伙伴产品", en: "Partner products" },
+        title: { zh: "战略合作产品", en: "Strategic partner products" },
         items: partnerProductItems.map((item) => ({
           href: item.href,
           title: productTitleMap[item.href] ?? item.title,
@@ -446,7 +419,7 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
       ? {
           href: helportItem.href,
           title: productTitleMap[helportItem.href] ?? helportItem.title,
-          eyebrow: { zh: "重点伙伴产品", en: "Featured partner" },
+          eyebrow: { zh: "战略合作伙伴产品", en: "Strategic partner product" },
         }
       : undefined,
   };
@@ -456,7 +429,7 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
       { href: "/products", label: { zh: "产品首页", en: "Products" }, exact: true },
       {
         href: "/products#partner-products",
-        label: { zh: "合作伙伴的产品", en: "Partner products" },
+        label: { zh: "战略合作产品", en: "Strategic product" },
         matchHrefs: partnerProductItems.map((item) => item.href),
         dropdownConfig: partnerProductsDropdownConfig,
       },
@@ -586,7 +559,7 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-blue-100 bg-white text-ink shadow-[0_10px_30px_rgba(11,47,111,0.1)]">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 lg:px-8">
-        <Link href={withLocale(locale, "/company")} className="flex items-center gap-3">
+        <Link href={withLocale(locale, "/")} className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-100 bg-white p-1.5 shadow-[0_12px_28px_rgba(20,85,179,0.16)]">
             <Image
               src={withBasePath("/brand/logo-symbol.png")}
@@ -619,7 +592,7 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
         >
           {mode !== "global" ? (
             <Link
-              href={withLocale(locale, "/company")}
+              href={`${siteOrigin}/${locale}`}
               className="hidden items-center gap-2 rounded-full border border-blue-100 bg-white px-3 py-2 text-xs font-semibold text-[#17233c] transition hover:border-tide/30 hover:text-tide sm:inline-flex sm:px-4 sm:text-sm"
             >
               <BackIcon />

@@ -3,6 +3,7 @@ import crypto from "node:crypto";
 import { NextResponse } from "next/server";
 
 import { submitLeadToHubSpot } from "@/lib/hubspot";
+import { persistLeadToCsv } from "@/lib/lead-store";
 import { sendLeadEmails } from "@/lib/mailer";
 import { leadSchema, normalizeLead } from "@/lib/validation";
 
@@ -62,15 +63,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true, message: "Inquiry submitted successfully." });
   }
 
-  const [hubspotResult, mailResult] = await Promise.allSettled([
+  const [hubspotResult, mailResult, csvResult] = await Promise.allSettled([
     submitLeadToHubSpot(lead),
     sendLeadEmails(lead),
+    persistLeadToCsv(lead),
   ]);
 
   const hubspotOk = hubspotResult.status === "fulfilled" && hubspotResult.value.ok;
   const mailOk = mailResult.status === "fulfilled" && mailResult.value.ok;
+  const csvOk = csvResult.status === "fulfilled" && csvResult.value.ok;
 
-  if (!hubspotOk && !mailOk) {
+  if (!hubspotOk && !mailOk && !csvOk) {
     return NextResponse.json(
       {
         success: false,
@@ -86,6 +89,7 @@ export async function POST(request: Request) {
     routed: {
       hubspot: hubspotOk,
       gmail: mailOk,
+      localCsv: csvOk,
     },
   });
 }

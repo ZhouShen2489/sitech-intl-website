@@ -12,7 +12,6 @@ export function OperaContactForm({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const [status, setStatus] = useState<SubmitState>("idle");
   const fields = operaContent.contact.fields;
-  const isStaticExport = process.env.NEXT_PUBLIC_IS_STATIC_EXPORT === "true";
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,37 +32,11 @@ export function OperaContactForm({ locale }: { locale: Locale }) {
       website: String(formData.get("website") ?? ""),
       locale,
       source: "enterprise-opera-os",
-      product_interest: "enterprise_opera_os",
-      lead_source: "opera_site",
-      partner_related: false,
-      registration_required: true,
       pageUrl:
         typeof window !== "undefined"
           ? new URL(pathname, window.location.origin).toString()
           : "",
     };
-
-    if (isStaticExport) {
-      const subject =
-        locale === "en"
-          ? `Enterprise Opera OS inquiry from ${payload.fullName || payload.workEmail || "visitor"}`
-          : `Enterprise Opera OS 咨询：${payload.fullName || payload.workEmail || "访客"}`;
-      const body = [
-        `Name: ${payload.fullName}`,
-        `Work Email: ${payload.workEmail}`,
-        `Company: ${payload.companyName}`,
-        "",
-        "Message:",
-        payload.message,
-        "",
-        `Locale: ${payload.locale}`,
-        `Page URL: ${payload.pageUrl}`,
-      ].join("\n");
-
-      window.location.href = `mailto:info@sitech-intl.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      setStatus("success");
-      return;
-    }
 
     try {
       const response = await fetch("/api/contact", {
@@ -154,7 +127,7 @@ export function OperaContactForm({ locale }: { locale: Locale }) {
               : "提交中..."
             : operaCopy(locale, operaContent.contact.submit)}
         </button>
-        <p className="text-sm text-white/54">{operaCopy(locale, operaContent.contact.note)}</p>
+        <p className="max-w-sm text-sm leading-6 text-white/54">{operaCopy(locale, operaContent.contact.note)}</p>
       </div>
 
       {status === "success" ? (

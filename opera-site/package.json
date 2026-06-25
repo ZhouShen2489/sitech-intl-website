@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "sync:public": "node ../scripts/sync-site-public.mjs opera-site",
-    "dev": "npm run sync:public && NEXT_PUBLIC_COMPANY_ORIGIN=https://www.sitech-intl.com next dev",
-    "build": "npm run sync:public && NEXT_PUBLIC_COMPANY_ORIGIN=https://www.sitech-intl.com next build",
+    "dev": "node ../scripts/sync-site-public.mjs opera-site && next dev",
+    "build": "node ../scripts/sync-site-public.mjs opera-site && NEXT_PUBLIC_COMPANY_ORIGIN=https://www.sitech-intl.com next build",
     "start": "next start"
   },
   "dependencies": {

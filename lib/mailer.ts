@@ -1,5 +1,4 @@
 import { OAuth2Client } from "google-auth-library";
-import nodemailer from "nodemailer";
 
 import type { LeadSubmission } from "@/lib/validation";
 
@@ -11,6 +10,13 @@ type DeliveryResult = {
 
 function env(name: string) {
   return process.env[name]?.trim() ?? "";
+}
+
+function recipients(value: string) {
+  return value
+    .split(/[;,]/)
+    .map((item) => item.trim())
+    .filter(Boolean);
 }
 
 function isChineseLead(lead: LeadSubmission) {
@@ -40,17 +46,79 @@ async function createTransport() {
     return null;
   }
 
-  return nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      type: "OAuth2",
-      user: sender,
-      clientId,
-      clientSecret,
-      refreshToken,
-      accessToken: accessToken.token,
+  return {
+    sender,
+    accessToken: accessToken.token,
+  };
+}
+
+function toBase64Url(value: string) {
+  return Buffer.from(value, "utf8").toString("base64url");
+}
+
+function buildMimeMessage({
+  from,
+  to,
+  replyTo,
+  subject,
+  text,
+  html,
+}: {
+  from: string;
+  to: string;
+  replyTo?: string;
+  subject: string;
+  text: string;
+  html: string;
+}) {
+  const boundary = `codex-${Date.now().toString(16)}`;
+  return [
+    `From: ${from}`,
+    `To: ${to}`,
+    ...(replyTo ? [`Reply-To: ${replyTo}`] : []),
+    `Subject: ${subject}`,
+    "MIME-Version: 1.0",
+    `Content-Type: multipart/alternative; boundary=\"${boundary}\"`,
+    "",
+    `--${boundary}`,
+    "Content-Type: text/plain; charset=UTF-8",
+    "Content-Transfer-Encoding: 7bit",
+    "",
+    text,
+    "",
+    `--${boundary}`,
+    "Content-Type: text/html; charset=UTF-8",
+    "Content-Transfer-Encoding: 7bit",
+    "",
+    html,
+    "",
+    `--${boundary}--`,
+    "",
+  ].join("\r\n");
+}
+
+async function sendViaGmailApi({
+  accessToken,
+  raw,
+}: {
+  accessToken: string;
+  raw: string;
+}) {
+  const response = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      raw: toBase64Url(raw),
+    }),
   });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`gmail_api_send_failed: ${response.status} ${errorText}`);
+  }
 }
 
 function internalHtml(lead: LeadSubmission, submittedAt: string) {
@@ -67,6 +135,10 @@ function internalHtml(lead: LeadSubmission, submittedAt: string) {
     <p><strong>Phone:</strong> ${lead.phone || "-"}</p>
     <p><strong>Industry:</strong> ${lead.industry || "-"}</p>
     <p><strong>Interested in:</strong> ${lead.interestedIn}</p>
+    <p><strong>Product interest:</strong> ${lead.product_interest || "-"}</p>
+    <p><strong>Lead source tag:</strong> ${lead.lead_source || "-"}</p>
+    <p><strong>Partner related:</strong> ${lead.partner_related ? "true" : "false"}</p>
+    <p><strong>Registration required:</strong> ${lead.registration_required ? "true" : "false"}</p>
     <p><strong>Page URL:</strong> ${lead.pageUrl || "-"}</p>
     <p><strong>Inquiry details:</strong></p>
     <p>${lead.message.replace(/\n/g, "<br />")}</p>
@@ -86,6 +158,10 @@ function internalText(lead: LeadSubmission, submittedAt: string) {
     `Phone: ${lead.phone || "-"}`,
     `Industry: ${lead.industry || "-"}`,
     `Interested in: ${lead.interestedIn}`,
+    `Product interest: ${lead.product_interest || "-"}`,
+    `Lead source tag: ${lead.lead_source || "-"}`,
+    `Partner related: ${lead.partner_related ? "true" : "false"}`,
+    `Registration required: ${lead.registration_required ? "true" : "false"}`,
     `Page URL: ${lead.pageUrl || "-"}`,
     "",
     "Inquiry details:",
@@ -140,11 +216,10 @@ function confirmationText(lead: LeadSubmission) {
 }
 
 export async function sendLeadEmails(lead: LeadSubmission): Promise<DeliveryResult> {
-  const sender = env("GMAIL_SENDER");
-  const recipient = env("CONTACT_RECIPIENT") || "info@sitech-intl.com";
+  const recipient = recipients(env("CONTACT_RECIPIENT") || "info@sitech-intl.com");
   const transport = await createTransport();
 
-  if (!sender || !transport) {
+  if (recipient.length === 0 || !transport) {
     return {
       ok: false,
       provider: "gmail",
@@ -154,24 +229,30 @@ export async function sendLeadEmails(lead: LeadSubmission): Promise<DeliveryResu
 
   const submittedAt = new Date().toISOString();
 
-  await transport.sendMail({
-    from: sender,
-    to: recipient,
-    replyTo: lead.workEmail,
-    subject: `[Website Lead] ${lead.interestedIn} - ${lead.companyName || lead.fullName}`,
-    text: internalText(lead, submittedAt),
-    html: internalHtml(lead, submittedAt),
+  await sendViaGmailApi({
+    accessToken: transport.accessToken,
+    raw: buildMimeMessage({
+      from: transport.sender,
+      to: recipient.join(", "),
+      replyTo: lead.workEmail,
+      subject: `[Website Lead] ${lead.interestedIn} - ${lead.companyName || lead.fullName}`,
+      text: internalText(lead, submittedAt),
+      html: internalHtml(lead, submittedAt),
+    }),
   });
 
-  await transport.sendMail({
-    from: sender,
-    to: lead.workEmail,
-    replyTo: recipient,
-    subject: isChineseLead(lead)
-      ? "我们已经收到你的请求 | Si-Tech Intl"
-      : "We received your inquiry | Si-Tech Intl",
-    text: confirmationText(lead),
-    html: confirmationHtml(lead),
+  await sendViaGmailApi({
+    accessToken: transport.accessToken,
+    raw: buildMimeMessage({
+      from: transport.sender,
+      to: lead.workEmail,
+      replyTo: recipient[0],
+      subject: isChineseLead(lead)
+        ? "我们已经收到你的请求 | Si-Tech Intl"
+        : "We received your inquiry | Si-Tech Intl",
+      text: confirmationText(lead),
+      html: confirmationHtml(lead),
+    }),
   });
 
   return {

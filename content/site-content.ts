@@ -27,8 +27,8 @@ export const siteContent = {
       en: "Telecom · Enterprise · AI",
     },
     summary: {
-      zh: "Si-Tech Intl 帮助海外客户推进运营商、企业平台与 AI 系统。",
-      en: "Si-Tech Intl helps buyers move telecom, enterprise platform, and AI systems forward.",
+      zh: "Si-Tech Intl 帮助客户推进运营商系统、企业软件与精选 AI 解决方案的评估、演示与落地协同。",
+      en: "Si-Tech Intl helps clients evaluate, demo, and move telecom systems, enterprise software, and selected AI solution programs forward.",
     },
   },
   contact: {
@@ -40,10 +40,8 @@ export const siteContent = {
   },
   navigation: [
     { href: "/", label: { zh: "首页", en: "Home" } },
-    { href: "https://opera.sitech-intl.com", label: { zh: "Opera", en: "Opera" } },
-    { href: "https://telecom.sitech-intl.com", label: { zh: "运营商", en: "Telecom" } },
-    { href: "/products/helport", label: { zh: "合作伙伴 · Helport", en: "Partner · Helport" } },
-    { href: "/stories", label: { zh: "案例", en: "Stories" } },
+    { href: "/solutions", label: { zh: "解决方案", en: "Solutions" } },
+    { href: "/products", label: { zh: "产品", en: "Products" } },
     { href: "/about", label: { zh: "关于我们", en: "About" } },
     { href: "/contact", label: { zh: "联系", en: "Contact" } },
   ],
@@ -289,7 +287,7 @@ export const siteContent = {
         en: "We turn complex support, platform coordination, and AI service into systems that launch, run, and scale.",
       },
       primaryCta: { zh: "联系我们", en: "Talk to Us" },
-      secondaryCta: { zh: "合作伙伴 · Helport", en: "Partner · Helport" },
+      secondaryCta: { zh: "AI 专家客服", en: "AI Expert Customer Service" },
       solutionsCta: { zh: "运营商产品站", en: "Telecom Site" },
     },
     companyIntro: {
@@ -1573,8 +1571,8 @@ export const siteContent = {
         en: "Featured product",
       },
       featuredText: {
-        zh: "先从真实业务问题出发，再找到更适合当前阶段的产品方向。",
-        en: "Start from the business problem, then choose the product that fits the stage.",
+        zh: "先从真实业务问题出发，再找到适合当前阶段的产品入口。",
+        en: "Start from the business problem, then choose the product entry point that fits the stage.",
       },
       ownTitle: {
         zh: "我们的产品",
@@ -1698,28 +1696,28 @@ export const siteContent = {
       },
     ],
     partnerTitle: {
-      zh: "合作伙伴产品",
-      en: "Partner products",
+      zh: "战略合作产品",
+      en: "Strategic partner product",
     },
     partnerText: {
-      zh: "适合联合方案、本地市场机会和渠道拓展。",
-      en: "Built for joint offers, local opportunities, and channel expansion.",
+      zh: "适合联合方案推进、本地市场验证与企业客户演示。",
+      en: "Built for joint solution pursuit, local market validation, and enterprise demos.",
     },
     partnerItems: [
       {
         visible: true,
         order: 1,
-        title: { zh: "Helport", en: "Helport" },
+        title: { zh: "AI 专家客服", en: "AI Expert Customer Service" },
         image: "/images/curated/call-center-diverse-team.jpg",
-        category: { zh: "合作伙伴渠道产品", en: "Partner channel product" },
+        category: { zh: "战略合作伙伴产品", en: "Strategic partner product" },
         status: { zh: "主推", en: "Featured" },
         subtitle: {
-          zh: "Helport 帮助客服、销售和支持团队把优秀员工经验放进实时通话、线索触达和 24/7 在线咨询里，让响应、转化和质检更可控。",
-          en: "Helport copies expert know-how into live calls, outreach, and 24/7 advisory flows.",
+          zh: "面向客服、销售与支持团队，把专家经验放进实时通话、线索触达与 24/7 在线咨询。",
+          en: "For support, sales, and service teams that need expert performance in live calls, outreach, and 24/7 engagement.",
         },
         tags: {
-          zh: ["AI 客服", "销售辅助", "数字员工"],
-          en: ["AI service", "Sales assist", "Digital workers"],
+          zh: ["AI 客服", "AI + BPO", "数字员工"],
+          en: ["AI customer service", "AI + BPO", "Digital workers"],
         },
         bullets: {
           zh: [
@@ -1736,10 +1734,10 @@ export const siteContent = {
           ],
         },
         note: {
-          zh: "常见应用场景包括客服重复咨询、销售外呼、官网 AI 助手和专家知识复制。",
-          en: "Common uses include repeat support, outbound sales, website AI assistants, and expert knowledge replication.",
+          zh: "SI-TECH 基于企业软件经验与精选战略 AI 技术伙伴，协助客户完成评估、演示与实施协同。",
+          en: "SI-TECH helps clients evaluate, demo, and coordinate implementation through enterprise software experience and selected strategic AI technology partners.",
         },
-        cta: { zh: "查看 Helport 详情", en: "View Helport details" },
+        cta: { zh: "查看详情", en: "View details" },
         href: "/products/helport",
       },
       {
@@ -2064,7 +2062,7 @@ export const siteContent = {
       phone: { zh: "电话", en: "Phone" },
       industry: { zh: "行业", en: "Industry" },
       interestedIn: { zh: "感兴趣的方向", en: "Interested In" },
-      message: { zh: "项目需求 / 具体问题", en: "Project / Inquiry Details" },
+      message: { zh: "咨询内容", en: "Inquiry Detail" },
       consent: {
         zh: "我同意 Si-Tech Intl 就此次咨询与我联系。",
         en: "I agree to be contacted by Si-Tech Intl regarding this inquiry.",
@@ -2179,11 +2177,11 @@ export const siteContent = {
     navTitle: { zh: "页面", en: "Pages" },
     focusTitle: { zh: "重点方向", en: "Focus Areas" },
     focusItems: {
-      zh: ["运营商解决方案", "产业平台", "AI 与算力"],
+      zh: ["AI 专家客服", "Telecom", "Opera"],
       en: [
-        "Telecom solutions",
-        "Industry platforms",
-        "AI and compute",
+        "AI Expert Customer Service",
+        "Telecom",
+        "Opera",
       ],
     },
     contactTitle: { zh: "联系方式", en: "Contact" },

@@ -1,20 +1,25 @@
+const aiExpertCareContactHref =
+  "/contact?product_interest=ai_expertcare&lead_source=sitech_website&partner_related=true&registration_required=true";
+const aiExpertCareBookingHref =
+  "/booking?product_interest=ai_expertcare&lead_source=sitech_website&partner_related=true&registration_required=true";
+
 export const productsContent = {
-    homeSpotlight: {
+  homeSpotlight: {
     eyebrow: {
-      zh: "重点产品 / 合作伙伴渠道产品",
-      en: "Featured product / Partner channel product",
+      zh: "重点产品 / 战略合作产品",
+      en: "Featured product / Strategic partner product",
     },
-      title: {
-        zh: "Helport：把专家经验放进每一次客户沟通",
-        en: "Helport: expert guidance in every customer conversation",
-      },
-      text: {
-        zh: "优秀坐席和销售经验很难复制。Helport 把专家经验放进实时通话、外呼执行和数字员工里。",
-        en: "Helport copies expert know-how into calls, outreach, and digital workers.",
-      },
+    title: {
+      zh: "AI 专家客服：把专家经验放进每一次客户沟通",
+      en: "AI Expert Customer Service: expert guidance in every customer conversation",
+    },
+    text: {
+      zh: "优秀坐席和销售经验很难复制。AI 专家客服把专家经验放进实时通话、外呼执行和数字员工里。",
+      en: "AI Expert Customer Service brings expert know-how into calls, outreach, and digital workers.",
+    },
     tags: {
-      zh: ["Helport", "AI 客服", "销售辅助", "数字员工"],
-      en: ["Helport", "AI service", "Sales assist", "Digital workers"],
+      zh: ["AI 专家客服", "AI 客服", "AI + BPO", "数字员工"],
+      en: ["AI ExpertCare", "AI customer service", "AI + BPO", "Digital workers"],
     },
     highlights: [
       {
@@ -48,12 +53,12 @@ export const productsContent = {
         },
       },
     ],
-    primaryCta: { zh: "查看 Helport 产品", en: "Explore Helport" },
-    secondaryCta: { zh: "申请试用", en: "Request a Trial" },
+    primaryCta: { zh: "查看 AI 专家客服", en: "Explore AI Expert Customer Service" },
+    secondaryCta: { zh: "Request a Free Demo", en: "Request a Free Demo" },
     detailHref: "/products/helport",
-    contactHref: "/contact",
-    officialHref: "https://www.helport.ai/",
-    partnerReferralHref: "/contact",
+    contactHref: aiExpertCareContactHref,
+    officialHref: aiExpertCareBookingHref,
+    partnerReferralHref: aiExpertCareContactHref,
   },
     page: {
       hero: {
@@ -100,10 +105,10 @@ export const productsContent = {
       en: "Recommended product",
     },
       featured: {
-        category: { zh: "合作伙伴渠道产品", en: "Partner channel product" },
-        title: { zh: "Helport", en: "Helport" },
+        category: { zh: "战略合作伙伴产品", en: "Strategic partner product" },
+        title: { zh: "AI 专家客服", en: "AI Expert Customer Service" },
         subtitle: {
-          zh: "面向客服、销售外呼和知识密集型团队，把优秀员工经验放进实时通话和在线咨询。",
+          zh: "面向客服、销售外呼和知识密集型团队，把专家经验放进实时通话和在线咨询。",
           en: "For support, outbound sales, and knowledge-heavy teams that need expert performance at scale.",
         },
       tags: {
@@ -127,18 +132,18 @@ export const productsContent = {
           "Expert knowledge becomes a 24/7 digital worker",
         ],
       },
-      detailCta: { zh: "查看 Helport", en: "View Helport" },
-      trialCta: { zh: "联系申请试用", en: "Request a Trial" },
+      detailCta: { zh: "查看详情", en: "View details" },
+      trialCta: { zh: "Request a Free Demo", en: "Request a Free Demo" },
       detailHref: "/products/helport",
-      trialHref: "/contact",
+      trialHref: aiExpertCareContactHref,
     },
     familyTitle: {
-      zh: "Helport 产品家族",
-      en: "The Helport product family",
+      zh: "AI 客户沟通产品路径",
+      en: "AI customer communication product paths",
     },
     familyText: {
-      zh: "Helport 按场景拆成清晰产品线，方便客户判断从哪里开始。",
-      en: "Helport is organized by workflow so buyers can choose a starting point.",
+      zh: "按业务动作拆成清晰入口，方便客户判断从哪里开始。",
+      en: "The product path is organized by workflow so buyers can choose a starting point.",
     },
     familyItems: [
       {
@@ -160,10 +165,10 @@ export const productsContent = {
             "Summaries, scoring, coaching, and compliance reminders",
           ],
         },
-        primaryCta: { zh: "查看 Helport", en: "View Helport" },
-        secondaryCta: { zh: "申请试用", en: "Request a Trial" },
+        primaryCta: { zh: "查看详情", en: "View details" },
+        secondaryCta: { zh: "Request a Free Demo", en: "Request a Free Demo" },
         primaryHref: "/products/helport",
-        secondaryHref: "https://www.helport.ai/ai-agent-assistant/",
+        secondaryHref: aiExpertCareContactHref,
       },
       {
         title: { zh: "AI Assist + BPO", en: "AI Assist + BPO" },
@@ -184,13 +189,13 @@ export const productsContent = {
             "Turns cold leads into qualified conversations or absorbs support volume",
           ],
         },
-        primaryCta: { zh: "查看 Helport", en: "View Helport" },
-        secondaryCta: { zh: "联系讨论方案", en: "Discuss a Plan" },
+        primaryCta: { zh: "查看详情", en: "View details" },
+        secondaryCta: { zh: "Book a Free Consultation", en: "Book a Free Consultation" },
         primaryHref: "/products/helport",
-        secondaryHref: "/contact",
+        secondaryHref: aiExpertCareBookingHref,
       },
       {
-        title: { zh: "HyprX", en: "HyprX" },
+        title: { zh: "AI Expert Conversation", en: "AI Expert Conversation" },
         label: {
           zh: "数字员工 / 智能顾问",
           en: "Digital worker / intelligent advisor",
@@ -211,10 +216,10 @@ export const productsContent = {
             "Supports website guidance, pre-sales Q&A, screening, and customer support",
           ],
         },
-        primaryCta: { zh: "查看 Helport", en: "View Helport" },
-        secondaryCta: { zh: "访问 Helport.ai", en: "Visit Helport.ai" },
+        primaryCta: { zh: "查看详情", en: "View details" },
+        secondaryCta: { zh: "Book a Free Consultation", en: "Book a Free Consultation" },
         primaryHref: "/products/helport",
-        secondaryHref: "https://www.helport.ai/",
+        secondaryHref: aiExpertCareBookingHref,
       },
     ],
     supportTitle: {
@@ -229,8 +234,8 @@ export const productsContent = {
       {
         title: { zh: "前期判断", en: "Early fit assessment" },
         text: {
-          zh: "先判断客户更适合 AI Assist、AI Assist + BPO 还是 HyprX，而不是一开始就泛化介绍所有能力。",
-          en: "We help choose the right starting point: AI Assist, AI Assist + BPO, or HyprX.",
+          zh: "先判断客户更适合 AI Assist、AI Assist + BPO 还是 AI Expert Conversation，而不是一开始就泛化介绍所有能力。",
+          en: "We help choose the right starting point: AI Assist, AI Assist + BPO, or AI Expert Conversation.",
         },
       },
       {
@@ -243,40 +248,40 @@ export const productsContent = {
       {
         title: { zh: "联合推进", en: "Joint go-to-market" },
         text: {
-          zh: "如果项目需要本地沟通、方案配合、渠道协同或交付支持，我们可以继续承接这一层工作。",
-          en: "We support local communication, channels, solution packaging, and delivery.",
+          zh: "如果项目需要本地沟通、方案配合、渠道协同或交付支持，我们可以继续承接这一层工作，并与精选战略 AI 技术伙伴协同推进。",
+          en: "We support local communication, channels, solution packaging, delivery, and coordination with selected strategic AI technology partners.",
         },
       },
     ],
     cta: {
       title: {
-        zh: "想判断 Helport 是否适合，可以先从一个真实场景开始。",
-        en: "To judge Helport fit, start with one real scenario.",
+        zh: "想判断 AI 专家客服是否适合，可以先从一个真实场景开始。",
+        en: "To judge AI Expert Customer Service fit, start with one real scenario.",
       },
-      button: { zh: "联系讨论 Helport", en: "Talk About Helport" },
+      button: { zh: "Request a Free Demo", en: "Request a Free Demo" },
     },
   },
   helport: {
     hero: {
       image: "/images/curated/friendly-call-center-agent.jpg",
       badge: {
-        zh: "合作伙伴渠道产品 / AI 客服与销售协同",
-        en: "Partner channel product / AI service and sales operations",
+        zh: "战略合作产品 / AI 客服与销售协同",
+        en: "Strategic partner product / AI customer service and sales operations",
       },
       title: {
         zh: "把顶尖沟通能力，复制到每一线团队",
         en: "Replicate top-tier communication performance across every frontline team",
       },
       subtitle: {
-        zh: "Helport 把优秀员工的判断、话术和知识，放进通话、线索触达和 24/7 在线咨询。",
-        en: "Helport brings proven judgment, talk tracks, and knowledge into calls, outreach, and 24/7 engagement.",
+        zh: "AI 专家客服把优秀员工的判断、话术和知识，放进通话、线索触达和 24/7 在线咨询。",
+        en: "AI Expert Customer Service brings proven judgment, talk tracks, and knowledge into calls, outreach, and 24/7 engagement.",
       },
     },
     heroActions: {
-      primary: { zh: "预约 Helport 场景评估", en: "Book a Helport assessment" },
-      secondary: { zh: "访问 Helport 官网", en: "Visit Helport" },
-      primaryHref: "/contact",
-      secondaryHref: "https://www.helport.ai/",
+      primary: { zh: "Book a Free Demo", en: "Book a Free Demo" },
+      secondary: { zh: "", en: "" },
+      primaryHref: aiExpertCareBookingHref,
+      secondaryHref: "",
     },
     proofBar: [
       {
@@ -307,8 +312,8 @@ export const productsContent = {
         value: "76%",
         label: { zh: "AI 解决率", en: "AI resolution" },
         text: {
-          zh: "HyprX 客服案例中 187 个咨询里 143 个由 AI 完整解决",
-          en: "HyprX support case: 143 of 187 inquiries fully resolved by AI",
+          zh: "AI 客服案例中 187 个咨询里 143 个由 AI 完整解决",
+          en: "Support case: 143 of 187 inquiries fully resolved by AI",
         },
       },
     ],
@@ -317,16 +322,16 @@ export const productsContent = {
       en: "Faster response, steadier conversion, tighter service control",
     },
     overviewText: {
-      zh: "Helport 把实时提示、知识检索、质检提醒、外呼执行和数字员工放进同一条沟通链路，让团队更快上手，也更稳拿结果。",
-      en: "Helport combines live guidance, knowledge retrieval, QA prompts, outbound execution, and digital workers in one communication loop.",
+      zh: "AI 专家客服把实时提示、知识检索、质检提醒、外呼执行和数字员工放进同一条沟通链路，让团队更快上手，也更稳拿结果。",
+      en: "AI Expert Customer Service combines live guidance, knowledge retrieval, QA prompts, outbound execution, and digital workers in one communication loop.",
     },
     problemTitle: { zh: "团队通常会先从这些压力点找来", en: "Where teams usually start the conversation" },
     problemItems: [
       {
         title: { zh: "响应慢，机会流失", en: "Slow response loses opportunities" },
         text: {
-          zh: "客户等待时，销售和客服还在找资料。Helport 让答案、下一步和跟进动作更快出现。",
-          en: "Helport helps teams answer, guide, and follow up faster.",
+          zh: "客户等待时，销售和客服还在找资料。AI 专家客服让答案、下一步和跟进动作更快出现。",
+          en: "AI Expert Customer Service helps teams answer, guide, and follow up faster.",
         },
       },
       {
@@ -352,8 +357,8 @@ export const productsContent = {
       },
     ],
     familyTitle: {
-      zh: "Helport 按业务动作拆成三条主线",
-      en: "Helport is organized into three operating tracks",
+      zh: "按业务动作拆成三条主线",
+      en: "Three operating tracks, organized by workflow",
     },
     familyText: {
       zh: "先判断你更想提升一线沟通、补足执行能力，还是把专家知识复制出去。",
@@ -383,12 +388,12 @@ export const productsContent = {
           ],
         },
         primaryLabel: {
-          zh: "申请 Helport 试用",
-          en: "Request Helport Trial",
+          zh: "Book a Free Demo",
+          en: "Book a Free Demo",
         },
-        primaryHref: "/contact",
-        secondaryLabel: { zh: "访问 Helport", en: "Visit Helport" },
-        secondaryHref: "https://www.helport.ai/ai-agent-assistant/",
+        primaryHref: aiExpertCareBookingHref,
+        secondaryLabel: { zh: "", en: "" },
+        secondaryHref: "",
       },
       {
         title: { zh: "AI Assist + BPO", en: "AI Assist + BPO" },
@@ -409,13 +414,13 @@ export const productsContent = {
             "Works when the operation needs to start now",
           ],
         },
-        primaryLabel: { zh: "联系讨论合作方案", en: "Discuss a Plan" },
-        primaryHref: "/contact",
-        secondaryLabel: { zh: "访问 Helport", en: "Visit Helport" },
-        secondaryHref: "https://www.helport.ai/",
+        primaryLabel: { zh: "Book a Free Demo", en: "Book a Free Demo" },
+        primaryHref: aiExpertCareBookingHref,
+        secondaryLabel: { zh: "", en: "" },
+        secondaryHref: "",
       },
       {
-        title: { zh: "HyprX", en: "HyprX" },
+        title: { zh: "AI Expert Conversation", en: "AI Expert Conversation" },
         label: {
           zh: "数字员工与专家知识复制",
           en: "Digital worker and expert-knowledge replication",
@@ -437,12 +442,12 @@ export const productsContent = {
           ],
         },
         primaryLabel: {
-          zh: "咨询 Helport 场景",
-          en: "Discuss a Helport Pilot",
+          zh: "Book a Free Demo",
+          en: "Book a Free Demo",
         },
-        primaryHref: "/contact",
-        secondaryLabel: { zh: "访问 Helport.ai", en: "Visit Helport.ai" },
-        secondaryHref: "https://www.helport.ai/",
+        primaryHref: aiExpertCareBookingHref,
+        secondaryLabel: { zh: "", en: "" },
+        secondaryHref: "",
       },
     ],
     proofTitle: { zh: "看结果，不只看概念", en: "Look at outcomes, not just the concept" },
@@ -478,7 +483,7 @@ export const productsContent = {
         ],
       },
       {
-        eyebrow: { zh: "HyprX / Customer Support", en: "HyprX / Customer Support" },
+        eyebrow: { zh: "AI Customer Service / Support", en: "AI Customer Service / Support" },
         title: { zh: "把重复咨询转成可衡量的 AI 工作量", en: "Convert repeat inquiries into measurable AI work output" },
         text: {
           zh: "客服 AI Rep 不只回答问题，还能识别问题类别、升级人工、跟踪情绪并生成洞察。",
@@ -491,7 +496,10 @@ export const productsContent = {
         ],
       },
     ],
-    advantageTitle: { zh: "Helport 的重点，不只是回答问题", en: "Helport goes beyond answering questions" },
+    advantageTitle: {
+      zh: "重点不只是回答问题",
+      en: "The point is not just answering questions",
+    },
     advantageText: {
       zh: "它把沟通、执行、质检和复盘连成一条可运营的链路。",
       en: "It connects communication, execution, QA, and improvement in one operating loop.",
@@ -586,10 +594,10 @@ export const productsContent = {
         },
       },
     ],
-    visualTitle: { zh: "Helport 能力展示", en: "Helport capability views" },
+    visualTitle: { zh: "AI 专家客服能力展示", en: "AI Expert Customer Service capability views" },
     visualText: {
-      zh: "用三个客户最容易理解的视角说明 Helport：实时辅助界面、沟通流程和运营质检数据。",
-      en: "Show Helport through live assist, workflow, and QA views.",
+      zh: "用三个客户最容易理解的视角说明 AI 专家客服：实时辅助界面、沟通流程和运营质检数据。",
+      en: "Show AI Expert Customer Service through live assist, workflow, and QA views.",
     },
     visualSlots: [
       {
@@ -625,13 +633,13 @@ export const productsContent = {
         zh: "从一个客服、销售或外呼场景开始，先把结果跑出来。",
         en: "Start with one support, sales, or outreach workflow and prove the result.",
       },
-      primary: { zh: "联系 Si-Tech Intl 了解 Helport", en: "Talk to Si-Tech Intl about a pilot" },
-      secondary: { zh: "访问 Helport 官网", en: "Visit Helport Website" },
-      primaryHref: "/contact",
-      secondaryHref: "https://www.helport.ai/",
+      primary: { zh: "Book a Free Demo", en: "Book a Free Demo" },
+      secondary: { zh: "", en: "" },
+      primaryHref: aiExpertCareBookingHref,
+      secondaryHref: "",
       partnerNote: {
-        zh: "Si-Tech Intl 可协助完成场景梳理、产品沟通、落地规划和合作推进。",
-        en: "Si-Tech Intl can help with fit assessment, product walkthroughs, pilot scoping, and follow-through.",
+        zh: "SI-TECH 通过企业软件经验与精选战略 AI 技术伙伴，协助客户评估、演示并协调 AI 驱动客户沟通方案的实施。我们不会声称独立拥有或完全自研底层伙伴技术。",
+        en: "SI-TECH helps clients evaluate, demo, and coordinate implementation of AI-powered customer communication solutions through our enterprise software experience and selected strategic AI technology partners. We do not claim independent ownership of the underlying partner technology.",
       },
     },
   },

@@ -166,6 +166,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   const [featuredSolution, ...secondarySolutions] = siteContent.solutionsCatalog.filter(
     (solution) => solution.key === "telecom",
   );
+  const telecomSiteHref = `${process.env.NEXT_PUBLIC_TELECOM_ORIGIN ?? "https://telecom.sitech-intl.com"}/${locale}`;
   const previewStories = visibleItems(siteContent.storiesPage.items).slice(0, 3);
   const statAccents = [
     "from-[#1357d3] via-[#20a7ff] to-[#48d6b5]",
@@ -197,7 +198,7 @@ export function HomePage({ locale }: { locale: Locale }) {
               {copy(locale, hero.secondaryCta)}
             </Link>
             <Link
-              href={`${process.env.NEXT_PUBLIC_TELECOM_ORIGIN ?? "https://telecom.sitech-intl.com"}/${locale}`}
+              href={telecomSiteHref}
               className="rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:border-signal/60 hover:bg-white/[0.16]"
             >
               {copy(locale, hero.solutionsCta)}
@@ -309,13 +310,13 @@ export function HomePage({ locale }: { locale: Locale }) {
                 </div>
                 <div className="mt-6 flex flex-wrap gap-4">
                   <Link
-                    href={withLocale(locale, featuredSolution.href)}
+                    href={telecomSiteHref}
                     className="inline-flex rounded-full bg-signal px-5 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"
                   >
                     {copy(locale, featuredSolution.linkLabel)}
                   </Link>
                   <Link
-                    href={withLocale(locale, featuredSolution.storyHref)}
+                    href={telecomSiteHref}
                     className="inline-flex rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                   >
                     {locale === "en" ? "View Cases" : "看案例"}
