@@ -9,10 +9,18 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { Locale } from "@/lib/site";
 
-export function LocaleChrome({ locale, children }: { locale: Locale; children: ReactNode }) {
+export function LocaleChrome({
+  locale,
+  children,
+  operaHomeChrome = false,
+}: {
+  locale: Locale;
+  children: ReactNode;
+  operaHomeChrome?: boolean;
+}) {
   const pathname = usePathname();
   const normalizedPathname = pathname.endsWith("/") && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
-  const isOperaHome = normalizedPathname === `/${locale}`;
+  const isOperaHome = operaHomeChrome && normalizedPathname === `/${locale}`;
 
   useEffect(() => {
     document.body.dataset.operaHome = isOperaHome ? "true" : "false";

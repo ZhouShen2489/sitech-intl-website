@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import { siteContent, copy, copyList } from "@/content/site-content";
@@ -13,12 +13,12 @@ type ContactFormProps = {
 type SubmitState = "idle" | "loading" | "success" | "error";
 
 export function ContactForm({ locale }: ContactFormProps) {
-  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const form = siteContent.contactPage.form;
   const isStaticExport = process.env.NEXT_PUBLIC_IS_STATIC_EXPORT === "true";
   const [status, setStatus] = useState<SubmitState>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const defaultInterest =
     searchParams.get("product_interest") === "ai_expertcare"
       ? locale === "en"
@@ -31,6 +31,7 @@ export function ContactForm({ locale }: ContactFormProps) {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     const formData = new FormData(event.currentTarget);
     const productInterest = String(searchParams.get("product_interest") ?? "");
@@ -102,13 +103,20 @@ export function ContactForm({ locale }: ContactFormProps) {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error("Request failed");
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || result?.success === false) {
+        throw new Error(
+          result?.message ||
+            (locale === "en"
+              ? "Unable to submit right now. Please try again later."
+              : "暂时无法提交，请稍后重试。"),
+        );
       }
 
       setStatus("success");
-      router.push(`/${locale}/thank-you`);
-    } catch {
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : copy(locale, form.error));
       setStatus("error");
     }
   }
@@ -213,7 +221,6 @@ export function ContactForm({ locale }: ContactFormProps) {
         <span className="text-sm font-medium text-ink">{copy(locale, form.message)}</span>
         <textarea
           name="message"
-          required
           rows={6}
           className="w-full rounded-[1.5rem] border border-slate-200 bg-mist px-4 py-3 text-sm text-ink outline-none transition focus:border-tide focus:bg-white"
         />
@@ -247,7 +254,7 @@ export function ContactForm({ locale }: ContactFormProps) {
       ) : null}
       {status === "error" ? (
         <p className="rounded-2xl bg-[#fff1f0] px-4 py-3 text-sm text-[#a93f3a]">
-          {copy(locale, form.error)}
+          {errorMessage || copy(locale, form.error)}
         </p>
       ) : null}
     </form>

@@ -13,7 +13,7 @@ export const leadSchema = z.object({
   phone: textField.max(80).optional().default(""),
   industry: textField.max(120).optional().default(""),
   interestedIn: textField.min(2).max(120),
-  message: textField.min(10).max(4000),
+  message: textField.max(4000),
   consent: z.literal(true),
   pageUrl: z.string().trim().url().optional().or(z.literal("")).default(""),
   website: z.string().trim().max(0).optional().default(""),

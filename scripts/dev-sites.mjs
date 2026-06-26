@@ -3,6 +3,8 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 
+import { getMergedEnv } from "./shared-env.mjs";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
 
@@ -14,6 +16,7 @@ const sites = [
     extraEnv: {
       NEXT_PUBLIC_SITE_HOME_PATH: "",
       NEXT_PUBLIC_SITE_ORIGIN: "http://localhost:3004",
+      NEXT_PUBLIC_COMPANY_ORIGIN: "http://localhost:3004",
       NEXT_PUBLIC_OPERA_ORIGIN: "http://opera.localhost:3003",
       NEXT_PUBLIC_TELECOM_ORIGIN: "http://telecom.localhost:3005",
     },
@@ -23,7 +26,9 @@ const sites = [
     dir: "opera-site",
     port: "3003",
     extraEnv: {
+      NEXT_PUBLIC_SITE_ORIGIN: "http://opera.localhost:3003",
       NEXT_PUBLIC_COMPANY_ORIGIN: "http://localhost:3004",
+      NEXT_PUBLIC_OPERA_ORIGIN: "http://opera.localhost:3003",
       NEXT_PUBLIC_TELECOM_ORIGIN: "http://telecom.localhost:3005",
     },
   },
@@ -33,7 +38,8 @@ const sites = [
     port: "3005",
     extraEnv: {
       NEXT_PUBLIC_SITE_HOME_PATH: "",
-      NEXT_PUBLIC_SITE_ORIGIN: "http://localhost:3004",
+      NEXT_PUBLIC_SITE_ORIGIN: "http://telecom.localhost:3005",
+      NEXT_PUBLIC_COMPANY_ORIGIN: "http://localhost:3004",
       NEXT_PUBLIC_OPERA_ORIGIN: "http://opera.localhost:3003",
       NEXT_PUBLIC_TELECOM_ORIGIN: "http://telecom.localhost:3005",
     },
@@ -92,11 +98,8 @@ console.log("Telecom:  http://telecom.localhost:3005");
 for (const site of sites) {
   const cwd = path.join(repoRoot, site.dir);
   const syncScript = path.join(repoRoot, "scripts", "sync-site-public.mjs");
-  const nextBin = path.join(cwd, "node_modules", "next", "dist", "bin", "next");
-  const env = {
-    ...process.env,
-    ...site.extraEnv,
-  };
+  const nextBin = path.join(repoRoot, "node_modules", "next", "dist", "bin", "next");
+  const env = getMergedEnv(site.dir, site.extraEnv);
 
   run(process.execPath, [syncScript, site.dir], {
     cwd: repoRoot,

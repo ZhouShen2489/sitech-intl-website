@@ -32,8 +32,8 @@ export type DemoStage = {
 export const operaContent = {
   productName: "Enterprise Opera OS",
   eyebrow: {
-    zh: "Enterprise Opera OS · 概念演示",
-    en: "Enterprise Opera OS · Concept Demo",
+    zh: "Enterprise Opera OS · 独立产品页",
+    en: "Enterprise Opera OS · Product Site",
   },
   headline: {
     zh: "让分散的业务信号，变成协同行动。",
@@ -44,8 +44,8 @@ export const operaContent = {
     en: "Connect orders, inventory, logistics, and owners in an actionable enterprise ontology.",
   },
   heroNote: {
-    zh: "AI 建议，人审批。概念模拟。",
-    en: "AI recommends. People approve. Concept simulation.",
+    zh: "AI 建议，人审批。面向真实业务落地。",
+    en: "AI recommends. People approve. Built for practical rollout.",
   },
   ctas: {
     primary: { zh: "开始演示", en: "Start the demo" },

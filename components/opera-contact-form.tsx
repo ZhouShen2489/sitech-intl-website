@@ -11,12 +11,14 @@ type SubmitState = "idle" | "loading" | "success" | "error";
 export function OperaContactForm({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const [status, setStatus] = useState<SubmitState>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const fields = operaContent.contact.fields;
   const isStaticExport = process.env.NEXT_PUBLIC_IS_STATIC_EXPORT === "true";
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     const formData = new FormData(event.currentTarget);
     const payload = {
@@ -27,7 +29,7 @@ export function OperaContactForm({ locale }: { locale: Locale }) {
       companySize: "",
       phone: "",
       industry: "Export / trade operations",
-      interestedIn: "Enterprise Opera OS concept demo",
+      interestedIn: "Enterprise Opera OS product inquiry",
       message: String(formData.get("message") ?? ""),
       consent: formData.get("consent") === "on",
       website: String(formData.get("website") ?? ""),
@@ -74,13 +76,21 @@ export function OperaContactForm({ locale }: { locale: Locale }) {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error("Request failed");
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || result?.success === false) {
+        throw new Error(
+          result?.message ||
+            (locale === "en"
+              ? "Unable to submit right now. Please try again later."
+              : "暂时无法提交，请稍后重试。"),
+        );
       }
 
       setStatus("success");
       event.currentTarget.reset();
-    } catch {
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : operaCopy(locale, operaContent.contact.error));
       setStatus("error");
     }
   }
@@ -131,7 +141,6 @@ export function OperaContactForm({ locale }: { locale: Locale }) {
         <span className="text-sm text-white/78">{operaCopy(locale, fields.message)}</span>
         <textarea
           name="message"
-          required
           rows={5}
           className="w-full rounded-[1.5rem] border border-white/10 bg-white/6 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/30 focus:border-[#f2b96d] focus:bg-white/10"
         />
@@ -164,7 +173,7 @@ export function OperaContactForm({ locale }: { locale: Locale }) {
       ) : null}
       {status === "error" ? (
         <p className="mt-4 rounded-2xl bg-[#3b1d20] px-4 py-3 text-sm text-[#ffb2b8]">
-          {operaCopy(locale, operaContent.contact.error)}
+          {errorMessage || operaCopy(locale, operaContent.contact.error)}
         </p>
       ) : null}
     </form>

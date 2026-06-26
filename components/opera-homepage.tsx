@@ -266,7 +266,7 @@ export function OperaHomePage({ locale }: { locale: Locale }) {
 
               <div className="absolute left-[4%] top-[14%] z-20 hidden w-[42%] max-w-[610px] lg:block">
                 <p className="text-[10px] uppercase tracking-[0.36em] text-[#76aaff]">
-                  Living Enterprise · Concept Demo
+                  Living Enterprise · Product Site
                 </p>
                 <h1 className="mt-5 max-w-[10ch] font-serif text-[clamp(3rem,4.4vw,5.4rem)] leading-[0.98] tracking-[-0.045em] text-[#f5f7ff] [text-shadow:0_12px_42px_rgba(0,0,0,0.35)]">
                   {locale === "en" ? "Make every business object work as one." : "让企业的每一个对象，共同运行。"}

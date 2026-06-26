@@ -3,6 +3,7 @@ import crypto from "node:crypto";
 import { NextResponse } from "next/server";
 
 import { persistLead } from "@/lib/lead-store";
+import { sendLeadEmails } from "@/lib/mailer";
 import { leadSchema, normalizeLead } from "@/lib/validation";
 
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
@@ -62,13 +63,22 @@ export async function POST(request: Request) {
   }
 
   const persistResult = await persistLead(lead);
+  const emailResult = await sendLeadEmails(lead).catch((error) => ({
+    ok: false,
+    provider: "gmail" as const,
+    reason: error instanceof Error ? error.message : "gmail_send_failed",
+  }));
 
-  if (!persistResult.ok) {
+  if (!persistResult.ok && !emailResult.ok) {
     return NextResponse.json(
       {
         success: false,
         message: "Unable to submit inquiry. Please try again later.",
-        reason: persistResult.reason ?? "lead_persistence_failed",
+        reason: persistResult.reason ?? emailResult.reason ?? "lead_delivery_failed",
+        routed: {
+          localCsv: false,
+          gmail: false,
+        },
       },
       { status: 500 },
     );
@@ -78,7 +88,14 @@ export async function POST(request: Request) {
     success: true,
     message: "Inquiry submitted successfully.",
     routed: {
-      localCsv: persistResult.provider === "local_csv",
+      localCsv: persistResult.ok && persistResult.provider === "local_csv",
+      gmail: emailResult.ok,
     },
+    warnings: [persistResult, emailResult]
+      .filter((result) => !result.ok)
+      .map((result) => ({
+        provider: result.provider,
+        reason: result.reason,
+      })),
   });
 }

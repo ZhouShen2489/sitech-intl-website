@@ -5,7 +5,7 @@ import "../../app/globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://opera.sitech-intl.com"),
   title: "Enterprise Opera OS",
-  description: "Living Enterprise concept demo by Si-Tech International.",
+  description: "Enterprise Opera OS product site by Si-Tech International.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

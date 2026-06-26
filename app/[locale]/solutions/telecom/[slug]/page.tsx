@@ -34,11 +34,12 @@ export default async function TelecomDirectionPage({
     notFound();
   }
 
+  const relatedDirections = telecomDirections.filter((item) => item.slug !== direction.slug);
+
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-[#eef6ff]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(20,85,179,0.14),transparent_26rem),radial-gradient(circle_at_86%_20%,rgba(242,185,109,0.22),transparent_22rem)]" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-8 lg:py-24">
+      <section className="bg-[#f7fbff]">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-8 lg:py-20">
           <div>
             <Link
               href={withLocale(locale, "/solutions/telecom")}
@@ -52,81 +53,178 @@ export default async function TelecomDirectionPage({
             <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight text-ink md:text-6xl">
               {telecomCopy(locale, direction.title)}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700">
               {telecomCopy(locale, direction.summary)}
             </p>
-            <div className="mt-8 inline-flex max-w-2xl rounded-full border border-blue-100 bg-white px-5 py-3 text-sm font-bold text-ink shadow-sm">
-              <span className="mr-3 text-tide">{locale === "en" ? "For" : "面向"}</span>
-              {telecomCopy(locale, direction.buyer)}
+            <div className="mt-7 rounded-lg border border-blue-100 bg-white p-5 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-tide">
+                {locale === "en" ? "Best fit" : "适合客户"}
+              </p>
+              <p className="mt-2 text-base font-semibold leading-7 text-ink">
+                {telecomCopy(locale, direction.buyer)}
+              </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href={withLocale(locale, "/contact")}
-                className="button-glow rounded-full bg-tide px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate"
+                className="rounded-full bg-tide px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate"
               >
                 {locale === "en" ? "Talk about this path" : "咨询这个方向"}
               </Link>
+              <Link
+                href="#scope"
+                className="rounded-full border border-tide/30 bg-white px-6 py-3 text-sm font-semibold text-tide transition hover:bg-tide hover:text-white"
+              >
+                {locale === "en" ? "See starting scope" : "查看切入场景"}
+              </Link>
             </div>
-            <p className="mt-6 max-w-2xl text-sm leading-7 text-slate-500">
-              {locale === "en"
-                ? "This page stays intentionally concrete: buyer, business pressure, capability chain, reference proof, and suggested entry scope."
-                : "这个页面只保留最关键的信息：面向谁、卡点在哪里、能力链路是什么、有哪些证明、从哪里开始进入。"}
-            </p>
           </div>
 
-          <div className="relative min-h-[30rem]">
-            <div className="absolute inset-0 rotate-1 rounded-[2.2rem] bg-tide/10" />
-            <div className="absolute inset-0 -rotate-1 rounded-[2.2rem] bg-signal/18" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-blue-100 bg-white p-3 shadow-[0_30px_90px_rgba(11,47,111,0.14)]">
-              <div className="relative h-[29rem] overflow-hidden rounded-[1.5rem] bg-ink">
-                <Image
-                  src={withBasePath(direction.image)}
-                  alt=""
-                  fill
-                  priority
-                  quality={82}
-                  sizes="(min-width: 1024px) 48vw, 100vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,26,51,0.05),rgba(7,26,51,0.74))]" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    {direction.metrics.map((metric) => (
-                      <div key={metric.value} className="rounded-2xl border border-white/15 bg-white/14 p-4 text-white backdrop-blur">
-                        <p className="font-display text-3xl font-bold">{metric.value}</p>
-                        <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-accent">
-                          {telecomCopy(locale, metric.label)}
-                        </p>
-                      </div>
-                    ))}
+          <div className="rounded-lg border border-blue-100 bg-white p-4 shadow-card">
+            <div className="relative overflow-hidden rounded-lg bg-ink" style={{ height: "25rem" }}>
+              <Image
+                src={withBasePath(direction.image)}
+                alt=""
+                fill
+                priority
+                quality={82}
+                sizes="(min-width: 1024px) 48vw, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,26,51,0.04),rgba(7,26,51,0.78))]" />
+              <div className="absolute bottom-0 left-0 right-0 grid gap-3 p-5 sm:grid-cols-3">
+                {direction.metrics.map((metric) => (
+                  <div key={metric.value} className="rounded-lg border border-white/15 bg-white/14 p-4 text-white backdrop-blur">
+                    <p className="font-display text-3xl font-bold">{metric.value}</p>
+                    <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-white/80">
+                      {telecomCopy(locale, metric.label)}
+                    </p>
                   </div>
-                  <p className="mt-4 text-sm leading-6 text-white/80">
-                    {locale === "en"
-                      ? "These three indicators summarize the path at a glance. The sections below unpack the operating challenge, modules, proof, and recommended entry points."
-                      : "上面三项指标先概括这条方案线的重点，下面再展开业务压力、模块能力、可参考经验和建议切入范围。"}
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-20 lg:py-24">
+      <section className="bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
             <div>
-              <div className="h-1 w-14 rounded-full bg-tide" />
-              <h2 className="mt-6 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
-                {locale === "en" ? "Where the business starts to slow down" : "常见业务挑战"}
+              <p className="text-sm font-bold uppercase tracking-[0.22em] text-tide">
+                {locale === "en" ? "Business pressure" : "业务压力"}
+              </p>
+              <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
+                {locale === "en" ? "Where work usually breaks." : "客户通常卡在这里。"}
               </h2>
             </div>
-            <div className="divide-y divide-blue-100 border-y border-blue-100">
+            <div className="grid gap-4 md:grid-cols-3">
               {direction.pains.map((pain, index) => (
-                <div key={pain.title.en} className="grid gap-5 py-7 md:grid-cols-[4rem_0.45fr_1fr] md:items-start">
-                  <p className="font-display text-4xl font-bold leading-none text-tide">0{index + 1}</p>
-                  <h3 className="font-display text-2xl font-bold text-ink">{telecomCopy(locale, pain.title)}</h3>
-                  <p className="text-base leading-8 text-slate-600">{telecomCopy(locale, pain.text)}</p>
+                <article key={pain.title.en} className="rounded-lg border border-blue-100 bg-[#f8fbff] p-5">
+                  <p className="text-xs font-black text-tide">0{index + 1}</p>
+                  <h3 className="mt-3 font-display text-xl font-bold text-ink">
+                    {telecomCopy(locale, pain.title)}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-700">
+                    {telecomCopy(locale, pain.text)}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-blue-100 bg-[#f7fbff] py-16 lg:py-20">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 lg:grid-cols-2 lg:px-8">
+          <article className="rounded-lg border border-blue-100 bg-white p-7 shadow-card">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-tide">
+              {locale === "en" ? "Why now" : "为什么现在值得升级"}
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink">
+              {locale === "en" ? "This is now an operating question." : "这已经是运营问题。"}
+            </h2>
+            <p className="mt-5 text-base leading-8 text-slate-700">
+              {telecomCopy(locale, direction.whyNow)}
+            </p>
+          </article>
+          <article className="rounded-lg border border-blue-100 bg-white p-7 shadow-card">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-tide">
+              {locale === "en" ? "Si-Tech connects" : "Si-Tech 连接的能力"}
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink">
+              {locale === "en" ? "The full operating loop." : "完整业务运营闭环。"}
+            </h2>
+            <p className="mt-5 text-base leading-8 text-slate-700">
+              {telecomCopy(locale, direction.capability)}
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.22em] text-tide">
+                {locale === "en" ? "Capability modules" : "能力模块"}
+              </p>
+              <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
+                {locale === "en" ? "What gets connected." : "具体连接哪些业务。"}
+              </h2>
+              <p className="mt-5 text-base leading-8 text-slate-700">
+                {locale === "en"
+                  ? "The value is in the handoffs between modules, not in isolated features."
+                  : "价值不在孤立功能，而在这些模块之间的业务交接能否跑顺。"}
+              </p>
+            </div>
+            <div className="grid gap-4">
+              {direction.modules.map((module, index) => (
+                <article key={module.title.en} className="rounded-lg border border-blue-100 bg-[#f8fbff] p-5">
+                  <div className="grid gap-4 md:grid-cols-[3rem_0.55fr_1fr] md:items-start">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-ink text-sm font-black text-white">
+                      {index + 1}
+                    </span>
+                    <h3 className="font-display text-2xl font-bold text-ink">
+                      {telecomCopy(locale, module.title)}
+                    </h3>
+                    <ul className="grid gap-2">
+                      {telecomCopyList(locale, module.bullets).map((bullet) => (
+                        <li key={bullet} className="flex gap-2 text-sm leading-7 text-slate-700">
+                          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-tide" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scope" className="bg-[#eef6ff] py-16 lg:py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-tide">
+              {locale === "en" ? "Proof and first scope" : "参考经验与起步范围"}
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
+              {locale === "en" ? "Start from a concrete business move." : "从一个具体业务动作开始。"}
+            </h2>
+          </div>
+          <div className="grid gap-4">
+            {telecomCopyList(locale, direction.proof).map((item) => (
+              <div key={item} className="rounded-lg border border-blue-100 bg-white p-5 text-sm font-semibold leading-7 text-ink shadow-sm">
+                {item}
+              </div>
+            ))}
+            <div className="grid gap-3 md:grid-cols-3">
+              {telecomCopyList(locale, direction.startPoints).map((item, index) => (
+                <div key={item} className="rounded-lg border border-blue-100 bg-white p-5 shadow-sm">
+                  <p className="text-xs font-black text-tide">0{index + 1}</p>
+                  <p className="mt-3 font-display text-xl font-bold leading-tight text-ink">{item}</p>
                 </div>
               ))}
             </div>
@@ -134,135 +232,37 @@ export default async function TelecomDirectionPage({
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#06172d] py-20 text-white lg:py-24">
-        <div className="absolute inset-0 bg-grid bg-[size:56px_56px] opacity-16" />
-        <div className="absolute right-[-10rem] top-[-8rem] h-96 w-96 rounded-full border border-signal/20" />
-        <div className="relative mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
-          <div className="rounded-[2rem] border border-white/12 bg-white/8 p-8 backdrop-blur">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
-              {locale === "en" ? "Why now" : "为什么现在值得升级"}
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-bold leading-tight">
-              {locale === "en" ? "This is becoming an operations question." : "增长、服务与成本，正在落到同一张运营答卷上。"}
-            </h2>
-            <p className="mt-5 text-base leading-8 text-white/76">
-              {telecomCopy(locale, direction.whyNow)}
-            </p>
-          </div>
-          <div className="rounded-[2rem] border border-white/12 bg-white p-8 text-ink shadow-[0_30px_90px_rgba(0,0,0,0.18)]">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-tide">
-              {locale === "en" ? "Si-Tech Intl brings" : "Si-Tech Intl 可以带来的能力"}
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-bold leading-tight">
-              {locale === "en" ? "Systems that connect the full operating loop." : "把业务、服务与结算接成一条完整闭环。"}
-            </h2>
-            <p className="mt-5 text-base leading-8 text-slate-600">
-              {telecomCopy(locale, direction.capability)}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-20 lg:py-24">
+      <section className="bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-            <div>
-              <div className="h-1 w-14 rounded-full bg-tide" />
-              <h2 className="mt-6 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
-                {locale === "en" ? "How the solution plugs into the business" : "能力如何落到业务里"}
-              </h2>
-              <p className="mt-5 text-base leading-8 text-slate-600">
-                {locale === "en"
-                  ? "The modules are shown as a connected chain because the value appears when they work together."
-                  : "当这些能力连起来，客户、订单、服务和结算才能真正顺畅运转。"}
-              </p>
-            </div>
-            <div className="relative">
-              <div className="absolute left-5 top-6 bottom-6 hidden w-px bg-gradient-to-b from-tide via-signal to-tide md:block" />
-              <div className="space-y-5">
-                {direction.modules.map((module, index) => (
-                  <div key={module.title.en} className="relative grid gap-4 rounded-[1.6rem] border border-blue-100 bg-[#f8fbff] p-5 md:grid-cols-[3.5rem_0.6fr_1fr]">
-                    <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-ink text-sm font-black text-white">
-                      {index + 1}
-                    </div>
-                    <h3 className="font-display text-2xl font-bold text-ink">{telecomCopy(locale, module.title)}</h3>
-                    <ul className="grid gap-2">
-                      {telecomCopyList(locale, module.bullets).map((bullet) => (
-                        <li key={bullet} className="text-sm leading-7 text-slate-600">
-                          <span className="mr-2 text-tide">•</span>
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#eef6ff] py-20 lg:py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1fr_1fr] lg:px-8">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-tide">
-              {locale === "en" ? "Experience buyers can recognize" : "可参考的项目经验"}
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink md:text-5xl">
-              {locale === "en" ? "Compare it with real operating scenes." : "看相似业务场景，判断这条线是否适合你。"}
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {telecomCopyList(locale, direction.proof).map((item) => (
-              <div key={item} className="rounded-full border border-blue-100 bg-white px-5 py-4 text-sm font-semibold leading-7 text-ink shadow-sm">
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mx-auto mt-14 max-w-7xl px-6 lg:px-8">
-          <div className="overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-card">
-            <div className="grid gap-0 lg:grid-cols-[0.72fr_1.28fr]">
-              <div className="bg-ink p-8 text-white">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
-                  {locale === "en" ? "Conversation starters" : "常见进入场景"}
+          <div className="rounded-lg border border-blue-100 bg-[#f8fbff] p-6">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-tide">
+                  {locale === "en" ? "Other telecom paths" : "其他通信业务线"}
                 </p>
-                <h2 className="mt-4 font-display text-3xl font-bold leading-tight">
-                  {locale === "en" ? "Pick the line closest to your current pressure." : "从最贴近当前业务目标的场景开始。"}
+                <h2 className="mt-3 font-display text-2xl font-bold text-ink">
+                  {locale === "en" ? "Compare adjacent paths before sending the link." : "发给客户前，也可以对比相邻方向。"}
                 </h2>
               </div>
-              <div className="grid divide-y divide-blue-100 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
-                {telecomCopyList(locale, direction.startPoints).map((item, index) => (
-                  <div key={item} className="p-6">
-                    <p className="text-xs font-bold text-tide">0{index + 1}</p>
-                    <p className="mt-3 font-display text-xl font-bold leading-tight text-ink">{item}</p>
-                  </div>
-                ))}
-              </div>
+              <Link
+                href={withLocale(locale, "/contact")}
+                className="inline-flex w-fit rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate"
+              >
+                {locale === "en" ? "Talk to Si-Tech Intl" : "联系 Si-Tech Intl"}
+              </Link>
+            </div>
+            <div className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+              {relatedDirections.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={withLocale(locale, `/solutions/telecom/${item.slug}`)}
+                  className="rounded-lg border border-blue-100 bg-white p-4 text-sm font-bold text-ink transition hover:border-tide/40 hover:text-tide"
+                >
+                  {telecomCopy(locale, item.shortTitle)}
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-ink py-20 text-white">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <div>
-            <h2 className="font-display text-3xl leading-tight">
-              {locale === "en" ? "If this is the pressure point, the conversation can be specific." : "如果这正是你当前要解决的问题，我们可以继续往下聊。"}
-            </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/72">
-              {locale === "en"
-                ? "Share the current system, operating bottleneck, or business launch target. We will map it to the closest telecom solution path."
-                : "告诉我们你当前的业务目标、现有系统或服务瓶颈，我们会给出更贴近业务的方案路径。"}
-            </p>
-          </div>
-          <Link
-            href={withLocale(locale, "/contact")}
-            className="inline-flex rounded-full bg-signal px-6 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"
-          >
-            {locale === "en" ? "Talk to Si-Tech Intl" : "联系 Si-Tech Intl"}
-          </Link>
         </div>
       </section>
     </>

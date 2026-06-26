@@ -7,29 +7,17 @@ import { usePathname } from "next/navigation";
 import { operaContent, operaCopy } from "@/content/opera-content";
 import { siteContent } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
-import { switchLocaleInPath, withLocale } from "@/lib/site";
-
-const companyOrigin = process.env.NEXT_PUBLIC_COMPANY_ORIGIN ?? "";
-const telecomOrigin = process.env.NEXT_PUBLIC_TELECOM_ORIGIN ?? "https://telecom.sitech-intl.com";
+import { switchLocaleInPath, withLocale, withSiteLocale } from "@/lib/site";
 
 function companyHref(locale: Locale, path = "") {
-  if (!companyOrigin) {
-    return withLocale(locale, path || "/company");
-  }
-
   const companyPath = path === "/company" ? "" : path;
-  return `${companyOrigin}/${locale}${companyPath}`;
-}
-
-function telecomHref(locale: Locale) {
-  return `${telecomOrigin}/${locale}`;
+  return withSiteLocale("company", locale, companyPath);
 }
 
 export function OperaHeader({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const nextLocale = locale === "en" ? "zh" : "en";
   const aboutHref = companyHref(locale, "/about");
-  const helportHref = companyHref(locale, "/products/helport");
   const contactHref = companyHref(locale, "/contact");
 
   return (
@@ -46,23 +34,6 @@ export function OperaHeader({ locale }: { locale: Locale }) {
         </Link>
 
         <nav className="hidden items-center gap-2 rounded-full border border-white/16 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl md:flex">
-          <Link
-            href={telecomHref(locale)}
-            className="rounded-full px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/12 hover:text-white"
-          >
-            {locale === "en" ? "Telecom / MVNO" : "运营商 / MVNO"}
-          </Link>
-          <Link
-            href={helportHref}
-            className="group relative overflow-hidden rounded-full border border-[#7ce6ba]/40 bg-[linear-gradient(135deg,rgba(76,123,255,0.28),rgba(124,230,186,0.16),rgba(242,185,109,0.14))] px-4 py-2 text-xs font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_0_26px_rgba(86,151,255,0.18)] transition hover:border-[#9df1cf]/70 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_0_38px_rgba(124,230,186,0.24)]"
-          >
-            <span className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.24),transparent_34%),linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent)] opacity-70 transition group-hover:translate-x-3" />
-            <span className="relative inline-flex items-center gap-2">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-white/82">Live</span>
-              <span>Helport</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-[#7ce6ba] shadow-[0_0_12px_#7ce6ba]" />
-            </span>
-          </Link>
           <Link
             href={aboutHref}
             className="rounded-full px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/12 hover:text-white"
@@ -93,6 +64,20 @@ export function OperaHeader({ locale }: { locale: Locale }) {
 
 export function OperaFooter({ locale }: { locale: Locale }) {
   const year = new Date().getFullYear();
+  const telecomHref = withSiteLocale("telecom", locale);
+  const helportHref = companyHref(locale, "/products/helport");
+  const featuredLinks = [
+    {
+      href: telecomHref,
+      eyebrow: locale === "en" ? "Featured" : "重点",
+      label: locale === "en" ? "Telecom / MVNO" : "运营商 / MVNO",
+    },
+    {
+      href: helportHref,
+      eyebrow: locale === "en" ? "New" : "新产品",
+      label: locale === "en" ? "Helport AI" : "AI 专家客服",
+    },
+  ];
 
   return (
     <footer className="border-t border-white/8 bg-[#040b13] text-white">
@@ -107,6 +92,20 @@ export function OperaFooter({ locale }: { locale: Locale }) {
           </div>
 
           <div className="flex flex-wrap items-start gap-3 lg:justify-end">
+            {featuredLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group relative overflow-hidden rounded-full border border-[#7ce6ba]/45 bg-[linear-gradient(135deg,rgba(76,123,255,0.24),rgba(124,230,186,0.13),rgba(242,185,109,0.13))] px-4 py-3 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_0_28px_rgba(86,151,255,0.16)] transition hover:border-[#9df1cf]/75 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_0_42px_rgba(124,230,186,0.24)]"
+              >
+                <span className="absolute inset-0 bg-[radial-gradient(circle_at_18%_50%,rgba(255,255,255,0.2),transparent_34%),linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent)] opacity-70 transition group-hover:translate-x-4" />
+                <span className="relative inline-flex items-center gap-2">
+                  <span className="text-[10px] uppercase tracking-[0.18em] text-white/72">{link.eyebrow}</span>
+                  <span>{link.label}</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#7ce6ba] shadow-[0_0_12px_#7ce6ba]" />
+                </span>
+              </Link>
+            ))}
             {operaContent.footer.links.map((link) => (
               <Link
                 key={link.href}
@@ -127,7 +126,7 @@ export function OperaFooter({ locale }: { locale: Locale }) {
 
         <div className="mt-5 flex flex-col gap-2 text-sm text-white/34 md:flex-row md:items-center md:justify-between">
           <p>{year} Si-Tech Intl. All rights reserved.</p>
-          <p>{locale === "en" ? "Concept demo website" : "概念验证官网"}</p>
+          <p>{locale === "en" ? "Standalone product site" : "独立产品页"}</p>
         </div>
       </div>
     </footer>

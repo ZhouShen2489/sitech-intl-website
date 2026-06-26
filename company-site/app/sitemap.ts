@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const paths = ["", "/about", "/contact", "/stories", "/products/helport", "/privacy"];
+const paths = ["", "/about", "/contact", "/stories", "/products", "/products/helport", "/solutions", "/privacy"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return ["en", "zh"].flatMap((locale) => paths.map((path) => ({

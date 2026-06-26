@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { OperaHomePage } from "@/components/opera-homepage";
-import { operaContent, operaCopy } from "@/content/opera-content";
-import { isLocale, type Locale } from "@/lib/site";
+import { HomePage } from "@/components/page-sections";
+import { copy, siteContent } from "@/content/site-content";
+import { isLocale } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -17,20 +17,17 @@ export async function generateMetadata({
   }
 
   return {
-    title:
-      locale === "en"
-        ? `${operaContent.productName} | Concept Demo`
-        : `${operaContent.productName}｜概念演示`,
-    description: operaCopy(locale as Locale, operaContent.subheadline),
+    title: `${siteContent.brand.name} | ${copy(locale, siteContent.brand.eyebrow)}`,
+    description: copy(locale, siteContent.brand.summary),
     robots: {
       index: true,
       follow: true,
     },
     alternates: {
-      canonical: `https://opera.sitech-intl.com/${locale}`,
+      canonical: `https://www.sitech-intl.com/${locale}`,
       languages: {
-        en: "https://opera.sitech-intl.com/en",
-        zh: "https://opera.sitech-intl.com/zh",
+        en: "https://www.sitech-intl.com/en",
+        zh: "https://www.sitech-intl.com/zh",
       },
     },
   };
@@ -47,5 +44,5 @@ export default async function LocaleHomePage({
     notFound();
   }
 
-  return <OperaHomePage locale={locale} />;
+  return <HomePage locale={locale} />;
 }
