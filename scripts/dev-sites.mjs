@@ -3,6 +3,8 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 
+import { getMergedEnv } from "./shared-env.mjs";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
 
@@ -97,10 +99,7 @@ for (const site of sites) {
   const cwd = path.join(repoRoot, site.dir);
   const syncScript = path.join(repoRoot, "scripts", "sync-site-public.mjs");
   const nextBin = path.join(repoRoot, "node_modules", "next", "dist", "bin", "next");
-  const env = {
-    ...process.env,
-    ...site.extraEnv,
-  };
+  const env = getMergedEnv(site.dir, site.extraEnv);
 
   run(process.execPath, [syncScript, site.dir], {
     cwd: repoRoot,
