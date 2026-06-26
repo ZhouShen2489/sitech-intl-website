@@ -5,6 +5,10 @@ import { URL } from "node:url";
 
 import { OAuth2Client } from "google-auth-library";
 
+import { getRootEnv } from "./shared-env.mjs";
+
+Object.assign(process.env, getRootEnv(), process.env);
+
 const clientId = process.env.GOOGLE_CLIENT_ID?.trim();
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET?.trim();
 
