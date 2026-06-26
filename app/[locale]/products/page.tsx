@@ -113,7 +113,7 @@ export default async function ProductsPage({
             <Link
               key={item.key}
               href={item.href}
-              className="group rounded-lg border border-blue-100 bg-[#f8fbff] p-5 transition hover:border-tide/40 hover:bg-white hover:shadow-card"
+              className="standalone-link group rounded-lg border p-5 transition hover:border-[#7ce6ba]/70 hover:bg-white"
             >
               <h2 className="font-display text-xl font-bold text-ink">{copy(locale, item.title)}</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">{copy(locale, item.text)}</p>
@@ -268,7 +268,7 @@ export default async function ProductsPage({
                         <div className="mt-7 flex flex-wrap gap-3">
                           <Link
                             href={resolveHref(item.href)}
-                            className="inline-flex rounded-full bg-signal px-5 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"
+                            className="standalone-link-dark inline-flex rounded-full border px-5 py-3 text-sm font-semibold text-white transition hover:border-[#9df1cf]/80"
                             target={isExternal(item.href) ? "_blank" : undefined}
                             rel={isExternal(item.href) ? "noreferrer" : undefined}
                           >
@@ -354,7 +354,7 @@ export default async function ProductsPage({
                 <div className="mt-8 pt-2">
                   <Link
                     href={resolveHref(item.href)}
-                    className="inline-flex rounded-full border border-tide/30 px-5 py-3 text-sm font-semibold text-tide transition hover:bg-tide hover:text-white"
+                    className="standalone-link inline-flex rounded-full border px-5 py-3 text-sm font-semibold text-[#0b2f6f] transition hover:border-[#7ce6ba]/70"
                     target={isExternal(item.href) ? "_blank" : undefined}
                     rel={isExternal(item.href) ? "noreferrer" : undefined}
                   >

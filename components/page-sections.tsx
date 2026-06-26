@@ -193,13 +193,13 @@ export function HomePage({ locale }: { locale: Locale }) {
             </Link>
             <Link
               href={withLocale(locale, "/products/helport")}
-              className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
+              className="standalone-link-dark rounded-full border px-6 py-3 text-sm font-semibold text-white transition hover:border-[#9df1cf]/80"
             >
               {copy(locale, hero.secondaryCta)}
             </Link>
             <Link
               href={telecomSiteHref}
-              className="rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:border-signal/60 hover:bg-white/[0.16]"
+              className="standalone-link-dark rounded-full border px-6 py-3 text-sm font-semibold text-white transition hover:border-[#9df1cf]/80"
             >
               {copy(locale, hero.solutionsCta)}
             </Link>
@@ -311,7 +311,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                 <div className="mt-6 flex flex-wrap gap-4">
                   <Link
                     href={telecomSiteHref}
-                    className="inline-flex rounded-full bg-signal px-5 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"
+                    className="standalone-link-dark inline-flex rounded-full border px-5 py-3 text-sm font-semibold text-white transition hover:border-[#9df1cf]/80"
                   >
                     {copy(locale, featuredSolution.linkLabel)}
                   </Link>

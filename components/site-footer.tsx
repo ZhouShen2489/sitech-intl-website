@@ -92,7 +92,10 @@ export function SiteFooter({ locale, variant = "company" }: SiteFooterProps) {
           <div className="space-y-3">
             {focusLinks.map((item) => (
               <div key={item.label}>
-                <Link href={item.href} className="text-sm leading-7 text-slate-700 transition hover:text-ink">
+                <Link
+                  href={item.href}
+                  className="standalone-link inline-flex rounded-full border px-3.5 py-2 text-sm font-semibold leading-5 text-[#0b2f6f] transition hover:border-[#7ce6ba]/70 hover:text-ink"
+                >
                   {item.label}
                 </Link>
               </div>

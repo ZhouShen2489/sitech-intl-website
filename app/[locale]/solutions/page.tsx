@@ -67,7 +67,7 @@ export default async function SolutionsPage({
             <div className="mt-9 flex flex-wrap gap-4">
               <Link
                 href={entries[0].href}
-                className="button-glow rounded-full bg-tide px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate"
+                className="standalone-link rounded-full border px-6 py-3 text-sm font-semibold text-[#0b2f6f] transition hover:border-[#7ce6ba]/70"
               >
                 {telecomCopy(locale, telecomBoard.primaryCta)}
               </Link>
@@ -122,7 +122,7 @@ export default async function SolutionsPage({
             {entries.map((entry) => (
               <article
                 key={entry.key}
-                className="group overflow-hidden rounded-lg border border-blue-100 bg-white shadow-card"
+                className="standalone-link group overflow-hidden rounded-lg border bg-white shadow-card"
               >
                 <div className="relative bg-slate-100" style={{ height: "16rem" }}>
                   <Image
@@ -151,7 +151,7 @@ export default async function SolutionsPage({
                   </p>
                   <Link
                     href={entry.href}
-                    className="mt-7 inline-flex rounded-full border border-ink px-5 py-3 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white"
+                    className="standalone-link mt-7 inline-flex rounded-full border px-5 py-3 text-sm font-semibold text-[#0b2f6f] transition hover:border-[#7ce6ba]/70"
                   >
                     {copy(locale, entry.cta)}
                   </Link>

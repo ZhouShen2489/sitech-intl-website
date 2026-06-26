@@ -130,6 +130,66 @@ main > section:not(:first-child) {
   box-shadow: 0 12px 34px rgba(242, 185, 109, 0.28);
 }
 
+@layer components {
+  .standalone-link {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-color: rgba(124, 230, 186, 0.48);
+    background:
+      radial-gradient(circle at 18% 45%, rgba(255, 255, 255, 0.54), transparent 2.3rem),
+      linear-gradient(135deg, rgba(76, 123, 255, 0.18), rgba(124, 230, 186, 0.12), rgba(242, 185, 109, 0.14));
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.72) inset,
+      0 14px 38px rgba(20, 85, 179, 0.16),
+      0 0 36px rgba(124, 230, 186, 0.16);
+  }
+
+  .standalone-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+    opacity: 0.6;
+    transform: translateX(-70%);
+    transition: transform 420ms ease;
+  }
+
+  .standalone-link:hover::before {
+    transform: translateX(70%);
+  }
+
+  .standalone-link-dark {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-color: rgba(124, 230, 186, 0.52);
+    background:
+      radial-gradient(circle at 18% 45%, rgba(255, 255, 255, 0.18), transparent 2.4rem),
+      linear-gradient(135deg, rgba(76, 123, 255, 0.28), rgba(124, 230, 186, 0.16), rgba(242, 185, 109, 0.16));
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+      0 16px 44px rgba(0, 0, 0, 0.2),
+      0 0 38px rgba(124, 230, 186, 0.18);
+  }
+
+  .standalone-link-dark::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+    opacity: 0.72;
+    transform: translateX(-70%);
+    transition: transform 420ms ease;
+  }
+
+  .standalone-link-dark:hover::before {
+    transform: translateX(70%);
+  }
+}
+
 .opera-noise {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),

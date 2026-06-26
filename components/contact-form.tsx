@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import { siteContent, copy, copyList } from "@/content/site-content";
@@ -13,7 +13,6 @@ type ContactFormProps = {
 type SubmitState = "idle" | "loading" | "success" | "error";
 
 export function ContactForm({ locale }: ContactFormProps) {
-  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const form = siteContent.contactPage.form;
@@ -116,7 +115,6 @@ export function ContactForm({ locale }: ContactFormProps) {
       }
 
       setStatus("success");
-      router.push(`/${locale}/thank-you`);
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : copy(locale, form.error));
       setStatus("error");

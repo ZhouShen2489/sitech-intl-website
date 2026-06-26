@@ -60,6 +60,19 @@ function isExternalHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
 }
 
+function isStandaloneHref(href: string) {
+  return (
+    href.includes("opera.localhost") ||
+    href.includes("opera.sitech-intl.com") ||
+    href.includes("telecom.localhost") ||
+    href.includes("telecom.sitech-intl.com") ||
+    href === "/solutions/telecom" ||
+    href.includes("/solutions/telecom/") ||
+    href === "/products/helport" ||
+    href.includes("/products/helport")
+  );
+}
+
 function resolveHref(locale: Locale, href: string) {
   if (isExternalHref(href)) {
     return href.endsWith("sitech-intl.com") ? `${href}/${locale}` : href;
@@ -137,7 +150,7 @@ function HeaderDropdownPanel({
           {config.featured ? (
             <Link
               href={resolveHref(locale, config.featured.href)}
-              className="inline-flex items-center gap-3 rounded-2xl border border-[#b8d5ff] bg-gradient-to-r from-[#eaf4ff] via-white to-[#fff4df] px-4 py-3 text-sm font-bold text-ink transition hover:border-tide/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide/25"
+              className="standalone-link inline-flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-bold text-ink transition hover:border-[#7ce6ba]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide/25"
               target={isExternalHref(config.featured.href) ? "_blank" : undefined}
               rel={isExternalHref(config.featured.href) ? "noreferrer" : undefined}
             >
@@ -175,7 +188,11 @@ function HeaderDropdownPanel({
                   <Link
                     key={item.href}
                     href={resolveHref(locale, item.href)}
-                    className="flex items-center justify-between gap-3 rounded-xl px-2.5 py-2 text-[14px] font-semibold text-[#12213a] transition hover:bg-[#eef6ff] hover:text-tide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide/20"
+                    className={`flex items-center justify-between gap-3 rounded-xl px-2.5 py-2 text-[14px] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide/20 ${
+                      isStandaloneHref(item.href)
+                        ? "standalone-link border text-[#0b2f6f] hover:border-[#7ce6ba]/70"
+                        : "text-[#12213a] hover:bg-[#eef6ff] hover:text-tide"
+                    }`}
                     target={isExternalHref(item.href) ? "_blank" : undefined}
                     rel={isExternalHref(item.href) ? "noreferrer" : undefined}
                   >
@@ -477,6 +494,7 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
     const active = isActive(item);
     const localizedHref = resolveHref(locale, item.href);
     const dropdownConfig = item.dropdownConfig ?? (mode === "global" ? getDropdownConfig(item.href) : null);
+    const standaloneNavItem = isStandaloneHref(item.href);
     const baseClass =
       mode === "global"
         ? `rounded-full px-3.5 py-2 text-[15px] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide/25 ${
@@ -485,7 +503,9 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
               : "text-[#17233c] hover:bg-mist hover:text-tide"
           }`
         : `inline-flex shrink-0 items-center rounded-full border px-4 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide/25 ${
-            active || activeDesktopDropdown === item.href
+            standaloneNavItem
+              ? "standalone-link text-[#0b2f6f] hover:border-[#7ce6ba]/70"
+              : active || activeDesktopDropdown === item.href
               ? "border-tide bg-tide text-white shadow-[0_10px_24px_rgba(20,85,179,0.16)]"
               : "border-blue-100 bg-white text-[#17233c] hover:border-tide/30 hover:text-tide"
           }`;
@@ -658,7 +678,11 @@ export function SiteHeader({ locale, mode: modeOverride }: SiteHeaderProps) {
                         <Link
                           key={dropdownItem.href}
                           href={resolveHref(locale, dropdownItem.href)}
-                          className="rounded-2xl border border-blue-100 bg-[#f7fbff] px-4 py-3 text-sm text-slate-700"
+                          className={`rounded-2xl border px-4 py-3 text-sm ${
+                            isStandaloneHref(dropdownItem.href)
+                              ? "standalone-link font-semibold text-[#0b2f6f]"
+                              : "border-blue-100 bg-[#f7fbff] text-slate-700"
+                          }`}
                           target={isExternalHref(dropdownItem.href) ? "_blank" : undefined}
                           rel={isExternalHref(dropdownItem.href) ? "noreferrer" : undefined}
                           onClick={() => setIsOpen(false)}
