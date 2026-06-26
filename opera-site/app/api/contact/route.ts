@@ -16,7 +16,7 @@ const leadSchema = z.object({
   phone: z.string().trim().max(80).optional().default(""),
   industry: z.string().trim().max(120).optional().default(""),
   interestedIn: z.string().trim().min(2).max(120),
-  message: z.string().trim().min(10).max(4000),
+  message: z.string().trim().max(4000),
   consent: z.literal(true),
   pageUrl: z.string().trim().url().optional().or(z.literal("")).default(""),
   website: z.string().trim().max(0).optional().default(""),

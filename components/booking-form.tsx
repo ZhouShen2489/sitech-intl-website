@@ -53,13 +53,21 @@ export function BookingForm({ locale }: { locale: Locale }) {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error("Request failed");
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || result?.success === false) {
+        throw new Error(
+          result?.message ||
+            (locale === "en"
+              ? "Unable to submit right now. Please email info@sitech-intl.com."
+              : "暂时无法提交，请发送邮件到 info@sitech-intl.com。"),
+        );
       }
 
       setStatus("success");
       event.currentTarget.reset();
-    } catch {
+    } catch (submitError) {
+      setError(submitError instanceof Error ? submitError.message : "");
       setStatus("error");
     }
   }
@@ -94,7 +102,6 @@ export function BookingForm({ locale }: { locale: Locale }) {
         <textarea
           name="message"
           rows={5}
-          required
           className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-tide"
           placeholder={
             locale === "en"
@@ -112,7 +119,10 @@ export function BookingForm({ locale }: { locale: Locale }) {
       {error ? <p className="mt-4 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-800">{error}</p> : null}
       {status === "error" ? (
         <p className="mt-4 rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700">
-          {locale === "en" ? "Unable to submit right now. Please email info@sitech-intl.com." : "暂时无法提交，请发送邮件到 info@sitech-intl.com。"}
+          {error ||
+            (locale === "en"
+              ? "Unable to submit right now. Please email info@sitech-intl.com."
+              : "暂时无法提交，请发送邮件到 info@sitech-intl.com。")}
         </p>
       ) : null}
       {status === "success" ? (
