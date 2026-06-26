@@ -115,11 +115,19 @@ Recommended production setup:
 
 ### Gmail
 
+Configure these once in the repository root `.env.local`. The company, Opera,
+and Telecom workspaces load the root file automatically during local dev and
+workspace builds.
+
 - `GMAIL_SENDER`
 - `GOOGLE_CLIENT_ID`
 - `GOOGLE_CLIENT_SECRET`
 - `GOOGLE_REFRESH_TOKEN`
 - `CONTACT_RECIPIENT`
+
+The site-specific `.env.local` files should only need site URL values such as
+`NEXT_PUBLIC_SITE_ORIGIN`, `NEXT_PUBLIC_COMPANY_ORIGIN`,
+`NEXT_PUBLIC_OPERA_ORIGIN`, and `NEXT_PUBLIC_TELECOM_ORIGIN`.
 
 ### Lead storage
 
