@@ -99,7 +99,7 @@ Current implemented flow:
 
 1. User submits the lead form.
 2. Backend validates the payload and checks honeypot / basic rate limiting.
-3. Server writes the submission to `contact-submissions.csv`.
+3. Local development writes the submission to `contact-submissions.csv`. Production uses Google Sheets when `LEAD_STORAGE_PROVIDER=google_sheets` is configured.
 4. If Gmail OAuth environment variables are configured, server sends the internal notification to `CONTACT_RECIPIENT`.
 5. If Gmail delivery is configured, server sends an automatic confirmation email back to the visitor in the same language as the page they submitted from.
 6. The submission is considered successful when CSV storage or Gmail delivery succeeds. If one route fails, the API returns success with a warning so visitors do not see an error after a recoverable backend issue.
@@ -107,8 +107,8 @@ Current implemented flow:
 
 Recommended production setup:
 
-- Keep local CSV only as a development and backup path. Serverless filesystems are not a durable database.
-- For the first production-ready lead store, use Google Sheets or Supabase/Neon Postgres so the team can reliably review and export submissions.
+- Keep local CSV only for development. Netlify's serverless filesystem is deliberately not treated as successful production storage.
+- Use Google Sheets as the first production lead store so the team can review and export submissions without a separate admin tool.
 - Use Gmail API only for email delivery from the company mailbox. Configure `GMAIL_SENDER`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REFRESH_TOKEN`, and `CONTACT_RECIPIENT` in each deployed site.
 
 ## Required environment variables
@@ -132,6 +132,16 @@ The site-specific `.env.local` files should only need site URL values such as
 ### Lead storage
 
 - `LEAD_CSV_DIR` optional local CSV directory override.
+- `LEAD_STORAGE_PROVIDER=google_sheets` enables durable production storage.
+- `GOOGLE_SHEETS_LEAD_SHEET_ID` is the ID in the Google Sheets URL.
+- `GOOGLE_SHEETS_LEAD_TAB` defaults to `Website Leads`.
+- `GOOGLE_SERVICE_ACCOUNT_EMAIL` and `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` belong to a dedicated Google Cloud service account. Share the spreadsheet with that email as an Editor. In Netlify, store the private key on one line with literal `\\n` characters.
+
+Create the `Website Leads` tab with this first-row header before enabling the integration:
+
+```text
+submitted_at | source | locale | full_name | work_email | company_name | job_title | company_size | phone | industry | interested_in | message | product_interest | lead_source | partner_related | registration_required | page_url | channel | netlify_site
+```
 
 ## Run locally
 

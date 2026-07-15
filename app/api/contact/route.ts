@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 
 import { NextResponse } from "next/server";
 
+import { persistLeadToGoogleSheets } from "@/lib/google-sheets-lead-store";
 import { persistLead } from "@/lib/lead-store";
 import { sendLeadEmails } from "@/lib/mailer";
 import { leadSchema, normalizeLead } from "@/lib/validation";
@@ -62,12 +63,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true, message: "Inquiry submitted successfully." });
   }
 
-  const persistResult = await persistLead(lead);
-  const emailResult = await sendLeadEmails(lead).catch((error) => ({
+  const useGoogleSheets = process.env.LEAD_STORAGE_PROVIDER === "google_sheets";
+  const [persistResult, emailResult] = await Promise.all([
+    useGoogleSheets ? persistLeadToGoogleSheets(lead) : persistLead(lead),
+    sendLeadEmails(lead).catch((error) => ({
     ok: false,
     provider: "gmail" as const,
     reason: error instanceof Error ? error.message : "gmail_send_failed",
-  }));
+    })),
+  ]);
 
   if (!persistResult.ok && !emailResult.ok) {
     return NextResponse.json(
@@ -77,6 +81,7 @@ export async function POST(request: Request) {
         reason: persistResult.reason ?? emailResult.reason ?? "lead_delivery_failed",
         routed: {
           localCsv: false,
+          googleSheets: false,
           gmail: false,
         },
       },
@@ -89,6 +94,7 @@ export async function POST(request: Request) {
     message: "Inquiry submitted successfully.",
     routed: {
       localCsv: persistResult.ok && persistResult.provider === "local_csv",
+      googleSheets: persistResult.ok && persistResult.provider === "google_sheets",
       gmail: emailResult.ok,
     },
     warnings: [persistResult, emailResult]
