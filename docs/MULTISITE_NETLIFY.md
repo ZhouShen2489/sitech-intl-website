@@ -27,11 +27,12 @@ Netlify automatically applies its current OpenNext adapter for Next.js. Do not c
 
 Copy the existing contact-service secrets into each site that accepts contact submissions:
 
-- HubSpot credentials used by the current contact route
-- Gmail or SMTP credentials used by the current mail route
-- Any sender and recipient configuration already present in the existing deployment
+- `GMAIL_SENDER`, `CONTACT_RECIPIENT`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `GOOGLE_REFRESH_TOKEN` for the Gmail notification and visitor confirmation.
+- `LEAD_STORAGE_PROVIDER=google_sheets`, `GOOGLE_SHEETS_LEAD_SHEET_ID`, `GOOGLE_SHEETS_LEAD_TAB`, `GOOGLE_SERVICE_ACCOUNT_EMAIL`, and `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` for durable lead storage.
 
 Do not commit secrets to `netlify.toml`.
+
+Create one Google Sheet and share it with the Google service account as an Editor. The same spreadsheet can receive leads from all three sites; the `netlify_site`, `source`, and `page_url` columns identify where each lead came from.
 
 ## DNS cutover
 

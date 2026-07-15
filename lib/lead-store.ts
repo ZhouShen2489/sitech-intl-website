@@ -122,6 +122,14 @@ function recordToCsvRow(record: LeadRecord) {
 }
 
 async function persistLeadToLocalCsv(record: LeadRecord): Promise<DeliveryResult> {
+  if (process.env.NETLIFY) {
+    return {
+      ok: false,
+      provider: "local_csv",
+      reason: "local_csv_is_not_durable_on_netlify",
+    };
+  }
+
   try {
     const dataDir = resolveStorageDirectory();
     const filePath = path.join(dataDir, "contact-submissions.csv");
