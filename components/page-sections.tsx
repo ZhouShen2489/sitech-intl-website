@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { CustomerServiceHero } from "@/components/customer-service-hero";
 import { productsContent } from "@/content/products-content";
 import { siteContent, copy, copyList, isVisible, visibleItems } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
@@ -177,35 +178,7 @@ export function HomePage({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <PageHero
-        locale={locale}
-        badge={copy(locale, hero.badge)}
-        title={copy(locale, hero.title)}
-        subtitle={copy(locale, hero.subtitle)}
-        image={hero.image}
-        actions={
-          <>
-            <Link
-              href={withLocale(locale, "/contact")}
-              className="rounded-full bg-signal px-6 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"
-            >
-              {copy(locale, hero.primaryCta)}
-            </Link>
-            <Link
-              href={withLocale(locale, "/products/helport")}
-              className="standalone-link-dark rounded-full border px-6 py-3 text-sm font-semibold text-white transition hover:border-[#9df1cf]/80"
-            >
-              {copy(locale, hero.secondaryCta)}
-            </Link>
-            <Link
-              href={telecomSiteHref}
-              className="standalone-link-dark rounded-full border px-6 py-3 text-sm font-semibold text-white transition hover:border-[#9df1cf]/80"
-            >
-              {copy(locale, hero.solutionsCta)}
-            </Link>
-          </>
-        }
-      />
+      <CustomerServiceHero locale={locale} />
 
       {isVisible(sections.marquee) ? <MarqueeBand locale={locale} /> : null}
 

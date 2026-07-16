@@ -14,22 +14,22 @@ type SiteFooterProps = {
 
 export function SiteFooter({ locale, variant = "company" }: SiteFooterProps) {
   const year = new Date().getFullYear();
-  const helportHref =
+  const productHref =
     variant === "telecom"
-      ? withSiteLocale("company", locale, "/products/helport")
-      : withLocale(locale, "/products/helport");
+      ? withSiteLocale("company", locale, "/products/ai-expert-customer-service")
+      : withLocale(locale, "/products/ai-expert-customer-service");
   const focusLinks = [
     {
-      label: locale === "en" ? "Helport AI" : "Helport AI 专家客服",
-      href: helportHref,
+      label: locale === "en" ? "AI Expert Customer Service" : "AI 专家客服",
+      href: productHref,
     },
     {
-      label: "Telecom",
+      label: locale === "en" ? "Telecom Solutions" : "运营商解决方案",
       href: withSiteLocale("telecom", locale),
     },
     {
-      label: "Opera",
-      href: withSiteLocale("opera", locale),
+      label: locale === "en" ? "Request a Demo" : "预约演示",
+      href: withLocale(locale, "/contact?intent=demo"),
     },
   ];
   const pageLinks =

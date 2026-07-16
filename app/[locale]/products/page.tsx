@@ -1,383 +1,112 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { PageHero, SectionHeading } from "@/components/page-sections";
-import { copy, copyList, siteContent, visibleItems } from "@/content/site-content";
-import { isLocale, withBasePath, withLocale, withSiteLocale } from "@/lib/site";
+import { isLocale, withBasePath, withLocale } from "@/lib/site";
 
-export default async function ProductsPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+const bookingPath = "/booking?product_interest=ai_expertcare&lead_source=sitech_website&partner_related=true&registration_required=true";
+
+export default async function ProductsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  if (!isLocale(locale)) notFound();
 
-  if (!isLocale(locale)) {
-    notFound();
-  }
-
-  const safeLocale: "en" | "zh" = locale;
-  const page = siteContent.marketplacePage;
-  const ownItems = visibleItems(page.ownItems);
-  const partnerItems = visibleItems(page.partnerItems);
-
-  function resolveHref(href: string) {
-    return href.startsWith("http") ? href : withLocale(safeLocale, href);
-  }
-
-  function isExternal(href: string) {
-    return href.startsWith("http");
-  }
-
-  const helportFlow = [
-    {
-      step: "01",
-      title:
-        locale === "en"
-          ? "Make every live conversation stronger"
-          : "让每次实时沟通更像顶尖员工",
-      text:
-        locale === "en"
-          ? "Live guidance, knowledge, and prompts help frontline teams sound sharper in the moment."
-          : "实时指导、知识调取和话术提示，让一线团队在通话当下就更稳。",
-    },
-    {
-      step: "02",
-      title:
-        locale === "en" ? "Keep outreach moving at scale" : "让线索触达稳定跑起来",
-      text:
-        locale === "en"
-          ? "Standardized execution helps teams follow up, qualify, and transfer leads without losing rhythm."
-          : "用标准化执行承接跟进、筛选和转接，不让节奏断在中途。",
-    },
-    {
-      step: "03",
-      title:
-        locale === "en" ? "Put expert knowledge online 24/7" : "把专家知识放到 24/7 在线",
-      text:
-        locale === "en"
-          ? "Digital workers keep high-value knowledge available even when experts are not online."
-          : "把高价值知识沉淀成数字员工，不再只靠少数专家在线支撑。",
-    },
-  ];
-  const filterCards: { item: (typeof page.filters)[number]; href: string }[] = [
-    { item: page.filters[0], href: "#owned-products" },
-  ];
-
-  if (partnerItems.length > 0) {
-    filterCards.push({ item: page.filters[1], href: "#partner-products" });
-  }
-
-  const newHighlights = [
-    {
-      key: "opera",
-      href: withSiteLocale("opera", safeLocale),
-      title: { zh: "Enterprise Opera OS", en: "Enterprise Opera OS" },
-      text: {
-        zh: "新版独立产品页已上线，玻璃导航会突出 Helport AI 和 Telecom。",
-        en: "New standalone product page with glass navigation highlighting Helport AI and Telecom.",
-      },
-      cta: { zh: "打开 Opera", en: "Open Opera" },
-    },
-    {
-      key: "helport",
-      href: withLocale(safeLocale, "/products/helport"),
-      title: { zh: "AI Expert Customer Service", en: "AI Expert Customer Service" },
-      text: {
-        zh: "战略合作产品重点展示，适合客服、销售外呼和知识密集型支持团队。",
-        en: "Featured partner product for support, sales outreach, and knowledge-heavy service teams.",
-      },
-      cta: { zh: "查看 AI Expert", en: "View AI Expert" },
-    },
-  ] as const;
+  const productLabels = locale === "en"
+    ? ["Live guidance", "AI customer care", "Digital experts"]
+    : ["实时指导", "AI 智能客服", "数字专家"];
 
   return (
-    <>
-      <PageHero
-        locale={locale}
-        badge={copy(locale, siteContent.brand.eyebrow)}
-        title={copy(locale, page.hero.title)}
-        subtitle={copy(locale, page.hero.subtitle)}
-        image={page.hero.image}
-      />
-
-      <section className="border-y border-blue-100 bg-white py-8">
-        <div className="mx-auto grid max-w-7xl gap-4 px-6 lg:grid-cols-[auto_1fr_1fr] lg:items-stretch lg:px-8">
-          <div className="flex items-center rounded-lg bg-ink px-5 py-4 text-white">
-            <span className="rounded-full bg-signal px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-ink">
-              {locale === "en" ? "New" : "新内容"}
-            </span>
+    <div className="bg-[#edf4f0] text-[#08271d]">
+      <section className="relative isolate overflow-hidden bg-[#092b21] text-white">
+        <div className="customer-hero-grid absolute inset-0 opacity-25" />
+        <div className="absolute right-[-8rem] top-[-14rem] h-[34rem] w-[34rem] rounded-full bg-[#62f1b2]/12 blur-[110px]" />
+        <div className="relative mx-auto grid max-w-[92rem] gap-10 px-6 py-14 md:grid-cols-[1.1fr_0.9fr] md:items-end lg:px-12 lg:py-20">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#78edba]">{locale === "en" ? "Product catalogue" : "产品目录"}</p>
+            <h1 className="mt-5 max-w-4xl text-[clamp(3.4rem,6vw,6.7rem)] font-semibold leading-[0.9] tracking-[-0.06em]">
+              {locale === "en" ? "Products with a clear place in the story." : "每一款产品，都有清晰的位置。"}
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#b8d0c6]">
+              {locale === "en" ? "Our own product roadmap and selected partner products are shown separately—so buyers always know what they are evaluating." : "自有产品与精选合作伙伴产品分别呈现，让客户始终清楚自己正在评估什么。"}
+            </p>
           </div>
-          {newHighlights.map((item) => (
-            <Link
-              key={item.key}
-              href={item.href}
-              className="standalone-link group rounded-lg border p-5 transition hover:border-[#7ce6ba]/70 hover:bg-white"
-            >
-              <h2 className="font-display text-xl font-bold text-ink">{copy(locale, item.title)}</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{copy(locale, item.text)}</p>
-              <p className="mt-4 text-sm font-bold text-tide transition group-hover:translate-x-1">
-                {copy(locale, item.cta)} →
-              </p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="brand-mesh py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading title={copy(locale, page.introTitle)} text={copy(locale, page.introText)} />
-
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            {filterCards.map(({ item, href }) => (
-              <Link
-                key={item.title.en}
-                href={href}
-                className="interactive-card surface-card rounded-[2rem] p-6"
-              >
-                <p className="text-[11px] uppercase tracking-[0.26em] text-tide">
-                  {locale === "en" ? "Choose a path" : "选择进入方式"}
-                </p>
-                <h2 className="mt-3 text-xl font-semibold text-ink">{copy(locale, item.title)}</h2>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, item.text)}</p>
-              </Link>
-            ))}
+          <div className="grid gap-px overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/10 sm:grid-cols-2">
+            <a href="#our-products" className="group bg-[#0d362a] p-5 transition hover:bg-[#124834]">
+              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#8ccdb0]">01 / {locale === "en" ? "Our products" : "我们的产品"}</p>
+              <p className="mt-3 text-2xl font-semibold tracking-[-0.03em]">{locale === "en" ? "0 public listings" : "当前 0 款公开产品"}</p>
+              <span className="mt-5 inline-block text-sm text-[#b5d1c4] group-hover:text-white">{locale === "en" ? "View status ↓" : "查看状态 ↓"}</span>
+            </a>
+            <a href="#partner-products" className="group bg-[#103d2f] p-5 transition hover:bg-[#15523b]">
+              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#79f1ba]">02 / {locale === "en" ? "Partner products" : "合作伙伴产品"}</p>
+              <p className="mt-3 text-2xl font-semibold tracking-[-0.03em]">AI Expert Customer Service</p>
+              <span className="mt-5 inline-block text-sm text-[#b5d1c4] group-hover:text-white">{locale === "en" ? "Explore product ↓" : "查看产品 ↓"}</span>
+            </a>
           </div>
         </div>
       </section>
 
-      {partnerItems.length > 0 ? (
-        <section id="partner-products" className="bg-[#031329] py-20 text-white lg:py-24">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-start">
-              <div className="max-w-2xl">
-                <p className="text-sm font-bold uppercase tracking-[0.22em] text-accent">
-                  {copy(locale, page.partnerTitle)}
-                </p>
-                <h2 className="mt-4 font-display text-3xl leading-tight text-white md:text-4xl">
-                  {locale === "en"
-                    ? "AI Expert Customer Service turns great conversations into a repeatable system."
-                    : "AI 专家客服把优秀沟通，做成可复制的系统。"}
-                </h2>
-                <p className="mt-5 max-w-xl text-base leading-8 text-white/76">
-                  {copy(locale, page.partnerText)}
-                </p>
+      <section id="partner-products" className="mx-auto max-w-[92rem] px-6 py-10 lg:px-12 lg:py-14">
+        <div className="mb-5 flex items-end justify-between gap-5">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.21em] text-[#187a55]">02 / {locale === "en" ? "Partner products" : "合作伙伴产品"}</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] md:text-4xl">{locale === "en" ? "Ready for a real buyer conversation." : "已经可以进入真实客户沟通。"}</h2>
+          </div>
+          <span className="hidden rounded-full border border-[#177552]/18 bg-white px-4 py-2 text-xs font-bold text-[#427165] sm:block">{locale === "en" ? "1 featured product" : "1 款重点产品"}</span>
+        </div>
 
-                <div className="relative mt-10 space-y-4 pl-8">
-                  <div className="absolute bottom-6 left-3 top-6 w-px bg-gradient-to-b from-white/20 via-accent to-white/10" />
-                  {helportFlow.map((item) => (
-                    <div
-                      key={item.title}
-                      className="relative overflow-hidden rounded-[1.75rem] border border-white/12 bg-white/8 p-5 shadow-[0_18px_46px_rgba(0,0,0,0.16)] backdrop-blur"
-                    >
-                      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-                      <span className="absolute left-[-2.15rem] top-6 flex h-8 w-8 items-center justify-center rounded-full border border-white/12 bg-signal text-xs font-black text-ink shadow-[0_12px_30px_rgba(242,185,109,0.3)]">
-                        {item.step}
-                      </span>
-                      <h3 className="font-display text-xl leading-tight text-white">{item.title}</h3>
-                      <p className="mt-3 text-sm leading-7 text-white/72">{item.text}</p>
-                    </div>
-                  ))}
-                </div>
+        <article className="relative overflow-hidden rounded-[2.5rem] bg-[#06241b] p-3 text-white shadow-[0_34px_100px_rgba(7,55,38,0.2)] md:p-5">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_4%,rgba(93,246,178,0.22),transparent_27rem)]" />
+          <div className="relative grid gap-8 rounded-[2rem] border border-white/10 p-6 md:p-9 lg:grid-cols-[0.83fr_1.17fr] lg:p-12">
+            <div className="flex flex-col items-start">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#78efbb]/25 bg-[#78efbb]/8 px-3.5 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[#85f7c5]">
+                <span className="h-2 w-2 rounded-full bg-[#78efbb] shadow-[0_0_14px_#78efbb]" />
+                {locale === "en" ? "Featured partner product" : "重点合作伙伴产品"}
               </div>
-
-              <div className="grid gap-6">
-                {partnerItems.map((item) => (
-                  <article
-                    key={item.title.en}
-                    className="overflow-hidden rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.06))] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.18)]"
-                  >
-                    <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-                      <div className="relative overflow-hidden rounded-[1.5rem] bg-white/10" style={{ height: "13rem" }}>
-                        <Image
-                          src={withBasePath(item.image)}
-                          alt={copy(locale, item.title)}
-                          fill
-                          quality={74}
-                          sizes="(min-width: 1024px) 36vw, 100vw"
-                          className="image-lift object-cover"
-                        />
-                      </div>
-                      <div>
-                        <div className="flex flex-wrap gap-2">
-                          <span className="rounded-full bg-signal px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-ink">
-                            {locale === "en" ? "New" : "新内容"}
-                          </span>
-                          <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.16em] text-white/76">
-                            {copy(locale, item.category)}
-                          </span>
-                          <span className="rounded-full bg-signal px-3 py-1 text-xs uppercase tracking-[0.16em] text-ink">
-                            {copy(locale, item.status)}
-                          </span>
-                        </div>
-                        <h3 className="mt-5 font-display text-3xl text-white">{copy(locale, item.title)}</h3>
-                        <p className="mt-4 text-base leading-8 text-white/76">{copy(locale, item.subtitle)}</p>
-
-                        <div className="mt-5 flex flex-wrap gap-2">
-                          {copyList(locale, item.tags).map((tag) => (
-                            <span
-                              key={tag}
-                              className="rounded-full border border-white/12 bg-white/6 px-3 py-1.5 text-xs text-white/72"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="mt-6 grid gap-3 md:grid-cols-2">
-                          {item.bullets[locale].slice(0, 4).map((bullet, index) => (
-                            <div
-                              key={bullet}
-                              className="rounded-[1.2rem] border border-white/12 bg-white/6 px-4 py-4 text-sm leading-7 text-white/82"
-                            >
-                              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-accent">
-                                {index === 0
-                                  ? locale === "en"
-                                    ? "Live assist"
-                                    : "实时辅助"
-                                  : index === 1
-                                    ? locale === "en"
-                                      ? "Execution"
-                                      : "执行能力"
-                                    : index === 2
-                                      ? locale === "en"
-                                        ? "Digital worker"
-                                        : "数字员工"
-                                      : locale === "en"
-                                        ? "Best fit"
-                                        : "适用团队"}
-                              </p>
-                              <p className="mt-2">{bullet}</p>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="mt-6 rounded-[1.5rem] border border-white/12 bg-[#071a33]/60 p-4">
-                          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-accent">
-                            {locale === "en" ? "Why buyers react fast" : "为什么客户会很快有感觉"}
-                          </p>
-                          <p className="mt-2 text-sm leading-7 text-white/72">
-                            {locale === "en"
-                              ? "It does not ask teams to imagine the value. They can hear it in calls, see it in follow-up speed, and measure it in QA and conversion."
-                              : "它不是让团队去想象价值，而是能直接听到通话变化、看到跟进速度变化，也能量化到质检和转化结果。"}
-                          </p>
-                        </div>
-
-                        <p className="mt-5 text-sm leading-7 text-white/58">{copy(locale, item.note)}</p>
-                        <div className="mt-7 flex flex-wrap gap-3">
-                          <Link
-                            href={resolveHref(item.href)}
-                            className="standalone-link-dark inline-flex rounded-full border px-5 py-3 text-sm font-semibold text-white transition hover:border-[#9df1cf]/80"
-                            target={isExternal(item.href) ? "_blank" : undefined}
-                            rel={isExternal(item.href) ? "noreferrer" : undefined}
-                          >
-                            {copy(locale, item.cta)}
-                          </Link>
-                          <Link
-                            href={withLocale(locale, "/contact")}
-                            className="inline-flex rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/8"
-                          >
-                            {locale === "en" ? "Talk about this fit" : "讨论适配场景"}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
+              <h3 className="mt-7 text-[clamp(3rem,5vw,5.4rem)] font-semibold leading-[0.88] tracking-[-0.065em]">AI Expert<br />Customer Service</h3>
+              <p className="mt-6 max-w-lg text-lg leading-8 text-[#b7d2c6]">
+                {locale === "en" ? "A practical system for stronger customer conversations: real-time guidance for teams, AI service for customers, and digital experts for always-on knowledge." : "一套可实际运行的客户沟通系统：为团队提供实时指导，为客户提供 AI 服务，并将专家知识沉淀为全天候数字专家。"}
+              </p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {productLabels.map((label, index) => (
+                  <span key={label} className="rounded-full border border-white/12 bg-white/6 px-3 py-2 text-xs font-semibold text-[#c5ddd3]"><span className="mr-2 text-[#78efbb]">0{index + 1}</span>{label}</span>
                 ))}
+              </div>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link href={withLocale(locale, "/products/ai-expert-customer-service")} className="rounded-full bg-[#73f5bb] px-6 py-3.5 text-base font-bold text-[#06251b] transition hover:-translate-y-0.5 hover:bg-white">
+                  {locale === "en" ? "Explore product" : "进入产品页"} ↗
+                </Link>
+                <Link href={withLocale(locale, bookingPath)} className="rounded-full border border-white/20 px-6 py-3.5 text-base font-semibold transition hover:border-[#73f5bb]/65 hover:bg-white/8">
+                  {locale === "en" ? "Request a Free Demo" : "预约免费演示"}
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative flex items-center">
+              <div className="absolute -inset-7 rounded-[3rem] bg-[#4bf0a5]/10 blur-3xl" />
+              <div className="relative w-full overflow-hidden rounded-[1.65rem] border border-white/15 bg-[#dcebe4] p-2 shadow-[0_25px_75px_rgba(0,0,0,0.34)] md:p-3">
+                <div className="flex items-center justify-between px-3 pb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#51776a]"><span>{locale === "en" ? "Live product view" : "真实产品界面"}</span><span>01 / 01</span></div>
+                <img src={withBasePath("/images/demos/ai-expertcare-live-call.png")} alt="AI Expert Customer Service interface" className="block h-auto w-full rounded-[1.1rem] object-contain" />
               </div>
             </div>
           </div>
-        </section>
-      ) : null}
+        </article>
+      </section>
 
-      <section id="owned-products" className="bg-[#f5f9ff] py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading title={copy(locale, page.ownTitle)} text={copy(locale, page.ownText)} />
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {ownItems.map((item) => (
-              <article
-                key={item.title.en}
-                className="interactive-card group flex h-full flex-col rounded-[2.25rem] border border-blue-100 bg-white p-7 shadow-card"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="relative h-28 w-full overflow-hidden rounded-[1.5rem] bg-mist md:h-36">
-                    <Image
-                      src={withBasePath(item.image)}
-                      alt={copy(locale, item.title)}
-                      fill
-                      quality={74}
-                      sizes="(min-width: 1024px) 42vw, 100vw"
-                      className="image-lift object-cover"
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-5 flex items-start justify-between gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-ink text-sm font-semibold uppercase tracking-[0.16em] text-white">
-                    {item.title.en.slice(0, 2)}
-                  </div>
-                  <div className="flex flex-wrap justify-end gap-2">
-                    <span className="rounded-full border border-slate-200 px-3 py-1 text-xs uppercase tracking-[0.16em] text-slate-500">
-                      {copy(locale, item.category)}
-                    </span>
-                    <span className="rounded-full bg-[#eef4ff] px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#315ea8]">
-                      {copy(locale, item.status)}
-                    </span>
-                  </div>
-                </div>
-
-                <h2 className="mt-6 font-display text-3xl text-ink">{copy(locale, item.title)}</h2>
-                <p className="mt-4 text-base leading-8 text-slate-600">{copy(locale, item.subtitle)}</p>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {copyList(locale, item.tags).map((tag) => (
-                    <span key={tag} className="rounded-full bg-[#f4f7fb] px-3 py-1.5 text-xs text-slate-600">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-8 grid gap-3">
-                  {item.bullets[locale].slice(0, 3).map((bullet) => (
-                    <div
-                      key={bullet}
-                      className="rounded-[1.25rem] border border-slate-200 bg-[#f9fbfd] px-4 py-3 text-sm leading-7 text-slate-700"
-                    >
-                      {bullet}
-                    </div>
-                  ))}
-                </div>
-
-                <p className="mt-6 text-sm leading-7 text-slate-500">{copy(locale, item.note)}</p>
-
-                <div className="mt-8 pt-2">
-                  <Link
-                    href={resolveHref(item.href)}
-                    className="standalone-link inline-flex rounded-full border px-5 py-3 text-sm font-semibold text-[#0b2f6f] transition hover:border-[#7ce6ba]/70"
-                    target={isExternal(item.href) ? "_blank" : undefined}
-                    rel={isExternal(item.href) ? "noreferrer" : undefined}
-                  >
-                    {copy(locale, item.cta)}
-                  </Link>
-                </div>
-              </article>
-            ))}
+      <section id="our-products" className="border-t border-[#0b5139]/10 bg-white">
+        <div className="mx-auto grid max-w-[92rem] gap-8 px-6 py-12 md:grid-cols-[0.62fr_1.38fr] md:items-center lg:px-12 lg:py-16">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.21em] text-[#53766a]">01 / {locale === "en" ? "Our products" : "我们的产品"}</p>
+            <h2 className="mt-3 text-3xl font-semibold leading-[1.02] tracking-[-0.04em] md:text-4xl">{locale === "en" ? "Nothing public until it is ready." : "没有准备好，就不公开展示。"}</h2>
+          </div>
+          <div className="rounded-[1.6rem] border border-[#0d533b]/10 bg-[#f4f8f5] p-6 md:p-8">
+            <div className="flex flex-wrap items-start justify-between gap-5">
+              <div>
+                <p className="text-lg font-semibold text-[#153d2f]">{locale === "en" ? "No own products are currently listed." : "当前暂无对外公开的自有产品。"}</p>
+                <p className="mt-2 max-w-2xl text-base leading-7 text-[#5d7a6e]">{locale === "en" ? "New offerings will be added here only after they are ready for external evaluation, demonstration, and delivery planning." : "后续产品只有在具备对外评估、演示与交付规划条件后，才会进入此目录。"}</p>
+              </div>
+              <span className="shrink-0 rounded-full bg-white px-4 py-2 text-xs font-bold text-[#54776a] shadow-sm">{locale === "en" ? "Catalog status · Clear" : "目录状态 · 清晰"}</span>
+            </div>
           </div>
         </div>
       </section>
-
-      <section className="brand-orbit py-20 text-white">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <p className="max-w-2xl font-display text-3xl">{copy(locale, page.cta.title)}</p>
-          <Link
-            href={withLocale(locale, "/contact")}
-            className="button-glow inline-flex rounded-full bg-signal px-6 py-3 text-sm font-semibold text-ink transition hover:bg-[#ffd59f]"
-          >
-            {copy(locale, page.cta.button)}
-          </Link>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }
