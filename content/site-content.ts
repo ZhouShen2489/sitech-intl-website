@@ -1738,7 +1738,7 @@ export const siteContent = {
           en: "SI-TECH helps clients evaluate, demo, and coordinate implementation through enterprise software experience and selected strategic AI technology partners.",
         },
         cta: { zh: "查看详情", en: "View details" },
-        href: "/products/helport",
+        href: "/products/ai-expert-customer-service",
       },
       {
         visible: false,
@@ -2177,11 +2177,11 @@ export const siteContent = {
     navTitle: { zh: "页面", en: "Pages" },
     focusTitle: { zh: "重点方向", en: "Focus Areas" },
     focusItems: {
-      zh: ["AI 专家客服", "Telecom", "Opera"],
+      zh: ["AI 专家客服", "运营商解决方案", "预约演示"],
       en: [
         "AI Expert Customer Service",
-        "Telecom",
-        "Opera",
+        "Telecom Solutions",
+        "Request a Demo",
       ],
     },
     contactTitle: { zh: "联系方式", en: "Contact" },

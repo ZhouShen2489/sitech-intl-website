@@ -9,10 +9,10 @@
     "shared-assets"
   ],
   "scripts": {
-    "dev": "pnpm --dir opera-site run dev -- -p 3003",
-    "dev:company": "pnpm --dir company-site run dev -- -p 3004",
-    "dev:opera": "pnpm --dir opera-site run dev -- -p 3003",
-    "dev:telecom": "pnpm --dir telecom-site run dev -- -p 3005",
+    "dev": "PORT=3003 pnpm --dir company-site run dev",
+    "dev:company": "PORT=3004 pnpm --dir company-site run dev",
+    "dev:opera": "PORT=3006 pnpm --dir opera-site run dev",
+    "dev:telecom": "PORT=3005 pnpm --dir telecom-site run dev",
     "dev:all": "node scripts/dev-sites.mjs",
     "dev:sites": "node scripts/dev-sites.mjs",
     "build": "next build",

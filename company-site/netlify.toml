@@ -6,7 +6,6 @@
   NODE_VERSION = "20"
   NEXT_PUBLIC_SITE_ORIGIN = "https://www.sitech-intl.com"
   NEXT_PUBLIC_SITE_HOME_PATH = ""
-  NEXT_PUBLIC_OPERA_ORIGIN = "https://opera.sitech-intl.com"
   NEXT_PUBLIC_TELECOM_ORIGIN = "https://telecom.sitech-intl.com"
 
 [[headers]]
