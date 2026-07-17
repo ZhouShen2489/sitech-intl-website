@@ -27,6 +27,7 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
   const nextLocale: Locale = locale === "en" ? "zh" : "en";
   const productHref = withLocale(locale, "/products/ai-expert-customer-service");
   const telecomHref = withSiteLocale("telecom", locale);
+  const companyHref = withSiteLocale("company", locale);
 
   const isActive = (href: string) => {
     const localized = withLocale(locale, href);
@@ -118,7 +119,7 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
           </nav>
         ) : (
           <nav className="hidden items-center gap-2 lg:flex">
-            <Link href={withLocale(locale, "/")} className="rounded-full border border-[#14583f]/12 px-4 py-2 text-sm font-semibold text-[#385b4d] hover:bg-[#eef7f2]">
+            <Link href={companyHref} className="rounded-full border border-[#14583f]/12 px-4 py-2 text-sm font-semibold text-[#385b4d] hover:bg-[#eef7f2]">
               ← {locale === "en" ? "Company site" : "返回官网"}
             </Link>
             {mode === "products" ? (
@@ -150,12 +151,25 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
       {isOpen ? (
         <div className="border-t border-[#14583f]/10 bg-white px-5 py-5 lg:hidden">
           <div className="grid gap-2">
-            {globalItems.map((item) => (
-              <Link key={item.href} href={withLocale(locale, item.href)} onClick={() => setIsOpen(false)} className={`rounded-2xl px-4 py-3 text-base font-semibold ${item.href === "/products" ? "bg-[#082a20] text-white" : "text-[#2a493d] hover:bg-[#eef7f2]"}`}>
-                {copy(locale, item.label)}{item.href === "/products" ? ` · ${locale === "en" ? "Featured" : "主推"}` : ""}
-              </Link>
-            ))}
-            <Link href={productHref} onClick={() => setIsOpen(false)} className="rounded-2xl border border-[#3be39b]/30 bg-[#e7faf1] px-4 py-4 text-base font-bold text-[#0b593d]">AI Expert Customer Service ↗</Link>
+            {mode === "global" ? (
+              <>
+                {globalItems.map((item) => (
+                  <Link key={item.href} href={withLocale(locale, item.href)} onClick={() => setIsOpen(false)} className={`rounded-2xl px-4 py-3 text-base font-semibold ${item.href === "/products" ? "bg-[#082a20] text-white" : "text-[#2a493d] hover:bg-[#eef7f2]"}`}>
+                    {copy(locale, item.label)}{item.href === "/products" ? ` · ${locale === "en" ? "Featured" : "主推"}` : ""}
+                  </Link>
+                ))}
+                <Link href={productHref} onClick={() => setIsOpen(false)} className="rounded-2xl border border-[#3be39b]/30 bg-[#e7faf1] px-4 py-4 text-base font-bold text-[#0b593d]">AI Expert Customer Service ↗</Link>
+              </>
+            ) : (
+              <>
+                <Link href={companyHref} onClick={() => setIsOpen(false)} className="rounded-2xl border border-[#14583f]/12 px-4 py-3 text-base font-semibold text-[#2a493d] hover:bg-[#eef7f2]">
+                  ← {locale === "en" ? "Company site" : "返回官网"}
+                </Link>
+                <Link href={mode === "solutions" ? telecomHref : productHref} onClick={() => setIsOpen(false)} className="rounded-2xl bg-[#082a20] px-4 py-3 text-base font-bold text-white">
+                  {mode === "solutions" ? (locale === "en" ? "Telecom Solutions" : "运营商解决方案") : "AI Expert Customer Service"}
+                </Link>
+              </>
+            )}
             <Link href={switchLocaleInPath(pathname, nextLocale)} onClick={() => setIsOpen(false)} className="mt-2 rounded-full border border-[#14583f]/12 px-4 py-3 text-center text-sm font-semibold">{locale === "en" ? "中文" : "EN"}</Link>
           </div>
         </div>
