@@ -60,7 +60,7 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
               return (
                 <div key={item.href} className="relative" onMouseEnter={() => menuKey && setOpenMenu(menuKey)}>
                   <Link
-                    href={withLocale(locale, item.href)}
+                    href={menuKey === "solutions" ? telecomHref : withLocale(locale, item.href)}
                     className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[15px] font-semibold transition ${
                       products
                         ? "bg-[#092a20] text-white shadow-[0_10px_28px_rgba(7,53,37,0.2)] hover:bg-[#114c39]"
@@ -91,10 +91,10 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
                                 {locale === "en" ? "Current featured product" : "当前主推产品"}
                               </span>
                               <span className="mt-2 flex items-center justify-between text-xl font-bold tracking-[-0.025em]">
-                                AI Expert Customer Service <span className="text-[#70edb5]">↗</span>
+                                {locale === "en" ? "AI Expert Customer Service" : "AI专家客户服务"} <span className="text-[#70edb5]">↗</span>
                               </span>
                               <span className="mt-2 block text-sm leading-6 text-[#b9cec6]">
-                                {locale === "en" ? "Partner product · Private demo available" : "合作伙伴产品 · 可预约专属演示"}
+                                {locale === "en" ? "Strategic partner product" : "合作伙伴产品"}
                               </span>
                             </Link>
                           </>
@@ -125,7 +125,7 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
             {mode === "products" ? (
               <>
                 <Link href={withLocale(locale, "/products")} className="rounded-full px-4 py-2 text-sm font-semibold text-[#385b4d] hover:bg-[#eef7f2]">{locale === "en" ? "Products" : "产品"}</Link>
-                <Link href={productHref} className="rounded-full bg-[#082a20] px-4 py-2 text-sm font-bold text-white">AI Expert Customer Service</Link>
+                <Link href={productHref} className="rounded-full bg-[#082a20] px-4 py-2 text-sm font-bold text-white">{locale === "en" ? "AI Expert Customer Service" : "AI专家客户服务"}</Link>
               </>
             ) : (
               <Link href={telecomHref} className="rounded-full bg-[#082a20] px-4 py-2 text-sm font-bold text-white">{locale === "en" ? "Telecom Solutions" : "运营商解决方案"}</Link>
@@ -137,8 +137,8 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
           <Link href={switchLocaleInPath(pathname, nextLocale)} className="rounded-full border border-[#14583f]/12 px-4 py-2 text-sm font-semibold text-[#385b4d] hover:bg-[#eef7f2]">
             {locale === "en" ? "中文" : "EN"}
           </Link>
-          <Link href={withLocale(locale, bookingPath)} className="rounded-full bg-[#70efb5] px-5 py-2.5 text-sm font-bold text-[#06251b] transition hover:bg-[#082a20] hover:text-white">
-            {locale === "en" ? "Request a Free Demo" : "预约免费演示"}
+          <Link href={withLocale(locale, bookingPath)} className="rounded-full bg-[#ff9a4f] px-5 py-2.5 text-sm font-bold text-[#2e1607] transition hover:bg-[#082a20] hover:text-white">
+            {locale === "en" ? "Book an AI Expert Customer Service Product Demo" : "预约AI专家客服产品演示"}
           </Link>
         </div>
 
@@ -154,11 +154,11 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
             {mode === "global" ? (
               <>
                 {globalItems.map((item) => (
-                  <Link key={item.href} href={withLocale(locale, item.href)} onClick={() => setIsOpen(false)} className={`rounded-2xl px-4 py-3 text-base font-semibold ${item.href === "/products" ? "bg-[#082a20] text-white" : "text-[#2a493d] hover:bg-[#eef7f2]"}`}>
+                  <Link key={item.href} href={item.href === "/solutions" ? telecomHref : withLocale(locale, item.href)} onClick={() => setIsOpen(false)} className={`rounded-2xl px-4 py-3 text-base font-semibold ${item.href === "/products" ? "bg-[#082a20] text-white" : "text-[#2a493d] hover:bg-[#eef7f2]"}`}>
                     {copy(locale, item.label)}{item.href === "/products" ? ` · ${locale === "en" ? "Featured" : "主推"}` : ""}
                   </Link>
                 ))}
-                <Link href={productHref} onClick={() => setIsOpen(false)} className="rounded-2xl border border-[#3be39b]/30 bg-[#e7faf1] px-4 py-4 text-base font-bold text-[#0b593d]">AI Expert Customer Service ↗</Link>
+                <Link href={productHref} onClick={() => setIsOpen(false)} className="rounded-2xl border border-[#3be39b]/30 bg-[#e7faf1] px-4 py-4 text-base font-bold text-[#0b593d]">{locale === "en" ? "AI Expert Customer Service" : "AI专家客户服务"} ↗</Link>
               </>
             ) : (
               <>
@@ -166,7 +166,7 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
                   ← {locale === "en" ? "Company site" : "返回官网"}
                 </Link>
                 <Link href={mode === "solutions" ? telecomHref : productHref} onClick={() => setIsOpen(false)} className="rounded-2xl bg-[#082a20] px-4 py-3 text-base font-bold text-white">
-                  {mode === "solutions" ? (locale === "en" ? "Telecom Solutions" : "运营商解决方案") : "AI Expert Customer Service"}
+                  {mode === "solutions" ? (locale === "en" ? "Telecom Solutions" : "运营商解决方案") : (locale === "en" ? "AI Expert Customer Service" : "AI专家客户服务")}
                 </Link>
               </>
             )}

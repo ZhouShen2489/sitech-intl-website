@@ -2,41 +2,42 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AiExpertDemoGallery } from "@/components/ai-expert-demo-gallery";
-import { isLocale, withBasePath, withLocale } from "@/lib/site";
+import { AiRecruitingWorkflowVisual } from "@/components/ai-recruiting-workflow-visual";
+import { isLocale, withLocale } from "@/lib/site";
 
 const bookingPath = "/booking?product_interest=ai_expertcare&lead_source=sitech_website&partner_related=true&registration_required=true";
 
 const capabilities = [
   {
     number: "01",
-    title: { en: "Guide live conversations", zh: "实时指导每次沟通" },
+    title: { en: "Train fast. Put it to work.", zh: "快速训练，直接上岗" },
     text: {
-      en: "Surface approved answers, next steps, and risk prompts while the conversation is happening.",
-      zh: "在沟通进行时提供可信答案、下一步建议与风险提示。",
+      en: "Use your approved scripts, FAQs, recordings, product rules, and escalation paths to train an AI specialist quickly, then put it into a live workflow.",
+      zh: "把已批准的话术、FAQ、通话录音、产品规则和升级路径交给 AI，快速训练成 AI 专家后，直接进入真实业务流程工作。",
     },
   },
   {
     number: "02",
-    title: { en: "Scale execution", zh: "扩展服务与触达能力" },
+    title: { en: "Let the AI handle the first line", zh: "让 AI 先把一线工作做起来" },
     text: {
-      en: "Standardize customer care and outreach without losing the human handoff that complex cases need.",
-      zh: "标准化客服与客户触达，同时保留复杂场景所需的人工接管。",
+      en: "It makes outbound calls, answers inbound calls and messages, qualifies needs, sends follow-ups, and books the next action.",
+      zh: "它可以外呼、接听来电和消息、初步了解需求、发送跟进，并直接安排下一步。",
     },
   },
   {
     number: "03",
-    title: { en: "Deploy digital experts", zh: "部署数字专家" },
+    title: { en: "Bring in people when needed", zh: "需要判断时立刻交给人" },
     text: {
-      en: "Turn expert knowledge into role-specific, always-on customer experiences.",
-      zh: "把专家知识转化为分角色、全天候的客户服务体验。",
+      en: "For approvals, exceptions, complaints, or sensitive cases, it sends the full conversation and next-step recommendation to the right person.",
+      zh: "遇到审批、例外、投诉或敏感问题，它会带着完整沟通记录和下一步建议交给对应人员。",
     },
   },
 ] as const;
 
 const outcomes = [
-  { value: "50%", en: "faster ramp-up in a sales case", zh: "销售案例中的上手周期缩短" },
-  { value: "76%", en: "AI resolution in a support case", zh: "客服案例中的 AI 独立解决率" },
-  { value: "24/7", en: "expert knowledge availability", zh: "专家知识持续在线" },
+  { value: "Expert Knowledge", en: "business expertise made executable", zh: "企业专家知识可被执行" },
+  { value: "Voice + text", en: "calls, messages, and follow-ups in one flow", zh: "电话、信息与跟进在一个流程里完成" },
+  { value: "Human-ready", en: "escalate decisions when judgment matters", zh: "需要判断时随时由人工接管" },
 ] as const;
 
 export default async function AiExpertCustomerServicePage({
@@ -61,69 +62,52 @@ export default async function AiExpertCustomerServicePage({
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
             <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#9fc7b8]">
               <span className="h-2 w-2 rounded-full bg-[#69f5b7] shadow-[0_0_16px_#69f5b7]" />
-              {locale === "en" ? "AI Expert Customer Service" : "AI 专家客服"}
+              {locale === "en" ? "AI Expert Customer Service" : "AI专家客户服务"}
             </div>
             <div className="rounded-full border border-white/12 bg-white/5 px-4 py-2 text-xs font-semibold text-[#a9c9bd]">
-              {locale === "en" ? "Strategic partner product · Private demo available" : "战略合作伙伴产品 · 可预约专属演示"}
+              {locale === "en" ? "Strategic partner product" : "合作伙伴产品"}
             </div>
           </div>
 
           <div className="grid gap-14 py-14 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:py-20">
             <div className="max-w-2xl">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#69eeb2]">
-                {locale === "en" ? "Your best agent, in every conversation" : "让最佳坐席能力进入每次沟通"}
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#ffb16e]">
+                {locale === "en" ? "AI Labor. Paid by Performance." : "AI 劳动力，为业务结果而生。"}
               </p>
-              <h1 className="mt-6 text-[clamp(3.6rem,7vw,7.8rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
-                {locale === "en" ? "Customer service, with expert instinct." : "客服，也可以拥有专家直觉。"}
+              <h1 className={`mt-6 font-semibold tracking-[-0.06em] ${locale === "en" ? "text-[clamp(3rem,5.2vw,6rem)] leading-[0.92]" : "text-[clamp(2.8rem,4.8vw,5.5rem)] leading-[0.98]"}`}>
+                {locale === "en" ? "AI that handles customer work." : "让 AI 处理客户沟通。"}
               </h1>
               <p className="mt-8 max-w-xl text-lg leading-8 text-[#b7cec5] md:text-xl">
                 {locale === "en"
-                  ? "Bring live guidance, customer-facing AI, and digital experts into one practical operating system."
-                  : "把实时辅助、面向客户的 AI 与数字专家，放进一个可实际运行的服务系统。"}
+                  ? "AI Labor is trained on your playbooks and runs real work: outbound calls, inbound support, qualification, follow-up messages, and scheduling. Your team takes over approvals and exceptions."
+                  : "AI 劳动力按你的业务话术和规则工作：外呼、接听咨询、初步筛选、发送跟进、安排预约；审批和例外问题交给你的团队。"}
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href={withLocale(locale, bookingPath)}
-                  className="rounded-full bg-[#72f5bb] px-7 py-4 text-base font-bold text-[#06251b] transition hover:-translate-y-0.5 hover:bg-white"
+                  className="rounded-full bg-[#ff9a4f] px-7 py-4 text-base font-bold text-[#2e1607] transition hover:-translate-y-0.5 hover:bg-[#ffbf7d]"
                 >
-                  {locale === "en" ? "Request a Free Demo" : "预约免费演示"}
+                  {locale === "en" ? "Book an AI Expert Customer Service Product Demo" : "预约AI专家客服产品演示"}
                 </Link>
                 <a
                   href="#product-views"
                   className="rounded-full border border-white/20 bg-white/5 px-7 py-4 text-base font-semibold transition hover:border-[#72f5bb]/55 hover:bg-white/10"
                 >
-                  {locale === "en" ? "See the product" : "查看真实产品"}
+                  {locale === "en" ? "See the product overview" : "查看产品介绍"}
                 </a>
               </div>
 
-              <p className="mt-6 text-sm leading-6 text-[#78998d]">
-                {locale === "en"
-                  ? "Choose a time directly in our Google Calendar. We tailor the demo to your workflow."
-                  : "直接在我们的 Google Calendar 选择时间，演示将围绕您的业务场景展开。"}
-              </p>
             </div>
 
             <div className="relative">
               <div className="absolute -inset-10 rounded-[4rem] bg-[#45efa6]/10 blur-3xl" />
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-[#102b23] p-2 shadow-[0_50px_140px_rgba(0,0,0,0.52)] md:p-3">
-                <div className="flex items-center justify-between px-4 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#91b7a9]">
-                  <span className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#65f2b3]" /> Live product environment</span>
-                  <span>AI EXPERT / 01</span>
-                </div>
-                <div className="overflow-hidden rounded-[1.4rem] bg-[#e7efeb]">
-                  <img
-                    src={withBasePath("/images/demos/ai-expertcare-live-call.png")}
-                    alt={locale === "en" ? "Live AI customer service interface" : "AI 客服实时通话界面"}
-                    className="block h-auto w-full object-contain"
-                  />
-                </div>
-              </div>
+              <div className="relative"><AiRecruitingWorkflowVisual locale={locale} initialScenario="recruiting" className="lg:scale-[1.06] lg:origin-right" /></div>
 
               <div className="absolute -bottom-8 right-5 w-[min(18rem,76%)] rounded-2xl border border-[#6af0b4]/20 bg-[#0b2d23]/95 p-4 shadow-2xl backdrop-blur-xl md:-right-5">
                 <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#70edb4]">Live intelligence</p>
                 <p className="mt-2 text-sm leading-6 text-[#c8ddd5]">
-                  {locale === "en" ? "Guidance arrives while the customer is still speaking." : "客户还在表达，实时指导已经到位。"}
+                  {locale === "en" ? "Choose cash loan, insurance, or HR to see what the AI actually does in each workflow." : "选择现金贷、保险或 HR，直接看 AI 在不同业务流程里具体做什么。"}
                 </p>
               </div>
             </div>
@@ -145,17 +129,17 @@ export default async function AiExpertCustomerServicePage({
           <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
             <div className="lg:sticky lg:top-36 lg:self-start">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#16815a]">
-                {locale === "en" ? "One product · Three operating moves" : "一款产品 · 三个业务动作"}
+              {locale === "en" ? "What the AI actually does" : "AI 专家具体做什么"}
               </p>
               <h2 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.045em] md:text-6xl">
-                {locale === "en" ? "Start where the pressure is highest." : "从压力最大的地方开始。"}
+              {locale === "en" ? "Train it. Let it work. Escalate when needed." : "先训练，再干活；需要判断时，再交给人。"}
               </h2>
             </div>
 
             <div className="grid gap-5">
               {capabilities.map((item) => (
                 <article key={item.number} className="group grid gap-6 rounded-[2rem] border border-[#104d39]/10 bg-white p-7 shadow-[0_22px_60px_rgba(15,67,49,0.08)] transition hover:-translate-y-1 hover:border-[#2fd591]/35 md:grid-cols-[auto_1fr] md:p-9">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#dbf8eb] text-sm font-black text-[#08704b] transition group-hover:bg-[#0a3327] group-hover:text-[#77f4ba]">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fff0df] text-sm font-black text-[#a14a0a] transition group-hover:bg-[#0a3327] group-hover:text-[#ffb16e]">
                     {item.number}
                   </span>
                   <div>
@@ -178,22 +162,22 @@ export default async function AiExpertCustomerServicePage({
         <div className="relative mx-auto grid max-w-[88rem] gap-10 px-6 lg:grid-cols-[1fr_auto] lg:items-end lg:px-12">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.2em] text-[#0d6849]">
-              {locale === "en" ? "A demo built around your workflow" : "围绕真实业务流程的演示"}
+              {locale === "en" ? "Face-to-face demo" : "面对面演示"}
             </p>
             <h2 className="mt-5 max-w-4xl text-[clamp(3rem,6vw,6.4rem)] font-semibold leading-[0.92] tracking-[-0.055em]">
-              {locale === "en" ? "Bring one real customer scenario." : "带来一个真实客户场景。"}
+              {locale === "en" ? "AI Labor. Paid by Performance." : "AI 劳动力，按结果付费。"}
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#235d48]">
               {locale === "en"
-                ? "We will show the relevant product flow, discuss fit, and define a practical pilot—without sending your team through a generic public trial."
-                : "我们将展示对应产品流程、判断适配度，并共同定义可落地的试点，而不是让团队进入通用公开试用。"}
+                ? "Bring a call flow, service script, or follow-up process. We will show how AI Labor handles it and where your team stays in control."
+                : "带来一段电话流程、服务话术或跟进流程。我们会直接演示 AI 劳动力如何处理，以及你的团队在哪些环节接手。"}
             </p>
           </div>
           <Link
             href={withLocale(locale, bookingPath)}
-            className="inline-flex shrink-0 rounded-full bg-[#06251b] px-7 py-4 text-base font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#124b39]"
+            className="inline-flex shrink-0 rounded-full bg-[#ff9a4f] px-7 py-4 text-base font-bold text-[#2e1607] transition hover:-translate-y-0.5 hover:bg-[#ffbf7d]"
           >
-            {locale === "en" ? "Request a Free Demo" : "预约免费演示"} ↗
+            {locale === "en" ? "Book an AI Expert Customer Service Product Demo" : "预约AI专家客服产品演示"} ↗
           </Link>
         </div>
       </section>

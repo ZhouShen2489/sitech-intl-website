@@ -56,6 +56,12 @@ function toBase64Url(value: string) {
   return Buffer.from(value, "utf8").toString("base64url");
 }
 
+function encodeEmailHeader(value: string) {
+  return /[^\x20-\x7E]/.test(value)
+    ? `=?UTF-8?B?${Buffer.from(value, "utf8").toString("base64")}?=`
+    : value;
+}
+
 function buildMimeMessage({
   from,
   to,
@@ -76,7 +82,7 @@ function buildMimeMessage({
     `From: ${from}`,
     `To: ${to}`,
     ...(replyTo ? [`Reply-To: ${replyTo}`] : []),
-    `Subject: ${subject}`,
+    `Subject: ${encodeEmailHeader(subject)}`,
     "MIME-Version: 1.0",
     `Content-Type: multipart/alternative; boundary=\"${boundary}\"`,
     "",

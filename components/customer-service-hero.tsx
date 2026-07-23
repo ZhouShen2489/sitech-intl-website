@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import type { Locale } from "@/lib/site";
 import { withBasePath, withLocale, withSiteLocale } from "@/lib/site";
+import { AiRecruitingWorkflowVisual } from "@/components/ai-recruiting-workflow-visual";
 
 const bookingPath = "/booking?product_interest=ai_expertcare&lead_source=sitech_website&partner_related=true&registration_required=true";
 
@@ -13,8 +14,8 @@ const slides = [
     kind: "company",
     eyebrow: { en: "Mission & vision", zh: "使命与愿景" },
     title: {
-      en: "Turn complex systems into momentum that lasts.",
-      zh: "让复杂系统，成为持续增长的动力。",
+      en: "Make complex systems grow.",
+      zh: "让复杂系统持续增长。",
     },
     text: {
       en: "Si-Tech Intl brings telecom-grade delivery, enterprise platforms, and applied AI together for work that can launch, operate, and scale.",
@@ -28,18 +29,18 @@ const slides = [
   },
   {
     kind: "ai",
-    eyebrow: { en: "Featured partner product", zh: "当前主推 · 合作伙伴产品" },
+    eyebrow: { en: "AI Labor. Paid by Performance.", zh: "AI 劳动力，按结果付费。" },
     title: {
-      en: "Give every customer conversation an expert in the room.",
-      zh: "让每一次客户沟通，都有专家在场。",
+      en: "AI that handles customer work.",
+      zh: "让 AI 处理客户沟通。",
     },
     text: {
-      en: "AI Expert Customer Service brings live guidance, trusted knowledge, and digital experts into support and sales workflows.",
-      zh: "AI 专家客服把实时指导、可信知识与数字专家带进客服和销售工作流。",
+      en: "AI Labor is trained on your playbooks and runs real work: outbound calls, inbound support, qualification, follow-up messages, and scheduling. Your team takes over approvals and exceptions.",
+      zh: "AI 劳动力按你的业务话术和规则工作：外呼、接听咨询、初步筛选、发送跟进、安排预约；审批和例外问题交给你的团队。",
     },
-    primary: { en: "Explore AI Expert", zh: "了解 AI 专家客服" },
+    primary: { en: "Explore AI Expert", zh: "了解 AI专家客户服务" },
     primaryPath: "/products/ai-expert-customer-service",
-    secondary: { en: "Request a Free Demo", zh: "预约免费演示" },
+    secondary: { en: "Book an AI Expert Customer Service Product Demo", zh: "预约AI专家客服产品演示" },
     secondaryPath: bookingPath,
     image: "/images/demos/ai-expertcare-live-call.png",
   },
@@ -91,7 +92,7 @@ export function CustomerServiceHero({ locale }: { locale: Locale }) {
             {slide.eyebrow[locale]}
           </div>
 
-          <h1 key={`${active}-title`} className="product-reveal mt-10 max-w-3xl text-[clamp(3.15rem,6vw,6.8rem)] font-semibold leading-[0.92] tracking-[-0.055em] text-white">
+          <h1 key={`${active}-title`} className="product-reveal mt-10 max-w-3xl text-[clamp(2.75rem,4.8vw,5.6rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-white">
             {slide.title[locale]}
           </h1>
           <p key={`${active}-text`} className="product-reveal mt-7 max-w-xl text-lg leading-8 text-white/76 md:text-xl">
@@ -99,7 +100,7 @@ export function CustomerServiceHero({ locale }: { locale: Locale }) {
           </p>
 
           <div className="mt-9 flex flex-wrap gap-4">
-            <Link href={hrefFor(slide.primaryPath)} className={`inline-flex items-center gap-3 rounded-full px-6 py-3.5 text-base font-bold transition hover:-translate-y-0.5 hover:bg-white ${isTelecom ? "bg-[#8ebeff] text-[#071a33]" : isAi ? "bg-[#73f7bd] text-[#06251c]" : "bg-white text-[#092441]"}`}>
+            <Link href={hrefFor(slide.primaryPath)} className={`inline-flex items-center gap-3 rounded-full px-6 py-3.5 text-base font-bold transition hover:-translate-y-0.5 hover:bg-white ${isTelecom ? "bg-[#8ebeff] text-[#071a33]" : isAi ? "bg-[#ff9a4f] text-[#2e1607] hover:bg-[#ffbf7d]" : "bg-white text-[#092441]"}`}>
               {slide.primary[locale]} <span aria-hidden="true">↗</span>
             </Link>
             <Link href={hrefFor(slide.secondaryPath)} className="inline-flex items-center rounded-full border border-white/22 bg-white/6 px-6 py-3.5 text-base font-semibold text-white transition hover:border-white/55 hover:bg-white/10">
@@ -116,19 +117,23 @@ export function CustomerServiceHero({ locale }: { locale: Locale }) {
 
         <div className="relative lg:pl-4">
           <div className={`absolute -inset-8 rounded-[3.5rem] blur-3xl ${isTelecom ? "bg-[#3e92ff]/12" : isAi ? "bg-[#3ff0a4]/10" : "bg-[#7aaefa]/14"}`} />
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/14 bg-[#0f2825]/80 p-2 shadow-[0_42px_120px_rgba(0,0,0,0.46)] backdrop-blur-xl md:p-3">
-            <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/65">
-              <span>{isAi ? (locale === "en" ? "Product environment · Live" : "真实产品环境 · 运行中") : slide.eyebrow[locale]}</span>
-              <span>{String(active + 1).padStart(2, "0")} / 03</span>
+          {isAi ? (
+            <div key={`${active}-workflow`} className="product-visual-enter relative lg:scale-[1.08] lg:origin-center">
+              <AiRecruitingWorkflowVisual locale={locale} initialScenario="recruiting" />
             </div>
-            <div key={`${active}-visual`} className={`product-visual-enter relative overflow-hidden rounded-[1.35rem] ${isAi ? "bg-[#edf3f0]" : "bg-[#10263f]"}`}>
-              <img src={withBasePath(slide.image)} alt={slide.eyebrow[locale]} className={`block h-auto max-h-[620px] w-full ${isAi ? "object-contain" : "object-cover"}`} loading={active === 0 ? "eager" : "lazy"} />
-              {!isAi ? <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(4,19,36,0.7)_100%)]" /> : null}
-            </div>
-          </div>
-          <div className="absolute -bottom-7 left-8 rounded-2xl border border-white/16 bg-[#0b2430]/90 px-4 py-3 text-xs text-white/72 shadow-2xl backdrop-blur-xl md:left-[-1rem]">
-            <span className="font-bold text-white">0{active + 1}</span><span className="mx-2 text-white/25">/</span>{slide.eyebrow[locale]}
-          </div>
+          ) : (
+            <>
+              <div key={`${active}-visual`} className="relative overflow-hidden rounded-[2rem] border border-white/14 bg-[#10263f] p-2 shadow-[0_42px_120px_rgba(0,0,0,0.46)] backdrop-blur-xl md:p-3">
+                <div className="product-visual-enter relative overflow-hidden rounded-[1.35rem]">
+                  <img src={withBasePath(slide.image)} alt={slide.eyebrow[locale]} className="block h-auto max-h-[620px] w-full object-cover" loading={active === 0 ? "eager" : "lazy"} />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(4,19,36,0.7)_100%)]" />
+                </div>
+              </div>
+              <div className="absolute -bottom-7 left-8 rounded-2xl border border-white/16 bg-[#0b2430]/90 px-4 py-3 text-xs text-white/72 shadow-2xl backdrop-blur-xl md:left-[-1rem]">
+                <span className="font-bold text-white">0{active + 1}</span><span className="mx-2 text-white/25">/</span>{slide.eyebrow[locale]}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

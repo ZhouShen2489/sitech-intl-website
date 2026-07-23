@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { copy } from "@/content/site-content";
 import type { Locale } from "@/lib/site";
@@ -19,55 +19,61 @@ const demos = [
       en: "AI answers calls, transcribes in real time, qualifies the case, and hands off to a human when needed.",
     },
     image: "/images/demos/ai-expertcare-live-call.png",
-    size: "1228 × 1085",
   },
   {
     id: "text",
     tab: { zh: "文本演示", en: "Text demo" },
     title: {
-      zh: "文本客服与合规问答",
-      en: "Text support with compliant guidance",
+      zh: "文本客服",
+      en: "Text customer service",
     },
     text: {
       zh: "客户在文本窗口里提问时，AI 可以持续解释规则、给出下一步，并保持专业表达。",
       en: "In chat, AI can explain policies, guide next steps, and maintain a professional tone.",
     },
     image: "/images/demos/ai-expertcare-text-chat.png",
-    size: "1102 × 663",
   },
   {
     id: "roles",
     tab: { zh: "角色入口", en: "Role entry" },
     title: {
-      zh: "多角色 AI 专家入口",
-      en: "Multi-role AI specialist entry point",
+      zh: "多行业 AI 专家能力",
+      en: "AI experts across industries",
     },
     text: {
-      zh: "客户可以按场景进入不同 AI 专家，从客服到销售、收款与咨询都能分角色演示。",
-      en: "Different AI specialists can be demonstrated for support, sales, collections, and advisory workflows.",
+      zh: "一个产品可训练成不同行业的 AI 专家，用于客服、销售、收款、保险服务与招聘等工作。",
+      en: "One product can be trained for support, sales, collections, insurance service, recruiting, and other industry workflows.",
     },
     image: "/images/demos/ai-expertcare-role-gallery.png",
-    size: "1079 × 805",
   },
   {
     id: "outbound",
     tab: { zh: "外呼演示", en: "Outbound demo" },
     title: {
-      zh: "真实拨号式外呼演示",
-      en: "Real outbound call demo flow",
+      zh: "拨号式外呼 Demo",
+      en: "Outbound call demo flow",
     },
     text: {
-      zh: "通过预约演示入口，可以直接体验 AI 发起或接听电话的真实流程。",
-      en: "The demo booking flow can lead directly into a realistic AI outbound or inbound call experience.",
+      zh: "直接预约产品演示，查看 AI 如何发起或接听电话并完成后续动作。",
+      en: "Book a product demo to see how AI starts or answers calls and completes the next action.",
     },
     image: "/images/demos/ai-expertcare-call-demo.png",
-    size: "750 × 558",
   },
 ] as const;
 
 export function AiExpertDemoGallery({ locale }: { locale: Locale }) {
   const [activeId, setActiveId] = useState<(typeof demos)[number]["id"]>("voice");
   const active = demos.find((demo) => demo.id === activeId) ?? demos[0];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveId((current) => {
+        const index = demos.findIndex((demo) => demo.id === current);
+        return demos[(index + 1) % demos.length]?.id ?? demos[0].id;
+      });
+    }, 13000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <section className="relative overflow-hidden bg-[#071c16] py-20 text-white lg:py-28">
@@ -76,15 +82,15 @@ export function AiExpertDemoGallery({ locale }: { locale: Locale }) {
         <div className="max-w-3xl">
           <div className="mb-5 h-1 w-14 rounded-full bg-[#6df4b8]" />
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#72e9b3]">
-            {locale === "en" ? "Real product · Native screenshots" : "真实产品 · 原始清晰截图"}
+            {locale === "en" ? "AI Expert demos · Explore the experience" : "AI 专家 Demo · 探索演示体验"}
           </p>
           <h2 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.045em] text-white md:text-6xl">
-            {locale === "en" ? "See the product before the pitch." : "先看产品，再听介绍。"}
+            {locale === "en" ? "Step into the AI expert demo." : "进入 AI 专家演示。"}
           </h2>
           <p className="mt-4 text-base leading-8 text-white/72">
             {locale === "en"
-              ? "Four real interface views are shown at their natural proportions, without aggressive image compression or decorative cropping."
-              : "四个真实界面按原始比例完整展示，不做强压缩，也不为装饰而裁切。"}
+              ? "Explore phone, text, and multi-industry AI specialist capabilities across customer communication and business workflows."
+              : "通过电话、文本和多行业 AI 专家能力，了解 AI 如何参与客户沟通、业务执行与人工协同。"}
           </p>
         </div>
 
@@ -98,8 +104,8 @@ export function AiExpertDemoGallery({ locale }: { locale: Locale }) {
                 onClick={() => setActiveId(demo.id)}
                 className={`rounded-[1.5rem] border px-5 py-4 text-left transition ${
                   isActive
-                    ? "border-[#70f1b7] bg-[#70f1b7] text-[#06241a] shadow-[0_18px_50px_rgba(76,235,164,0.2)]"
-                    : "border-white/12 bg-white/5 text-white/68 hover:border-[#70f1b7]/40 hover:bg-white/10 hover:text-white"
+                    ? "border-[#ff9a4f] bg-[#ff9a4f] text-[#2e1607] shadow-[0_18px_50px_rgba(255,154,79,0.2)]"
+                    : "border-white/12 bg-white/5 text-white/68 hover:border-[#ffb36f]/55 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <p className="text-[11px] font-bold uppercase tracking-[0.18em] opacity-70">{copy(locale, demo.tab)}</p>
@@ -118,7 +124,7 @@ export function AiExpertDemoGallery({ locale }: { locale: Locale }) {
             <div className="mt-3 max-w-2xl md:mt-0 md:text-right">
               <p className="text-sm leading-6 text-[#4d6d61]">{copy(locale, active.text)}</p>
               <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#1a7b59]">
-                {locale === "en" ? `Source image ${active.size}` : `原图尺寸 ${active.size}`}
+                {locale === "en" ? "AI expert capability view" : "AI 专家能力演示"}
               </p>
             </div>
           </div>

@@ -20,9 +20,9 @@ export default async function BookingPage({ params }: { params: Promise<{ locale
         <div className="relative mx-auto max-w-[88rem] px-6 lg:px-12">
           <div className="max-w-3xl">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#78f1bb]">
-              {locale === "en" ? "AI Expert Customer Service" : "AI 专家客服"}
+              {locale === "en" ? "AI Expert Customer Service" : "AI专家客户服务"}
             </p>
-            <h1 className="mt-5 text-[clamp(3.4rem,6vw,6.5rem)] font-semibold leading-[0.9] tracking-[-0.055em]">
+            <h1 className="mt-6 max-w-3xl text-[clamp(2.7rem,4.8vw,5.3rem)] font-semibold leading-[1.0] tracking-[-0.05em]">
               {locale === "en" ? "Choose a time. See a real workflow." : "选择一个时间，查看真实工作流。"}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#b8d2c6]">
@@ -43,7 +43,7 @@ export default async function BookingPage({ params }: { params: Promise<{ locale
               width="100%"
               height="600"
               frameBorder="0"
-              title={locale === "en" ? "AI Expert Customer Service booking" : "AI 专家客服预约"}
+              title={locale === "en" ? "AI Expert Customer Service booking" : "AI专家客户服务预约"}
             />
           </div>
         </div>

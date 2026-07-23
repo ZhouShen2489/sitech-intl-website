@@ -23,7 +23,7 @@ export function ContactForm({ locale }: ContactFormProps) {
     searchParams.get("product_interest") === "ai_expertcare"
       ? locale === "en"
         ? "AI Expert Customer Service"
-        : "AI 专家客服"
+        : "AI专家客户服务"
       : locale === "en"
         ? "Website inquiry"
         : "网站咨询";
