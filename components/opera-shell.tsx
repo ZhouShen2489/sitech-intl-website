@@ -75,7 +75,7 @@ export function OperaFooter({ locale }: { locale: Locale }) {
     {
       href: helportHref,
       eyebrow: locale === "en" ? "New" : "新产品",
-      label: locale === "en" ? "Helport AI" : "AI 专家客服",
+      label: locale === "en" ? "AI Expert Customer Service" : "AI专家客户服务",
     },
   ];
 

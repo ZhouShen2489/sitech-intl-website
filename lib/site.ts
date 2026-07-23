@@ -11,8 +11,8 @@ const productionOrigins: Record<SiteKey, string> = {
 };
 
 const localOrigins: Record<SiteKey, string> = {
-  company: "http://localhost:3004",
-  opera: "http://localhost:3003",
+  company: "http://localhost:3003",
+  opera: "http://localhost:3006",
   telecom: "http://localhost:3005",
 };
 

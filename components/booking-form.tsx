@@ -136,7 +136,7 @@ export function BookingForm({ locale }: { locale: Locale }) {
         disabled={status === "loading"}
         className="mt-6 rounded-full bg-signal px-7 py-3 text-sm font-bold text-ink transition hover:bg-[#ffd59f] disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {status === "loading" ? (locale === "en" ? "Submitting..." : "提交中…") : locale === "en" ? "Book a Free Demo" : "预约免费演示"}
+        {status === "loading" ? (locale === "en" ? "Submitting..." : "提交中…") : locale === "en" ? "Book an AI Expert Customer Service Product Demo" : "预约AI专家客服产品演示"}
       </button>
     </form>
   );
