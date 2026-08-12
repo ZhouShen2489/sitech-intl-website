@@ -42,7 +42,6 @@ export const siteContent = {
     { href: "/", label: { zh: "首页", en: "Home" } },
     { href: "/solutions", label: { zh: "解决方案", en: "Solutions" } },
     { href: "/products", label: { zh: "产品", en: "Products" } },
-    { href: "/about", label: { zh: "关于我们", en: "About" } },
     { href: "/contact", label: { zh: "联系", en: "Contact" } },
   ],
   proofRibbon: [
@@ -386,13 +385,13 @@ export const siteContent = {
       bullets: {
         zh: [
           "80+ 运营商客户经验基础",
-          "83 个全国分支机构与 4 大创新研发中心",
-          "33 个大数据中心，覆盖运营商、产业、AI 与平台建设",
+          "分布式交付组织与 4 大创新研发中心",
+          "大规模数据运营经验，覆盖运营商、产业、AI 与平台建设",
         ],
         en: [
           "Reference base across 80+ operator clients",
-          "83 nationwide branches and 4 major R&D centers",
-          "33 big-data centers across telecom, industry, AI, and platform delivery",
+          "A distributed delivery organization supported by four major R&D centers",
+          "Large-scale data operations across telecom, industry, AI, and platform delivery",
         ],
       },
     },
@@ -776,7 +775,7 @@ export const siteContent = {
       storyItems: {
         zh: ["大型运营商宽带业务支撑平台", "国际运营商统一营销服务门户"],
         en: [
-          "Tier-one operator broadband support platform",
+          "Operator broadband support platform",
           "International operator unified marketing service portal",
         ],
       },
@@ -883,10 +882,10 @@ export const siteContent = {
       },
       storyTitle: { zh: "相关合作故事", en: "Related stories" },
       storyItems: {
-        zh: ["黔牛帮肉牛产业数智化平台", "区域产业平台出海中台项目"],
+        zh: ["肉牛产业数智化平台", "区域产业运营平台项目"],
         en: [
-          "QianNiuBang beef industry digital platform",
-          "Regional platform going-global middle-platform project",
+          "Beef industry digital platform",
+          "Regional industry operations platform",
         ],
       },
     },
@@ -987,7 +986,7 @@ export const siteContent = {
       storyTitle: { zh: "相关合作故事", en: "Related stories" },
       storyItems: {
         zh: ["大型运营商智能客服平台"],
-        en: ["Tier-one operator intelligent customer service platform"],
+        en: ["Operator intelligent customer service platform"],
       },
     },
     teamshub: {
@@ -1001,7 +1000,7 @@ export const siteContent = {
         en: "Turn chats, meetings, files, posts, and tasks into traceable project context.",
       },
       intro: {
-        zh: "Teamshub 面向长周期客户项目、专业服务交付、跨团队协作和出海业务推进。",
+        zh: "Teamshub 面向长周期客户项目、专业服务交付、跨团队协作和国际业务推进。",
         en: "Teamshub fits long-cycle client work, services delivery, cross-team coordination, and international growth.",
       },
       proofBar: [
@@ -1200,7 +1199,7 @@ export const siteContent = {
         },
         {
           title: {
-            zh: "出海客户与渠道推进",
+            zh: "国际客户与渠道推进",
             en: "International sales and partner work",
           },
           text: {
@@ -1629,7 +1628,7 @@ export const siteContent = {
         category: { zh: "自有产品", en: "Owned product" },
         status: { zh: "新方向", en: "New" },
         subtitle: {
-          zh: "面向品牌、营销服务公司和出海企业的 AI 创作者营销与内容运营方案。",
+          zh: "面向品牌、营销服务公司和国际业务团队的 AI 创作者营销与内容运营方案。",
           en: "AI-led creator campaigns and content operations for brands and agencies.",
         },
         tags: {
@@ -1807,7 +1806,7 @@ export const siteContent = {
         order: 1,
         title: {
           zh: "大型运营商宽带业务支撑平台",
-          en: "Tier-one operator broadband support platform",
+          en: "Operator broadband support platform",
         },
         summary: {
           zh: "该平台已在多个区域运营场景落地，连接宽带资源、开通、工单和运营分析。",
@@ -1857,17 +1856,17 @@ export const siteContent = {
         visible: true,
         order: 2,
         title: {
-          zh: "黔牛帮肉牛产业数智化平台",
-          en: "QianNiuBang beef industry digital platform",
+          zh: "肉牛产业数智化平台",
+          en: "Beef industry digital platform",
         },
         summary: {
-          zh: "围绕省级肉牛产业链连接采购、交易、支付和物流，帮助产业参与方协同经营。",
-          en: "Connects procurement, trade, payment, and logistics across the Guizhou beef supply chain.",
+          zh: "连接肉牛产业链的采购、交易、支付和物流，帮助产业参与方协同经营。",
+          en: "Connects procurement, trade, payment, and logistics across the beef supply chain.",
         },
         image: "/images/curated/cattle-farm-platform.jpg",
         labels: {
-          zh: ["数字产业域", "黔牛帮", "产业平台"],
-          en: ["Industry", "QianNiuBang", "Platform"],
+          zh: ["数字产业域", "肉牛产业", "产业平台"],
+          en: ["Industry", "Beef supply chain", "Platform"],
         },
         solution: {
           zh: "数据要素与数字产业平台",
@@ -1891,8 +1890,8 @@ export const siteContent = {
           {
             label: { zh: "解决方式", en: "Solution approach" },
             text: {
-              zh: "黔牛帮覆盖采购、交易、支付、物流等关键环节，并加入数字化支持。",
-              en: "QianNiuBang covers procurement, trade, payment, logistics, and digital support.",
+              zh: "平台覆盖采购、交易、支付、物流等关键环节，并加入数字化支持。",
+              en: "The platform covers procurement, trade, payment, logistics, and digital support.",
             },
           },
           {
@@ -1909,7 +1908,7 @@ export const siteContent = {
         order: 3,
         title: {
           zh: "大型运营商智能客服平台",
-          en: "Tier-one operator intelligent customer service platform",
+          en: "Operator intelligent customer service platform",
         },
         summary: {
           zh: "该智能客服平台已在多个大型服务项目落地，核心能力包括智能坐席、派单和质检分析。",
@@ -1954,84 +1953,6 @@ export const siteContent = {
             },
           },
         ],
-      },
-    ],
-  },
-  aboutPage: {
-    hero: {
-      image: "/images/curated/diverse-executive-meeting.jpg",
-      title: { zh: "关于我们", en: "About" },
-      subtitle: {
-        zh: "Si-Tech Intl 是面向海外市场的合作接口，连接思特奇技术、平台、研发与交付能力。",
-        en: "Si-Tech Intl is the international interface for Si-Tech technology, platform, R&D, and delivery capability.",
-      },
-    },
-    introTitle: {
-      zh: "为什么选择 Si-Tech Intl",
-      en: "How to read Si-Tech Intl",
-    },
-    introText: {
-      zh: "Si-Tech Intl 帮助海外客户更快对接思特奇的解决方案能力、研发基础和交付经验。",
-      en: "Si-Tech Intl helps international clients access Si-Tech solution capability, R&D depth, and delivery experience more quickly.",
-    },
-    stats: [
-      { value: "1995", label: { zh: "思特奇成立时间", en: "Founded" } },
-      {
-        value: "30+",
-        label: { zh: "年持续积累", en: "Years of sustained experience" },
-      },
-      { value: "3000+", label: { zh: "员工规模", en: "Employees" } },
-      { value: "86%+", label: { zh: "研发人员占比", en: "R&D ratio" } },
-    ],
-    pillars: [
-      {
-        title: { zh: "长期项目经验", en: "Long-term project experience" },
-        text: {
-          zh: "思特奇长期服务运营商与大型客户，积累了从系统建设、上线推进到持续运营的完整经验。",
-          en: "Complex projects need scope clarity, rollout discipline, and ongoing operations experience.",
-        },
-      },
-      {
-        title: {
-          zh: "质量与稳定性意识",
-          en: "Quality and stability mindset",
-        },
-        text: {
-          zh: "面向企业和运营商的系统不能只追求上线速度，还要考虑权限、数据、流程、异常处理和长期维护。我们更重视可持续运行的质量基础。",
-          en: "Enterprise and operator systems need permissions, data, workflows, exceptions, and maintainability, not just speed.",
-        },
-      },
-      {
-        title: {
-          zh: "交付协同能力",
-          en: "Delivery coordination capability",
-        },
-        text: {
-          zh: "真正的项目通常涉及业务、技术、管理和本地执行多方协同。Si-Tech Intl 的价值在于把问题、范围、沟通和交付节奏组织起来。",
-          en: "Real projects involve business, engineering, management, and local execution. We organize scope and delivery rhythm.",
-        },
-      },
-    ],
-    coverageTitle: {
-      zh: "能力覆盖面",
-      en: "Coverage areas",
-    },
-    coverageItems: [
-      {
-        zh: "4 大运营商核心技术服务与长期业务支撑经验",
-        en: "Core technical service and long-term support across the four major operators",
-      },
-      {
-        zh: "83 个全国分支机构与 4 大创新研发中心",
-        en: "83 nationwide branches and 4 major innovation and R&D centers",
-      },
-      {
-        zh: "33 个大数据中心与超 10 亿用户支撑经验",
-        en: "33 big-data centers and support experience across more than 1 billion users",
-      },
-      {
-        zh: "研发投入占营收约 20%，软件著作权 845 件、专利 328 件",
-        en: "R&D spending at roughly 20 percent of revenue, plus 845 software copyrights and 328 patents",
       },
     ],
   },

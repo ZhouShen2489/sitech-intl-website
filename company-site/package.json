@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "sync:public": "node ../scripts/sync-site-public.mjs company-site",
-    "dev": "node ../scripts/sync-site-public.mjs company-site && NEXT_PUBLIC_SITE_HOME_PATH= node ../scripts/with-root-env.mjs company-site next dev",
+    "dev": "node ../scripts/sync-site-public.mjs company-site && NEXT_DIST_DIR=.next-dev NEXT_PUBLIC_SITE_HOME_PATH= node ../scripts/with-root-env.mjs company-site next dev",
     "build": "node ../scripts/sync-site-public.mjs company-site && NEXT_PUBLIC_SITE_HOME_PATH= node ../scripts/with-root-env.mjs company-site next build",
     "start": "next start"
   },
