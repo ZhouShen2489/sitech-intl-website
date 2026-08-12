@@ -22,9 +22,9 @@ function modeForPath(pathname: string): NavMode {
 export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mode?: NavMode }) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<"products" | "solutions" | null>(null);
   const mode = modeOverride ?? modeForPath(pathname);
-  const nextLocale: Locale = locale === "en" ? "zh" : "en";
   const productHref = withLocale(locale, "/products/ai-expert-customer-service");
   const telecomHref = withSiteLocale("telecom", locale);
   const companyHref = withSiteLocale("company", locale);
@@ -63,7 +63,7 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
                     href={menuKey === "solutions" ? telecomHref : withLocale(locale, item.href)}
                     className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[15px] font-semibold transition ${
                       products
-                        ? "bg-[#092a20] text-white shadow-[0_10px_28px_rgba(7,53,37,0.2)] hover:bg-[#114c39]"
+                        ? "featured-product-nav text-white"
                         : isActive(item.href)
                           ? "bg-[#e5f6ee] text-[#0d744e]"
                           : "text-[#243f35] hover:bg-[#edf6f1] hover:text-[#0d744e]"
@@ -134,9 +134,38 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
         )}
 
         <div className="hidden items-center gap-2 lg:flex">
-          <Link href={switchLocaleInPath(pathname, nextLocale)} className="rounded-full border border-[#14583f]/12 px-4 py-2 text-sm font-semibold text-[#385b4d] hover:bg-[#eef7f2]">
-            {locale === "en" ? "中文" : "EN"}
-          </Link>
+          <div className="relative">
+            <button
+              type="button"
+              aria-expanded={isLanguageOpen}
+              aria-haspopup="menu"
+              aria-label="Choose language"
+              onClick={() => setIsLanguageOpen((value) => !value)}
+              className="inline-flex items-center gap-2 rounded-full border border-[#14583f]/12 bg-white px-3.5 py-2 text-sm font-semibold text-[#385b4d] transition hover:border-[#1d9b70]/35 hover:bg-[#eef7f2]"
+            >
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 text-[#0d9270]" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <circle cx="12" cy="12" r="8.5" />
+                <path d="M3.8 9h16.4M3.8 15h16.4M12 3.5c2.1 2.3 3.2 5.1 3.2 8.5s-1.1 6.2-3.2 8.5c-2.1-2.3-3.2-5.1-3.2-8.5S9.9 5.8 12 3.5Z" />
+              </svg>
+              <span>{locale === "en" ? "English" : "中文"}</span>
+              <span className={`text-[11px] transition-transform ${isLanguageOpen ? "rotate-180" : ""}`}>⌄</span>
+            </button>
+            {isLanguageOpen ? (
+              <div role="menu" className="absolute right-0 top-full z-20 mt-2 w-40 rounded-2xl border border-[#13593f]/10 bg-white p-2 shadow-[0_20px_55px_rgba(6,52,36,0.16)]">
+                {(["zh", "en"] as Locale[]).map((option) => (
+                  <Link
+                    key={option}
+                    role="menuitem"
+                    href={switchLocaleInPath(pathname, option)}
+                    onClick={() => setIsLanguageOpen(false)}
+                    className={`block rounded-xl px-3.5 py-3 text-sm font-semibold transition ${locale === option ? "bg-[#eef4f8] text-[#087c70]" : "text-[#405066] hover:bg-[#f2f7f5] hover:text-[#087c70]"}`}
+                  >
+                    {option === "zh" ? "中文" : "English"}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
           <Link href={withLocale(locale, bookingPath)} className="rounded-full bg-[#ff9a4f] px-5 py-2.5 text-sm font-bold text-[#2e1607] transition hover:bg-[#082a20] hover:text-white">
             {locale === "en" ? "Book an AI Expert Customer Service Product Demo" : "预约AI专家客服产品演示"}
           </Link>
@@ -170,7 +199,14 @@ export function SiteHeader({ locale, mode: modeOverride }: { locale: Locale; mod
                 </Link>
               </>
             )}
-            <Link href={switchLocaleInPath(pathname, nextLocale)} onClick={() => setIsOpen(false)} className="mt-2 rounded-full border border-[#14583f]/12 px-4 py-3 text-center text-sm font-semibold">{locale === "en" ? "中文" : "EN"}</Link>
+            <div className="mt-2 rounded-2xl border border-[#14583f]/12 p-2">
+              <p className="px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#0d9270]">Language</p>
+              {(["zh", "en"] as Locale[]).map((option) => (
+                <Link key={option} href={switchLocaleInPath(pathname, option)} onClick={() => setIsOpen(false)} className={`block rounded-xl px-3 py-2.5 text-sm font-semibold ${locale === option ? "bg-[#eef4f8] text-[#087c70]" : "text-[#405066]"}`}>
+                  {option === "zh" ? "中文" : "English"}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       ) : null}

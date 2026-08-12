@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "sync:public": "node ../scripts/sync-site-public.mjs telecom-site",
-    "dev": "node ../scripts/sync-site-public.mjs telecom-site && NEXT_PUBLIC_SITE_HOME_PATH= node ../scripts/with-root-env.mjs telecom-site next dev",
+    "dev": "node ../scripts/sync-site-public.mjs telecom-site && NEXT_DIST_DIR=.next-dev NEXT_PUBLIC_SITE_HOME_PATH= node ../scripts/with-root-env.mjs telecom-site next dev",
     "build": "node ../scripts/sync-site-public.mjs telecom-site && NEXT_PUBLIC_SITE_HOME_PATH= node ../scripts/with-root-env.mjs telecom-site next build",
     "start": "next start"
   },

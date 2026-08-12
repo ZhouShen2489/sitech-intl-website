@@ -69,7 +69,7 @@ export const telecomBoard = {
       value: "80+",
       label: { zh: "运营商客户经验基础", en: "Operator reference base" },
       text: {
-        zh: "覆盖移动、联通、电信、广电等运营商业务支撑场景。",
+        zh: "覆盖多类运营商与复杂通信业务支撑场景。",
         en: "Reference base across major operator support scenarios.",
       },
     },
@@ -366,11 +366,11 @@ export const telecomDirections: readonly TelecomDirection[] = [
     ],
     proof: {
       zh: [
-        "已支持国际运营商在香港、新加坡等境外地区落地通信业务支撑。",
+        "已支持国际运营商在多个市场落地通信业务支撑。",
         "常见于同时覆盖个人、批发、转售和分销的全球通信业务。",
       ],
       en: [
-        "Supported international operator deployments in Hong Kong, Singapore, and other overseas regions.",
+        "Supported international operator deployments across multiple markets.",
         "Fits lightweight global telecom businesses spanning retail, wholesale, resale, and distribution.",
       ],
     },
@@ -403,7 +403,7 @@ export const telecomDirections: readonly TelecomDirection[] = [
     image: "/images/curated/broadband-network-cables.jpg",
     metrics: [
       { value: "95%+", label: { zh: "资源准确性", en: "Resource accuracy" } },
-      { value: "5省", label: { zh: "省级落地", en: "Provincial rollout" } },
+      { value: "5+", label: { zh: "区域落地", en: "Regional deployments" } },
       { value: "E2E", label: { zh: "端到端支撑", en: "End-to-end support" } },
     ],
     pains: [
@@ -497,7 +497,7 @@ export const telecomDirections: readonly TelecomDirection[] = [
     startPoints: {
       zh: ["一个省公司上线", "资源与开通闭环", "工单联动与运营看板"],
       en: [
-        "One provincial rollout",
+        "One regional rollout",
         "Resource and activation loop",
         "Tickets and analytics dashboard",
       ],

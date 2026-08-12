@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 import { operaContent, operaCopy } from "@/content/opera-content";
 import { siteContent } from "@/content/site-content";
@@ -16,8 +17,7 @@ function companyHref(locale: Locale, path = "") {
 
 export function OperaHeader({ locale }: { locale: Locale }) {
   const pathname = usePathname();
-  const nextLocale = locale === "en" ? "zh" : "en";
-  const aboutHref = companyHref(locale, "/about");
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const contactHref = companyHref(locale, "/contact");
 
   return (
@@ -35,12 +35,6 @@ export function OperaHeader({ locale }: { locale: Locale }) {
 
         <nav className="hidden items-center gap-2 rounded-full border border-white/16 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl md:flex">
           <Link
-            href={aboutHref}
-            className="rounded-full px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/12 hover:text-white"
-          >
-            {locale === "en" ? "About Us" : "关于我们"}
-          </Link>
-          <Link
             href={contactHref}
             className="rounded-full px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/12 hover:text-white"
           >
@@ -48,13 +42,13 @@ export function OperaHeader({ locale }: { locale: Locale }) {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-1 rounded-full border border-white/16 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-2 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl">
-          <Link
-            href={switchLocaleInPath(pathname, nextLocale)}
-            className="rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white/12 hover:text-white"
-          >
-            {nextLocale}
-          </Link>
+        <div className="relative flex items-center gap-1 rounded-full border border-white/16 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-2 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl">
+          <button type="button" aria-label="Choose language" aria-expanded={isLanguageOpen} onClick={() => setIsLanguageOpen((value) => !value)} className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white/12">
+            <span aria-hidden="true">◎</span>{locale === "en" ? "EN" : "中文"}<span aria-hidden="true">⌄</span>
+          </button>
+          {isLanguageOpen ? <div className="absolute right-0 top-full mt-2 w-36 rounded-2xl border border-white/15 bg-[#15263d]/95 p-2 shadow-2xl backdrop-blur-xl">
+            {(["zh", "en"] as Locale[]).map((option) => <Link key={option} href={switchLocaleInPath(pathname, option)} onClick={() => setIsLanguageOpen(false)} className={`block rounded-xl px-3 py-2.5 text-xs font-semibold ${locale === option ? "bg-white/14 text-white" : "text-white/68 hover:bg-white/10 hover:text-white"}`}>{option === "zh" ? "中文" : "English"}</Link>)}
+          </div> : null}
         </div>
         </div>
       </div>

@@ -12,24 +12,26 @@ const sites = [
   {
     name: "company",
     dir: "company-site",
-    port: "3004",
+    port: "3003",
     extraEnv: {
+      NEXT_DIST_DIR: ".next-dev",
       NEXT_PUBLIC_SITE_HOME_PATH: "",
-      NEXT_PUBLIC_SITE_ORIGIN: "http://localhost:3004",
-      NEXT_PUBLIC_COMPANY_ORIGIN: "http://localhost:3004",
-      NEXT_PUBLIC_OPERA_ORIGIN: "http://opera.localhost:3003",
-      NEXT_PUBLIC_TELECOM_ORIGIN: "http://telecom.localhost:3005",
+      NEXT_PUBLIC_SITE_ORIGIN: "http://localhost:3003",
+      NEXT_PUBLIC_COMPANY_ORIGIN: "http://localhost:3003",
+      NEXT_PUBLIC_OPERA_ORIGIN: "http://localhost:3006",
+      NEXT_PUBLIC_TELECOM_ORIGIN: "http://localhost:3005",
     },
   },
   {
     name: "opera",
     dir: "opera-site",
-    port: "3003",
+    port: "3006",
     extraEnv: {
-      NEXT_PUBLIC_SITE_ORIGIN: "http://opera.localhost:3003",
-      NEXT_PUBLIC_COMPANY_ORIGIN: "http://localhost:3004",
-      NEXT_PUBLIC_OPERA_ORIGIN: "http://opera.localhost:3003",
-      NEXT_PUBLIC_TELECOM_ORIGIN: "http://telecom.localhost:3005",
+      NEXT_DIST_DIR: ".next-dev",
+      NEXT_PUBLIC_SITE_ORIGIN: "http://localhost:3006",
+      NEXT_PUBLIC_COMPANY_ORIGIN: "http://localhost:3003",
+      NEXT_PUBLIC_OPERA_ORIGIN: "http://localhost:3006",
+      NEXT_PUBLIC_TELECOM_ORIGIN: "http://localhost:3005",
     },
   },
   {
@@ -37,11 +39,12 @@ const sites = [
     dir: "telecom-site",
     port: "3005",
     extraEnv: {
+      NEXT_DIST_DIR: ".next-dev",
       NEXT_PUBLIC_SITE_HOME_PATH: "",
-      NEXT_PUBLIC_SITE_ORIGIN: "http://telecom.localhost:3005",
-      NEXT_PUBLIC_COMPANY_ORIGIN: "http://localhost:3004",
-      NEXT_PUBLIC_OPERA_ORIGIN: "http://opera.localhost:3003",
-      NEXT_PUBLIC_TELECOM_ORIGIN: "http://telecom.localhost:3005",
+      NEXT_PUBLIC_SITE_ORIGIN: "http://localhost:3005",
+      NEXT_PUBLIC_COMPANY_ORIGIN: "http://localhost:3003",
+      NEXT_PUBLIC_OPERA_ORIGIN: "http://localhost:3006",
+      NEXT_PUBLIC_TELECOM_ORIGIN: "http://localhost:3005",
     },
   },
 ];
@@ -91,9 +94,9 @@ process.on("SIGINT", () => shutdown(0));
 process.on("SIGTERM", () => shutdown(0));
 
 console.log("Starting Si-Tech multi-site dev environment...");
-console.log("Company:  http://localhost:3004");
-console.log("Opera:    http://opera.localhost:3003");
-console.log("Telecom:  http://telecom.localhost:3005");
+console.log("Company:  http://localhost:3003");
+console.log("Opera:    http://localhost:3006");
+console.log("Telecom:  http://localhost:3005");
 
 for (const site of sites) {
   const cwd = path.join(repoRoot, site.dir);

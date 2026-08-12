@@ -356,10 +356,6 @@ export const operaContent = {
         label: { zh: "Company Official Website", en: "Company Official Website" },
       },
       {
-        href: "/about",
-        label: { zh: "About Si-Tech", en: "About Si-Tech" },
-      },
-      {
         href: "/contact",
         label: { zh: "Contact", en: "Contact" },
       },
