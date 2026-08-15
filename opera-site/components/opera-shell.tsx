@@ -18,6 +18,7 @@ function companyHref(locale: Locale, path = "") {
 export function OperaHeader({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const aboutHref = companyHref(locale, "/about");
   const contactHref = companyHref(locale, "/contact");
 
   return (
@@ -34,6 +35,9 @@ export function OperaHeader({ locale }: { locale: Locale }) {
         </Link>
 
         <nav className="hidden items-center gap-2 rounded-full border border-white/16 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl md:flex">
+          <Link href={aboutHref} className="rounded-full px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/12 hover:text-white">
+            {locale === "en" ? "About Us" : "关于我们"}
+          </Link>
           <Link
             href={contactHref}
             className="rounded-full px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/12 hover:text-white"

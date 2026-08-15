@@ -42,6 +42,7 @@ export const siteContent = {
     { href: "/", label: { zh: "首页", en: "Home" } },
     { href: "/solutions", label: { zh: "解决方案", en: "Solutions" } },
     { href: "/products", label: { zh: "产品", en: "Products" } },
+    { href: "/about", label: { zh: "关于我们", en: "About" } },
     { href: "/contact", label: { zh: "联系", en: "Contact" } },
   ],
   proofRibbon: [
@@ -1954,6 +1955,57 @@ export const siteContent = {
           },
         ],
       },
+    ],
+  },
+  aboutPage: {
+    hero: {
+      image: "/images/curated/diverse-executive-meeting.jpg",
+      title: { zh: "关于我们", en: "About" },
+      subtitle: {
+        zh: "Si-Tech Intl 是面向海外市场的合作接口，连接技术、平台、研发与交付能力。",
+        en: "Si-Tech Intl is the international interface for technology, platforms, R&D, and delivery capability.",
+      },
+    },
+    introTitle: { zh: "为什么选择 Si-Tech Intl", en: "How to read Si-Tech Intl" },
+    introText: {
+      zh: "Si-Tech Intl 帮助国际客户更快对接解决方案能力、研发基础和交付经验。",
+      en: "Si-Tech Intl helps international clients access solution capability, R&D depth, and delivery experience more quickly.",
+    },
+    stats: [
+      { value: "1995", label: { zh: "成立时间", en: "Founded" } },
+      { value: "30+", label: { zh: "年持续积累", en: "Years of sustained experience" } },
+      { value: "3000+", label: { zh: "员工规模", en: "Employees" } },
+      { value: "86%+", label: { zh: "研发人员占比", en: "R&D ratio" } },
+    ],
+    pillars: [
+      {
+        title: { zh: "长期项目经验", en: "Long-term project experience" },
+        text: {
+          zh: "复杂项目需要清晰范围、稳定推进和持续运营经验。",
+          en: "Complex projects need scope clarity, rollout discipline, and ongoing operations experience.",
+        },
+      },
+      {
+        title: { zh: "质量与稳定性意识", en: "Quality and stability mindset" },
+        text: {
+          zh: "企业和运营商系统需要兼顾权限、数据、流程、异常处理和长期维护。",
+          en: "Enterprise and operator systems need permissions, data, workflows, exceptions, and maintainability, not just speed.",
+        },
+      },
+      {
+        title: { zh: "交付协同能力", en: "Delivery coordination capability" },
+        text: {
+          zh: "我们组织业务、工程、管理和本地执行之间的范围与交付节奏。",
+          en: "We organize scope and delivery rhythm across business, engineering, management, and local execution.",
+        },
+      },
+    ],
+    coverageTitle: { zh: "能力覆盖面", en: "Coverage areas" },
+    coverageItems: [
+      { zh: "面向运营商的核心系统与长期业务支撑经验", en: "Long-term core systems and service experience across telecom operators" },
+      { zh: "分布式交付组织与 4 大创新研发中心", en: "A distributed delivery organization supported by four innovation and R&D centers" },
+      { zh: "大规模数据运营与超 10 亿用户支撑经验", en: "Large-scale data operations and systems experience supporting more than 1 billion users" },
+      { zh: "研发投入与软件、专利创新能力", en: "Ongoing R&D investment and software and patent innovation" },
     ],
   },
   contactPage: {
