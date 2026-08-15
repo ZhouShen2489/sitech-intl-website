@@ -169,6 +169,12 @@ export function HomePage({ locale }: { locale: Locale }) {
   );
   const telecomSiteHref = withSiteLocale("telecom", locale);
   const previewStories = visibleItems(siteContent.storiesPage.items).slice(0, 3);
+  const statAccents = [
+    "from-[#1357d3] via-[#20a7ff] to-[#48d6b5]",
+    "from-[#0b2f6f] via-[#5f7cff] to-[#f6b85a]",
+    "from-[#1267c7] via-[#27c4a4] to-[#8bd450]",
+    "from-[#14345f] via-[#18a1ff] to-[#f7ba67]",
+  ];
   return (
     <>
       <CustomerServiceHero locale={locale} />
@@ -178,12 +184,24 @@ export function HomePage({ locale }: { locale: Locale }) {
       {isVisible(sections.companyIntro) ? (
         <section className="bg-white py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+            <div>
               <p className="text-sm uppercase tracking-[0.22em] text-tide">{copy(locale, companyIntro.eyebrow)}</p>
               <h2 className="mt-4 font-display text-3xl leading-tight text-ink md:text-4xl">
                 {copy(locale, companyIntro.title)}
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-600">{copy(locale, companyIntro.text)}</p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              {companyIntro.stats.map((item, index) => (
+                <div key={item.value} className="interactive-card group relative overflow-hidden rounded-[2rem] border border-blue-100 bg-white p-6 shadow-[0_18px_55px_rgba(11,47,111,0.08)]">
+                  <div aria-hidden="true" className={`absolute -right-10 -top-12 h-28 w-28 rounded-full bg-gradient-to-br ${statAccents[index % statAccents.length]} opacity-[0.18] blur-2xl transition duration-500 group-hover:scale-125 group-hover:opacity-[0.28]`} />
+                  <div aria-hidden="true" className={`absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r ${statAccents[index % statAccents.length]}`} />
+                  <p className={`relative bg-gradient-to-r ${statAccents[index % statAccents.length]} bg-clip-text font-display text-4xl text-transparent transition duration-300 group-hover:translate-x-1`}>{item.value}</p>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, item.label)}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
